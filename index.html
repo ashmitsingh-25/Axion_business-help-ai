@@ -1,0 +1,2655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>NURA — Quality products. Smarter shopping.</title>
+<meta name="description" content="NURA — Premium clothing, shoes and lifestyle products. Shop the latest collections."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+/* ══════════════════════════════════════════════════════════════
+   RESET & VARIABLES
+══════════════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --c-bg:#F9F8F6;
+  --c-white:#FFFFFF;
+  --c-black:#111111;
+  --c-ink:#1C1C1C;
+  --c-mid:#6B6866;
+  --c-border:#E5E3DF;
+  --c-border2:#D0CEC9;
+  --c-accent:#B5935A;
+  --c-accent-light:#F5EFE4;
+  --c-error:#D94040;
+  --c-success:#2D7A4F;
+  --c-warn:#C47B1A;
+  --c-tag:#F2F1EF;
+  --r-sm:6px;--r-md:10px;--r-lg:16px;--r-xl:22px;
+  --shadow-xs:0 1px 4px rgba(0,0,0,.06);
+  --shadow-sm:0 2px 12px rgba(0,0,0,.08);
+  --shadow-md:0 4px 24px rgba(0,0,0,.10);
+  --font:'Inter',-apple-system,sans-serif;
+  /* Admin vars */
+  --a-bg:#0F1117;--a-card:rgba(255,255,255,.04);
+  --a-border:rgba(255,255,255,.08);--a-text:#E8EAF0;
+  --a-muted:rgba(232,234,240,.5);--a-accent:#6366f1;
+  --a-accent2:#00c6ff;--a-sidebar:#0A0C12;
+  --a-danger:#F24444;--a-warn:#F59E0B;--a-ok:#22C55E;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--c-bg);color:var(--c-ink);font-size:16px;line-height:1.6;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{font-family:var(--font);cursor:pointer;}
+input,textarea,select{font-family:var(--font);}
+.hidden{display:none!important;}
+
+/* ══════════════════════════════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════════════════════════════ */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.8rem;border-radius:var(--r-sm);font-weight:600;font-size:.9rem;border:none;cursor:pointer;transition:all .2s ease;text-decoration:none;}
+.btn-dark{background:var(--c-black);color:#fff;}
+.btn-dark:hover{background:#2a2a2a;transform:translateY(-1px);}
+.btn-outline{background:transparent;border:1.5px solid var(--c-black);color:var(--c-black);}
+.btn-outline:hover{background:var(--c-black);color:#fff;}
+.btn-accent{background:var(--c-accent);color:#fff;}
+.btn-accent:hover{background:#a07d49;}
+.btn-ghost{background:transparent;border:1.5px solid var(--c-border);color:var(--c-mid);}
+.btn-ghost:hover{border-color:var(--c-black);color:var(--c-ink);}
+.btn-sm{padding:.55rem 1.1rem;font-size:.82rem;}
+.btn-lg{padding:1rem 2.2rem;font-size:1rem;}
+.btn-full{width:100%;justify-content:center;}
+/* Admin buttons */
+.abtn{display:inline-flex;align-items:center;gap:.45rem;padding:.6rem 1.2rem;border-radius:var(--r-sm);font-size:.82rem;font-weight:600;border:none;cursor:pointer;transition:all .2s;}
+.abtn-primary{background:var(--a-accent);color:#fff;}
+.abtn-primary:hover{background:#4f52d4;transform:translateY(-1px);}
+.abtn-ghost{background:transparent;border:1px solid var(--a-border);color:var(--a-muted);}
+.abtn-ghost:hover{border-color:var(--a-accent);color:var(--a-text);}
+.abtn-danger{background:rgba(242,68,68,.12);border:1px solid rgba(242,68,68,.3);color:var(--a-danger);}
+.abtn-ok{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:var(--a-ok);}
+.abtn-warn{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);color:var(--a-warn);}
+
+/* ══════════════════════════════════════════════════════════════
+   CUSTOMER NAVBAR
+══════════════════════════════════════════════════════════════ */
+#site-customer{min-height:100vh;display:flex;flex-direction:column;}
+#c-nav{position:sticky;top:0;z-index:500;background:rgba(249,248,246,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--c-border);}
+.c-nav-inner{max-width:1360px;margin:0 auto;padding:0 2rem;height:64px;display:flex;align-items:center;gap:2rem;}
+.c-logo{font-size:1.5rem;font-weight:900;letter-spacing:-.04em;color:var(--c-black);flex-shrink:0;}
+.c-logo span{color:var(--c-accent);}
+.c-nav-links{display:flex;gap:.15rem;list-style:none;flex:1;}
+.c-nav-links a{font-size:.85rem;font-weight:500;color:var(--c-mid);padding:.45rem .75rem;border-radius:var(--r-sm);transition:all .2s;}
+.c-nav-links a:hover,.c-nav-links a.active{color:var(--c-black);}
+.c-nav-right{display:flex;align-items:center;gap:.5rem;margin-left:auto;}
+.c-nav-icon{width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-sm);border:none;background:transparent;font-size:1.1rem;cursor:pointer;transition:background .2s;position:relative;}
+.c-nav-icon:hover{background:var(--c-border);}
+.c-cart-badge{position:absolute;top:4px;right:4px;width:16px;height:16px;background:var(--c-accent);border-radius:50%;font-size:.6rem;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;}
+.c-nav-admin-link{font-size:.75rem;font-weight:600;color:var(--c-mid);border:1px solid var(--c-border);padding:.35rem .8rem;border-radius:var(--r-sm);margin-left:.5rem;transition:all .2s;}
+.c-nav-admin-link:hover{border-color:var(--c-black);color:var(--c-black);}
+
+/* ══════════════════════════════════════════════════════════════
+   HERO
+══════════════════════════════════════════════════════════════ */
+.hero{position:relative;overflow:hidden;min-height:88vh;display:flex;align-items:center;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#2C2420 0%,#1a1614 40%,#2C2824 100%);z-index:0;}
+.hero-texture{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(181,147,90,.15) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(255,255,255,.04) 0%,transparent 40%);z-index:1;}
+.hero-content{position:relative;z-index:2;max-width:1360px;margin:0 auto;padding:0 2rem;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.hero-text{}
+.hero-tag{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--c-accent);background:rgba(181,147,90,.15);border:1px solid rgba(181,147,90,.3);padding:.35rem .9rem;border-radius:100px;margin-bottom:1.5rem;}
+.hero-h1{font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;color:#F5F0E8;margin-bottom:1.25rem;}
+.hero-sub{font-size:1.05rem;color:rgba(245,240,232,.6);line-height:1.75;margin-bottom:2.5rem;max-width:400px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-btns .btn-hero-primary{background:var(--c-accent);color:#fff;padding:.9rem 2rem;}
+.hero-btns .btn-hero-primary:hover{background:#a07d49;}
+.hero-btns .btn-hero-outline{background:transparent;border:1.5px solid rgba(245,240,232,.3);color:#F5F0E8;padding:.9rem 2rem;}
+.hero-btns .btn-hero-outline:hover{border-color:rgba(245,240,232,.6);}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.08);}
+.hero-stat-num{font-size:1.4rem;font-weight:800;color:#F5F0E8;letter-spacing:-.02em;}
+.hero-stat-label{font-size:.72rem;color:rgba(245,240,232,.45);font-weight:500;letter-spacing:.04em;text-transform:uppercase;margin-top:.15rem;}
+.hero-visual{position:relative;}
+.hero-product-showcase{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.hero-product-card{border-radius:var(--r-lg);overflow:hidden;position:relative;}
+.hero-product-card.tall{grid-row:span 2;}
+.hero-img-placeholder{width:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;overflow:hidden;}
+.hero-img-placeholder.tall{height:380px;}
+.hero-img-placeholder.short{height:180px;}
+.hip-1{background:linear-gradient(135deg,#C9B99A,#A8936F);}
+.hip-2{background:linear-gradient(135deg,#2D3038,#3D4150);}
+.hip-3{background:linear-gradient(135deg,#7A6B56,#967D60);}
+.hero-card-label{position:absolute;bottom:0;left:0;right:0;padding:.75rem 1rem;background:rgba(0,0,0,.4);backdrop-filter:blur(4px);}
+.hero-card-label-name{font-size:.8rem;font-weight:600;color:#fff;}
+.hero-card-label-price{font-size:.72rem;color:rgba(255,255,255,.7);}
+
+/* ══════════════════════════════════════════════════════════════
+   SECTION COMMON
+══════════════════════════════════════════════════════════════ */
+.section{padding:5rem 0;}
+.section-inner{max-width:1360px;margin:0 auto;padding:0 2rem;}
+.section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;}
+.section-title{font-size:1.7rem;font-weight:800;letter-spacing:-.02em;}
+.section-subtitle{font-size:.85rem;color:var(--c-mid);margin-top:.25rem;}
+.section-link{font-size:.82rem;font-weight:600;color:var(--c-accent);display:flex;align-items:center;gap:.3rem;white-space:nowrap;}
+
+/* ══════════════════════════════════════════════════════════════
+   CATEGORY STRIP
+══════════════════════════════════════════════════════════════ */
+.category-strip{background:var(--c-white);border-top:1px solid var(--c-border);border-bottom:1px solid var(--c-border);}
+.cat-strip-inner{max-width:1360px;margin:0 auto;padding:0 2rem;display:flex;gap:0;overflow-x:auto;}
+.cat-btn{flex-shrink:0;padding:1rem 1.5rem;font-size:.82rem;font-weight:600;color:var(--c-mid);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.cat-btn:hover,.cat-btn.active{color:var(--c-black);border-bottom-color:var(--c-black);}
+
+/* ══════════════════════════════════════════════════════════════
+   PRODUCT GRID
+══════════════════════════════════════════════════════════════ */
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.product-card{background:var(--c-white);border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--c-border);transition:all .25s;position:relative;}
+.product-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+.product-img{position:relative;overflow:hidden;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-size:4rem;}
+.product-img-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4.5rem;transition:transform .4s ease;}
+.product-card:hover .product-img-bg{transform:scale(1.04);}
+.product-wishlist-btn{position:absolute;top:.75rem;right:.75rem;width:34px;height:34px;background:rgba(255,255,255,.9);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;transition:all .2s;z-index:2;}
+.product-wishlist-btn:hover,.product-wishlist-btn.active{background:var(--c-accent);color:#fff;}
+.product-badge{position:absolute;top:.75rem;left:.75rem;font-size:.65rem;font-weight:700;padding:.2rem .55rem;border-radius:100px;letter-spacing:.04em;z-index:2;}
+.badge-new{background:var(--c-black);color:#fff;}
+.badge-low{background:#FEF3CD;color:#92610A;}
+.product-info{padding:1rem 1.1rem 1.2rem;}
+.product-category{font-size:.68rem;font-weight:600;color:var(--c-mid);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem;}
+.product-name{font-size:.95rem;font-weight:700;color:var(--c-ink);margin-bottom:.3rem;line-height:1.35;}
+.product-rating{display:flex;align-items:center;gap:.35rem;margin-bottom:.5rem;}
+.stars{color:#F59E0B;font-size:.8rem;letter-spacing:.05em;}
+.rating-count{font-size:.72rem;color:var(--c-mid);}
+.product-price{font-size:1.05rem;font-weight:800;color:var(--c-ink);}
+.product-colors{display:flex;gap:.35rem;margin-top:.5rem;}
+.color-dot{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--c-border);cursor:pointer;transition:transform .2s;}
+.color-dot:hover{transform:scale(1.2);}
+.product-stock{font-size:.72rem;font-weight:500;margin-top:.5rem;}
+.stock-ok{color:var(--c-success);}
+.stock-low{color:var(--c-warn);}
+.stock-out{color:var(--c-error);}
+.product-add-btn{width:100%;margin-top:.8rem;padding:.65rem;background:var(--c-black);color:#fff;border:none;border-radius:var(--r-sm);font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.product-add-btn:hover{background:#2a2a2a;}
+
+/* ══════════════════════════════════════════════════════════════
+   BANNER STRIP
+══════════════════════════════════════════════════════════════ */
+.banner-strip{background:var(--c-black);color:#fff;padding:1rem 0;text-align:center;}
+.banner-strip p{font-size:.82rem;font-weight:500;letter-spacing:.04em;}
+.banner-strip strong{color:var(--c-accent);}
+
+/* ══════════════════════════════════════════════════════════════
+   PRODUCT PAGE
+══════════════════════════════════════════════════════════════ */
+#page-product{background:var(--c-white);}
+.product-page-inner{max-width:1360px;margin:0 auto;padding:3rem 2rem;}
+.product-page-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.pp-gallery{position:sticky;top:80px;}
+.pp-main-img{border-radius:var(--r-xl);overflow:hidden;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-size:8rem;margin-bottom:1rem;}
+.pp-thumbs{display:flex;gap:.75rem;}
+.pp-thumb{width:72px;height:90px;border-radius:var(--r-md);overflow:hidden;border:2px solid transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:2rem;transition:all .2s;}
+.pp-thumb:hover,.pp-thumb.active{border-color:var(--c-black);}
+.pp-info{}
+.pp-breadcrumb{font-size:.78rem;color:var(--c-mid);margin-bottom:1rem;display:flex;align-items:center;gap:.4rem;}
+.pp-breadcrumb span{cursor:pointer;} .pp-breadcrumb span:hover{color:var(--c-accent);}
+.pp-name{font-size:1.8rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:.75rem;}
+.pp-price-row{display:flex;align-items:center;gap:1rem;margin-bottom:.75rem;}
+.pp-price{font-size:1.6rem;font-weight:800;}
+.pp-rating{display:flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--c-mid);}
+.pp-divider{height:1px;background:var(--c-border);margin:1.25rem 0;}
+.pp-section-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--c-mid);margin-bottom:.75rem;}
+.pp-colors-row{display:flex;gap:.75rem;margin-bottom:1.25rem;}
+.pp-color-swatch{padding:.4rem .9rem;border-radius:100px;border:1.5px solid var(--c-border);font-size:.8rem;font-weight:500;cursor:pointer;transition:all .2s;}
+.pp-color-swatch:hover,.pp-color-swatch.active{border-color:var(--c-black);background:var(--c-black);color:#fff;}
+.pp-sizes-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.pp-size-btn{width:52px;height:52px;border-radius:var(--r-sm);border:1.5px solid var(--c-border);background:var(--c-white);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.1rem;}
+.pp-size-btn:hover{border-color:var(--c-black);}
+.pp-size-btn.active{border-color:var(--c-black);background:var(--c-black);color:#fff;}
+.pp-size-btn.out{opacity:.4;cursor:not-allowed;text-decoration:line-through;}
+.pp-size-stock{font-size:.55rem;font-weight:500;opacity:.7;}
+/* Availability card */
+.pp-availability{background:var(--c-accent-light);border:1px solid rgba(181,147,90,.25);border-radius:var(--r-md);padding:1rem 1.2rem;margin-bottom:1.5rem;}
+.pp-avail-row{display:flex;align-items:center;gap:.5rem;font-size:.85rem;margin-bottom:.3rem;}
+.pp-avail-row:last-child{margin-bottom:0;}
+.avail-ok{color:var(--c-success);font-weight:600;}
+.avail-warn{color:var(--c-warn);font-weight:600;}
+.avail-info{color:var(--c-mid);}
+.pp-cta-row{display:flex;gap:.75rem;margin-bottom:1.5rem;}
+.pp-desc{font-size:.88rem;color:var(--c-mid);line-height:1.75;}
+/* You might also like */
+.pp-also{max-width:1360px;margin:0 auto;padding:2rem 2rem 3rem;}
+.pp-also-title{font-size:1.1rem;font-weight:700;margin-bottom:.25rem;}
+.pp-also-sub{font-size:.82rem;color:var(--c-mid);margin-bottom:1.5rem;}
+.pp-also-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+
+/* ══════════════════════════════════════════════════════════════
+   CART PAGE
+══════════════════════════════════════════════════════════════ */
+#page-cart{background:var(--c-bg);}
+.cart-inner{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;}
+.cart-title{font-size:1.5rem;font-weight:800;margin-bottom:1.75rem;}
+.cart-layout{display:grid;grid-template-columns:1fr 340px;gap:2rem;align-items:start;}
+.cart-items{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);overflow:hidden;}
+.cart-item{display:grid;grid-template-columns:90px 1fr auto;gap:1.25rem;padding:1.25rem;border-bottom:1px solid var(--c-border);align-items:center;}
+.cart-item:last-child{border-bottom:none;}
+.cart-item-img{border-radius:var(--r-md);overflow:hidden;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-size:2.5rem;}
+.cart-item-name{font-size:.92rem;font-weight:700;margin-bottom:.25rem;}
+.cart-item-meta{font-size:.78rem;color:var(--c-mid);margin-bottom:.5rem;}
+.cart-item-avail{font-size:.72rem;color:var(--c-warn);font-weight:500;}
+.cart-qty-row{display:flex;align-items:center;gap:.5rem;margin-top:.5rem;}
+.cart-qty-btn{width:28px;height:28px;border:1.5px solid var(--c-border);border-radius:var(--r-sm);background:none;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:700;transition:all .2s;}
+.cart-qty-btn:hover{border-color:var(--c-black);}
+.cart-qty-num{font-size:.88rem;font-weight:600;min-width:24px;text-align:center;}
+.cart-item-price{font-size:1rem;font-weight:800;white-space:nowrap;}
+.cart-remove{font-size:.72rem;color:var(--c-mid);cursor:pointer;margin-top:.3rem;text-align:right;}
+.cart-remove:hover{color:var(--c-error);}
+/* Cart summary */
+.cart-summary{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);padding:1.5rem;position:sticky;top:80px;}
+.cart-summary-title{font-size:1rem;font-weight:700;margin-bottom:1.25rem;}
+.cart-sum-row{display:flex;justify-content:space-between;font-size:.88rem;margin-bottom:.75rem;}
+.cart-sum-row.total{font-weight:800;font-size:1rem;border-top:1px solid var(--c-border);padding-top:.75rem;margin-top:.25rem;}
+.cart-delivery-info{background:var(--c-accent-light);border-radius:var(--r-md);padding:.75rem 1rem;margin:1rem 0;font-size:.78rem;color:var(--c-accent);display:flex;align-items:center;gap:.5rem;font-weight:600;}
+.cart-discount{background:var(--c-tag);border-radius:var(--r-md);padding:.75rem 1rem;margin-bottom:1rem;font-size:.8rem;color:var(--c-success);font-weight:600;}
+/* Cart recommendations */
+.cart-recs{background:var(--c-white);border-radius:var(--r-lg);border:1px solid var(--c-border);padding:1.5rem;margin-top:1.5rem;}
+.cart-recs-title{font-size:.95rem;font-weight:700;margin-bottom:.3rem;}
+.cart-recs-sub{font-size:.78rem;color:var(--c-mid);margin-bottom:1.25rem;}
+.cart-recs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.cart-rec-card{border:1px solid var(--c-border);border-radius:var(--r-md);overflow:hidden;transition:all .2s;cursor:pointer;}
+.cart-rec-card:hover{box-shadow:var(--shadow-sm);}
+.cart-rec-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:2.5rem;}
+.cart-rec-info{padding:.6rem .75rem;}
+.cart-rec-name{font-size:.75rem;font-weight:700;margin-bottom:.15rem;}
+.cart-rec-price{font-size:.75rem;color:var(--c-accent);font-weight:700;}
+
+/* Checkout */
+#page-checkout{background:var(--c-bg);}
+.checkout-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:2rem;align-items:start;}
+@media(max-width:860px){.checkout-grid{grid-template-columns:1fr;}}
+.checkout-box{background:var(--c-white);border:1px solid var(--c-border);border-radius:var(--r-lg);padding:1.5rem;margin-bottom:1.5rem;}
+.checkout-box-title{font-size:1.05rem;font-weight:800;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.checkout-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-group{display:flex;flex-direction:column;gap:.35rem;}
+.form-group.full{grid-column:1/-1;}
+.form-label{font-size:.75rem;font-weight:700;color:var(--c-ink);text-transform:uppercase;letter-spacing:.04em;}
+.form-input{padding:.65rem .85rem;border:1px solid var(--c-border);border-radius:var(--r-md);font-size:.88rem;font-family:var(--font);outline:none;background:#fff;transition:border-color .2s;}
+.form-input:focus{border-color:var(--c-black);}
+.payment-methods{display:flex;flex-direction:column;gap:.75rem;}
+.payment-card{border:1.5px solid var(--c-border);border-radius:var(--r-md);padding:.9rem 1.1rem;cursor:pointer;display:flex;align-items:center;gap:.85rem;transition:all .2s;background:#fff;}
+.payment-card:hover{border-color:#888;}
+.payment-card.selected{border-color:var(--c-black);background:#FAF9F7;}
+.payment-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--c-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.payment-card.selected .payment-radio{border-color:var(--c-black);}
+.payment-card.selected .payment-radio::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--c-black);}
+.order-success-card{background:#fff;border:1px solid var(--c-border);border-radius:var(--r-xl);padding:3.5rem 2rem;text-align:center;max-width:620px;margin:2rem auto;box-shadow:0 8px 30px rgba(0,0,0,.06);}
+
+/* ══════════════════════════════════════════════════════════════
+   ORDERS PAGE
+══════════════════════════════════════════════════════════════ */
+#page-orders{background:var(--c-bg);}
+.orders-inner{max-width:860px;margin:0 auto;padding:2.5rem 2rem;}
+.orders-tabs{display:flex;border-bottom:2px solid var(--c-border);margin-bottom:2rem;}
+.orders-tab{padding:.75rem 1.5rem;font-size:.88rem;font-weight:600;color:var(--c-mid);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s;}
+.orders-tab:hover,.orders-tab.active{color:var(--c-black);border-bottom-color:var(--c-black);}
+.order-card{background:var(--c-white);border:1px solid var(--c-border);border-radius:var(--r-lg);padding:1.5rem;margin-bottom:1.25rem;}
+.order-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;}
+.order-num{font-size:.78rem;color:var(--c-mid);font-weight:600;margin-bottom:.25rem;}
+.order-date{font-size:.72rem;color:var(--c-mid);}
+.order-status-badge{font-size:.72rem;font-weight:700;padding:.3rem .75rem;border-radius:100px;letter-spacing:.04em;}
+.status-delivered{background:#DCFCE7;color:#166534;}
+.status-shipped{background:#DBEAFE;color:#1e40af;}
+.status-processing{background:#FEF3C7;color:#92400e;}
+.order-items{display:flex;flex-direction:column;gap:.75rem;padding:1rem 0;border-top:1px solid var(--c-border);}
+.order-item-row{display:flex;gap:1rem;align-items:center;}
+.order-item-img{width:60px;height:75px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:1.8rem;border:1px solid var(--c-border);}
+.order-item-name{font-size:.88rem;font-weight:700;}
+.order-item-meta{font-size:.75rem;color:var(--c-mid);margin-top:.15rem;}
+.order-item-price{font-size:.92rem;font-weight:800;margin-left:auto;}
+.order-actions{display:flex;gap:.75rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--c-border);}
+
+/* Return Flow */
+.return-flow{background:var(--c-white);border:1px solid var(--c-border);border-radius:var(--r-xl);padding:2rem;margin-top:1.5rem;}
+.return-flow-title{font-size:1.1rem;font-weight:800;margin-bottom:.5rem;}
+.return-progress{display:flex;gap:0;margin-bottom:2rem;}
+.return-progress-step{flex:1;text-align:center;position:relative;}
+.return-progress-step::after{content:'';position:absolute;top:14px;left:50%;width:100%;height:2px;background:var(--c-border);}
+.return-progress-step:last-child::after{display:none;}
+.rp-dot{width:28px;height:28px;border-radius:50%;border:2px solid var(--c-border);background:var(--c-white);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;margin:0 auto .4rem;position:relative;z-index:1;}
+.rp-dot.active{border-color:var(--c-black);background:var(--c-black);color:#fff;}
+.rp-dot.done{border-color:var(--c-success);background:var(--c-success);color:#fff;}
+.rp-label{font-size:.65rem;color:var(--c-mid);font-weight:500;}
+.rf-step{display:none;}
+.rf-step.active{display:block;}
+.rf-q{font-size:1rem;font-weight:700;margin-bottom:1.25rem;}
+.rf-options{display:flex;flex-direction:column;gap:.65rem;margin-bottom:1.5rem;}
+.rf-option{display:flex;align-items:center;gap:.75rem;padding:.85rem 1.1rem;border:1.5px solid var(--c-border);border-radius:var(--r-md);cursor:pointer;transition:all .2s;font-size:.88rem;font-weight:500;}
+.rf-option:hover{border-color:var(--c-black);}
+.rf-option.selected{border-color:var(--c-black);background:#F5F5F3;}
+.rf-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--c-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.rf-option.selected .rf-radio{border-color:var(--c-black);}
+.rf-option.selected .rf-radio::after{content:'';width:9px;height:9px;border-radius:50%;background:var(--c-black);}
+/* Return result */
+.rf-result{background:var(--c-accent-light);border:1px solid rgba(181,147,90,.25);border-radius:var(--r-lg);padding:1.5rem;margin-bottom:1.5rem;}
+.rf-result-icon{font-size:2rem;margin-bottom:.75rem;}
+.rf-result-title{font-size:1.05rem;font-weight:800;margin-bottom:.5rem;}
+.rf-result-body{font-size:.88rem;color:var(--c-mid);line-height:1.65;margin-bottom:1rem;}
+.rf-result-detail{font-size:.82rem;color:var(--c-mid);}
+.rf-result-detail strong{color:var(--c-ink);}
+
+/* ══════════════════════════════════════════════════════════════
+   CUSTOMER FOOTER
+══════════════════════════════════════════════════════════════ */
+.c-footer{background:var(--c-black);color:rgba(255,255,255,.65);padding:3rem 0 2rem;margin-top:auto;}
+.c-footer-inner{max-width:1360px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;}
+.c-footer-brand{font-size:1.3rem;font-weight:900;color:#fff;letter-spacing:-.03em;margin-bottom:.75rem;}
+.c-footer-tagline{font-size:.82rem;line-height:1.6;}
+.c-footer-col h5{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#fff;margin-bottom:.9rem;}
+.c-footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.c-footer-col ul li a{font-size:.82rem;color:rgba(255,255,255,.55);transition:color .2s;}
+.c-footer-col ul li a:hover{color:#fff;}
+.c-footer-bottom{max-width:1360px;margin:2rem auto 0;padding:1.25rem 2rem 0;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;}
+.c-footer-bottom p{font-size:.75rem;}
+
+/* ══════════════════════════════════════════════════════════════
+   ADMIN — LAYOUT
+══════════════════════════════════════════════════════════════ */
+#site-admin{display:flex;min-height:100vh;background:var(--a-bg);color:var(--a-text);font-family:var(--font);}
+.admin-sidebar{width:220px;min-height:100vh;background:var(--a-sidebar);border-right:1px solid var(--a-border);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto;flex-shrink:0;}
+.admin-logo{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid var(--a-border);}
+.admin-logo-name{font-size:1.1rem;font-weight:900;color:#fff;letter-spacing:-.02em;}
+.admin-logo-tag{font-size:.65rem;color:var(--a-muted);margin-top:.15rem;}
+.admin-nav{flex:1;padding:.75rem 0;}
+.admin-nav-group{padding:0 .75rem;margin-bottom:1.25rem;}
+.admin-nav-label{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--a-muted);padding:.4rem .5rem;margin-bottom:.3rem;}
+.admin-nav-item{display:flex;align-items:center;gap:.65rem;padding:.6rem .75rem;border-radius:var(--r-sm);font-size:.82rem;font-weight:500;color:var(--a-muted);cursor:pointer;transition:all .2s;border:none;background:none;width:100%;text-align:left;}
+.admin-nav-item:hover{background:rgba(255,255,255,.05);color:var(--a-text);}
+.admin-nav-item.active{background:rgba(99,102,241,.15);color:var(--a-accent);font-weight:600;}
+.admin-nav-item .nav-icon{font-size:1rem;width:20px;text-align:center;}
+.admin-nav-item .nav-badge{margin-left:auto;font-size:.65rem;font-weight:700;background:rgba(99,102,241,.2);color:var(--a-accent);padding:.1rem .45rem;border-radius:100px;}
+.admin-nav-footer{padding:1rem 1.25rem;border-top:1px solid var(--a-border);}
+.admin-back-btn{font-size:.78rem;color:var(--a-muted);cursor:pointer;display:flex;align-items:center;gap:.4rem;background:none;border:none;padding:.4rem 0;transition:color .2s;width:100%;}
+.admin-back-btn:hover{color:var(--a-text);}
+
+.admin-main{flex:1;display:flex;flex-direction:column;min-width:0;}
+.admin-topbar{height:56px;border-bottom:1px solid var(--a-border);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;flex-shrink:0;}
+.admin-topbar-title{font-size:1rem;font-weight:700;}
+.admin-topbar-right{display:flex;align-items:center;gap:.75rem;}
+.ask-business-btn{display:flex;align-items:center;gap:.45rem;padding:.45rem 1rem;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.3);color:var(--a-accent);border-radius:var(--r-sm);font-size:.78rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:var(--font);}
+.ask-business-btn:hover{background:rgba(99,102,241,.25);}
+.admin-page{flex:1;padding:2rem;overflow-y:auto;}
+
+/* ══════════════════════════════════════════════════════════════
+   ADMIN — KPI CARDS
+══════════════════════════════════════════════════════════════ */
+.kpi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin-bottom:1.5rem;}
+.kpi-card{background:var(--a-card);border:1px solid var(--a-border);border-radius:var(--r-lg);padding:1.25rem 1.1rem;}
+.kpi-label{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--a-muted);margin-bottom:.5rem;}
+.kpi-value{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;color:var(--a-text);margin-bottom:.35rem;}
+.kpi-trend{font-size:.72rem;font-weight:600;}
+.kpi-up{color:var(--a-ok);}
+.kpi-down-good{color:var(--a-ok);}
+.kpi-down-bad{color:var(--a-danger);}
+.kpi-warn{color:var(--a-warn);}
+.kpi-card.kpi-alert{border-color:rgba(245,158,11,.25);background:rgba(245,158,11,.05);}
+
+/* ══════════════════════════════════════════════════════════════
+   ADMIN — CHART CARDS
+══════════════════════════════════════════════════════════════ */
+.admin-charts-row{display:grid;grid-template-columns:2fr 1fr;gap:1.25rem;margin-bottom:1.25rem;}
+.admin-charts-row2{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+.chart-card{background:var(--a-card);border:1px solid var(--a-border);border-radius:var(--r-lg);padding:1.25rem 1.5rem;display:flex;flex-direction:column;position:relative;overflow:hidden;}
+.chart-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;}
+.chart-card-title{font-size:.88rem;font-weight:700;color:var(--a-text);}
+.chart-card-sub{font-size:.7rem;color:var(--a-muted);margin-top:.15rem;}
+.chart-period-btns{display:flex;gap:.25rem;}
+.chart-period-btn{font-size:.68rem;padding:.25rem .6rem;border-radius:100px;border:1px solid var(--a-border);background:none;color:var(--a-muted);cursor:pointer;transition:all .2s;font-family:var(--font);}
+.chart-period-btn.active{background:rgba(99,102,241,.2);border-color:rgba(99,102,241,.4);color:var(--a-accent);}
+.chart-wrap{position:relative;width:100%;height:190px;}
+.chart-wrap.chart-wrap-lg{height:220px;}
+.chart-wrap.chart-wrap-sm{height:175px;}
+.chart-wrap.chart-wrap-xs{height:115px;}
+.chart-card canvas{max-height:100%;width:100%!important;}
+
+/* ══════════════════════════════════════════════════════════════
+   ADMIN — TABLES
+══════════════════════════════════════════════════════════════ */
+.admin-table-card{background:var(--a-card);border:1px solid var(--a-border);border-radius:var(--r-lg);overflow:hidden;}
+.admin-table-header{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 1.5rem;border-bottom:1px solid var(--a-border);}
+.admin-table-title{font-size:.92rem;font-weight:700;}
+.admin-table-sub{font-size:.72rem;color:var(--a-muted);}
+table.data-table{width:100%;border-collapse:collapse;}
+table.data-table th{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--a-muted);padding:.85rem 1.5rem;border-bottom:1px solid var(--a-border);text-align:left;background:rgba(255,255,255,.02);}
+table.data-table td{font-size:.82rem;padding:.85rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--a-text);}
+table.data-table tr:last-child td{border-bottom:none;}
+table.data-table tr:hover td{background:rgba(255,255,255,.02);}
+.status-pill{display:inline-flex;align-items:center;gap:.35rem;font-size:.68rem;font-weight:700;padding:.2rem .65rem;border-radius:100px;letter-spacing:.04em;}
+.pill-critical{background:rgba(242,68,68,.15);color:var(--a-danger);}
+.pill-healthy{background:rgba(34,197,94,.12);color:var(--a-ok);}
+.pill-warn{background:rgba(245,158,11,.12);color:var(--a-warn);}
+.tbl-action{font-size:.75rem;color:var(--a-accent);cursor:pointer;font-weight:600;background:none;border:none;font-family:var(--font);}
+
+/* ══════════════════════════════════════════════════════════════
+   ADMIN — INSIGHT PANEL
+══════════════════════════════════════════════════════════════ */
+.insight-panel{background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2);border-radius:var(--r-lg);padding:1.5rem;margin-bottom:1.5rem;}
+.insight-panel-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;}
+.insight-panel-icon{font-size:1.3rem;}
+.insight-panel-title{font-size:.95rem;font-weight:700;}
+.insight-panel-sub{font-size:.72rem;color:var(--a-muted);margin-top:.1rem;}
+.insight-body{font-size:.85rem;color:var(--a-muted);line-height:1.7;margin-bottom:1rem;}
+.insight-body strong{color:var(--a-text);}
+.insight-rec-box{background:rgba(255,255,255,.04);border:1px solid var(--a-border);border-radius:var(--r-md);padding:1rem;margin-bottom:1rem;}
+.insight-rec-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--a-muted);margin-bottom:.75rem;}
+.supplier-cards{display:flex;gap:.75rem;margin-bottom:.75rem;}
+.supplier-card{flex:1;border:1px solid var(--a-border);border-radius:var(--r-md);padding:.85rem;background:rgba(255,255,255,.03);transition:all .2s;}
+.supplier-card.recommended{border-color:rgba(99,102,241,.4);background:rgba(99,102,241,.08);}
+.sc-name{font-size:.78rem;font-weight:700;margin-bottom:.5rem;}
+.sc-row{display:flex;justify-content:space-between;font-size:.72rem;color:var(--a-muted);margin-bottom:.2rem;}
+.sc-row strong{color:var(--a-text);}
+.sc-rec-badge{font-size:.62rem;font-weight:700;color:var(--a-accent);background:rgba(99,102,241,.15);padding:.15rem .5rem;border-radius:100px;margin-top:.4rem;display:inline-block;}
+
+/* ══════════════════════════════════════════════════════════════
+   ADMIN — RISK ALERTS
+══════════════════════════════════════════════════════════════ */
+.risk-alerts{display:flex;flex-direction:column;gap:1rem;}
+.risk-alert{background:var(--a-card);border:1px solid var(--a-border);border-radius:var(--r-lg);padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:1rem;}
+.risk-alert.critical{border-left:4px solid var(--a-danger);}
+.risk-alert.high{border-left:4px solid #F97316;}
+.risk-alert.medium{border-left:4px solid var(--a-warn);}
+.risk-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:.35rem;}
+.risk-dot.critical{background:var(--a-danger);}
+.risk-dot.high{background:#F97316;}
+.risk-dot.medium{background:var(--a-warn);}
+.risk-alert-content{flex:1;}
+.risk-alert-type{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem;}
+.risk-alert-type.critical{color:var(--a-danger);}
+.risk-alert-type.high{color:#F97316;}
+.risk-alert-type.medium{color:var(--a-warn);}
+.risk-alert-title{font-size:.92rem;font-weight:700;color:var(--a-text);margin-bottom:.35rem;}
+.risk-alert-body{font-size:.8rem;color:var(--a-muted);}
+.risk-alert-action{font-size:.75rem;font-weight:600;color:var(--a-accent);cursor:pointer;background:none;border:none;font-family:var(--font);padding:.3rem 0;display:flex;align-items:center;gap:.3rem;margin-top:.5rem;}
+.risk-alert-action:hover{text-decoration:underline;}
+.risk-detail-box{background:rgba(255,255,255,.03);border:1px solid var(--a-border);border-radius:var(--r-md);padding:1rem;margin-top:.75rem;display:none;}
+.risk-detail-box.open{display:block;}
+.rdb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:.75rem;}
+.rdb-item-label{font-size:.65rem;font-weight:700;color:var(--a-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.2rem;}
+.rdb-item-val{font-size:.88rem;font-weight:700;color:var(--a-text);}
+.rdb-item-val.danger{color:var(--a-danger);}
+.rdb-item-val.warn{color:var(--a-warn);}
+
+/* ══════════════════════════════════════════════════════════════
+   ADMIN — EXPENSE REVIEW
+══════════════════════════════════════════════════════════════ */
+.expense-review-cards{display:flex;flex-direction:column;gap:1rem;margin-bottom:1.5rem;}
+.expense-review-card{background:var(--a-card);border:1px solid var(--a-border);border-radius:var(--r-lg);padding:1.25rem 1.5rem;}
+.expense-review-card.flagged{border-left:4px solid var(--a-warn);}
+.expense-review-card.duplicate{border-left:4px solid var(--a-danger);}
+.erc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem;}
+.erc-type-badge{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:.2rem .6rem;border-radius:100px;}
+.erc-badge-warn{background:rgba(245,158,11,.15);color:var(--a-warn);}
+.erc-badge-danger{background:rgba(242,68,68,.15);color:var(--a-danger);}
+.erc-title{font-size:.95rem;font-weight:700;margin-bottom:.25rem;}
+.erc-amount{font-size:1.3rem;font-weight:800;}
+.erc-details{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1rem;padding:.75rem;background:rgba(255,255,255,.03);border-radius:var(--r-md);}
+.erc-detail-label{font-size:.65rem;color:var(--a-muted);margin-bottom:.15rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;}
+.erc-detail-val{font-size:.82rem;font-weight:600;color:var(--a-text);}
+.erc-detail-val.over{color:var(--a-danger);}
+.erc-actions{display:flex;gap:.6rem;}
+
+/* ══════════════════════════════════════════════════════════════
+   ADMIN — PRICING OPTIMIZER
+══════════════════════════════════════════════════════════════ */
+.pricing-layout{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;}
+.pricing-product-card{background:var(--a-card);border:1px solid var(--a-border);border-radius:var(--r-lg);padding:1.5rem;margin-bottom:1.25rem;cursor:pointer;transition:all .2s;}
+.pricing-product-card:hover,.pricing-product-card.selected{border-color:var(--a-accent);}
+.pp-meta-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.pp-meta-item{text-align:center;}
+.pp-meta-val{font-size:1.1rem;font-weight:800;color:var(--a-text);}
+.pp-meta-label{font-size:.65rem;color:var(--a-muted);margin-top:.1rem;}
+.pricing-rec-box{background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2);border-radius:var(--r-lg);padding:1.5rem;}
+.pricing-sim{background:var(--a-card);border:1px solid var(--a-border);border-radius:var(--r-lg);padding:1.5rem;}
+.sim-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;}
+.sim-label{font-size:.82rem;color:var(--a-muted);}
+.sim-value{font-size:.88rem;font-weight:700;}
+input[type=range]{-webkit-appearance:none;width:100%;height:4px;background:rgba(255,255,255,.1);border-radius:2px;outline:none;margin:.5rem 0;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--a-accent);cursor:pointer;}
+.sim-impacts{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1rem;}
+.sim-impact{text-align:center;background:rgba(255,255,255,.03);border:1px solid var(--a-border);border-radius:var(--r-md);padding:.85rem;}
+.sim-impact-val{font-size:1.2rem;font-weight:800;color:var(--a-ok);}
+.sim-impact-label{font-size:.68rem;color:var(--a-muted);margin-top:.2rem;}
+
+/* ══════════════════════════════════════════════════════════════
+   ADMIN — KNOWLEDGE BASE
+══════════════════════════════════════════════════════════════ */
+.knowledge-layout{display:grid;grid-template-columns:280px 1fr;gap:1.5rem;}
+.knowledge-docs{background:var(--a-card);border:1px solid var(--a-border);border-radius:var(--r-lg);padding:1.25rem;}
+.knowledge-doc-title{font-size:.78rem;font-weight:700;color:var(--a-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem;}
+.knowledge-doc-item{display:flex;align-items:center;gap:.65rem;padding:.65rem .75rem;border-radius:var(--r-sm);cursor:pointer;transition:all .2s;font-size:.82rem;font-weight:500;}
+.knowledge-doc-item:hover{background:rgba(255,255,255,.05);}
+.knowledge-doc-item.active{background:rgba(99,102,241,.1);color:var(--a-accent);}
+.knowledge-doc-icon{font-size:1rem;}
+.knowledge-chat{background:var(--a-card);border:1px solid var(--a-border);border-radius:var(--r-lg);display:flex;flex-direction:column;min-height:480px;}
+.knowledge-chat-header{padding:1.1rem 1.5rem;border-bottom:1px solid var(--a-border);font-size:.88rem;font-weight:700;display:flex;align-items:center;gap:.5rem;}
+.knowledge-messages{flex:1;padding:1.5rem;overflow-y:auto;display:flex;flex-direction:column;gap:.75rem;max-height:340px;}
+.know-msg-user{align-self:flex-end;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.2);border-radius:var(--r-md);padding:.65rem 1rem;font-size:.82rem;max-width:85%;}
+.know-msg-ai{align-self:flex-start;background:rgba(255,255,255,.04);border:1px solid var(--a-border);border-radius:var(--r-md);padding:.75rem 1rem;font-size:.82rem;max-width:90%;}
+.know-msg-source{font-size:.68rem;color:var(--a-accent);margin-top:.4rem;font-weight:600;}
+.knowledge-input-row{display:flex;gap:.6rem;padding:1rem 1.5rem;border-top:1px solid var(--a-border);}
+.knowledge-input{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--a-border);border-radius:var(--r-sm);padding:.65rem 1rem;color:var(--a-text);font-size:.82rem;outline:none;font-family:var(--font);}
+.knowledge-input:focus{border-color:var(--a-accent);}
+.knowledge-input::placeholder{color:var(--a-muted);}
+
+/* ══════════════════════════════════════════════════════════════
+   ADMIN — AGENT ARCHITECTURE PANEL
+══════════════════════════════════════════════════════════════ */
+.ops-intel-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:.85rem 1rem;background:rgba(255,255,255,.03);border:1px solid var(--a-border);border-radius:var(--r-md);margin-bottom:1rem;}
+.ops-intel-toggle-label{font-size:.8rem;font-weight:600;color:var(--a-muted);display:flex;align-items:center;gap:.5rem;}
+.ops-intel-toggle-icon{font-size:.8rem;transition:transform .25s;}
+.ops-intel-toggle.open .ops-intel-toggle-icon{transform:rotate(90deg);}
+.ops-intel-content{display:none;padding:1.25rem;background:rgba(255,255,255,.03);border:1px solid var(--a-border);border-radius:var(--r-md);margin-bottom:1rem;}
+.ops-intel-content.open{display:block;}
+.agent-flow{display:flex;flex-direction:column;align-items:center;gap:0;}
+.agent-node{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.25);border-radius:var(--r-sm);padding:.55rem 1.5rem;font-size:.75rem;font-weight:600;color:var(--a-accent);text-align:center;min-width:200px;}
+.agent-arrow{font-size:.85rem;color:rgba(99,102,241,.4);padding:.2rem 0;}
+.agent-note{font-size:.68rem;color:var(--a-muted);text-align:center;margin-top:.75rem;}
+
+/* ══════════════════════════════════════════════════════════════
+   ADMIN — COPILOT SIDE PANEL
+══════════════════════════════════════════════════════════════ */
+.copilot-panel{position:fixed;top:0;right:-480px;width:480px;height:100vh;background:#0D1117;border-left:1px solid var(--a-border);z-index:800;display:flex;flex-direction:column;transition:right .35s cubic-bezier(.25,.46,.45,.94);box-shadow:-20px 0 60px rgba(0,0,0,.5);}
+.copilot-panel.open{right:0;}
+.copilot-panel-header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;border-bottom:1px solid var(--a-border);}
+.copilot-panel-title{font-size:.95rem;font-weight:700;color:var(--a-text);}
+.copilot-close{background:none;border:none;font-size:1.1rem;color:var(--a-muted);cursor:pointer;transition:color .2s;}
+.copilot-close:hover{color:var(--a-text);}
+.copilot-messages{flex:1;overflow-y:auto;padding:1.25rem;display:flex;flex-direction:column;gap:1rem;}
+.cop-welcome{text-align:center;padding:2rem 1rem;}
+.cop-welcome-icon{font-size:2.5rem;margin-bottom:.75rem;}
+.cop-welcome-text{font-size:.85rem;color:var(--a-muted);line-height:1.6;}
+.cop-suggestions{display:flex;flex-direction:column;gap:.5rem;margin-top:1rem;}
+.cop-sug-btn{text-align:left;padding:.65rem .9rem;background:rgba(255,255,255,.04);border:1px solid var(--a-border);border-radius:var(--r-sm);color:var(--a-muted);font-size:.78rem;cursor:pointer;transition:all .2s;font-family:var(--font);}
+.cop-sug-btn:hover{border-color:var(--a-accent);color:var(--a-text);}
+.cop-user-msg{align-self:flex-end;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.2);border-radius:var(--r-md);padding:.65rem .9rem;font-size:.82rem;max-width:85%;}
+.cop-ai-msg{max-width:95%;}
+.cop-ai-label{font-size:.65rem;font-weight:700;color:var(--a-accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;}
+.cop-ai-body{background:rgba(255,255,255,.04);border:1px solid var(--a-border);border-radius:var(--r-md);padding:.9rem 1rem;font-size:.82rem;line-height:1.65;color:var(--a-text);}
+.cop-ai-section{margin-bottom:.75rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.05);}
+.cop-ai-section:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+.cop-ai-section-label{font-size:.65rem;font-weight:700;color:var(--a-accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem;}
+.cop-ai-impact{display:flex;align-items:baseline;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--a-text);}
+.cop-ai-impact span{font-size:.75rem;color:var(--a-muted);font-weight:400;}
+.cop-actions{display:flex;gap:.5rem;margin-top:.75rem;}
+.cop-typing{display:flex;align-items:center;gap:.3rem;padding:.6rem .8rem;background:rgba(255,255,255,.04);border:1px solid var(--a-border);border-radius:var(--r-md);width:fit-content;}
+.cop-dot{width:5px;height:5px;background:var(--a-accent);border-radius:50%;animation:copDot 1.4s infinite;}
+.cop-dot:nth-child(2){animation-delay:.2s;}
+.cop-dot:nth-child(3){animation-delay:.4s;}
+@keyframes copDot{0%,60%,100%{transform:translateY(0);opacity:.4;}30%{transform:translateY(-5px);opacity:1;}}
+.copilot-input-area{display:flex;gap:.6rem;padding:1rem 1.25rem;border-top:1px solid var(--a-border);}
+.copilot-input{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--a-border);border-radius:var(--r-sm);padding:.65rem .9rem;color:var(--a-text);font-size:.82rem;outline:none;font-family:var(--font);}
+.copilot-input:focus{border-color:var(--a-accent);}
+.copilot-input::placeholder{color:var(--a-muted);}
+.copilot-send{width:40px;height:40px;background:var(--a-accent);border:none;border-radius:var(--r-sm);color:#fff;font-size:1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;}
+.copilot-send:hover{background:#4f52d4;}
+
+/* ══════════════════════════════════════════════════════════════
+   MODALS
+══════════════════════════════════════════════════════════════ */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:900;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;backdrop-filter:blur(4px);}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal-box{background:#111827;border:1px solid rgba(255,255,255,.1);border-radius:var(--r-xl);padding:2rem;width:90%;max-width:500px;color:var(--a-text);font-family:var(--font);animation:modalIn .25s ease;}
+@keyframes modalIn{from{transform:scale(.95) translateY(10px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}
+.modal-close-btn{float:right;background:none;border:none;color:var(--a-muted);font-size:1.1rem;cursor:pointer;margin:-0.5rem -0.5rem 0 0;}
+.modal-title{font-size:1.1rem;font-weight:800;margin-bottom:1rem;}
+
+/* ══════════════════════════════════════════════════════════════
+   RETURNS DASHBOARD
+══════════════════════════════════════════════════════════════ */
+.returns-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem;}
+.return-stat{background:var(--a-card);border:1px solid var(--a-border);border-radius:var(--r-lg);padding:1.1rem;}
+.return-stat-val{font-size:1.4rem;font-weight:800;}
+.return-stat-label{font-size:.72rem;color:var(--a-muted);margin-top:.25rem;}
+.return-stat-sub{font-size:.75rem;font-weight:600;margin-top:.2rem;}
+
+/* ══════════════════════════════════════════════════════════════
+   SCROLL & ANIMATIONS
+══════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px;}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.fade-up.in{opacity:1;transform:translateY(0);}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loading-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--a-accent);animation:spin 1.2s linear infinite;}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════════════ */
+@media(max-width:1100px){
+  .product-grid{grid-template-columns:repeat(3,1fr);}
+  .kpi-grid{grid-template-columns:repeat(3,1fr);}
+  .hero-content{grid-template-columns:1fr;text-align:center;}
+  .hero-visual{display:none;}
+  .hero-sub{margin:0 auto 2.5rem;}
+  .hero-btns{justify-content:center;}
+  .hero-stats{justify-content:center;}
+}
+@media(max-width:860px){
+  .product-grid{grid-template-columns:repeat(2,1fr);}
+  .product-page-grid{grid-template-columns:1fr;}
+  .cart-layout{grid-template-columns:1fr;}
+  .admin-sidebar{width:180px;}
+  .admin-charts-row, .admin-charts-row2{grid-template-columns:1fr;}
+  .kpi-grid{grid-template-columns:repeat(2,1fr);}
+  .pricing-layout{grid-template-columns:1fr;}
+  .knowledge-layout{grid-template-columns:1fr;}
+  .copilot-panel{width:100%;}
+}
+@media(max-width:560px){
+  .product-grid{grid-template-columns:1fr 1fr;}
+  .c-nav-links{display:none;}
+  .kpi-grid{grid-template-columns:repeat(2,1fr);}
+  .returns-stats{grid-template-columns:repeat(2,1fr);}
+  .c-footer-inner{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     CUSTOMER SITE
+═══════════════════════════════════════════════════════════════ -->
+<div id="site-customer">
+
+  <!-- NAVBAR -->
+  <nav id="c-nav">
+    <div class="c-nav-inner">
+      <div class="c-logo" onclick="showPage('home')" style="cursor:pointer">N<span>U</span>RA</div>
+      <ul class="c-nav-links">
+        <li><a href="#" onclick="showPage('home');return false" id="nav-home" class="active">Home</a></li>
+        <li><a href="#" onclick="showPage('shop');return false" id="nav-shop">Shop</a></li>
+        <li><a href="#" onclick="showPage('shop','new');return false" id="nav-new">New Arrivals</a></li>
+        <li><a href="#" onclick="showPage('shop','men');return false" id="nav-men">Men</a></li>
+        <li><a href="#" onclick="showPage('shop','women');return false" id="nav-women">Women</a></li>
+        <li><a href="#" onclick="showPage('shop','accessories');return false" id="nav-acc">Accessories</a></li>
+        <li><a href="#" onclick="showPage('orders');return false" id="nav-orders">Orders</a></li>
+      </ul>
+      <div class="c-nav-right">
+        <button class="c-nav-icon" onclick="toggleSearch()" title="Search">🔍</button>
+        <button class="c-nav-icon" onclick="openWishlistModal()" title="Wishlist">♡</button>
+        <button class="c-nav-icon" onclick="showPage('cart')" title="Cart" style="position:relative">
+          🛒
+          <span class="c-cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="c-nav-icon" onclick="showPage('orders')" title="Account">👤</button>
+        <a href="#" onclick="switchToAdmin();return false" class="c-nav-admin-link">Admin ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── PAGE: HOME ─────────────────────────────────────── -->
+  <div id="page-home">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-texture"></div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="hero-tag">New Season · Autumn 2026</div>
+          <h1 class="hero-h1">Made for<br/>your everyday.</h1>
+          <p class="hero-sub">Discover products designed to fit your style, your needs, and your life.</p>
+          <div class="hero-btns">
+            <button class="btn btn-hero-primary" onclick="showPage('shop','new')">Shop New Arrivals →</button>
+            <button class="btn btn-hero-outline" onclick="showPage('shop')">Explore Collection →</button>
+          </div>
+          <div class="hero-stats">
+            <div><div class="hero-stat-num">4,800+</div><div class="hero-stat-label">Products</div></div>
+            <div><div class="hero-stat-num">2.1L+</div><div class="hero-stat-label">Happy Customers</div></div>
+            <div><div class="hero-stat-num">4.8★</div><div class="hero-stat-label">Avg Rating</div></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-product-showcase">
+            <div class="hero-product-card tall" onclick="showPage('product',2)" style="cursor:pointer" title="View Urban Runner Sneakers">
+              <div class="hero-img-placeholder tall hip-1">👟</div>
+              <div class="hero-card-label">
+                <div class="hero-card-label-name">Urban Runner Sneakers</div>
+                <div class="hero-card-label-price">₹3,999</div>
+              </div>
+            </div>
+            <div>
+              <div class="hero-product-card" style="margin-bottom:1rem;cursor:pointer" onclick="showPage('product',1)" title="View Essential Oversized Tee">
+                <div class="hero-img-placeholder short hip-2">👕</div>
+                <div class="hero-card-label">
+                  <div class="hero-card-label-name">Essential Oversized Tee</div>
+                  <div class="hero-card-label-price">₹1,299</div>
+                </div>
+              </div>
+              <div class="hero-product-card" style="cursor:pointer" onclick="showPage('product',5)" title="View Minimal Leather Backpack">
+                <div class="hero-img-placeholder short hip-3">🎒</div>
+                <div class="hero-card-label">
+                  <div class="hero-card-label-name">Minimal Leather Backpack</div>
+                  <div class="hero-card-label-price">₹2,999</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banner -->
+    <div class="banner-strip">
+      <p>Free delivery on orders above ₹999 &nbsp;·&nbsp; <strong>Use NURA15</strong> for 15% off your first order &nbsp;·&nbsp; Easy 30-day returns</p>
+    </div>
+
+    <!-- Category Strip -->
+    <div class="category-strip">
+      <div class="cat-strip-inner">
+        <button class="cat-btn active" onclick="showPage('shop','all')">All</button>
+        <button class="cat-btn" onclick="showPage('shop','new')">New Arrivals</button>
+        <button class="cat-btn" onclick="showPage('shop','men')">Men</button>
+        <button class="cat-btn" onclick="showPage('shop','women')">Women</button>
+        <button class="cat-btn" onclick="showPage('shop','footwear')">Footwear</button>
+        <button class="cat-btn" onclick="showPage('shop','accessories')">Accessories</button>
+        <button class="cat-btn" onclick="showPage('shop','lifestyle')">Lifestyle</button>
+      </div>
+    </div>
+
+    <!-- New Arrivals Grid -->
+    <section class="section" style="background:#fff">
+      <div class="section-inner">
+        <div class="section-header">
+          <div>
+            <div class="section-title">New Arrivals</div>
+            <div class="section-subtitle">Fresh drops this season</div>
+          </div>
+          <a href="#" class="section-link" onclick="showPage('shop','new');return false">View all →</a>
+        </div>
+        <div class="product-grid" id="home-product-grid"></div>
+      </div>
+    </section>
+
+    <!-- Category Cards -->
+    <section class="section" style="background:var(--c-bg)">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="section-title">Shop by Category</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem">
+          <div onclick="showPage('shop','men')" style="cursor:pointer;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:3/4;background:linear-gradient(135deg,#2C2824,#1a1614);display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;transition:transform .25s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+            <div style="font-size:3rem;margin-bottom:.5rem">🧥</div>
+            <div style="font-size:1.2rem;font-weight:800;color:#fff">Men</div>
+            <div style="font-size:.78rem;color:rgba(255,255,255,.6)">Tees, Jackets, Trousers</div>
+          </div>
+          <div onclick="showPage('shop','women')" style="cursor:pointer;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:3/4;background:linear-gradient(135deg,#8B6E5A,#6B4E37);display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;transition:transform .25s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+            <div style="font-size:3rem;margin-bottom:.5rem">👗</div>
+            <div style="font-size:1.2rem;font-weight:800;color:#fff">Women</div>
+            <div style="font-size:.78rem;color:rgba(255,255,255,.6)">Tops, Trousers, Knitwear</div>
+          </div>
+          <div onclick="showPage('shop','footwear')" style="cursor:pointer;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:3/4;background:linear-gradient(135deg,#3D4150,#2D3038);display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;transition:transform .25s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+            <div style="font-size:3rem;margin-bottom:.5rem">👟</div>
+            <div style="font-size:1.2rem;font-weight:800;color:#fff">Footwear</div>
+            <div style="font-size:.78rem;color:rgba(255,255,255,.6)">Sneakers, Boots, Mules</div>
+          </div>
+          <div onclick="showPage('shop','accessories')" style="cursor:pointer;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:3/4;background:linear-gradient(135deg,#7A6B56,#967D60);display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;transition:transform .25s" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+            <div style="font-size:3rem;margin-bottom:.5rem">🎒</div>
+            <div style="font-size:1.2rem;font-weight:800;color:#fff">Accessories</div>
+            <div style="font-size:.78rem;color:rgba(255,255,255,.6)">Bags, Watches, Belts</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="c-footer">
+      <div class="c-footer-inner">
+        <div>
+          <div class="c-footer-brand">NURA</div>
+          <p class="c-footer-tagline">Quality products. Smarter shopping.<br/>Made for your everyday.</p>
+        </div>
+        <div class="c-footer-col"><h5>Shop</h5><ul>
+          <li><a href="#" onclick="showPage('shop','men');return false">Men</a></li>
+          <li><a href="#" onclick="showPage('shop','women');return false">Women</a></li>
+          <li><a href="#" onclick="showPage('shop','footwear');return false">Footwear</a></li>
+          <li><a href="#" onclick="showPage('shop','accessories');return false">Accessories</a></li>
+          <li><a href="#" onclick="showPage('shop','new');return false">New Arrivals</a></li>
+        </ul></div>
+        <div class="c-footer-col"><h5>Support</h5><ul>
+          <li><a href="#" onclick="showPage('orders');return false">Orders & Returns</a></li>
+          <li><a href="#" onclick="showInfoModal('Size Guide', '<h3>Standard Sizing Guide</h3><p style=\'margin-top:.5rem;color:var(--c-mid);line-height:1.6\'>All NURA apparel and footwear follow standard international sizing. For footwear, we recommend choosing your exact size. If between sizes, size up for a relaxed fit or down for a snug fit.</p>');return false">Size Guide</a></li>
+          <li><a href="#" onclick="showInfoModal('Customer Support', '<h3>We are here to help</h3><p style=\'margin-top:.5rem;color:var(--c-mid);line-height:1.6\'>Email: support@nura-retail.com<br/>Toll-free: 1800-123-NURA (9am – 7pm IST)<br/>Mon – Sat</p>');return false">Contact Us</a></li>
+          <li><a href="#" onclick="showInfoModal('Frequently Asked Questions', '<h3>FAQs</h3><p style=\'margin-top:.5rem;color:var(--c-mid);line-height:1.6\'><strong>Q: What is your return window?</strong><br/>A: 30 days from delivery date.<br/><br/><strong>Q: How long does shipping take?</strong><br/>A: 2–4 business days across India. Free delivery above ₹999.</p>');return false">FAQs</a></li>
+        </ul></div>
+        <div class="c-footer-col"><h5>Company</h5><ul>
+          <li><a href="#" onclick="showInfoModal('About NURA', '<h3>Quality products. Smarter shopping.</h3><p style=\'margin-top:.5rem;color:var(--c-mid);line-height:1.6\'>NURA is a modern direct-to-consumer brand dedicated to high-grade daily wear, premium accessories, and timeless essentials crafted for longevity and ease.</p>');return false">About NURA</a></li>
+          <li><a href="#" onclick="showToast('Careers portal opening soon');return false">Careers</a></li>
+          <li><a href="#" onclick="showInfoModal('Sustainability', '<h3>Our Commitment</h3><p style=\'margin-top:.5rem;color:var(--c-mid);line-height:1.6\'>100% plastic-free recycled packaging, responsibly sourced cotton, and ethical manufacturing partnerships across all collections.</p>');return false">Sustainability</a></li>
+          <li><a href="#" onclick="showToast('Press kit downloaded');return false">Press</a></li>
+        </ul></div>
+      </div>
+      <div class="c-footer-bottom">
+        <p>© 2026 NURA Retail Pvt. Ltd. All rights reserved.</p>
+        <p style="color:rgba(255,255,255,.3)">Privacy · Terms · Sitemap</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ─── PAGE: SHOP ──────────────────────────────────────── -->
+  <div id="page-shop" class="hidden">
+    <div style="background:#fff;border-bottom:1px solid var(--c-border);padding:1rem 0">
+      <div class="cat-strip-inner" style="max-width:1360px;margin:0 auto;padding:0 2rem">
+        <button class="cat-btn active" data-cat="all" onclick="filterProducts('all',this)">All</button>
+        <button class="cat-btn" data-cat="new" onclick="filterProducts('new',this)">New Arrivals</button>
+        <button class="cat-btn" data-cat="men" onclick="filterProducts('men',this)">Men</button>
+        <button class="cat-btn" data-cat="women" onclick="filterProducts('women',this)">Women</button>
+        <button class="cat-btn" data-cat="footwear" onclick="filterProducts('footwear',this)">Footwear</button>
+        <button class="cat-btn" data-cat="accessories" onclick="filterProducts('accessories',this)">Accessories</button>
+      </div>
+    </div>
+    <div class="section" style="background:var(--c-bg)">
+      <div class="section-inner">
+        <div class="section-header">
+          <div>
+            <div class="section-title" id="shop-title">All Products</div>
+            <div class="section-subtitle" id="shop-count">Showing all products</div>
+          </div>
+          <select style="padding:.5rem .9rem;border:1px solid var(--c-border);border-radius:var(--r-sm);font-size:.82rem;background:#fff;font-family:var(--font);cursor:pointer" onchange="sortProducts(this.value)">
+            <option>Sort: Featured</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+            <option>Highest Rated</option>
+            <option>Newest First</option>
+          </select>
+        </div>
+        <div class="product-grid" id="shop-product-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── PAGE: PRODUCT ──────────────────────────────────── -->
+  <div id="page-product" class="hidden">
+    <div id="product-page-content"></div>
+  </div>
+
+  <!-- ─── PAGE: CART ─────────────────────────────────────── -->
+  <div id="page-cart" class="hidden">
+    <div class="cart-inner">
+      <h1 class="cart-title">Your Cart</h1>
+      <div id="cart-content"></div>
+    </div>
+  </div>
+
+  <!-- ─── PAGE: CHECKOUT ─────────────────────────────────── -->
+  <div id="page-checkout" class="hidden">
+    <div class="cart-inner" style="max-width:1040px">
+      <div id="checkout-content"></div>
+    </div>
+  </div>
+
+  <!-- ─── PAGE: ORDERS ───────────────────────────────────── -->
+  <div id="page-orders" class="hidden">
+    <div class="orders-inner">
+      <h1 style="font-size:1.5rem;font-weight:800;margin-bottom:1.75rem">My Account</h1>
+      <div class="orders-tabs">
+        <div class="orders-tab active" onclick="switchOrdersTab('orders',this)">Orders</div>
+        <div class="orders-tab" onclick="switchOrdersTab('returns',this)">Returns & Exchanges</div>
+        <div class="orders-tab" onclick="switchOrdersTab('profile',this)">Profile</div>
+      </div>
+      <div id="orders-tab-orders"></div>
+      <div id="orders-tab-returns" class="hidden">
+        <div style="text-align:center;padding:3rem;color:var(--c-mid)">
+          <div style="font-size:3rem;margin-bottom:1rem">📦</div>
+          <div style="font-weight:600;margin-bottom:.5rem">No active returns</div>
+          <div style="font-size:.85rem">Your exchange and return history will appear here.</div>
+        </div>
+      </div>
+      <div id="orders-tab-profile" class="hidden">
+        <div style="background:#fff;border:1px solid var(--c-border);border-radius:var(--r-lg);padding:1.5rem;max-width:480px">
+          <div style="font-size:1rem;font-weight:700;margin-bottom:1.25rem">Profile Details</div>
+          <div style="display:flex;flex-direction:column;gap:.75rem;font-size:.88rem;color:var(--c-mid)">
+            <div><strong style="color:var(--c-ink)">Name:</strong> Rahul Sharma</div>
+            <div><strong style="color:var(--c-ink)">Email:</strong> rahul@email.com</div>
+            <div><strong style="color:var(--c-ink)">Phone:</strong> +91 98765 43210</div>
+            <div><strong style="color:var(--c-ink)">Address:</strong> 42, Lake Road, Nainital, UK 263001</div>
+            <div><strong style="color:var(--c-ink)">Member since:</strong> March 2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /site-customer -->
+
+<!-- ═══════════════════════════════════════════════════════════════
+     ADMIN SITE
+═══════════════════════════════════════════════════════════════ -->
+<div id="site-admin" class="hidden">
+  <aside class="admin-sidebar">
+    <div class="admin-logo">
+      <div class="admin-logo-name">NURA</div>
+      <div class="admin-logo-tag">Business Dashboard</div>
+    </div>
+    <nav class="admin-nav">
+      <div class="admin-nav-group">
+        <div class="admin-nav-label">Overview</div>
+        <button class="admin-nav-item active" onclick="showAdminPage('overview',this)"><span class="nav-icon">📊</span> Overview</button>
+      </div>
+      <div class="admin-nav-group">
+        <div class="admin-nav-label">Operations</div>
+        <button class="admin-nav-item" onclick="showAdminPage('inventory',this)"><span class="nav-icon">📦</span> Inventory <span class="nav-badge">3</span></button>
+        <button class="admin-nav-item" onclick="showAdminPage('returns',this)"><span class="nav-icon">🔄</span> Returns</button>
+        <button class="admin-nav-item" onclick="showAdminPage('expenses',this)"><span class="nav-icon">💳</span> Expenses <span class="nav-badge">5</span></button>
+        <button class="admin-nav-item" onclick="showAdminPage('orders-admin',this)"><span class="nav-icon">🛒</span> Orders</button>
+      </div>
+      <div class="admin-nav-group">
+        <div class="admin-nav-label">Intelligence</div>
+        <button class="admin-nav-item" onclick="showAdminPage('pricing',this)"><span class="nav-icon">💰</span> Pricing</button>
+        <button class="admin-nav-item" onclick="showAdminPage('risk',this)"><span class="nav-icon">🚨</span> Risk Center <span class="nav-badge" style="background:rgba(242,68,68,.2);color:var(--a-danger)">2</span></button>
+        <button class="admin-nav-item" onclick="showAdminPage('knowledge',this)"><span class="nav-icon">📚</span> Knowledge</button>
+      </div>
+    </nav>
+    <div class="admin-nav-footer">
+      <button class="admin-back-btn" onclick="switchToCustomer()">← Back to Store</button>
+    </div>
+  </aside>
+
+  <div class="admin-main">
+    <div class="admin-topbar">
+      <div class="admin-topbar-title" id="admin-topbar-title">Business Overview</div>
+      <div class="admin-topbar-right">
+        <div style="font-size:.75rem;color:var(--a-muted)">Sun, 6 Sep 2026</div>
+        <button class="ask-business-btn" onclick="toggleCopilot()">💬 Ask Business</button>
+      </div>
+    </div>
+    <div class="admin-page" id="admin-page-content">
+      <!-- Content injected by JS -->
+    </div>
+  </div>
+
+  <!-- Copilot Panel -->
+  <div class="copilot-panel" id="copilotPanel">
+    <div class="copilot-panel-header">
+      <div class="copilot-panel-title">Business Intelligence</div>
+      <button class="copilot-close" onclick="toggleCopilot()">✕</button>
+    </div>
+    <div class="copilot-messages" id="copilotMessages">
+      <div class="cop-welcome">
+        <div class="cop-welcome-icon">💬</div>
+        <div class="cop-welcome-text">Ask me anything about the business — sales, inventory, returns, expenses, or customer trends.</div>
+        <div class="cop-suggestions">
+          <button class="cop-sug-btn" onclick="sendCopilot('Why did sales decrease this month?')">Why did sales decrease this month?</button>
+          <button class="cop-sug-btn" onclick="sendCopilot('Which products are at risk of stocking out?')">Which products are at risk of stocking out?</button>
+          <button class="cop-sug-btn" onclick="sendCopilot('What is driving the high return rate?')">What is driving the high return rate?</button>
+          <button class="cop-sug-btn" onclick="sendCopilot('Which expenses need attention?')">Which expenses need attention?</button>
+        </div>
+      </div>
+    </div>
+    <div class="copilot-input-area">
+      <input type="text" class="copilot-input" id="copilotInput" placeholder="Ask about your business..." onkeydown="if(event.key==='Enter')sendCopilot()"/>
+      <button class="copilot-send" onclick="sendCopilot()">↵</button>
+    </div>
+  </div>
+</div><!-- /site-admin -->
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal-box" id="modalBox">
+    <button class="modal-close-btn" onclick="closeModal()">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+'use strict';
+/* ════════════════════════════════════════════════════════════════
+   DATA
+════════════════════════════════════════════════════════════════ */
+const PRODUCTS = [
+  {id:1,name:"Essential Oversized Tee",cat:"men",catLabel:"Men",price:1299,rating:4.5,reviews:234,emoji:"👕",colors:["White","Black","Sand","Sage"],colorHex:["#F5F0E8","#1C1C1C","#C8B89A","#8FAB8E"],sizes:["XS","S","M","L","XL","XXL"],stock:{XS:8,S:12,M:24,L:18,XL:8,XXL:3},isNew:true,gradient:"linear-gradient(135deg,#F5EFE4,#E8DDD0)",description:"Our bestselling oversized tee, cut from 100% premium cotton for a relaxed, comfortable fit. Perfect for everyday wear.",tags:["Basics","Cotton","Relaxed Fit"]},
+  {id:2,name:"Urban Runner Sneakers",cat:"footwear",catLabel:"Footwear",price:3999,rating:4.7,reviews:891,emoji:"👟",colors:["Black","White","Grey"],colorHex:["#1C1C1C","#F5F5F5","#8C8C8C"],sizes:["6","7","8","9","10"],stock:{"6":12,"7":8,"8":4,"9":4,"10":6},isNew:true,gradient:"linear-gradient(135deg,#2D3038,#3D4150)",description:"Lightweight performance sneakers with cushioned sole technology. Built for the city, designed for the run.",tags:["Running","Sport","Lightweight"]},
+  {id:3,name:"Everyday Hoodie",cat:"men",catLabel:"Men",price:2499,rating:4.6,reviews:412,emoji:"🧥",colors:["Charcoal","Cream","Navy"],colorHex:["#3A3A3A","#F5F0E8","#1F2B4A"],sizes:["S","M","L","XL","XXL"],stock:{S:18,M:18,L:6,XL:4,XXL:2},isNew:false,gradient:"linear-gradient(135deg,#3A3A3A,#2A2A2A)",description:"Midweight fleece hoodie with kangaroo pocket. Soft brushed interior for all-day comfort.",tags:["Casual","Fleece","Warm"]},
+  {id:4,name:"Classic Denim Jacket",cat:"men",catLabel:"Men",price:3499,rating:4.4,reviews:178,emoji:"🧥",colors:["Blue","Dark Blue","Black"],colorHex:["#4A6FA5","#2A3F6F","#1C1C1C"],sizes:["XS","S","M","L","XL"],stock:{XS:6,S:14,M:28,L:32,XL:16},isNew:false,gradient:"linear-gradient(135deg,#4A6FA5,#2A3F6F)",description:"Structured denim jacket with a slim silhouette. Washed for a broken-in feel from day one.",tags:["Denim","Layering","Classic"]},
+  {id:5,name:"Minimal Leather Backpack",cat:"accessories",catLabel:"Accessories",price:2999,rating:4.8,reviews:563,emoji:"🎒",colors:["Tan","Black","Dark Brown"],colorHex:["#C8A882","#1C1C1C","#5C3D1E"],sizes:["One Size"],stock:{"One Size":34},isNew:true,gradient:"linear-gradient(135deg,#8B6E5A,#6B4E37)",description:"Full-grain leather backpack with 18L capacity, padded laptop sleeve and premium YKK zippers.",tags:["Leather","Laptop","Premium"]},
+  {id:6,name:"Everyday Cargo Pants",cat:"men",catLabel:"Men",price:2199,rating:4.3,reviews:209,emoji:"👖",colors:["Olive","Stone","Black"],colorHex:["#6B6B3A","#C4B99A","#1C1C1C"],sizes:["28","30","32","34","36"],stock:{"28":8,"30":14,"32":22,"34":18,"36":10},isNew:false,gradient:"linear-gradient(135deg,#6B6B3A,#4A4A28)",description:"Relaxed cargo pants with functional side pockets. Made from ripstop cotton for durability.",tags:["Casual","Cargo","Durable"]},
+  {id:7,name:"Structured Tote Bag",cat:"accessories",catLabel:"Accessories",price:1899,rating:4.5,reviews:344,emoji:"👜",colors:["Cream","Black","Sage"],colorHex:["#F5F0E8","#1C1C1C","#8FAB8E"],sizes:["One Size"],stock:{"One Size":46},isNew:false,gradient:"linear-gradient(135deg,#D9CFC4,#C4B9A8)",description:"Structured canvas tote with leather handles and internal zip pocket. Holds everything you need.",tags:["Canvas","Tote","Everyday"]},
+  {id:8,name:"Slim Fit Chinos",cat:"men",catLabel:"Men",price:2299,rating:4.4,reviews:287,emoji:"👖",colors:["Stone","Navy","Olive"],colorHex:["#C4B99A","#1F2B4A","#6B6B3A"],sizes:["28","30","32","34","36"],stock:{"28":10,"30":16,"32":20,"34":14,"36":8},isNew:false,gradient:"linear-gradient(135deg,#C4B99A,#A89B82)",description:"Tailored slim-fit chinos in stretch cotton twill. Smart enough for the office, comfortable for weekends.",tags:["Smart Casual","Stretch","Office"]},
+  {id:9,name:"Relaxed Linen Shirt",cat:"men",catLabel:"Men",price:1799,rating:4.6,reviews:321,emoji:"👔",colors:["White","Sky","Sage"],colorHex:["#F5F5F5","#C5D8E8","#8FAB8E"],sizes:["XS","S","M","L","XL","XXL"],stock:{XS:6,S:10,M:18,L:22,XL:14,XXL:6},isNew:true,gradient:"linear-gradient(135deg,#E8F0D8,#D0DCC0)",description:"Breathable 100% linen shirt with a relaxed fit. Perfect for warm days and summer evenings.",tags:["Linen","Breathable","Summer"]},
+  {id:10,name:"Classic White Sneakers",cat:"footwear",catLabel:"Footwear",price:2999,rating:4.5,reviews:678,emoji:"👟",colors:["White","Off-White"],colorHex:["#F5F5F5","#EDE9E3"],sizes:["6","7","8","9","10","11"],stock:{"6":8,"7":12,"8":18,"9":14,"10":10,"11":6},isNew:false,gradient:"linear-gradient(135deg,#F5F5F5,#E8E8E8)",description:"Clean, minimal leather sneakers with vulcanised sole. A wardrobe essential.",tags:["Minimal","Leather","Versatile"]},
+  {id:11,name:"High-Waist Trousers",cat:"women",catLabel:"Women",price:2499,rating:4.7,reviews:412,emoji:"👖",colors:["Cream","Charcoal","Dusty Rose"],colorHex:["#F5F0E8","#3A3A3A","#D4A0A0"],sizes:["XS","S","M","L","XL"],stock:{XS:8,S:14,M:20,L:16,XL:8},isNew:true,gradient:"linear-gradient(135deg,#D4C0B0,#C0A898)",description:"Wide-leg high-waist trousers in fluid crepe fabric. Effortlessly chic.",tags:["Women","Elegant","Wide Leg"]},
+  {id:12,name:"Ribbed Knit Top",cat:"women",catLabel:"Women",price:1199,rating:4.6,reviews:534,emoji:"👕",colors:["Cream","Blush","Black"],colorHex:["#F5F0E8","#E8C4B8","#1C1C1C"],sizes:["XS","S","M","L","XL"],stock:{XS:12,S:16,M:24,L:18,XL:10},isNew:false,gradient:"linear-gradient(135deg,#F0E4DC,#E4D0C4)",description:"Form-fitting ribbed knit top in soft viscose-blend yarn. Perfect layering piece.",tags:["Women","Knit","Layering"]},
+  {id:13,name:"Premium Wool Sweater",cat:"women",catLabel:"Women",price:3199,rating:4.8,reviews:289,emoji:"🧶",colors:["Burgundy","Camel","Forest"],colorHex:["#8B2635","#C8A882","#2D5A27"],sizes:["XS","S","M","L","XL"],stock:{XS:4,S:8,M:12,L:10,XL:6},isNew:true,gradient:"linear-gradient(135deg,#8B2635,#6B1A28)",description:"Merino wool crew neck sweater with ribbed cuffs and hem. Warm, soft, sustainable.",tags:["Wool","Warm","Luxury"]},
+  {id:14,name:"Minimalist Watch",cat:"accessories",catLabel:"Accessories",price:4999,rating:4.9,reviews:167,emoji:"⌚",colors:["Silver","Gold","Rose Gold"],colorHex:["#C0C0C0","#C8A82C","#B5793A"],sizes:["One Size"],stock:{"One Size":24},isNew:true,gradient:"linear-gradient(135deg,#C0C0C0,#A0A0A0)",description:"Swiss movement, sapphire crystal, 40mm case. Timeless design for the modern wardrobe.",tags:["Luxury","Swiss","Unisex"]},
+  {id:15,name:"Slip-On Mules",cat:"footwear",catLabel:"Footwear",price:1699,rating:4.4,reviews:223,emoji:"🩴",colors:["Nude","Black","White"],colorHex:["#C8A882","#1C1C1C","#F5F5F5"],sizes:["5","6","7","8","9"],stock:{"5":8,"6":12,"7":16,"8":10,"9":6},isNew:false,gradient:"linear-gradient(135deg,#C8A882,#A8886A)",description:"Minimal leather slip-on mules with cushioned footbed. Easy, elegant, everyday.",tags:["Women","Casual","Easy Wear"]}
+];
+
+const ORDERS = [
+  {id:"#48291",date:"28 Aug 2026",status:"delivered",statusLabel:"Delivered",items:[{pid:2,name:"Urban Runner Sneakers",meta:"Size 8 · Black",price:3999}]},
+  {id:"#47834",date:"12 Aug 2026",status:"delivered",statusLabel:"Delivered",items:[{pid:3,name:"Everyday Hoodie",meta:"Size M · Charcoal",price:2499},{pid:12,name:"Ribbed Knit Top",meta:"Size S · Cream",price:1199}]},
+  {id:"#46901",date:"2 Aug 2026",status:"delivered",statusLabel:"Delivered",items:[{pid:5,name:"Minimal Leather Backpack",meta:"Tan",price:2999}]}
+];
+
+// App state
+const state = {
+  cart: [],
+  wishlist: [],
+  currentPage: 'home',
+  currentProduct: null,
+  currentFilter: 'all',
+  exchangeProcessed: false,
+  adminPage: 'overview',
+  copilotOpen: false,
+  returnStep: 0,
+  returnType: null,
+  returnReason: null,
+  adminCharts: {},
+  historyStack: [{page:'home'}],
+  appliedCoupon: false,
+  checkoutPayment: 'upi'
+};
+
+/* ════════════════════════════════════════════════════════════════
+   ROUTING & HISTORY
+════════════════════════════════════════════════════════════════ */
+function showPage(page, param, pushHistory = true) {
+  // Ensure customer site is visible and admin is hidden
+  document.getElementById('site-admin').classList.add('hidden');
+  document.getElementById('site-customer').classList.remove('hidden');
+
+  // Hide all customer pages
+  document.getElementById('page-home').classList.add('hidden');
+  document.getElementById('page-shop').classList.add('hidden');
+  document.getElementById('page-product').classList.add('hidden');
+  document.getElementById('page-cart').classList.add('hidden');
+  document.getElementById('page-checkout')?.classList.add('hidden');
+  document.getElementById('page-orders').classList.add('hidden');
+
+  if(pushHistory) {
+    state.historyStack.push({ page, param });
+    try {
+      const hash = '#' + page + (param ? '/' + param : '');
+      history.pushState({ page, param }, '', hash);
+    } catch(e) {}
+  }
+
+  // Update navigation active highlight
+  document.querySelectorAll('.c-nav-links a').forEach(a => a.classList.remove('active'));
+  if(page === 'home') {
+    document.getElementById('nav-home')?.classList.add('active');
+  } else if(page === 'shop') {
+    if(!param || param === 'all') document.getElementById('nav-shop')?.classList.add('active');
+    else if(param === 'new') document.getElementById('nav-new')?.classList.add('active');
+    else if(param === 'men') document.getElementById('nav-men')?.classList.add('active');
+    else if(param === 'women') document.getElementById('nav-women')?.classList.add('active');
+    else if(param === 'accessories') document.getElementById('nav-acc')?.classList.add('active');
+    else document.getElementById('nav-shop')?.classList.add('active');
+  } else if(page === 'orders') {
+    document.getElementById('nav-orders')?.classList.add('active');
+  }
+
+  state.currentPage = page;
+  window.scrollTo(0,0);
+
+  if(page === 'home') {
+    document.getElementById('page-home').classList.remove('hidden');
+    renderHomeGrid();
+  } else if(page === 'shop') {
+    document.getElementById('page-shop').classList.remove('hidden');
+    filterProducts(param || 'all');
+  } else if(page === 'product') {
+    document.getElementById('page-product').classList.remove('hidden');
+    renderProductPage(param);
+  } else if(page === 'cart') {
+    document.getElementById('page-cart').classList.remove('hidden');
+    renderCart();
+  } else if(page === 'checkout') {
+    document.getElementById('page-checkout').classList.remove('hidden');
+    renderCheckout();
+  } else if(page === 'orders') {
+    document.getElementById('page-orders').classList.remove('hidden');
+    renderOrders();
+  }
+}
+
+function goBack() {
+  if (state.historyStack.length > 1) {
+    state.historyStack.pop(); // remove current
+    const prev = state.historyStack.pop(); // get previous
+    showPage(prev.page, prev.param, true);
+  } else if (window.history.length > 1) {
+    window.history.back();
+  } else {
+    showPage('shop');
+  }
+}
+
+function switchToAdmin(pushHistory = true) {
+  if(pushHistory) {
+    state.historyStack.push({ page: 'admin' });
+    try { history.pushState({ page: 'admin' }, '', '#admin'); } catch(e) {}
+  }
+  document.getElementById('site-customer').classList.add('hidden');
+  document.getElementById('site-admin').classList.remove('hidden');
+  showAdminPage('overview', document.querySelector('.admin-nav-item'));
+  window.scrollTo(0,0);
+}
+
+function switchToCustomer(pushHistory = true) {
+  if(pushHistory) {
+    try { history.pushState({ page: state.currentPage || 'home' }, '', '#' + (state.currentPage || 'home')); } catch(e) {}
+  }
+  document.getElementById('site-admin').classList.add('hidden');
+  document.getElementById('site-customer').classList.remove('hidden');
+  showPage(state.currentPage || 'home', null, false);
+  window.scrollTo(0,0);
+}
+
+window.addEventListener('popstate', (e) => {
+  if(e.state && e.state.page) {
+    if(e.state.page === 'admin') {
+      switchToAdmin(false);
+    } else {
+      showPage(e.state.page, e.state.param, false);
+    }
+  } else {
+    const hash = window.location.hash.slice(1);
+    if(hash) {
+      const parts = hash.split('/');
+      if(parts[0] === 'admin') switchToAdmin(false);
+      else showPage(parts[0], parts[1], false);
+    } else {
+      showPage('home', null, false);
+    }
+  }
+});
+
+/* ════════════════════════════════════════════════════════════════
+   PRODUCT RENDERING
+════════════════════════════════════════════════════════════════ */
+function renderProductCard(p, small) {
+  const isWishlisted = state.wishlist.includes(p.id);
+  const stockVals = Object.values(p.stock);
+  const totalStock = stockVals.reduce((a,b)=>a+b,0);
+  const hasLow = stockVals.some(v=>v>0 && v<=5);
+  const stockStatus = totalStock === 0 ? '<span class="product-stock stock-out">Out of stock</span>' :
+    hasLow ? '<span class="product-stock stock-low">⚠ Low stock</span>' :
+    '<span class="product-stock stock-ok">✓ In stock</span>';
+
+  const colorDots = p.colorHex.map((hex,i) =>
+    `<div class="color-dot" style="background:${hex};${hex==='#F5F5F5'?'border-color:#ddd':''}" title="${p.colors[i]}"></div>`
+  ).join('');
+
+  return `<div class="product-card" onclick="showPage('product',${p.id})">
+    <div class="product-img">
+      ${p.isNew ? '<div class="product-badge badge-new">NEW</div>' : ''}
+      ${hasLow ? '<div class="product-badge badge-low" style="top:2.5rem">LOW STOCK</div>' : ''}
+      <button class="product-wishlist-btn ${isWishlisted?'active':''}" onclick="event.stopPropagation();toggleWishlist(${p.id},this)" title="Wishlist">${isWishlisted?'♥':'♡'}</button>
+      <div class="product-img-bg" style="background:${p.gradient};width:100%;height:100%">${p.emoji}</div>
+    </div>
+    <div class="product-info">
+      <div class="product-category">${p.catLabel}</div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-rating">
+        <span class="stars">${'★'.repeat(Math.floor(p.rating))}${p.rating%1?'½':''}</span>
+        <span class="rating-count">(${p.reviews})</span>
+      </div>
+      <div class="product-price">₹${p.price.toLocaleString('en-IN')}</div>
+      <div class="product-colors">${colorDots}</div>
+      ${stockStatus}
+      <button class="product-add-btn" onclick="event.stopPropagation();quickAddToCart(${p.id})">Add to Cart</button>
+    </div>
+  </div>`;
+}
+
+function renderHomeGrid() {
+  const featured = PRODUCTS.filter(p=>p.isNew).slice(0,8);
+  document.getElementById('home-product-grid').innerHTML = featured.map(p=>renderProductCard(p)).join('');
+}
+
+function renderShopGrid(prods) {
+  const grid = document.getElementById('shop-product-grid');
+  if(!grid) return;
+  grid.innerHTML = prods.map(p=>renderProductCard(p)).join('');
+  document.getElementById('shop-count').textContent = `Showing ${prods.length} products`;
+}
+
+function filterProducts(cat, btn) {
+  document.querySelectorAll('.cat-btn').forEach(b => {
+    b.classList.remove('active');
+    const bCat = b.getAttribute('data-cat');
+    if(bCat === cat || (!btn && b.textContent.trim().toLowerCase().startsWith(cat.toLowerCase()))) {
+      b.classList.add('active');
+    }
+  });
+  if(btn) btn.classList.add('active');
+  const filtered = cat==='all' ? PRODUCTS : PRODUCTS.filter(p=>p.cat===cat||(cat==='new'&&p.isNew));
+  document.getElementById('shop-title').textContent = cat==='all'?'All Products':cat==='new'?'New Arrivals': cat.charAt(0).toUpperCase()+cat.slice(1);
+  renderShopGrid(filtered);
+}
+
+function filterProductsOnLoad(cat) {
+  filterProducts(cat);
+}
+
+function sortProducts(val) {
+  let prods = [...PRODUCTS];
+  if(val.includes('Low to High')) prods.sort((a,b)=>a.price-b.price);
+  else if(val.includes('High to Low')) prods.sort((a,b)=>b.price-a.price);
+  else if(val.includes('Rated')) prods.sort((a,b)=>b.rating-a.rating);
+  renderShopGrid(prods);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   PRODUCT PAGE
+════════════════════════════════════════════════════════════════ */
+function renderProductPage(pid) {
+  const p = PRODUCTS.find(x=>x.id===pid);
+  if(!p) return;
+  state.currentProduct = p;
+
+  const sizeButtons = p.sizes.map(s => {
+    const qty = p.stock[s]||0;
+    const isOut = qty===0;
+    const isLow = qty>0 && qty<=5;
+    return `<button class="pp-size-btn ${isOut?'out':''}" onclick="selectSize('${s}',this)" ${isOut?'disabled':''}>
+      ${s}
+      ${isLow?`<span class="pp-size-stock">Only ${qty}</span>`:''}
+    </button>`;
+  }).join('');
+
+  const colorSwatches = p.colors.map((c,i)=>
+    `<button class="pp-color-swatch ${i===0?'active':''}" onclick="selectColor(this)">${c}</button>`
+  ).join('');
+
+  const related = PRODUCTS.filter(x=>x.id!==p.id&&(x.cat===p.cat)).slice(0,4);
+
+  document.getElementById('product-page-content').innerHTML = `
+    <div class="product-page-inner">
+      <div class="product-page-grid">
+        <div class="pp-gallery">
+          <div class="pp-main-img" style="background:${p.gradient}">${p.emoji}</div>
+          <div class="pp-thumbs">
+            ${[p.emoji,'📸','🖼️','🏷️'].map((e,i)=>`<div class="pp-thumb ${i===0?'active':''}" style="background:${p.gradient}" onclick="selectThumb(this)">${e}</div>`).join('')}
+          </div>
+        </div>
+        <div class="pp-info">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:.5rem">
+            <button class="btn btn-ghost btn-sm" onclick="goBack()" style="border:1px solid var(--c-border);background:#fff;border-radius:var(--r-md);font-weight:600;padding:.35rem .75rem;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem">
+              ← Back
+            </button>
+            <div class="pp-breadcrumb" style="margin:0">
+              <span onclick="showPage('home')" style="cursor:pointer">Home</span> / <span onclick="showPage('shop','${p.cat}')" style="cursor:pointer">${p.catLabel}</span> / <span>${p.name}</span>
+            </div>
+          </div>
+          <h1 class="pp-name">${p.name}</h1>
+          <div class="pp-price-row">
+            <div class="pp-price">₹${p.price.toLocaleString('en-IN')}</div>
+            <div class="pp-rating"><span style="color:#F59E0B">★★★★${p.rating>=4.5?'★':'½'}</span> ${p.rating} · ${p.reviews} reviews</div>
+          </div>
+          <div class="pp-divider"></div>
+          <div class="pp-section-label">Colour</div>
+          <div class="pp-colors-row">${colorSwatches}</div>
+          <div class="pp-section-label">Size</div>
+          <div class="pp-sizes-row">${sizeButtons}</div>
+
+          <div class="pp-availability" id="pp-availability">
+            <div class="pp-avail-row"><span class="avail-ok">✓</span><span>Select a size to check availability</span></div>
+          </div>
+
+          <div class="pp-cta-row">
+            <button class="btn btn-dark btn-lg" style="flex:1" onclick="addToCartFromPage()">Add to Cart</button>
+            <button class="btn btn-outline btn-lg" style="flex:1" onclick="addToCartFromPage();showPage('checkout')">Buy Now →</button>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.25rem">
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--c-mid)"><span>🚚</span> Free delivery on orders above ₹999</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--c-mid)"><span>↩️</span> Easy 30-day returns & exchanges</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--c-mid)"><span>✅</span> 100% authentic — quality guaranteed</div>
+          </div>
+
+          <div class="pp-divider"></div>
+          <div class="pp-section-label">About this product</div>
+          <p class="pp-desc">${p.description}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.85rem">${p.tags.map(t=>`<span style="font-size:.72rem;background:var(--c-tag);padding:.25rem .65rem;border-radius:100px;color:var(--c-mid)">${t}</span>`).join('')}</div>
+        </div>
+      </div>
+    </div>
+    ${related.length ? `<div class="pp-also">
+      <div class="pp-also-title">You might also like</div>
+      <div class="pp-also-sub">Customers looking at this product often choose...</div>
+      <div class="pp-also-grid">${related.map(r=>renderProductCard(r)).join('')}</div>
+    </div>` : ''}
+  `;
+
+  window.selectedSize = null;
+}
+
+function selectSize(size, btn) {
+  document.querySelectorAll('.pp-size-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  window.selectedSize = size;
+  const p = state.currentProduct;
+  const qty = p.stock[size]||0;
+  const avail = document.getElementById('pp-availability');
+  const deliveryDays = qty > 0 ? (qty > 10 ? '1–2 days' : '2–4 days') : null;
+  if(qty === 0) {
+    avail.innerHTML = `<div class="pp-avail-row"><span class="avail-warn">✗</span><span>Size ${size} is out of stock</span></div>`;
+    avail.style.background = '#FEF2F2'; avail.style.borderColor = 'rgba(217,64,64,.2)';
+  } else if(qty <= 5) {
+    avail.innerHTML = `
+      <div class="pp-avail-row"><span class="avail-ok">✓</span><span class="avail-ok">Size ${size} available</span></div>
+      <div class="pp-avail-row"><span class="avail-warn">⚠</span><span class="avail-warn">Only ${qty} left</span></div>
+      <div class="pp-avail-row"><span class="avail-info">🚚</span><span class="avail-info">Estimated delivery: ${deliveryDays}</span></div>`;
+    avail.style.background=''; avail.style.borderColor='';
+  } else {
+    avail.innerHTML = `
+      <div class="pp-avail-row"><span class="avail-ok">✓</span><span class="avail-ok">Size ${size} available</span></div>
+      <div class="pp-avail-row"><span class="avail-info">🚚</span><span class="avail-info">Estimated delivery: ${deliveryDays}</span></div>`;
+    avail.style.background=''; avail.style.borderColor='';
+  }
+}
+
+function selectColor(btn) {
+  document.querySelectorAll('.pp-color-swatch').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function selectThumb(el) {
+  document.querySelectorAll('.pp-thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  const main = document.querySelector('.pp-main-img');
+  if(main) main.textContent = el.textContent;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   CART
+════════════════════════════════════════════════════════════════ */
+function quickAddToCart(pid) {
+  const p = PRODUCTS.find(x=>x.id===pid);
+  const defaultSize = p.sizes[0];
+  const existing = state.cart.find(c=>c.pid===pid&&c.size===defaultSize);
+  if(existing) existing.qty++;
+  else state.cart.push({pid,size:defaultSize,color:p.colors[0],qty:1});
+  updateCartBadge();
+  showToast(`${p.name} added to cart`);
+}
+
+function addToCartFromPage() {
+  const p = state.currentProduct;
+  if(!p) return;
+  const size = window.selectedSize || p.sizes[0];
+  const color = document.querySelector('.pp-color-swatch.active')?.textContent || p.colors[0];
+  const existing = state.cart.find(c=>c.pid===p.id&&c.size===size&&c.color===color);
+  if(existing) existing.qty++;
+  else state.cart.push({pid:p.id,size,color,qty:1});
+  updateCartBadge();
+  showToast(`${p.name} added to cart!`);
+}
+
+function toggleWishlist(pid, btn) {
+  if(state.wishlist.includes(pid)) {
+    state.wishlist = state.wishlist.filter(x=>x!==pid);
+    btn.classList.remove('active'); btn.textContent='♡';
+  } else {
+    state.wishlist.push(pid);
+    btn.classList.add('active'); btn.textContent='♥';
+  }
+}
+
+function updateCartBadge() {
+  const total = state.cart.reduce((a,c)=>a+c.qty,0);
+  document.getElementById('cartBadge').textContent = total;
+}
+
+function renderCart() {
+  const content = document.getElementById('cart-content');
+  if(state.cart.length===0) {
+    content.innerHTML = `<div style="text-align:center;padding:5rem 2rem;background:#fff;border-radius:var(--r-lg);border:1px solid var(--c-border)">
+      <div style="font-size:4rem;margin-bottom:1rem">🛒</div>
+      <div style="font-size:1.1rem;font-weight:700;margin-bottom:.5rem">Your cart is empty</div>
+      <div style="color:var(--c-mid);margin-bottom:2rem;font-size:.88rem">Discover products you'll love</div>
+      <button class="btn btn-dark" onclick="showPage('shop')">Browse Collection</button>
+    </div>`;
+    return;
+  }
+  const subtotal = state.cart.reduce((a,c)=>{const p=PRODUCTS.find(x=>x.id===c.pid);return a+p.price*c.qty;},0);
+  const delivery = subtotal >= 999 ? 0 : 99;
+  const discount = 0;
+  const recs = PRODUCTS.filter(p=>!state.cart.find(c=>c.pid===p.id)).slice(0,3);
+
+  content.innerHTML = `
+    <div style="margin-bottom:1.25rem">
+      <button class="btn btn-ghost btn-sm" onclick="goBack()" style="display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--c-border);background:#fff;border-radius:var(--r-md);font-weight:600;padding:.35rem .75rem;cursor:pointer">
+        ← Continue Shopping
+      </button>
+    </div>
+    <div class="cart-layout">
+    <div>
+      <div class="cart-items">
+        ${state.cart.map((c,i)=>{
+          const p = PRODUCTS.find(x=>x.id===c.pid);
+          const stock = p.stock[c.size]||0;
+          const lowStock = stock>0&&stock<=5;
+          return `<div class="cart-item">
+            <div class="cart-item-img" style="background:${p.gradient}">${p.emoji}</div>
+            <div>
+              <div class="cart-item-name">${p.name}</div>
+              <div class="cart-item-meta">Size: ${c.size} · Colour: ${c.color}</div>
+              ${lowStock?`<div class="cart-item-avail">⚠ Only ${stock} left in this size</div>`:''}
+              <div class="cart-qty-row">
+                <button class="cart-qty-btn" onclick="updateQty(${i},-1)">−</button>
+                <span class="cart-qty-num">${c.qty}</span>
+                <button class="cart-qty-btn" onclick="updateQty(${i},1)">+</button>
+                <span class="cart-remove" onclick="removeCart(${i})" style="margin-left:.5rem">Remove</span>
+              </div>
+            </div>
+            <div>
+              <div class="cart-item-price">₹${(p.price*c.qty).toLocaleString('en-IN')}</div>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+
+      <div class="cart-recs" style="margin-top:1.25rem">
+        <div class="cart-recs-title">Complete your order</div>
+        <div class="cart-recs-sub">Based on your cart, you may also like</div>
+        <div class="cart-recs-grid">${recs.map(r=>`<div class="cart-rec-card" onclick="showPage('product',${r.id})">
+          <div class="cart-rec-img" style="background:${r.gradient}">${r.emoji}</div>
+          <div class="cart-rec-info"><div class="cart-rec-name">${r.name}</div><div class="cart-rec-price">₹${r.price.toLocaleString('en-IN')}</div></div>
+        </div>`).join('')}</div>
+      </div>
+    </div>
+
+    <div class="cart-summary">
+      <div class="cart-summary-title">Order Summary</div>
+      <div class="cart-sum-row"><span>Subtotal (${state.cart.reduce((a,c)=>a+c.qty,0)} items)</span><span>₹${subtotal.toLocaleString('en-IN')}</span></div>
+      <div class="cart-sum-row"><span>Delivery</span><span>${delivery===0?'<span style="color:var(--c-success)">Free</span>':'₹'+delivery}</span></div>
+      ${discount?`<div class="cart-sum-row"><span>Discount</span><span style="color:var(--c-success)">−₹${discount}</span></div>`:''}
+      <div class="cart-sum-row total"><span>Total</span><span>₹${(subtotal+delivery-discount).toLocaleString('en-IN')}</span></div>
+      ${delivery===0?`<div class="cart-delivery-info">🚚 Eligible for free delivery</div>`:`<div style="font-size:.75rem;color:var(--c-mid);margin:.5rem 0">Add ₹${(999-subtotal).toLocaleString('en-IN')} more for free delivery</div>`}
+      <div class="cart-discount">🏷️ NURA15 — 15% off available for new customers</div>
+      <button class="btn btn-dark btn-full btn-lg" onclick="showPage('checkout')">Proceed to Checkout →</button>
+      <button class="btn btn-ghost btn-full" style="margin-top:.6rem" onclick="showPage('shop')">Continue Shopping</button>
+      <div style="margin-top:1rem;text-align:center">
+        <div style="font-size:.72rem;color:var(--c-mid)">🔒 Secure checkout · UPI · Cards · Wallets</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function updateQty(idx, delta) {
+  state.cart[idx].qty = Math.max(1, state.cart[idx].qty+delta);
+  renderCart();
+}
+function removeCart(idx) {
+  state.cart.splice(idx,1);
+  updateCartBadge();
+  renderCart();
+}
+
+/* ════════════════════════════════════════════════════════════════
+   CHECKOUT
+════════════════════════════════════════════════════════════════ */
+function renderCheckout() {
+  const container = document.getElementById('checkout-content');
+  if(!container) return;
+  if(state.cart.length === 0) {
+    container.innerHTML = `
+      <div style="text-align:center;padding:4rem 2rem;background:#fff;border-radius:var(--r-lg);border:1px solid var(--c-border)">
+        <div style="font-size:3.5rem;margin-bottom:1rem">🛒</div>
+        <div style="font-size:1.2rem;font-weight:800;margin-bottom:.5rem">Your cart is empty</div>
+        <p style="color:var(--c-mid);font-size:.88rem;margin-bottom:1.5rem">Add items to your cart before proceeding to checkout.</p>
+        <button class="btn btn-dark" onclick="showPage('shop')">Explore Shop</button>
+      </div>
+    `;
+    return;
+  }
+
+  const subtotal = state.cart.reduce((a,c)=>{const p=PRODUCTS.find(x=>x.id===c.pid);return a+p.price*c.qty;},0);
+  const delivery = subtotal >= 999 ? 0 : 99;
+  const discount = state.appliedCoupon ? Math.round(subtotal * 0.15) : 0;
+  const total = subtotal + delivery - discount;
+
+  if(!state.checkoutPayment) state.checkoutPayment = 'upi';
+
+  container.innerHTML = `
+    <div style="margin-bottom:1.25rem">
+      <button class="btn btn-ghost btn-sm" onclick="showPage('cart')" style="display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .8rem;border:1px solid var(--c-border);background:#fff;border-radius:var(--r-md);cursor:pointer;font-weight:600">
+        ← Back to Cart
+      </button>
+    </div>
+    <div class="checkout-grid">
+      <!-- Left: Shipping & Payment -->
+      <div>
+        <!-- Shipping Details -->
+        <div class="checkout-box">
+          <div class="checkout-box-title">📍 Shipping &amp; Delivery Address</div>
+          <div class="checkout-form-grid">
+            <div class="form-group full">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-input" id="chk-name" value="Rahul Sharma"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-input" id="chk-email" value="rahul@email.com"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-input" id="chk-phone" value="+91 98765 43210"/>
+            </div>
+            <div class="form-group full">
+              <label class="form-label">Street Address / Apartment</label>
+              <input type="text" class="form-input" id="chk-address" value="Flat 402, Green Glen Heights, Outer Ring Road"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">City</label>
+              <input type="text" class="form-input" id="chk-city" value="Bengaluru"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">PIN Code</label>
+              <input type="text" class="form-input" id="chk-pin" value="560103"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="checkout-box">
+          <div class="checkout-box-title">💳 Payment Method</div>
+          <div class="payment-methods">
+            <div class="payment-card ${state.checkoutPayment==='upi'?'selected':''}" onclick="selectPaymentMethod('upi')">
+              <div class="payment-radio"></div>
+              <div style="font-size:1.4rem">⚡</div>
+              <div style="flex:1">
+                <div style="font-size:.9rem;font-weight:700">UPI (Google Pay / PhonePe / Paytm / BHIM)</div>
+                <div style="font-size:.75rem;color:var(--c-mid)">Zero payment processing fee · Instant verification</div>
+              </div>
+            </div>
+            <div class="payment-card ${state.checkoutPayment==='card'?'selected':''}" onclick="selectPaymentMethod('card')">
+              <div class="payment-radio"></div>
+              <div style="font-size:1.4rem">💳</div>
+              <div style="flex:1">
+                <div style="font-size:.9rem;font-weight:700">Credit / Debit Card</div>
+                <div style="font-size:.75rem;color:var(--c-mid)">Visa, MasterCard, RuPay, Amex accepted</div>
+              </div>
+            </div>
+            <div class="payment-card ${state.checkoutPayment==='cod'?'selected':''}" onclick="selectPaymentMethod('cod')">
+              <div class="payment-radio"></div>
+              <div style="font-size:1.4rem">💵</div>
+              <div style="flex:1">
+                <div style="font-size:.9rem;font-weight:700">Cash on Delivery (COD)</div>
+                <div style="font-size:.75rem;color:var(--c-mid)">Pay cash or UPI at the time of delivery</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Order Summary -->
+      <div>
+        <div class="checkout-box" style="position:sticky;top:80px">
+          <div class="checkout-box-title">🛒 Order Summary (${state.cart.reduce((a,c)=>a+c.qty,0)} items)</div>
+          
+          <div style="max-height:240px;overflow-y:auto;display:flex;flex-direction:column;gap:.75rem;margin-bottom:1rem;border-bottom:1px solid var(--c-border);padding-bottom:1rem">
+            ${state.cart.map(c=>{
+              const p = PRODUCTS.find(x=>x.id===c.pid);
+              return `<div style="display:flex;align-items:center;gap:.75rem">
+                <div style="width:38px;height:38px;border-radius:var(--r-sm);background:${p.gradient};display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">${p.emoji}</div>
+                <div style="flex:1;min-width:0">
+                  <div style="font-size:.82rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.name}</div>
+                  <div style="font-size:.72rem;color:var(--c-mid)">Qty: ${c.qty} · Size: ${c.size} · ${c.color}</div>
+                </div>
+                <div style="font-size:.85rem;font-weight:800">₹${(p.price*c.qty).toLocaleString('en-IN')}</div>
+              </div>`;
+            }).join('')}
+          </div>
+
+          <!-- Promo Code -->
+          <div style="display:flex;gap:.5rem;margin-bottom:1rem">
+            <input type="text" id="chk-coupon" placeholder="Promo code (try NURA15)" value="${state.appliedCoupon?'NURA15':''}" style="flex:1;padding:.5rem .75rem;border:1px solid var(--c-border);border-radius:var(--r-md);font-size:.8rem;text-transform:uppercase" ${state.appliedCoupon?'disabled':''}/>
+            <button class="btn btn-outline btn-sm" onclick="applyCoupon()">${state.appliedCoupon?'Applied ✓':'Apply'}</button>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:.5rem;font-size:.88rem;margin-bottom:1.25rem">
+            <div style="display:flex;justify-content:space-between"><span>Subtotal</span><span>₹${subtotal.toLocaleString('en-IN')}</span></div>
+            <div style="display:flex;justify-content:space-between"><span>Delivery</span><span>${delivery===0?'<span style="color:var(--c-success)">Free</span>':'₹'+delivery}</span></div>
+            ${discount?`<div style="display:flex;justify-content:space-between;color:var(--c-success)"><span>Discount (NURA15)</span><span>−₹${discount.toLocaleString('en-IN')}</span></div>`:''}
+            <div style="display:flex;justify-content:space-between;font-size:1.1rem;font-weight:900;border-top:1px solid var(--c-border);padding-top:.75rem">
+              <span>Total Payable</span><span>₹${total.toLocaleString('en-IN')}</span>
+            </div>
+          </div>
+
+          <button class="btn btn-dark btn-full btn-lg" id="btn-place-order" onclick="completeCheckout(${total})">
+            Place Order · ₹${total.toLocaleString('en-IN')} →
+          </button>
+          <div style="text-align:center;font-size:.72rem;color:var(--c-mid);margin-top:.75rem">
+            🔒 Safe &amp; Secure 256-bit SSL Encrypted Payment
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function selectPaymentMethod(method) {
+  state.checkoutPayment = method;
+  renderCheckout();
+}
+
+function applyCoupon() {
+  const code = document.getElementById('chk-coupon')?.value?.trim().toUpperCase();
+  if(code === 'NURA15') {
+    state.appliedCoupon = true;
+    showToast('Promo code NURA15 applied! 15% discount');
+    renderCheckout();
+  } else {
+    showToast('Invalid coupon code. Try NURA15');
+  }
+}
+
+function completeCheckout(total) {
+  const btn = document.getElementById('btn-place-order');
+  if(btn) {
+    btn.disabled = true;
+    btn.innerHTML = 'Securing Payment &amp; Confirming...';
+  }
+
+  setTimeout(() => {
+    const orderNum = '#' + Math.floor(48300 + Math.random() * 900);
+    const dateStr = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    const orderItems = state.cart.map(c => {
+      const p = PRODUCTS.find(x => x.id === c.pid);
+      return {
+        pid: c.pid,
+        name: p.name,
+        meta: `Size ${c.size} · ${c.color} · Qty ${c.qty}`,
+        price: p.price * c.qty
+      };
+    });
+
+    const newOrder = {
+      id: orderNum,
+      date: dateStr,
+      status: 'confirmed',
+      statusLabel: 'Order Confirmed',
+      items: orderItems,
+      total: total
+    };
+
+    // Add to top of orders list
+    ORDERS.unshift(newOrder);
+
+    // Clear cart
+    state.cart = [];
+    updateCartBadge();
+    state.appliedCoupon = false;
+
+    // Show Confirmation Screen
+    const container = document.getElementById('checkout-content');
+    container.innerHTML = `
+      <div class="order-success-card">
+        <div style="font-size:3.5rem;margin-bottom:1rem">🎉</div>
+        <h2 style="font-size:1.6rem;font-weight:900;margin-bottom:.5rem">Thank You, Rahul!</h2>
+        <div style="font-size:1rem;font-weight:700;color:var(--c-success);margin-bottom:.5rem">Your order ${orderNum} is confirmed!</div>
+        <p style="font-size:.88rem;color:var(--c-mid);line-height:1.6;margin-bottom:1.5rem">
+          We've sent an order confirmation and tax invoice to <strong>rahul@email.com</strong>.<br/>
+          Estimated delivery to Bengaluru: <strong>2–4 business days</strong>.
+        </p>
+        
+        <div style="background:#F9F8F6;border:1px solid var(--c-border);border-radius:var(--r-lg);padding:1.25rem;text-align:left;margin-bottom:1.75rem">
+          <div style="font-size:.78rem;font-weight:800;color:var(--c-mid);text-transform:uppercase;margin-bottom:.75rem">Order Details</div>
+          <div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:.4rem">
+            <span style="color:var(--c-mid)">Order Number:</span><strong>${orderNum}</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:.4rem">
+            <span style="color:var(--c-mid)">Delivery To:</span><strong>Flat 402, Green Glen Heights, Bengaluru</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:.4rem">
+            <span style="color:var(--c-mid)">Payment:</span><strong>${(state.checkoutPayment || 'upi').toUpperCase()} (Prepaid)</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:.92rem;font-weight:800;border-top:1px solid var(--c-border);padding-top:.5rem;margin-top:.5rem">
+            <span>Total Paid:</span><span>₹${total.toLocaleString('en-IN')}</span>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <button class="btn btn-dark btn-lg" onclick="showPage('orders')">View in My Orders →</button>
+          <button class="btn btn-outline btn-lg" onclick="showPage('shop')">Continue Shopping</button>
+        </div>
+      </div>
+    `;
+
+    showToast(`Order ${orderNum} confirmed!`);
+  }, 900);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   ORDERS & RETURNS
+════════════════════════════════════════════════════════════════ */
+function renderOrders() {
+  const el = document.getElementById('orders-tab-orders');
+  el.innerHTML = ORDERS.map(o=>`<div class="order-card">
+    <div class="order-header">
+      <div>
+        <div class="order-num">Order ${o.id}</div>
+        <div class="order-date">Placed on ${o.date}</div>
+      </div>
+      <span class="order-status-badge status-${o.status}">${o.statusLabel}</span>
+    </div>
+    <div class="order-items">${o.items.map(item=>`<div class="order-item-row">
+      <div class="order-item-img" style="background:${PRODUCTS.find(p=>p.id===item.pid)?.gradient||'#eee'}">${PRODUCTS.find(p=>p.id===item.pid)?.emoji||'📦'}</div>
+      <div><div class="order-item-name">${item.name}</div><div class="order-item-meta">${item.meta}</div></div>
+      <div class="order-item-price">₹${item.price.toLocaleString('en-IN')}</div>
+    </div>`).join('')}</div>
+    <div class="order-actions">
+      <button class="btn btn-ghost btn-sm" onclick="showToast('Tracking ${o.id}...')">Track Order</button>
+      ${o.status==='delivered'?`<button class="btn btn-outline btn-sm" onclick="startReturn('${o.id}')">Return / Exchange</button>`:''}
+    </div>
+    <div id="return-flow-${String(o.id).replace('#','')}"></div>
+  </div>`).join('');
+}
+
+function startReturn(oid) {
+  const cleanId = String(oid).replace('#','');
+  const el = document.getElementById(`return-flow-${cleanId}`);
+  state.returnStep = 1;
+  state.returnType = null;
+  state.returnReason = null;
+  if(el) el.innerHTML = renderReturnFlow(oid);
+}
+
+function renderReturnFlow(oid) {
+  const cleanId = String(oid).replace('#','');
+  return `<div class="return-flow">
+    <div class="return-progress">
+      ${['Type','Reason','Confirmation'].map((l,i)=>`<div class="return-progress-step">
+        <div class="rp-dot ${state.returnStep>i+1?'done':state.returnStep===i+1?'active':''}">${state.returnStep>i+1?'✓':i+1}</div>
+        <div class="rp-label">${l}</div>
+      </div>`).join('')}
+    </div>
+    ${state.returnStep===1?renderReturnStep1(oid):''}
+    ${state.returnStep===2?renderReturnStep2(oid):''}
+    ${state.returnStep===3?renderReturnStep3(oid):''}
+  </div>`;
+}
+
+function renderReturnStep1(oid) {
+  return `<div class="rf-step active">
+    <div class="rf-q">What would you like to do?</div>
+    <div class="rf-options">
+      ${[['exchange','🔄','Exchange for a different size or colour'],['refund','💰','Return for a refund'],['replace','📦','Replace a damaged item']].map(([val,icon,label])=>
+        `<div class="rf-option ${state.returnType===val?'selected':''}" onclick="selectReturnType('${val}','${oid}')">
+          <div class="rf-radio"></div>
+          <span style="font-size:1.2rem">${icon}</span>
+          <span>${label}</span>
+        </div>`
+      ).join('')}
+    </div>
+    ${state.returnType?`<button class="btn btn-dark btn-sm" onclick="nextReturnStep('${oid}')">Continue →</button>`:''}
+  </div>`;
+}
+
+function renderReturnStep2(oid) {
+  const reasons = state.returnType==='exchange' ?
+    ['Wrong size','Wrong colour','Changed my mind','Other'] :
+    ['Product damaged','Quality issue','Different from expected','Changed my mind','Incorrect product','Other'];
+  return `<div class="rf-step active">
+    <div class="rf-q">What's the reason for your ${state.returnType}?</div>
+    <div class="rf-options">
+      ${reasons.map(r=>`<div class="rf-option ${state.returnReason===r?'selected':''}" onclick="selectReturnReason('${r}','${oid}')">
+        <div class="rf-radio"></div>
+        <span>${r}</span>
+      </div>`).join('')}
+    </div>
+    <div style="display:flex;gap:.6rem;margin-top:.5rem">
+      <button class="btn btn-ghost btn-sm" onclick="returnFlowBack('${oid}')">← Back</button>
+      ${state.returnReason?`<button class="btn btn-dark btn-sm" onclick="nextReturnStep('${oid}')">Continue →</button>`:''}
+    </div>
+  </div>`;
+}
+
+function renderReturnStep3(oid) {
+  const isWrongSize = state.returnReason==='Wrong size';
+  const cleanId = String(oid).replace('#','');
+  if(isWrongSize && state.returnType==='exchange') {
+    // Smart inventory check — size 9 available
+    return `<div class="rf-step active">
+      <div class="rf-result">
+        <div class="rf-result-icon">✅</div>
+        <div class="rf-result-title">Size 9 is available</div>
+        <div class="rf-result-body">We found your requested size in stock. We can exchange your Urban Runner Sneakers (Size 8) for Size 9 and arrange a pickup from your address.</div>
+        <div class="rf-result-detail"><strong>Exchange details:</strong><br/>Current: Urban Runner Sneakers · Size 8 · Black<br/>Exchange to: Urban Runner Sneakers · Size 9 · Black<br/>Pickup: Within 2 business days · No extra charge</div>
+      </div>
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+        <button class="btn btn-dark" onclick="processExchange('${oid}')">Exchange for Size 9</button>
+        <button class="btn btn-outline" onclick="showToast('Refund request submitted')">Request Refund Instead</button>
+        <button class="btn btn-ghost" onclick="state.returnStep=2;document.getElementById('return-flow-${cleanId}').innerHTML=renderReturnFlow('${oid}')">← Back</button>
+      </div>
+    </div>`;
+  } else {
+    return `<div class="rf-step active">
+      <div class="rf-result">
+        <div class="rf-result-icon">📋</div>
+        <div class="rf-result-title">Return request submitted</div>
+        <div class="rf-result-body">Your ${state.returnType} request has been received. Our team will review it within 24–48 hours and arrange pickup if approved.</div>
+        <div class="rf-result-detail"><strong>Reason:</strong> ${state.returnReason}<br/><strong>Expected resolution:</strong> 5–7 business days</div>
+      </div>
+      <div style="display:flex;gap:.75rem">
+        <button class="btn btn-dark" onclick="showToast('Return request confirmed!')">Done</button>
+        <button class="btn btn-ghost" onclick="state.returnStep=2;document.getElementById('return-flow-${cleanId}').innerHTML=renderReturnFlow('${oid}')">← Back</button>
+      </div>
+    </div>`;
+  }
+}
+
+function selectReturnType(type, oid) {
+  state.returnType = type;
+  const cleanId = String(oid).replace('#','');
+  const el = document.getElementById(`return-flow-${cleanId}`);
+  if(el) el.innerHTML = renderReturnFlow(oid);
+}
+function selectReturnReason(reason, oid) {
+  state.returnReason = reason;
+  const cleanId = String(oid).replace('#','');
+  const el = document.getElementById(`return-flow-${cleanId}`);
+  if(el) el.innerHTML = renderReturnFlow(oid);
+}
+function returnFlowBack(oid) {
+  state.returnStep = 1;
+  const cleanId = String(oid).replace('#','');
+  const el = document.getElementById(`return-flow-${cleanId}`);
+  if(el) el.innerHTML = renderReturnFlow(oid);
+}
+function nextReturnStep(oid) {
+  state.returnStep++;
+  const cleanId = String(oid).replace('#','');
+  const el = document.getElementById(`return-flow-${cleanId}`);
+  if(el) el.innerHTML = renderReturnFlow(oid);
+}
+
+function processExchange(oid) {
+  state.exchangeProcessed = true;
+  showToast('✅ Exchange confirmed! Pickup scheduled for 8 Sep 2026.');
+  const cleanId = String(oid).replace('#','');
+  const el = document.getElementById(`return-flow-${cleanId}`);
+  if(el) el.innerHTML = `<div class="return-flow">
+    <div style="text-align:center;padding:1.5rem">
+      <div style="font-size:2.5rem;margin-bottom:.75rem">✅</div>
+      <div style="font-size:1rem;font-weight:800;margin-bottom:.5rem">Exchange Confirmed!</div>
+      <div style="font-size:.85rem;color:var(--c-mid);margin-bottom:1rem">Urban Runner Sneakers · Size 9 will be delivered in 4–6 business days.<br/>Pickup of Size 8 scheduled for 8 Sep 2026.</div>
+      <div style="font-size:.78rem;color:var(--c-mid);background:#F9F8F6;border-radius:var(--r-md);padding:.75rem;border:1px solid var(--c-border)">Exchange ID: EXC-2026-00341 · Track via email</div>
+    </div>
+  </div>`;
+}
+
+function switchOrdersTab(tab, btn) {
+  document.querySelectorAll('.orders-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  ['orders','returns','profile'].forEach(t=>document.getElementById(`orders-tab-${t}`)?.classList.add('hidden'));
+  document.getElementById(`orders-tab-${tab}`)?.classList.remove('hidden');
+}
+
+/* ════════════════════════════════════════════════════════════════
+   ADMIN PAGES
+════════════════════════════════════════════════════════════════ */
+const ADMIN_TITLES = {
+  overview:'Business Overview',inventory:'Inventory & Demand',returns:'Returns Intelligence',
+  expenses:'Expense Management',pricing:'Pricing Optimizer','orders-admin':'Orders',
+  risk:'Business Risk Center',knowledge:'Company Knowledge'
+};
+
+function showAdminPage(page, btn) {
+  state.adminPage = page;
+  document.querySelectorAll('.admin-nav-item').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  document.getElementById('admin-topbar-title').textContent = ADMIN_TITLES[page]||page;
+  const content = document.getElementById('admin-page-content');
+
+  // Destroy old charts
+  Object.values(state.adminCharts).forEach(c=>{try{c.destroy();}catch(e){}});
+  state.adminCharts = {};
+
+  const renders = {
+    overview: renderAdminOverview,
+    inventory: renderAdminInventory,
+    returns: renderAdminReturns,
+    expenses: renderAdminExpenses,
+    pricing: renderAdminPricing,
+    risk: renderAdminRisk,
+    knowledge: renderAdminKnowledge,
+    'orders-admin': renderAdminOrders
+  };
+  content.innerHTML = '';
+  if(renders[page]) renders[page](content);
+  else content.innerHTML = `<div style="color:var(--a-muted);padding:3rem;text-align:center">Page coming soon</div>`;
+}
+
+/* ── OVERVIEW ─────────────────────────────────────────────────── */
+function renderAdminOverview(el) {
+  el.innerHTML = `
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">Revenue</div><div class="kpi-value">₹24.8L</div><div class="kpi-trend kpi-up">↑ 8.4% vs last month</div></div>
+    <div class="kpi-card"><div class="kpi-label">Orders</div><div class="kpi-value">4,281</div><div class="kpi-trend kpi-up">↑ 12.2%</div></div>
+    <div class="kpi-card"><div class="kpi-label">Return Rate</div><div class="kpi-value">8.2%</div><div class="kpi-trend kpi-down-good">↓ 1.7%</div></div>
+    <div class="kpi-card kpi-alert"><div class="kpi-label">Inventory Risk</div><div class="kpi-value">12</div><div class="kpi-trend kpi-warn">⚠ 3 critical</div></div>
+    <div class="kpi-card"><div class="kpi-label">Expenses</div><div class="kpi-value">₹6.4L</div><div class="kpi-trend kpi-down-bad">↑ 3.2%</div></div>
+    <div class="kpi-card"><div class="kpi-label">Profit Margin</div><div class="kpi-value">24.8%</div><div class="kpi-trend kpi-up">↑ 1.1%</div></div>
+  </div>
+  <div class="admin-charts-row">
+    <div class="chart-card"><div class="chart-card-header"><div><div class="chart-card-title">Revenue Trend</div><div class="chart-card-sub">Last 6 months</div></div></div><div class="chart-wrap"><canvas id="ch-revenue"></canvas></div></div>
+    <div class="chart-card"><div class="chart-card-header"><div><div class="chart-card-title">Order Volume</div><div class="chart-card-sub">Monthly</div></div></div><div class="chart-wrap"><canvas id="ch-orders"></canvas></div></div>
+  </div>
+  <div class="admin-charts-row2">
+    <div class="chart-card"><div class="chart-card-header"><div><div class="chart-card-title">Return Rate</div><div class="chart-card-sub">Weekly trend</div></div></div><div class="chart-wrap chart-wrap-sm"><canvas id="ch-returns"></canvas></div></div>
+    <div class="chart-card"><div class="chart-card-header"><div><div class="chart-card-title">Inventory Movement</div><div class="chart-card-sub">Top categories</div></div></div><div class="chart-wrap chart-wrap-sm"><canvas id="ch-inventory"></canvas></div></div>
+  </div>
+  <div style="margin-top:1.25rem;padding:1rem 1.25rem;background:rgba(255,255,255,.03);border:1px solid var(--a-border);border-radius:var(--r-md)">
+    <div class="ops-intel-toggle" onclick="toggleOpsIntel(this)">
+      <span class="ops-intel-toggle-label">⚙ Operations Intelligence — Agent Architecture</span>
+      <span class="ops-intel-toggle-icon">▶</span>
+    </div>
+    <div class="ops-intel-content">
+      <div class="agent-flow">
+        <div class="agent-node">Customer Request</div><div class="agent-arrow">↓</div>
+        <div class="agent-node">Policy Agent — checks return policy, T&Cs</div><div class="agent-arrow">↓</div>
+        <div class="agent-node">Inventory Agent — checks stock availability</div><div class="agent-arrow">↓</div>
+        <div class="agent-node">Analytics Agent — analyses patterns & risk</div><div class="agent-arrow">↓</div>
+        <div class="agent-node">Decision Agent — selects optimal resolution</div><div class="agent-arrow">↓</div>
+        <div class="agent-node">Action / Human Approval</div>
+      </div>
+      <div class="agent-note">These agents operate automatically across returns, inventory, expenses and pricing decisions.</div>
+    </div>
+  </div>`;
+
+  setTimeout(()=>{
+    const cfg = (type,labels,datasets,opts={})=>({type,data:{labels,datasets},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},...opts.plugins},scales:opts.scales||{x:{grid:{color:'rgba(255,255,255,.05)'},ticks:{color:'rgba(232,234,240,.5)',font:{size:10}}},y:{grid:{color:'rgba(255,255,255,.05)'},ticks:{color:'rgba(232,234,240,.5)',font:{size:10}}}}}});
+    const ttStyle={backgroundColor:'rgba(10,15,30,.95)',titleColor:'#E8EAF0',bodyColor:'rgba(232,234,240,.7)',borderColor:'rgba(99,102,241,.3)',borderWidth:1,cornerRadius:6,padding:8};
+    const withTT = (c)=>({...c,options:{...c.options,plugins:{...c.options.plugins,tooltip:ttStyle}}});
+
+    const revCtx=document.getElementById('ch-revenue');
+    if(revCtx){
+      const g=revCtx.getContext('2d');
+      const grad=g.createLinearGradient(0,0,0,200);
+      grad.addColorStop(0,'rgba(99,102,241,.4)');grad.addColorStop(1,'rgba(99,102,241,.01)');
+      state.adminCharts.rev=new Chart(revCtx,withTT(cfg('line',['Apr','May','Jun','Jul','Aug','Sep'],[{label:'Revenue',data:[18.2,20.5,19.8,22.3,23.1,24.8],borderColor:'#6366f1',borderWidth:2.5,fill:true,backgroundColor:grad,tension:.4,pointBackgroundColor:'#6366f1',pointRadius:4}])));
+    }
+    const ordCtx=document.getElementById('ch-orders');
+    if(ordCtx)state.adminCharts.ord=new Chart(ordCtx,withTT(cfg('bar',['Apr','May','Jun','Jul','Aug','Sep'],[{data:[2800,3100,2950,3400,3700,4281],backgroundColor:'rgba(0,198,255,.3)',borderColor:'rgba(0,198,255,.8)',borderWidth:1,borderRadius:5}])));
+
+    const retCtx=document.getElementById('ch-returns');
+    if(retCtx)state.adminCharts.ret=new Chart(retCtx,withTT(cfg('line',['W1','W2','W3','W4','W5','W6'],[{data:[11.2,10.8,9.9,9.2,8.7,8.2],borderColor:'#22C55E',borderWidth:2,fill:true,backgroundColor:'rgba(34,197,94,.08)',tension:.4,pointRadius:3}])));
+
+    const invCtx=document.getElementById('ch-inventory');
+    if(invCtx)state.adminCharts.inv=new Chart(invCtx,withTT({type:'doughnut',data:{labels:['Footwear','Men','Women','Accessories'],datasets:[{data:[32,38,18,12],backgroundColor:['rgba(99,102,241,.7)','rgba(0,198,255,.7)','rgba(245,158,11,.7)','rgba(34,197,94,.7)'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'right',labels:{color:'rgba(232,234,240,.6)',font:{size:11},boxWidth:10}}}}}));
+  },100);
+}
+
+/* ── INVENTORY ────────────────────────────────────────────────── */
+function renderAdminInventory(el) {
+  el.innerHTML = `
+  <div class="insight-panel" style="margin-bottom:1.5rem">
+    <div class="insight-panel-header">
+      <span class="insight-panel-icon">⚡</span>
+      <div><div class="insight-panel-title">Inventory Insight</div><div class="insight-panel-sub">Automated demand analysis · Updated 2 min ago</div></div>
+    </div>
+    <div class="insight-body"><strong>Everyday Hoodie</strong> is expected to reach critical stock levels in <strong>3 days</strong> based on current demand velocity (6 units/day). Immediate reorder recommended.</div>
+    <div class="insight-rec-box">
+      <div class="insight-rec-title">Reorder Recommendation — 120 units</div>
+      <div class="supplier-cards" style="display:flex;gap:.75rem;margin-top:.75rem">
+        <div class="supplier-card">
+          <div class="sc-name">Supplier A — Apex Textiles</div>
+          <div class="sc-row"><span>Unit cost</span><strong>₹1,080</strong></div>
+          <div class="sc-row"><span>Lead time</span><strong>5 days</strong></div>
+          <div class="sc-row"><span>Total cost</span><strong>₹1,29,600</strong></div>
+        </div>
+        <div class="supplier-card recommended">
+          <div class="sc-name">Supplier A — Apex Textiles ★</div>
+          <div class="sc-row"><span>Unit cost</span><strong>₹1,080</strong></div>
+          <div class="sc-row"><span>Lead time</span><strong>5 days ✓ Faster</strong></div>
+          <div class="sc-row"><span>Total cost</span><strong>₹1,29,600</strong></div>
+          <div class="sc-rec-badge">Recommended — faster delivery</div>
+        </div>
+        <div class="supplier-card">
+          <div class="sc-name">Supplier B — ValueFab</div>
+          <div class="sc-row"><span>Unit cost</span><strong>₹1,020</strong></div>
+          <div class="sc-row"><span>Lead time</span><strong>8 days</strong></div>
+          <div class="sc-row"><span>Total cost</span><strong>₹1,22,400</strong></div>
+        </div>
+      </div>
+    </div>
+    <button class="abtn abtn-primary" onclick="showToast('Purchase order PO-2026-0847 created for Supplier A — 120 units')">Create Purchase Order →</button>
+  </div>
+
+  <div class="admin-table-card">
+    <div class="admin-table-header"><div><div class="admin-table-title">Inventory Status</div><div class="admin-table-sub">Real-time stock levels and demand forecast</div></div><button class="abtn abtn-ghost" onclick="showToast('Syncing inventory...')">Sync</button></div>
+    <table class="data-table">
+      <thead><tr><th>Product</th><th>Category</th><th>Stock</th><th>Daily Sales</th><th>Days Remaining</th><th>Status</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td>Urban Runner Sneakers</td><td>Footwear</td><td>42</td><td>7</td><td style="color:var(--a-warn);font-weight:700">6</td><td><span class="status-pill pill-warn">⚠ Low</span></td><td><button class="tbl-action" onclick="showToast('Reorder Urban Runner — 200 units')">Reorder</button></td></tr>
+        <tr><td>Essential Oversized Tee</td><td>Men</td><td>284</td><td>12</td><td>23</td><td><span class="status-pill pill-healthy">✓ Healthy</span></td><td><button class="tbl-action">View</button></td></tr>
+        <tr><td style="color:var(--a-danger);font-weight:600">Everyday Hoodie</td><td>Men</td><td style="color:var(--a-danger);font-weight:700">18</td><td>6</td><td style="color:var(--a-danger);font-weight:700">3</td><td><span class="status-pill pill-critical">🔴 Critical</span></td><td><button class="tbl-action" onclick="showToast('Creating PO for Everyday Hoodie...')">Reorder Now</button></td></tr>
+        <tr><td>Classic Denim Jacket</td><td>Men</td><td>96</td><td>3</td><td>32</td><td><span class="status-pill pill-healthy">✓ Healthy</span></td><td><button class="tbl-action">View</button></td></tr>
+        <tr><td>Minimal Leather Backpack</td><td>Accessories</td><td>34</td><td>4</td><td>8</td><td><span class="status-pill pill-warn">⚠ Low</span></td><td><button class="tbl-action" onclick="showToast('Reorder Leather Backpack')">Reorder</button></td></tr>
+        <tr><td>Premium Wool Sweater</td><td>Women</td><td>40</td><td>3</td><td>13</td><td><span class="status-pill pill-healthy">✓ Healthy</span></td><td><button class="tbl-action">View</button></td></tr>
+        <tr><td>Minimalist Watch</td><td>Accessories</td><td>24</td><td>2</td><td>12</td><td><span class="status-pill pill-warn">⚠ Monitor</span></td><td><button class="tbl-action">View</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-card" style="margin-top:1.25rem">
+    <div class="chart-card-header"><div class="chart-card-title">Demand Forecast — Next 30 Days</div></div>
+    <div class="chart-wrap chart-wrap-lg"><canvas id="ch-forecast"></canvas></div>
+  </div>`;
+
+  setTimeout(()=>{
+    const ctx=document.getElementById('ch-forecast');
+    if(ctx){
+      const g=ctx.getContext('2d');
+      const grad=g.createLinearGradient(0,0,0,180);
+      grad.addColorStop(0,'rgba(99,102,241,.3)');grad.addColorStop(1,'rgba(99,102,241,.01)');
+      const grad2=g.createLinearGradient(0,0,0,180);
+      grad2.addColorStop(0,'rgba(242,68,68,.2)');grad2.addColorStop(1,'rgba(242,68,68,.01)');
+      state.adminCharts.forecast = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Now', 'W1', 'W2', 'W3', 'W4'],
+          datasets: [
+            { label: 'Urban Runner Stock', data: [42, 35, 28, 21, 14], borderColor: '#6366f1', fill: true, backgroundColor: grad, tension: 0.4, borderWidth: 2, pointRadius: 4 },
+            { label: 'Reorder Point', data: [20, 20, 20, 20, 20], borderColor: '#F24444', borderDash: [5, 5], fill: true, backgroundColor: grad2, borderWidth: 1.5, pointRadius: 0 }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+              labels: { color: 'rgba(232,234,240,.6)', font: { size: 11 }, boxWidth: 10 }
+            }
+          },
+          scales: {
+            x: { grid: { color: 'rgba(255,255,255,.05)' }, ticks: { color: 'rgba(232,234,240,.5)' } },
+            y: { grid: { color: 'rgba(255,255,255,.05)' }, ticks: { color: 'rgba(232,234,240,.5)' } }
+          }
+        }
+      });
+    }
+  },100);
+}
+
+/* ── RETURNS ──────────────────────────────────────────────────── */
+function renderAdminReturns(el) {
+  const exchangeCount = state.exchangeProcessed ? 158 : 157;
+  el.innerHTML = `
+  <div class="returns-stats">
+    <div class="return-stat"><div class="return-stat-val">382</div><div class="return-stat-label">Total Returns</div><div class="return-stat-sub" style="color:var(--a-muted)">This month</div></div>
+    <div class="return-stat"><div class="return-stat-val">8.2%</div><div class="return-stat-label">Return Rate</div><div class="return-stat-sub" style="color:var(--a-ok)">↓ 1.7% vs last month</div></div>
+    <div class="return-stat"><div class="return-stat-val">${exchangeCount}</div><div class="return-stat-label">Exchanges</div><div class="return-stat-sub" style="color:var(--a-ok)">41% of returns</div></div>
+    <div class="return-stat"><div class="return-stat-val">141</div><div class="return-stat-label">Refunds</div><div class="return-stat-sub" style="color:var(--a-muted)">37% of returns</div></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem">
+    <div class="chart-card"><div class="chart-card-header"><div class="chart-card-title">Return Reasons</div></div><div class="chart-wrap"><canvas id="ch-ret-reasons"></canvas></div></div>
+    <div class="chart-card"><div class="chart-card-header"><div class="chart-card-title">Returns by Category</div></div><div class="chart-wrap"><canvas id="ch-ret-cat"></canvas></div></div>
+  </div>
+
+  <div class="insight-panel">
+    <div class="insight-panel-header">
+      <span class="insight-panel-icon">💡</span>
+      <div><div class="insight-panel-title">Business Insight</div></div>
+    </div>
+    <div class="insight-body"><strong>Size-related returns for Urban Runner Sneakers increased 18% this month.</strong> This is the primary driver of the return rate increase. 73% of shoe returns are due to sizing issues — significantly above the category average of 42%.</div>
+    <div class="insight-rec-box">
+      <div class="insight-rec-title">Recommended Action</div>
+      <div style="font-size:.82rem;color:var(--a-muted);line-height:1.6">Add a detailed size guide to the Urban Runner product page. Based on similar interventions, this is expected to reduce size-related returns by 25–30% within 30 days.</div>
+    </div>
+    <div style="display:flex;gap:.6rem;margin-top:.75rem">
+      <button class="abtn abtn-primary" onclick="showToast('Size guide update task created for product team')">Update Product Page →</button>
+      <button class="abtn abtn-ghost" onclick="showToast('Full analysis report generated')">View Full Analysis</button>
+    </div>
+  </div>
+
+  ${state.exchangeProcessed?`<div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:var(--r-lg);padding:1.25rem;margin-top:1.25rem">
+    <div style="font-size:.8rem;font-weight:700;color:var(--a-ok);margin-bottom:.4rem">✅ Recent Exchange Processed</div>
+    <div style="font-size:.82rem;color:var(--a-muted)">Urban Runner Sneakers · Size 8 → Size 9 · Customer: Order #48291 · Pickup: 8 Sep 2026</div>
+  </div>`:''}`;
+
+  setTimeout(()=>{
+    const r1=document.getElementById('ch-ret-reasons');
+    if(r1)state.adminCharts.rr=new Chart(r1,{type:'bar',data:{labels:['Wrong Size','Damaged','Quality','Changed Mind','Wrong Item'],datasets:[{data:[44,22,17,10,7],backgroundColor:['rgba(242,68,68,.7)','rgba(245,158,11,.7)','rgba(99,102,241,.7)','rgba(0,198,255,.7)','rgba(34,197,94,.7)'],borderRadius:4,borderWidth:0}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(255,255,255,.05)'},ticks:{color:'rgba(232,234,240,.5)',callback:v=>v+'%'}},y:{grid:{display:false},ticks:{color:'rgba(232,234,240,.6)'}}}}});
+    const r2=document.getElementById('ch-ret-cat');
+    if(r2)state.adminCharts.rc=new Chart(r2,{type:'doughnut',data:{labels:['Footwear','Men','Women','Accessories'],datasets:[{data:[46,28,18,8],backgroundColor:['rgba(242,68,68,.7)','rgba(99,102,241,.7)','rgba(245,158,11,.7)','rgba(34,197,94,.7)'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{color:'rgba(232,234,240,.6)',font:{size:11},boxWidth:10}}}}});
+  },100);
+}
+
+/* ── EXPENSES ─────────────────────────────────────────────────── */
+function renderAdminExpenses(el) {
+  el.innerHTML = `
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem">
+    <div class="chart-card">
+      <div class="chart-card-header"><div class="chart-card-title">Monthly Expenses — ₹6.4L</div></div>
+      <div class="chart-wrap chart-wrap-lg"><canvas id="ch-expenses"></canvas></div>
+    </div>
+    <div>
+      ${[['Suppliers','₹2,80,000','44%','↑ 2.1%','ok'],['Logistics','₹96,000','15%','↑ 5.4%','warn'],['Marketing','₹64,000','10%','↑ 14%','danger'],['Software','₹48,000','7.5%','↓ 2%','ok'],['Operations','₹38,400','6%','↑ 1.3%','ok'],['Travel','₹32,000','5%','↑ 18%','warn']].map(([cat,amt,pct,trend,status])=>`
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:.75rem 1rem;border-bottom:1px solid var(--a-border);font-size:.82rem">
+        <div><div style="font-weight:600;color:var(--a-text)">${cat}</div><div style="color:var(--a-muted);font-size:.72rem">${pct} of total</div></div>
+        <div style="text-align:right"><div style="font-weight:700">${amt}</div><div style="font-size:.72rem;color:var(--a-${status==='ok'?'ok':status==='warn'?'warn':'danger'})">${trend}</div></div>
+      </div>`).join('')}
+    </div>
+  </div>
+
+  <div style="font-size:.92rem;font-weight:700;margin-bottom:1rem;color:var(--a-text)">Expenses Requiring Review <span style="font-size:.72rem;font-weight:500;color:var(--a-muted)">(5 items)</span></div>
+
+  <div class="expense-review-cards">
+    <div class="expense-review-card flagged">
+      <div class="erc-top">
+        <div><span class="erc-type-badge erc-badge-warn">⚠ Exceeds Policy</span><div class="erc-title" style="margin-top:.4rem">Hotel Accommodation — Mumbai</div></div>
+        <div class="erc-amount">₹18,400</div>
+      </div>
+      <div class="erc-details">
+        <div><div class="erc-detail-label">Employee</div><div class="erc-detail-val">Sales Team · Priya M.</div></div>
+        <div><div class="erc-detail-label">Policy Limit</div><div class="erc-detail-val">₹12,000</div></div>
+        <div><div class="erc-detail-label">Over by</div><div class="erc-detail-val over">+₹6,400</div></div>
+      </div>
+      <div class="erc-actions">
+        <button class="abtn abtn-ok" onclick="showToast('Expense approved')">Approve</button>
+        <button class="abtn abtn-danger" onclick="showToast('Expense flagged for review')">Flag</button>
+        <button class="abtn abtn-ghost" onclick="showToast('Explanation request sent to Priya M.')">Request Explanation</button>
+      </div>
+    </div>
+
+    <div class="expense-review-card duplicate">
+      <div class="erc-top">
+        <div><span class="erc-type-badge erc-badge-danger">⚠ Duplicate Detected</span><div class="erc-title" style="margin-top:.4rem">Flight Booking — SpiceJet BLR-DEL</div></div>
+        <div class="erc-amount">₹8,200 × 2</div>
+      </div>
+      <div class="erc-details">
+        <div><div class="erc-detail-label">Submitted by</div><div class="erc-detail-val">Ops Team · Arun K.</div></div>
+        <div><div class="erc-detail-label">Dates</div><div class="erc-detail-val">28 Aug · 28 Aug</div></div>
+        <div><div class="erc-detail-label">Duplicate Amount</div><div class="erc-detail-val over">₹8,200</div></div>
+      </div>
+      <div style="font-size:.78rem;color:var(--a-muted);margin-bottom:.85rem;padding:.6rem .75rem;background:rgba(242,68,68,.06);border-radius:var(--r-sm)">Two transactions with identical amount, date and merchant were submitted. Likely a duplicate claim.</div>
+      <div class="erc-actions">
+        <button class="abtn abtn-danger" onclick="showToast('Duplicate rejected and reported')">Reject Duplicate</button>
+        <button class="abtn abtn-ghost" onclick="showToast('Sent query to Arun K.')">Query Employee</button>
+      </div>
+    </div>
+  </div>`;
+
+  setTimeout(()=>{
+    const ctx=document.getElementById('ch-expenses');
+    if(ctx)state.adminCharts.exp=new Chart(ctx,{type:'doughnut',data:{labels:['Suppliers','Logistics','Marketing','Software','Operations','Travel'],datasets:[{data:[44,15,10,7.5,6,5],backgroundColor:['rgba(99,102,241,.8)','rgba(0,198,255,.7)','rgba(245,158,11,.7)','rgba(34,197,94,.7)','rgba(168,85,247,.7)','rgba(242,68,68,.7)'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'rgba(232,234,240,.6)',font:{size:10},boxWidth:10,padding:8}}}}});
+  },100);
+}
+
+/* ── PRICING ──────────────────────────────────────────────────── */
+function renderAdminPricing(el) {
+  el.innerHTML = `
+  <div class="pricing-layout">
+    <div>
+      <div style="font-size:.82rem;font-weight:700;color:var(--a-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem">Select Product</div>
+      ${[{id:2,name:'Urban Runner Sneakers',price:3999,demand:'+12%',stock:42},{id:3,name:'Everyday Hoodie',price:2499,demand:'+8%',stock:18},{id:1,name:'Essential Oversized Tee',price:1299,demand:'+5%',stock:284}].map((p,i)=>`
+      <div class="pricing-product-card ${i===0?'selected':''}" onclick="selectPricingProduct(this,${p.price})">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem">
+          <div style="font-size:.92rem;font-weight:700">${p.name}</div>
+          <span style="font-size:.7rem;font-weight:700;padding:.2rem .55rem;border-radius:100px;background:rgba(34,197,94,.12);color:var(--a-ok)">${p.demand} demand</span>
+        </div>
+        <div class="pp-meta-row">
+          <div class="pp-meta-item"><div class="pp-meta-val">₹${p.price.toLocaleString('en-IN')}</div><div class="pp-meta-label">Current Price</div></div>
+          <div class="pp-meta-item"><div class="pp-meta-val">${p.stock}</div><div class="pp-meta-label">Units in Stock</div></div>
+        </div>
+      </div>`).join('')}
+    </div>
+
+    <div>
+      <div class="pricing-rec-box" style="margin-bottom:1.25rem">
+        <div style="font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(99,102,241,.8);margin-bottom:1rem">Pricing Recommendation</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+          <div><div style="font-size:.72rem;color:var(--a-muted)">Current Price</div><div style="font-size:1.4rem;font-weight:800;text-decoration:line-through;color:var(--a-muted)">₹3,999</div></div>
+          <div style="font-size:1.5rem;color:var(--a-muted)">→</div>
+          <div><div style="font-size:.72rem;color:var(--a-muted)">Recommended Price</div><div style="font-size:1.6rem;font-weight:800;color:var(--a-ok)">₹3,799</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1rem">
+          ${[['Expected Demand','+12%','ok'],['Revenue Impact','+6%','ok'],['Inventory Turn','+9%','ok']].map(([l,v,s])=>`<div style="text-align:center;background:rgba(255,255,255,.03);border:1px solid var(--a-border);border-radius:var(--r-md);padding:.85rem"><div style="font-size:1.1rem;font-weight:800;color:var(--a-${s})">${v}</div><div style="font-size:.68rem;color:var(--a-muted);margin-top:.2rem">${l}</div></div>`).join('')}
+        </div>
+        <button class="abtn abtn-primary" style="width:100%;justify-content:center" onclick="showToast('Price updated: Urban Runner Sneakers → ₹3,799')">Apply Pricing Change</button>
+      </div>
+
+      <div class="pricing-sim">
+        <div style="font-size:.85rem;font-weight:700;margin-bottom:1rem">What-If Simulator</div>
+        <div style="margin-bottom:1rem">
+          <div class="sim-row"><span class="sim-label">Price</span><span class="sim-value" id="sim-price-val">₹3,999</span></div>
+          <input type="range" min="2999" max="4999" value="3999" step="50" oninput="updateSim(this.value)" id="sim-price-slider"/>
+          <div style="display:flex;justify-content:space-between;font-size:.68rem;color:var(--a-muted)"><span>₹2,999</span><span>₹4,999</span></div>
+        </div>
+        <div style="margin-bottom:1rem">
+          <div class="sim-row"><span class="sim-label">Discount</span><span class="sim-value" id="sim-disc-val">0%</span></div>
+          <input type="range" min="0" max="20" value="0" step="5" oninput="updateDiscount(this.value)" id="sim-disc-slider"/>
+          <div style="display:flex;justify-content:space-between;font-size:.68rem;color:var(--a-muted)"><span>0%</span><span>20%</span></div>
+        </div>
+        <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--a-muted);margin-bottom:.6rem">Predicted Impact</div>
+        <div class="sim-impacts">
+          <div class="sim-impact"><div class="sim-impact-val" id="sim-demand">+0%</div><div class="sim-impact-label">Demand</div></div>
+          <div class="sim-impact"><div class="sim-impact-val" id="sim-revenue">+0%</div><div class="sim-impact-label">Revenue</div></div>
+          <div class="sim-impact"><div class="sim-impact-val" id="sim-turns">+0%</div><div class="sim-impact-label">Stock Turns</div></div>
+        </div>
+        <div class="chart-wrap chart-wrap-xs" style="margin-top:1rem"><canvas id="ch-sim"></canvas></div>
+      </div>
+    </div>
+  </div>`;
+
+  setTimeout(()=>{
+    const ctx=document.getElementById('ch-sim');
+    if(ctx)state.adminCharts.sim=new Chart(ctx,{type:'bar',data:{labels:['Current','Recommended','Your Choice'],datasets:[{label:'Revenue Index',data:[100,106,100],backgroundColor:['rgba(99,102,241,.4)','rgba(34,197,94,.6)','rgba(245,158,11,.5)'],borderRadius:4,borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'rgba(232,234,240,.5)'}},y:{grid:{color:'rgba(255,255,255,.05)'},ticks:{color:'rgba(232,234,240,.5)',callback:v=>v+'%'}}}}});
+  },100);
+}
+
+function updateSim(val) {
+  document.getElementById('sim-price-val').textContent = '₹'+parseInt(val).toLocaleString('en-IN');
+  const base = 3999; const diff = (base-val)/base*100;
+  const demand = Math.round(diff*1.5);
+  const revenue = Math.round(demand*.5);
+  const turns = Math.round(demand*.7);
+  document.getElementById('sim-demand').textContent = (demand>=0?'+':'')+demand+'%';
+  document.getElementById('sim-revenue').textContent = (revenue>=0?'+':'')+revenue+'%';
+  document.getElementById('sim-turns').textContent = (turns>=0?'+':'')+turns+'%';
+  ['sim-demand','sim-revenue','sim-turns'].forEach(id=>{
+    const el=document.getElementById(id);
+    el.style.color = parseInt(el.textContent) >= 0 ? 'var(--a-ok)' : 'var(--a-danger)';
+  });
+  if(state.adminCharts.sim) {
+    state.adminCharts.sim.data.datasets[0].data[2] = 100+revenue;
+    state.adminCharts.sim.update();
+  }
+}
+function updateDiscount(val) {
+  document.getElementById('sim-disc-val').textContent = val+'%';
+}
+function selectPricingProduct(el, price) {
+  document.querySelectorAll('.pricing-product-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+/* ── RISK ─────────────────────────────────────────────────────── */
+function renderAdminRisk(el) {
+  el.innerHTML = `
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem">
+    ${[['🔴','2','Critical Alerts'],['🟠','3','High Risk'],['🟡','4','Medium Risk'],['🟢','12','Low / Monitored']].map(([icon,count,label])=>`<div style="background:var(--a-card);border:1px solid var(--a-border);border-radius:var(--r-lg);padding:1.25rem;text-align:center"><div style="font-size:1.8rem;margin-bottom:.4rem">${icon}</div><div style="font-size:1.6rem;font-weight:800">${count}</div><div style="font-size:.72rem;color:var(--a-muted)">${label}</div></div>`).join('')}
+  </div>
+
+  <div class="risk-alerts">
+    ${[
+      {level:'critical',title:'Everyday Hoodie may stock out in 3 days',body:'Current stock: 18 units · Daily demand: 6 units · Lead time: 5 days (Supplier A). Without reorder today, stockout is expected by 9 Sep 2026.',steps:{problem:'Inventory shortage',evidence:'18 units remaining, selling 6/day',cause:'Demand spike post-sale campaign',impact:'₹1.2L potential lost sales',action:'Reorder 120 units from Supplier A immediately'}},
+      {level:'high',title:'Supplier B delivery time increased by 22%',body:'Average delivery has increased from 6.5 to 7.9 days. 3 pending orders may be delayed.',steps:{problem:'Supplier performance degradation',evidence:'Avg. lead time: 7.9 days (+22%)',cause:'Logistics partner congestion in South',impact:'Potential stockouts for 3 products',action:'Switch pending orders to Supplier A'}},
+      {level:'medium',title:'Return rate for Urban Runner increased 18%',body:'Size-related returns have climbed from 12% to 18.4% for Urban Runner Sneakers. Product page lacks a size guide.',steps:{problem:'Rising return rate — sizing',evidence:'Return rate +18% WoW for Urban Runner',cause:'No size guide on product page',impact:'₹42,000 in refund costs this month',action:'Add size guide to product listing'}},
+      {level:'medium',title:'Marketing expenses 14% above monthly average',body:'Travel and paid advertising spend exceeded budget this month. Review scheduled.',steps:{problem:'Budget overrun',evidence:'Marketing: ₹64,000 vs ₹56,000 budget',cause:'Unplanned paid campaign on 22 Aug',impact:'₹8,000 over budget',action:'Review and approve / flag excess spend'}}
+    ].map((r,i)=>`
+      <div class="risk-alert ${r.level}">
+        <div class="risk-dot ${r.level}"></div>
+        <div class="risk-alert-content">
+          <div class="risk-alert-type ${r.level}">${r.level.toUpperCase()}</div>
+          <div class="risk-alert-title">${r.title}</div>
+          <div class="risk-alert-body">${r.body}</div>
+          <button class="risk-alert-action" onclick="toggleRiskDetail(${i})">View Details →</button>
+          <div class="risk-detail-box" id="risk-detail-${i}">
+            <div class="rdb-grid">
+              ${Object.entries(r.steps).map(([k,v])=>`<div><div class="rdb-item-label">${k.charAt(0).toUpperCase()+k.slice(1)}</div><div class="rdb-item-val ${k==='impact'?'warn':''}">${v}</div></div>`).join('')}
+            </div>
+            <div style="display:flex;gap:.6rem;margin-top:.75rem">
+              <button class="abtn abtn-primary" onclick="showToast('Action initiated')">Take Action</button>
+              <button class="abtn abtn-ghost" onclick="showToast('Assigned to team')">Assign</button>
+            </div>
+          </div>
+        </div>
+      </div>`).join('')}
+  </div>`;
+}
+
+function toggleRiskDetail(i) {
+  const el = document.getElementById(`risk-detail-${i}`);
+  el.classList.toggle('open');
+}
+
+/* ── KNOWLEDGE ────────────────────────────────────────────────── */
+function renderAdminKnowledge(el) {
+  const KB = {
+    'Return Policy':'Our standard return policy allows returns within 30 days of delivery. Damaged products qualify for immediate exchange or full refund. Items must be unused and in original packaging. Source: Return Policy v2.4',
+    'Expense Policy':'Hotel accommodation is capped at ₹12,000 per night. Business travel allowance: ₹5,000/day meals and local transport. Flights above ₹15,000 require manager approval. Source: Expense Policy v1.8',
+    'Supplier Agreements':'Supplier A (Apex Textiles): 30-day payment terms, MOQ 50 units. Supplier B (ValueFab): 45-day payment terms, MOQ 100 units. Price review: quarterly. Source: Supplier Agreements Q3 2026',
+    'Product Catalog':'All products are QC-checked before dispatch. Product sizing follows EU standards. Custom sizing available for orders above 200 units. Source: Product Catalog 2026',
+    'Employee Guidelines':'Remote work policy: 3 days from office. Travel: submit receipts within 7 days of return. Expense claims above ₹25,000 need Director approval. Source: Employee Handbook v3.1'
+  };
+
+  el.innerHTML = `
+  <div class="knowledge-layout">
+    <div class="knowledge-docs">
+      <div class="knowledge-doc-title">Company Documents</div>
+      ${Object.keys(KB).map((doc,i)=>`<div class="knowledge-doc-item ${i===0?'active':''}" onclick="selectKnowledgeDoc(this,'${doc}')" data-doc="${doc}">
+        <span class="knowledge-doc-icon">📄</span>${doc}
+      </div>`).join('')}
+    </div>
+    <div class="knowledge-chat">
+      <div class="knowledge-chat-header">📚 Company Knowledge — Ask anything about policies &amp; documents</div>
+      <div class="knowledge-messages" id="kb-messages">
+        <div class="know-msg-ai">Select a document and ask a question, or type your query directly.<div class="know-msg-source">All documents indexed · 5 sources available</div></div>
+      </div>
+      <div class="knowledge-input-row">
+        <input type="text" class="knowledge-input" id="kb-input" placeholder='e.g. "What is our return policy for damaged items?"' onkeydown="if(event.key==='Enter')sendKnowledgeQuery()"/>
+        <button class="abtn abtn-primary" onclick="sendKnowledgeQuery()">Ask →</button>
+      </div>
+    </div>
+  </div>`;
+
+  window._knowledgeBase = KB;
+}
+
+function selectKnowledgeDoc(el, doc) {
+  document.querySelectorAll('.knowledge-doc-item').forEach(d=>d.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('kb-input').placeholder = `Ask about ${doc}...`;
+}
+
+function sendKnowledgeQuery() {
+  const input = document.getElementById('kb-input');
+  const msgs = document.getElementById('kb-messages');
+  if(!input||!msgs||!input.value.trim()) return;
+  const q = input.value.trim(); input.value='';
+
+  msgs.innerHTML += `<div class="know-msg-user">${q}</div>`;
+  msgs.innerHTML += `<div class="know-msg-ai"><div style="display:flex;gap:.3rem;align-items:center"><div class="cop-dot"></div><div class="cop-dot"></div><div class="cop-dot"></div></div></div>`;
+  msgs.scrollTop = msgs.scrollHeight;
+
+  setTimeout(()=>{
+    const typing = msgs.querySelector('div:last-child');
+    const KB = window._knowledgeBase||{};
+    let answer = '', source = 'Company Policies';
+
+    const lower = q.toLowerCase();
+    if(lower.includes('return')||lower.includes('refund')) {
+      answer = 'Damaged products can be returned within <strong>30 days of delivery</strong> for a full refund or exchange. Items must be in original condition. Customers should initiate returns through the Orders section.';
+      source = 'Return Policy v2.4';
+    } else if(lower.includes('hotel')||lower.includes('expense')||lower.includes('travel')) {
+      answer = 'Hotel accommodation is capped at <strong>₹12,000 per night</strong>. Business travel allowance is ₹5,000 per day for meals and local transport. Claims above ₹25,000 require Director approval.';
+      source = 'Expense Policy v1.8';
+    } else if(lower.includes('supplier')||lower.includes('order')||lower.includes('moq')) {
+      answer = 'Supplier A (Apex Textiles) has 30-day payment terms with a minimum order quantity of 50 units. Supplier B (ValueFab) requires MOQ 100 units with 45-day payment terms.';
+      source = 'Supplier Agreements Q3 2026';
+    } else if(lower.includes('size')||lower.includes('sizing')||lower.includes('product')) {
+      answer = 'All NURA products follow EU sizing standards. Custom sizing is available for orders above 200 units. Size guides are to be maintained and updated based on customer return feedback.';
+      source = 'Product Catalog 2026';
+    } else {
+      answer = 'I found relevant information in the company knowledge base. Please ask a more specific question about return policies, expense limits, supplier terms, or product guidelines for a detailed answer.';
+      source = 'Company Knowledge Base';
+    }
+
+    typing.outerHTML = `<div class="know-msg-ai">${answer}<div class="know-msg-source">Source: ${source}</div></div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 1400);
+}
+
+/* ── ORDERS ADMIN ─────────────────────────────────────────────── */
+function renderAdminOrders(el) {
+  el.innerHTML = `
+  <div class="admin-table-card">
+    <div class="admin-table-header"><div class="admin-table-title">Recent Orders</div><div class="admin-table-sub">Last 30 days</div></div>
+    <table class="data-table">
+      <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Amount</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
+      <tbody>
+        ${[['#48291','Rahul S.','Urban Runner Sneakers','₹3,999','Delivered','28 Aug'],['#47834','Priya M.','Everyday Hoodie, Ribbed Knit Top','₹3,698','Delivered','12 Aug'],['#46901','Arun K.','Minimal Leather Backpack','₹2,999','Delivered','2 Aug'],['#48320','Meera R.','Essential Oversized Tee × 2','₹2,598','Processing','5 Sep'],['#48315','Vikram T.','Minimalist Watch','₹4,999','Shipped','4 Sep'],['#48302','Sonal G.','Classic Denim Jacket, Slip-On Mules','₹5,198','Shipped','3 Sep']].map(([id,cust,items,amt,status,date])=>`
+        <tr>
+          <td style="font-weight:600">${id}</td><td>${cust}</td><td style="max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${items}</td><td style="font-weight:700">${amt}</td>
+          <td><span class="status-pill ${status==='Delivered'?'pill-healthy':status==='Shipped'?'pill-warn':'pill-critical'}">${status}</span></td>
+          <td style="color:var(--a-muted)">${date}</td>
+          <td><button class="tbl-action" onclick="showToast('Viewing order ${id}')">View</button></td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+  </div>`;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   COPILOT
+════════════════════════════════════════════════════════════════ */
+const COP_RESPONSES = {
+  'why did sales decrease this month?': {
+    factors:[
+      {label:'Inventory Shortage',pct:'52% impact',body:'Urban Runner Sneakers was unavailable for 6 days due to stockout. Estimated ₹2.8L in lost sales.'},
+      {label:'Returns Increase',pct:'28% impact',body:'Return rate rose from 6.5% to 8.2%, reducing net revenue.'},
+      {label:'Marketing',pct:'20% impact',body:'Conversion rate from paid ads decreased by 3% due to campaign underperformance.'}
+    ],
+    actions:['Reorder Urban Runner immediately','Improve sizing information','Review marketing campaign ROI']
+  },
+  'which products are at risk of stocking out?':{
+    factors:[
+      {label:'Critical — Everyday Hoodie',pct:'3 days left',body:'18 units remaining, selling 6/day. Stockout expected by 9 Sep without immediate reorder.'},
+      {label:'Low — Urban Runner Sneakers',pct:'6 days left',body:'42 units remaining, selling 7/day. Reorder recommended within 2 days.'},
+      {label:'Monitor — Minimal Leather Backpack',pct:'8 days left',body:'34 units, selling 4/day. Reorder in next 5 days.'}
+    ],
+    actions:['Create PO for Everyday Hoodie — 120 units','Create PO for Urban Runner — 200 units','Set automated low-stock alerts']
+  },
+  'what is driving the high return rate?':{
+    factors:[
+      {label:'Primary Driver — Sizing',pct:'44% of returns',body:'Urban Runner Sneakers size-related returns increased 18% MoM. No size guide on product page.'},
+      {label:'Secondary — Product Quality',pct:'22% of returns',body:'Everyday Hoodie stitching complaints up 8% in customer feedback this month.'},
+      {label:'Tertiary — Expectations',pct:'17% of returns',body:'Product photos do not accurately represent colour in 3 listings.'}
+    ],
+    actions:['Add size guide to Urban Runner page','Review Hoodie stitching with supplier','Update product photography']
+  },
+  'which expenses need attention?':{
+    factors:[
+      {label:'Policy Violation — Hotel',pct:'₹6,400 over limit',body:'Sales Team expense ₹18,400 exceeds ₹12,000 hotel policy. Awaiting manager approval.'},
+      {label:'Duplicate Claim — Flight',pct:'₹8,200 duplicate',body:'Same flight submitted twice by Ops Team. Requires investigation.'},
+      {label:'Budget Overrun — Marketing',pct:'14% over budget',body:'₹64,000 spent vs ₹56,000 budget. Unplanned ad campaign on 22 Aug.'}
+    ],
+    actions:['Review hotel expense — approve or flag','Reject duplicate flight claim','Cap remaining marketing spend this month']
+  }
+};
+
+function toggleCopilot() {
+  const panel = document.getElementById('copilotPanel');
+  panel.classList.toggle('open');
+  state.copilotOpen = panel.classList.contains('open');
+}
+
+function sendCopilot(msg) {
+  const input = document.getElementById('copilotInput');
+  const msgs = document.getElementById('copilotMessages');
+  const q = msg || input?.value?.trim();
+  if(!q) return;
+  if(input) input.value = '';
+
+  msgs.innerHTML += `<div class="cop-user-msg">${q}</div>`;
+  msgs.innerHTML += `<div class="cop-ai-msg"><div class="cop-ai-label">Business Analysis</div><div class="cop-typing"><div class="cop-dot"></div><div class="cop-dot"></div><div class="cop-dot"></div></div></div>`;
+  msgs.scrollTop = msgs.scrollHeight;
+
+  setTimeout(()=>{
+    const typing = msgs.querySelector('.cop-ai-msg:last-child');
+    const lower = q.toLowerCase();
+    let resp = null;
+
+    if(lower.includes('sale') || lower.includes('decrease') || lower.includes('revenue') || lower.includes('performance')) {
+      resp = COP_RESPONSES['why did sales decrease this month?'];
+    } else if(lower.includes('stock') || lower.includes('inventory') || lower.includes('reorder') || lower.includes('hoodie') || lower.includes('runner') || lower.includes('shortage')) {
+      resp = COP_RESPONSES['which products are at risk of stocking out?'];
+    } else if(lower.includes('return') || lower.includes('exchange') || lower.includes('sizing') || lower.includes('refund') || lower.includes('quality')) {
+      resp = COP_RESPONSES['what is driving the high return rate?'];
+    } else if(lower.includes('expense') || lower.includes('hotel') || lower.includes('flight') || lower.includes('cost') || lower.includes('budget') || lower.includes('claim')) {
+      resp = COP_RESPONSES['which expenses need attention?'];
+    } else {
+      const key = Object.keys(COP_RESPONSES).find(k=>lower.includes(k.slice(0,10)));
+      resp = key ? COP_RESPONSES[key] : null;
+    }
+
+    if(resp) {
+      typing.innerHTML = `<div class="cop-ai-label">Business Analysis</div>
+        <div class="cop-ai-body">
+          ${resp.factors.map(f=>`<div class="cop-ai-section">
+            <div class="cop-ai-section-label">${f.label}</div>
+            <div class="cop-ai-impact">${f.pct} <span>${f.body}</span></div>
+          </div>`).join('')}
+          <div class="cop-ai-section">
+            <div class="cop-ai-section-label">Recommended Actions</div>
+            ${resp.actions.map((a,i)=>`<div style="font-size:.78rem;color:var(--a-muted);margin-bottom:.25rem">${i+1}. ${a}</div>`).join('')}
+          </div>
+          <div class="cop-actions">
+            <button class="abtn abtn-primary" onclick="showToast('Full analysis report opened')">View Detailed Analysis</button>
+          </div>
+        </div>`;
+    } else {
+      typing.innerHTML = `<div class="cop-ai-label">Business Analysis</div>
+        <div class="cop-ai-body">I've reviewed current operations across sales, inventory, returns, and finance. You can ask:
+          <div style="margin-top:.5rem;display:flex;flex-direction:column;gap:.3rem">
+            <a href="#" onclick="sendCopilot('Why did sales decrease this month?');return false" style="color:var(--a-accent)">• Why did sales decrease this month?</a>
+            <a href="#" onclick="sendCopilot('Which products are at risk of stocking out?');return false" style="color:var(--a-accent)">• Which products are at risk of stocking out?</a>
+            <a href="#" onclick="sendCopilot('What is driving the high return rate?');return false" style="color:var(--a-accent)">• What is driving the high return rate?</a>
+            <a href="#" onclick="sendCopilot('Which expenses need attention?');return false" style="color:var(--a-accent)">• Which expenses need attention?</a>
+          </div>
+        </div>`;
+    }
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 1200);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   UTILITIES & MODALS
+════════════════════════════════════════════════════════════════ */
+function toggleOpsIntel(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+
+function toggleSearch() {
+  const modal = document.getElementById('modalOverlay');
+  const content = document.getElementById('modalContent');
+  content.innerHTML = `
+    <div style="margin-bottom:1rem">
+      <div style="font-size:1.15rem;font-weight:800;margin-bottom:.5rem">Search NURA Products</div>
+      <input type="text" id="liveSearchInput" placeholder="Search by name, category, or tag (e.g. sneakers, hoodie)..." style="width:100%;padding:.7rem 1rem;border:1px solid var(--c-border);border-radius:var(--r-md);font-size:.9rem;font-family:var(--font);outline:none;background:#fff" oninput="runLiveSearch(this.value)"/>
+    </div>
+    <div id="liveSearchResults" style="max-height:340px;overflow-y:auto;display:flex;flex-direction:column;gap:.5rem">
+      ${renderSearchMatches('')}
+    </div>
+  `;
+  modal.classList.add('open');
+  setTimeout(() => document.getElementById('liveSearchInput')?.focus(), 100);
+}
+
+function runLiveSearch(val) {
+  const res = document.getElementById('liveSearchResults');
+  if(res) res.innerHTML = renderSearchMatches(val);
+}
+
+function renderSearchMatches(query) {
+  const q = query.trim().toLowerCase();
+  const matches = q ? PRODUCTS.filter(p => p.name.toLowerCase().includes(q) || p.catLabel.toLowerCase().includes(q) || p.tags.some(t => t.toLowerCase().includes(q))) : PRODUCTS.slice(0, 6);
+  if(matches.length === 0) {
+    return `<div style="text-align:center;padding:2rem;color:var(--c-mid);font-size:.88rem">No products matching "${query}"</div>`;
+  }
+  return matches.map(p => `
+    <div onclick="closeModal();showPage('product',${p.id})" style="display:flex;align-items:center;gap:.85rem;padding:.6rem .8rem;border-radius:var(--r-md);cursor:pointer;border:1px solid var(--c-border);background:#fff;transition:background .2s" onmouseover="this.style.background='#F9F8F6'" onmouseout="this.style.background='#fff'">
+      <div style="width:40px;height:40px;border-radius:var(--r-sm);background:${p.gradient};display:flex;align-items:center;justify-content:center;font-size:1.3rem">${p.emoji}</div>
+      <div style="flex:1">
+        <div style="font-size:.88rem;font-weight:700;color:var(--c-black)">${p.name}</div>
+        <div style="font-size:.72rem;color:var(--c-mid)">${p.catLabel} · ₹${p.price.toLocaleString('en-IN')}</div>
+      </div>
+      <span style="font-size:.75rem;color:var(--c-mid);font-weight:600">View →</span>
+    </div>
+  `).join('');
+}
+
+function openWishlistModal() {
+  const modal = document.getElementById('modalOverlay');
+  const content = document.getElementById('modalContent');
+  const wishlisted = PRODUCTS.filter(p => state.wishlist.includes(p.id));
+  
+  if(wishlisted.length === 0) {
+    content.innerHTML = `
+      <div style="text-align:center;padding:2.5rem 1rem">
+        <div style="font-size:3rem;margin-bottom:.75rem">♡</div>
+        <div style="font-size:1.15rem;font-weight:800;margin-bottom:.5rem">Your Wishlist is Empty</div>
+        <p style="font-size:.85rem;color:var(--c-mid);margin-bottom:1.5rem">Tap the ♡ heart icon on any product card to save items you love.</p>
+        <button class="btn btn-dark" onclick="closeModal();showPage('shop')">Explore Products</button>
+      </div>
+    `;
+  } else {
+    content.innerHTML = `
+      <div style="margin-bottom:1.25rem">
+        <div style="font-size:1.2rem;font-weight:800">My Wishlist (${wishlisted.length})</div>
+      </div>
+      <div style="max-height:360px;overflow-y:auto;display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.25rem">
+        ${wishlisted.map(p => `
+          <div style="display:flex;align-items:center;gap:.9rem;padding:.75rem;border:1px solid var(--c-border);border-radius:var(--r-md);background:#fff">
+            <div style="width:46px;height:46px;border-radius:var(--r-sm);background:${p.gradient};display:flex;align-items:center;justify-content:center;font-size:1.4rem;cursor:pointer" onclick="closeModal();showPage('product',${p.id})">${p.emoji}</div>
+            <div style="flex:1;cursor:pointer" onclick="closeModal();showPage('product',${p.id})">
+              <div style="font-size:.88rem;font-weight:700">${p.name}</div>
+              <div style="font-size:.8rem;color:var(--c-mid)">₹${p.price.toLocaleString('en-IN')}</div>
+            </div>
+            <button class="btn btn-dark btn-sm" onclick="quickAddToCart(${p.id});closeModal();">Add to Cart</button>
+            <button style="background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--c-mid);padding:.4rem" onclick="toggleWishlist(${p.id});openWishlistModal()">✕</button>
+          </div>
+        `).join('')}
+      </div>
+      <div style="display:flex;gap:.75rem">
+        <button class="btn btn-ghost btn-full" onclick="closeModal();showPage('shop')">Continue Browsing</button>
+      </div>
+    `;
+  }
+  modal.classList.add('open');
+}
+
+function showInfoModal(title, html) {
+  const modal = document.getElementById('modalOverlay');
+  const content = document.getElementById('modalContent');
+  content.innerHTML = `
+    <div style="margin-bottom:1rem"><div style="font-size:1.2rem;font-weight:800">${title}</div></div>
+    <div>${html}</div>
+    <div style="margin-top:1.5rem;text-align:right">
+      <button class="btn btn-dark btn-sm" onclick="closeModal()">Close</button>
+    </div>
+  `;
+  modal.classList.add('open');
+}
+
+let toastTimer;
+function showToast(msg) {
+  let t = document.getElementById('toast');
+  if(!t) {
+    t = document.createElement('div');
+    t.id = 'toast';
+    t.style.cssText = 'position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);background:#1C1C1C;color:#fff;padding:.75rem 1.5rem;border-radius:100px;font-size:.82rem;font-weight:600;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:all .3s;white-space:nowrap;font-family:var(--font)';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1'; t.style.transform = 'translateX(-50%) translateY(0)';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(-50%) translateY(10px)';},2800);
+}
+
+function closeModal(e) {
+  if(!e||e.target===document.getElementById('modalOverlay')) {
+    document.getElementById('modalOverlay').classList.remove('open');
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   INIT
+════════════════════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', ()=>{
+  renderHomeGrid();
+  renderShopGrid(PRODUCTS);
+  renderOrders();
+
+  // Pre-add Urban Runner to cart for demo flow
+  state.cart.push({pid:2,size:'8',color:'Black',qty:1});
+  updateCartBadge();
+
+  // Scroll animations
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+  },{threshold:0.1});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+});
+</script>
+</body>
+</html>
