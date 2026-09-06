@@ -1,116 +1,148 @@
-# 🌟 NURA — Intelligent Business AI Platform
+# Axion — Intelligent Business Operations & Decision Platform
 
-> **Quality products. Smarter shopping. Autonomous business intelligence.**  
-> Transforming raw business and e-commerce data into predictive insights, automated decisions, and risk-mitigated operations.
+> **Positioning:** *"From Data → Intelligence → Action."*
 
-🌐 **Live Website:** [https://ashmitsingh-25.github.io/Nura_Business_ai_help/](https://ashmitsingh-25.github.io/Nura_Business_ai_help/)
-
----
-
-## 📌 Table of Contents
-- [Overview](#-overview)
-- [Key Features & Capabilities](#-key-features--capabilities)
-  - [1. Customer E-Commerce Storefront](#1-customer-e-commerce-storefront)
-  - [2. Intelligent Returns & AI Decision System](#2-intelligent-returns--ai-decision-system)
-  - [3. Executive Admin Intelligence Center](#3-executive-admin-intelligence-center)
-  - [4. Predictive Analytics & Forecasting](#4-predictive-analytics--forecasting)
-  - [5. AI Business Assistant & Action Center](#5-ai-business-assistant--action-center)
-- [Architecture & Tech Stack](#-architecture--tech-stack)
-- [File Structure](#-file-structure)
-- [Running Locally](#-running-locally)
-- [Deployment](#-deployment)
+Axion is an enterprise-grade intelligent business operations and decision platform that unifies fragmented departmental data into a single autonomous decision layer. Powered by **Next.js 14+ (App Router)**, **TypeScript**, **Tailwind CSS**, **Prisma ORM with PostgreSQL**, and **Anthropic Claude 3.5 Sonnet**, Axion automates high-stakes decisions across returns, inventory forecasting, expense compliance, and executive business intelligence.
 
 ---
 
-## 🚀 Overview
+## 🌟 Key Modules & Capabilities
 
-**NURA** bridges the gap between customer-facing retail operations and back-office executive intelligence. Built with modern web standards, NURA provides a dual interface:
-1. **Consumer Experience**: A modern, responsive luxury-lifestyle e-commerce storefront with real-time cart management, order tracking, and instant AI returns assistance.
-2. **Business Control Center**: An enterprise-grade AI analytics dashboard with real-time revenue visualization, inventory restocking alerts, dynamic price-elasticity simulations, supplier risk scoring, and automated multi-agent actions.
+1. **Smart Returns & Exchange Copilot (`/returns`)**
+   - Autonomous intake & policy evaluation of return requests.
+   - Evaluates customer tiers (VIP/Gold), item conditions, and fraud risk scores.
+   - Converts potential cash refunds into retained revenue with automated **1-Click Size Exchanges** (e.g. *Axion Velocity Pro UK 9 → UK 9.5 exchange*).
 
----
+2. **Demand & Inventory Copilot (`/inventory`)**
+   - Real-time sales velocity tracking and statistical days-to-stockout forecasting.
+   - Automated multi-supplier comparative optimization (e.g. *Product X runs out in 9 days; Supplier A's 14-day lead time triggers stockout, automatically route 350 units to Supplier B with 4-day lead time*).
 
-## ✨ Key Features & Capabilities
+3. **AI Expense Policy Auditor (`/expenses`)**
+   - Automated 100% receipt and claim compliance against RAG-grounded corporate policies.
+   - Instant detection of spending cap overruns (e.g. *Grand Hyatt Mumbai ₹18,400 claimed vs ₹12,000 Tier-1 city cap → flagged with ₹6,400 variance*).
 
-### 1. Customer E-Commerce Storefront
-- **Dynamic Catalog**: Interactive product filtering by category (Apparel, Footwear, Accessories), pricing, and real-time inventory availability.
-- **Seamless Cart & Checkout**: Live cart badge updates, interactive promo codes, subtotal/shipping calculations, and instant order generation.
-- **Customer Portal**: View past orders, track shipment stages, and initiate returns with smart diagnostic surveys.
+4. **Business Intelligence & Decision Copilot (`/insights`)**
+   - Natural language business inquiry powered by Claude 3.5 Sonnet.
+   - Strictly structured 5-stage synthesis: **Detect → Investigate → Assess → Recommend → Alert** (e.g. *"Why did sales fall this month?"*).
+   - Live cross-department **Risk Detector Feed** and **AI Dynamic Pricing Optimizer**.
 
-### 2. Intelligent Returns & AI Decision System
-- **Automated Policy Routing**: Dynamically evaluates product condition, customer history, return reasons, and profitability.
-- **Smart Refund & Restock Suggestions**: Suggests instant replacements, store credit incentives, or standard return approvals based on margin impact.
-
-### 3. Executive Admin Intelligence Center
-- **Key Performance Metrics**: Live monitoring of Total Revenue, Gross Margins, Return Rate %, Customer Lifetime Value (LTV), and Restock Alerts.
-- **Interactive Visualizations**: High-performance Chart.js graphs displaying 7-day vs 30-day revenue trends, return rate distribution, and profit margin analysis.
-- **Supplier & Inventory Optimizer**: Real-time supplier lead-time tracking, out-of-stock risk alerts, and one-click bulk reorder triggers.
-
-### 4. Predictive Analytics & Forecasting
-- **Demand Forecasting**: Machine-learning driven predictions for next-quarter SKU demand.
-- **Dynamic Pricing Simulator**: Test price changes against demand elasticity curves to maximize revenue and gross margin.
-- **Risk Detection Engine**: Proactively detects anomalous return spikes, fraudulent chargeback patterns, and shipping bottlenecks.
-
-### 5. AI Business Assistant & Action Center
-- **Interactive Multi-Turn Chat**: Ask natural language business queries like *"What is our fastest moving product?"*, *"Which supplier has the highest delay risk?"*, or *"Simulate a 10% discount on outerwear"*.
-- **Automated Execution**: Execute operational actions (send supplier POs, apply price revisions, trigger customer emails) directly from the platform.
+5. **Executive Overview Dashboard (`/dashboard`)**
+   - Cross-module telemetry, real-time KPI metrics, retained GMV tracking, and recent autonomous decision audit logs.
 
 ---
 
-## 🛠️ Architecture & Tech Stack
+## 🏗️ Architecture & Tech Stack
 
-- **Frontend**: HTML5, Vanilla JavaScript (ES6+), Modern Vanilla CSS3 Design System with Custom Properties & Glassmorphism
-- **Charting & Data Viz**: Chart.js (v4.4.0) for dynamic, interactive visual analytics
-- **Typography & Icons**: Google Fonts (Inter), Native UTF-8 Geometric Glyphs & SVGs
-- **Deployment & CI/CD**: GitHub Pages with automated GitHub Actions Workflow (`.github/workflows/deploy.yml`)
+| Component | Technology | Description |
+|---|---|---|
+| **Framework** | Next.js 14+ (App Router) | React Server & Client Components, Route Handlers |
+| **Language** | TypeScript | Fully typed interfaces, strict mode |
+| **Styling** | Tailwind CSS + Glassmorphism | Dark/light SaaS aesthetic with custom glow accents |
+| **Database & ORM** | Prisma ORM + PostgreSQL | Works with Neon, Vercel Postgres, Supabase, or Local DB |
+| **AI Agent Layer** | Anthropic Claude SDK (`@anthropic-ai/sdk`) | Multi-agent structured reasoning with deterministic fallbacks |
+| **RAG Policy Engine** | Semantic Policy Retrieval | RAG policy grounding (gated by `ENABLE_VECTOR_RAG`) |
+| **Deployment** | Vercel | Zero-config serverless deployment out of the box |
 
 ---
 
-## 📂 File Structure
+## 📁 Project Structure
 
-```text
-├── .github/
-│   └── workflows/
-│       └── deploy.yml        # Automated GitHub Actions deployment to GitHub Pages
-├── index.html                # Main entry point (NURA Full Application & Admin Intelligence)
-├── mainfile.html             # NURA Full Application source
-├── axion_landing.html        # AXION Enterprise AI Platform Landing Page
-├── style.css                 # Dedicated CSS stylesheet
-├── app.js                    # Additional application scripts & Chart helpers
-└── README.md                 # Project documentation & overview
+```
+├── app/
+│   ├── layout.tsx                    # Root layout with fonts, Navbar, and Footer
+│   ├── page.tsx                      # High-impact marketing & landing page
+│   ├── globals.css                   # Global Tailwind CSS and glassmorphic styling
+│   ├── dashboard/page.tsx            # Executive Overview Console
+│   ├── returns/page.tsx              # Smart Returns & Exchange Copilot UI
+│   ├── inventory/page.tsx            # Demand & Inventory Copilot UI
+│   ├── expenses/page.tsx             # AI Expense Policy Auditor UI
+│   ├── insights/page.tsx             # Business Intelligence, Chat Copilot & Risk Feed
+│   └── api/
+│       ├── returns/decide/route.ts   # Returns decision engine (serverless)
+│       ├── inventory/forecast/route.ts # Inventory velocity & supplier engine
+│       ├── expenses/analyze/route.ts # Expense audit & policy RAG engine
+│       └── insights/query/route.ts   # Business Copilot 5-stage reasoning engine
+├── components/
+│   ├── Navbar.tsx                    # Responsive navigation with active status
+│   ├── Footer.tsx                    # Platform footer & architecture links
+│   ├── ModuleCard.tsx                # Showcase card with workflow diagrams
+│   ├── WorkflowStepper.tsx           # Multi-step agent workflow visualizer
+│   ├── ChatPanel.tsx                 # 5-stage Business Decision Copilot chat
+│   ├── RiskFeed.tsx                  # Real-time cross-department risk monitor
+│   ├── PricingCard.tsx               # AI Dynamic Pricing Optimizer card
+│   └── StatCard.tsx                  # Executive KPI metric widget
+├── lib/
+│   ├── anthropic.ts                  # Anthropic Claude SDK client & agent methods
+│   ├── prisma.ts                     # Prisma ORM singleton client
+│   ├── forecasting.ts                # Demand velocity & supplier trade-off algorithms
+│   ├── policy-rag.ts                 # Policy retrieval & semantic RAG engine
+│   ├── mock-data.ts                  # Rich seeded enterprise dataset
+│   ├── types.ts                      # TypeScript type definitions
+│   └── utils.ts                      # Styling and formatting utility helpers
+├── prisma/
+│   ├── schema.prisma                 # PostgreSQL database schema
+│   └── seed.ts                       # Realistic database seeding script
+├── .env.example                      # Environment variables template
+└── README.md
 ```
 
 ---
 
-## 💻 Running Locally
+## 🚀 Local Quickstart Setup
 
-No complex build steps or external package managers required!
+### 1. Install Dependencies
+```bash
+npm install
+```
 
-1. **Clone the repository:**
+### 2. Configure Environment Variables
+Copy `.env.example` to `.env`:
+```bash
+cp .env.example .env
+```
+Fill in your credentials:
+```env
+ANTHROPIC_API_KEY="sk-ant-api03-..."
+DATABASE_URL="postgresql://postgres:password@localhost:5432/axion_db?schema=public"
+```
+*(Note: Axion includes built-in smart mock fallbacks. If no API key or DB is provided, the platform runs in full Demo Mode without crashing!)*
+
+### 3. Initialize & Seed Database (Optional for Live DB)
+```bash
+npx prisma db push
+npx prisma db seed
+```
+
+### 4. Run Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## ☁️ Deploying to Vercel
+
+Axion is built to be deployed to Vercel with zero extra configuration:
+
+1. **Push to GitHub / GitLab / Bitbucket**:
    ```bash
-   git clone https://github.com/ashmitsingh-25/Nura_Business_ai_help.git
-   cd Nura_Business_ai_help
+   git init
+   git add .
+   git commit -m "feat: Initial Axion platform release"
+   git push origin main
    ```
-
-2. **Open in browser:**
-   - Double-click `index.html` to open directly in any modern web browser.
-   - Or use VS Code **Live Server** / Python HTTP server:
-     ```bash
-     python -m http.server 8000
-     ```
-   - Navigate to `http://localhost:8000`.
-
----
-
-## 🌐 Deployment to GitHub Pages
-
-This project is configured with GitHub Actions for automated deployment.
-To enable GitHub Pages manually if needed:
-1. Navigate to repository **Settings** > **Pages**.
-2. Under **Build and deployment** > **Source**, choose **GitHub Actions** (or select **Deploy from a branch** -> `main` / `/root`).
-3. Your website will be live at:  
-   `https://ashmitsingh-25.github.io/Nura_Business_ai_help/`
+2. **Import into Vercel**:
+   - Go to [vercel.com](https://vercel.com) and click **"Add New Project"**.
+   - Select your Axion repository.
+3. **Set Environment Variables in Vercel Project Settings**:
+   - `ANTHROPIC_API_KEY`: Your Anthropic Claude API Key.
+   - `DATABASE_URL`: Your PostgreSQL connection string (e.g. from Vercel Postgres or Neon).
+4. **Deploy**:
+   - Click **Deploy**. Vercel will automatically build the Next.js App Router application with serverless route handlers.
 
 ---
 
-© 2026 **NURA AI Business Intelligence**. Built for modern intelligent retail.
+## 🛡️ License
+
+Built with pride by the Axion Technologies team. Enterprise confidential & proprietary.

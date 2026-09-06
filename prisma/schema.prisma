@@ -1,0 +1,143 @@
+// Axion — Prisma Schema
+// Provider: PostgreSQL (Vercel Postgres, Neon, or standard PostgreSQL)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Order {
+  id              String          @id @default(cuid())
+  orderNumber     String          @unique
+  customerName    String
+  customerEmail   String
+  customerTier    String          @default("STANDARD") // VIP, GOLD, STANDARD, HIGH_RISK
+  orderDate       DateTime        @default(now())
+  totalAmount     Float
+  status          String          @default("DELIVERED") // DELIVERED, SHIPPED, RETURNED
+  items           Json            // Array of items with SKU, title, size, color, price
+  returns         ReturnRequest[]
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+}
+
+model ReturnRequest {
+  id                  String   @id @default(cuid())
+  orderId             String
+  order               Order    @relation(fields: [orderId], references: [id])
+  customerReason      String
+  itemCondition       String   @default("UNWORN_WITH_TAGS")
+  photoUrl            String?
+  decision            String   // approve, deny, escalate
+  resolution          String   // exchange, refund, replacement, store_credit
+  confidence          Float
+  reasoning           String
+  suggestedAlternative String?
+  policyChecks        Json     // array of strings
+  riskScore           Float    @default(0.1)
+  status              String   @default("COMPLETED")
+  createdAt           DateTime @default(now())
+}
+
+model InventoryItem {
+  id               String        @id @default(cuid())
+  sku              String        @unique
+  name             String
+  category         String
+  currentStock     Int
+  unitCost         Float
+  sellingPrice     Float
+  dailySalesRate   Float
+  daysToStockout   Float
+  reorderPoint     Int
+  reorderQuantity  Int
+  safetyStock      Int
+  status           String        @default("HEALTHY") // HEALTHY, LOW_STOCK, CRITICAL, OUT_OF_STOCK
+  suppliers        Supplier[]
+  salesHistory     SalesRecord[]
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+}
+
+model Supplier {
+  id               String        @id @default(cuid())
+  name             String
+  inventoryItemId  String
+  inventoryItem    InventoryItem @relation(fields: [inventoryItemId], references: [id])
+  leadTimeDays     Int
+  unitCost         Float
+  minOrderQuantity Int
+  reliabilityScore Float         // 0.0 to 1.0
+  isPreferred      Boolean       @default(false)
+  createdAt        DateTime      @default(now())
+}
+
+model SalesRecord {
+  id               String        @id @default(cuid())
+  inventoryItemId  String
+  inventoryItem    InventoryItem @relation(fields: [inventoryItemId], references: [id])
+  date             DateTime
+  quantitySold     Int
+  revenue          Float
+  channel          String        @default("ONLINE_STORE")
+}
+
+model ExpenseClaim {
+  id              String   @id @default(cuid())
+  claimNumber     String   @unique
+  employeeName    String
+  employeeRole    String
+  department      String
+  vendor          String
+  category        String   // ACCOMMODATION, FLIGHT, MEALS, SOFTWARE, LOGISTICS
+  amount          Float
+  currency        String   @default("INR")
+  date            DateTime
+  receiptUrl      String?
+  status          String   // approved, flagged, escalated, rejected
+  confidence      Float
+  policyLimit     Float?
+  violations      Json     // Array of detected policy violations
+  reasoning       String
+  policyReference String?
+  createdAt       DateTime @default(now())
+}
+
+model PolicyDocument {
+  id          String   @id @default(cuid())
+  title       String
+  category    String   // TRAVEL_EXPENSE, RETURNS_REFUNDS, INVENTORY_PROCUREMENT
+  content     String
+  version     String   @default("1.0")
+  rules       Json     // Structured rules extract
+  updatedAt   DateTime @updatedAt
+}
+
+model RiskAlert {
+  id          String   @id @default(cuid())
+  title       String
+  department  String   // INVENTORY, FINANCE, CUSTOMER_OPS, SUPPLY_CHAIN
+  severity    String   // HIGH, MEDIUM, LOW, CRITICAL
+  description String
+  suggestedAction String
+  resolved    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model PricingInsight {
+  id                String   @id @default(cuid())
+  sku               String
+  productName       String
+  currentPrice      Float
+  recommendedPrice  Float
+  competitorAvg     Float
+  elasticityScore   Float
+  projectedDemand   String
+  projectedRevenue  String
+  reasoning         String
+  createdAt         DateTime @default(now())
+}
