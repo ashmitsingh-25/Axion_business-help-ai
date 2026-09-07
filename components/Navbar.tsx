@@ -29,9 +29,17 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
+  interface NavLink {
+    name: string;
+    href: string;
+    icon: React.ElementType;
+    badge?: string;
+    highlight?: boolean;
+  }
+
+  const navLinks: NavLink[] = [
     { name: "Overview", href: "/dashboard", icon: LayoutDashboard },
-    { name: "Smart Returns", href: "/returns", icon: RotateCcw, badge: "AI Agent" },
+    { name: "Smart Returns", href: "/returns", icon: RotateCcw },
     { name: "Inventory Copilot", href: "/inventory", icon: Boxes },
     { name: "Expense Auditor", href: "/expenses", icon: Receipt },
     { name: "Business Copilot", href: "/insights", icon: Sparkles, highlight: true },
