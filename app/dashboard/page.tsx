@@ -82,14 +82,14 @@ export default function DashboardPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Dashboard Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-zinc-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-sans">
               Enterprise Operations Console
             </h1>
-            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center gap-1 font-semibold">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/5 text-zinc-300 border border-white/10 flex items-center gap-1 font-semibold">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               <span>Real-Time Ingestion</span>
             </span>
           </div>
@@ -101,9 +101,9 @@ export default function DashboardPage() {
         <div className="flex items-center gap-3">
           <Link
             href="/insights"
-            className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold flex items-center gap-2 shadow-md shadow-blue-600/20 active:scale-95 transition-all"
+            className="px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 text-xs font-semibold flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.12)] active:scale-95 transition-all"
           >
-            <Sparkles className="w-3.5 h-3.5" />
+            <Sparkles className="w-3.5 h-3.5 text-zinc-950" />
             <span>Launch Copilot</span>
           </Link>
         </div>
@@ -161,27 +161,27 @@ export default function DashboardPage() {
               <Link
                 key={i}
                 href={action.href}
-                className="group p-5 rounded-2xl bg-zinc-900/80 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200 flex flex-col justify-between shadow-md"
+                className="group p-5 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-white/20 hover:bg-zinc-900/80 backdrop-blur-2xl transition-all duration-200 flex flex-col justify-between shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_-10px_rgba(0,0,0,0.5)]"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <div className="p-2 rounded-xl bg-zinc-950 border border-zinc-800 text-blue-400 group-hover:text-blue-300 transition-colors">
+                    <div className="p-2 rounded-xl bg-white/5 border border-white/10 text-zinc-200 group-hover:text-white transition-colors shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
                       <Icon className="w-4 h-4" />
                     </div>
-                    <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-zinc-950 text-zinc-300 border border-zinc-700 font-bold">
+                    <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-white/5 text-zinc-300 border border-white/10 font-bold">
                       {action.badge}
                     </span>
                   </div>
-                  <h2 className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors">
+                  <h2 className="text-sm font-bold text-white group-hover:text-zinc-200 transition-colors">
                     {action.title}
                   </h2>
                   <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
                     {action.desc}
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-zinc-850 flex items-center justify-between text-xs text-zinc-400 font-medium">
+                <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-zinc-400 font-medium">
                   <span>Enter Module</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 text-blue-400 transition-transform" />
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 text-white transition-transform" />
                 </div>
               </Link>
             );
@@ -200,8 +200,8 @@ export default function DashboardPage() {
       </div>
 
       {/* Recent Autonomous Decisions Audit Trail */}
-      <div className="p-6 rounded-2xl bg-zinc-900/80 border border-zinc-800">
-        <div className="flex items-center justify-between pb-4 border-b border-zinc-800">
+      <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+        <div className="flex items-center justify-between pb-4 border-b border-white/10">
           <div>
             <h3 className="text-sm font-bold text-white tracking-tight">
               Recent Autonomous Decision Logs
@@ -216,15 +216,15 @@ export default function DashboardPage() {
           </span>
         </div>
 
-        <div className="mt-4 divide-y divide-zinc-800/60">
+        <div className="mt-4 divide-y divide-white/5">
           {recentDecisions.map((dec) => (
             <div
               key={dec.id}
-              className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs hover:bg-zinc-950/40 px-2 rounded-xl transition-colors"
+              className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs hover:bg-white/[0.02] px-2 rounded-xl transition-colors"
             >
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-[10px] text-blue-400 font-bold">{dec.id}</span>
+                  <span className="font-mono text-[10px] text-zinc-300 font-bold">{dec.id}</span>
                   <span className="text-zinc-600">•</span>
                   <span className="font-bold text-white">{dec.subject}</span>
                 </div>
@@ -236,12 +236,12 @@ export default function DashboardPage() {
 
               <div className="flex items-center gap-3 sm:text-right flex-shrink-0">
                 <div>
-                  <div className="font-mono text-[10px] text-blue-400 font-semibold">
+                  <div className="font-mono text-[10px] text-zinc-200 font-semibold">
                     {dec.retained}
                   </div>
                   <div className="text-[10px] text-zinc-500">{dec.agent}</div>
                 </div>
-                <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-full border bg-zinc-950 text-zinc-300 border-zinc-700">
+                <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-full border bg-white/5 text-zinc-300 border-white/10">
                   {dec.status}
                 </span>
               </div>

@@ -57,7 +57,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center shadow-md shadow-blue-600/30 group-hover:bg-blue-500 transition-colors">
+            <div className="w-9 h-9 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] group-hover:bg-white/15 transition-colors">
               <Layers className="w-5 h-5 text-white" />
             </div>
             <div className="flex flex-col">
@@ -65,7 +65,7 @@ export function Navbar() {
                 <span className="text-xl font-extrabold tracking-tight text-white font-sans">
                   Axion
                 </span>
-                <span className="text-[10px] font-semibold tracking-wider uppercase px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">
+                <span className="text-[10px] font-semibold tracking-wider uppercase px-1.5 py-0.5 rounded bg-white/5 text-zinc-300 border border-white/10">
                   Enterprise
                 </span>
               </div>
@@ -76,7 +76,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 bg-zinc-900/90 p-1.5 rounded-full border border-zinc-800 backdrop-blur-md">
+          <nav className="hidden md:flex items-center gap-1 bg-zinc-900/60 p-1.5 rounded-full border border-white/10 backdrop-blur-2xl shadow-lg">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
@@ -86,14 +86,14 @@ export function Navbar() {
                   href={link.href}
                   className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-150 ${
                     isActive
-                      ? "bg-blue-600 text-white shadow-sm"
-                      : "text-zinc-300 hover:text-white hover:bg-zinc-800"
+                      ? "bg-white text-zinc-950 font-semibold shadow-[0_0_15px_rgba(255,255,255,0.15)]"
+                      : "text-zinc-300 hover:text-white hover:bg-white/5"
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? "text-white" : "text-zinc-400"}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? "text-zinc-950" : "text-zinc-400"}`} />
                   <span>{link.name}</span>
                   {link.badge && !isActive && (
-                    <span className="text-[9px] font-semibold px-1.5 py-0.2 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                    <span className="text-[9px] font-semibold px-1.5 py-0.2 rounded-full bg-white/10 text-zinc-200 border border-white/15">
                       {link.badge}
                     </span>
                   )}
@@ -104,13 +104,13 @@ export function Navbar() {
 
           {/* Right Action CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            <div className="flex items-center gap-2 text-xs text-zinc-400 bg-zinc-900 px-3 py-1.5 rounded-xl border border-zinc-800">
-              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+            <div className="flex items-center gap-2 text-xs text-zinc-400 bg-zinc-900/80 px-3 py-1.5 rounded-xl border border-white/10 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-zinc-300 font-medium">Agents Online</span>
             </div>
             <Link
               href="/dashboard"
-              className="flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white shadow-md shadow-blue-600/25 transition-all active:scale-95"
+              className="flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 shadow-[0_0_20px_rgba(255,255,255,0.12)] transition-all active:scale-95"
             >
               <span>Launch Console</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -121,13 +121,13 @@ export function Navbar() {
           <div className="flex md:hidden items-center gap-2">
             <Link
               href="/dashboard"
-              className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-blue-600 text-white"
+              className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white text-zinc-950 shadow-sm"
             >
               Console
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white"
+              className="p-2 rounded-lg bg-zinc-900 border border-white/10 text-zinc-300 hover:text-white"
               aria-label="Toggle Navigation"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -138,13 +138,13 @@ export function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-3 px-4 pt-2 pb-4 bg-zinc-950/98 border-b border-zinc-800 backdrop-blur-2xl">
+        <div className="md:hidden mt-3 px-4 pt-2 pb-4 bg-zinc-950/98 border-b border-white/10 backdrop-blur-2xl">
           <div className="flex flex-col gap-1">
             <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
               className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm ${
-                pathname === "/" ? "bg-blue-600/15 text-blue-400 font-semibold" : "text-zinc-300"
+                pathname === "/" ? "bg-white/10 text-white font-semibold border border-white/15" : "text-zinc-300"
               }`}
             >
               <Activity className="w-4 h-4 text-zinc-400" />
@@ -160,8 +160,8 @@ export function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm ${
                     isActive
-                      ? "bg-blue-600 text-white font-semibold"
-                      : "text-zinc-300 hover:bg-zinc-900"
+                      ? "bg-white text-zinc-950 font-semibold"
+                      : "text-zinc-300 hover:bg-white/5"
                   }`}
                 >
                   <div className="flex items-center gap-2.5">

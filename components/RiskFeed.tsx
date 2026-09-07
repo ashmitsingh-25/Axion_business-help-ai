@@ -47,15 +47,15 @@ export function RiskFeed({ initialRisks = MOCK_RISKS as any, className = "" }: R
   };
 
   return (
-    <div className={`rounded-2xl bg-zinc-900/80 border border-zinc-800 p-5 ${className}`}>
+    <div className={`rounded-2xl bg-zinc-900/60 border border-white/10 p-5 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_-10px_rgba(0,0,0,0.5)] ${className}`}>
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-zinc-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2">
             <h3 className="text-sm font-bold text-white tracking-tight">
               Live Cross-Department Risk Detector
             </h3>
-            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700">
+            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-white/5 text-zinc-300 border border-white/10">
               {filteredRisks.length} Detected
             </span>
           </div>
@@ -65,14 +65,14 @@ export function RiskFeed({ initialRisks = MOCK_RISKS as any, className = "" }: R
         </div>
 
         {/* Department Filter Tabs */}
-        <div className="flex items-center gap-1 bg-zinc-950 p-1 rounded-lg border border-zinc-800 text-xs overflow-x-auto">
+        <div className="flex items-center gap-1 bg-zinc-950/80 p-1 rounded-lg border border-white/5 text-xs overflow-x-auto">
           {["ALL", "INVENTORY", "FINANCE", "CUSTOMER_OPS", "SUPPLY_CHAIN"].map((dept) => (
             <button
               key={dept}
               onClick={() => setFilterDept(dept)}
               className={`px-2.5 py-1 rounded-md text-[10px] font-medium transition-colors whitespace-nowrap ${
                 filterDept === dept
-                  ? "bg-blue-600 text-white shadow-sm font-semibold"
+                  ? "bg-white text-zinc-950 shadow-sm font-semibold"
                   : "text-zinc-400 hover:text-white"
               }`}
             >
@@ -93,13 +93,13 @@ export function RiskFeed({ initialRisks = MOCK_RISKS as any, className = "" }: R
               key={risk.id}
               className={`p-4 rounded-xl border transition-all duration-200 ${
                 isResolved
-                  ? "bg-zinc-950/40 border-zinc-850 opacity-60"
-                  : "bg-zinc-950 border-zinc-800 hover:border-zinc-700"
+                  ? "bg-zinc-950/40 border-white/5 opacity-60"
+                  : "bg-zinc-950/80 border-white/5 hover:border-white/15"
               }`}
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-blue-400 flex-shrink-0 mt-0.5">
+                  <div className="p-2 rounded-lg bg-zinc-900 border border-white/10 text-zinc-200 flex-shrink-0 mt-0.5">
                     <DeptIcon className="w-4 h-4" />
                   </div>
                   <div>
@@ -124,8 +124,8 @@ export function RiskFeed({ initialRisks = MOCK_RISKS as any, className = "" }: R
                     </p>
 
                     {/* Suggested Action */}
-                    <div className="mt-2.5 p-2.5 rounded-lg bg-zinc-900 border border-zinc-800 flex items-start gap-2">
-                      <div className="text-[10px] font-bold text-blue-400 uppercase tracking-wider flex-shrink-0 mt-0.5">
+                    <div className="mt-2.5 p-2.5 rounded-lg bg-zinc-900/80 border border-white/5 flex items-start gap-2">
+                      <div className="text-[10px] font-bold text-zinc-200 uppercase tracking-wider flex-shrink-0 mt-0.5">
                         Action:
                       </div>
                       <div className="text-[11px] text-zinc-300 font-sans">
@@ -145,13 +145,13 @@ export function RiskFeed({ initialRisks = MOCK_RISKS as any, className = "" }: R
                     onClick={() => handleResolve(risk.id)}
                     className={`text-[10px] font-semibold px-2.5 py-1 rounded-lg border transition-all flex items-center gap-1 ${
                       isResolved
-                        ? "bg-zinc-800 text-zinc-300 border-zinc-700"
-                        : "bg-blue-600/15 hover:bg-blue-600/25 text-blue-400 border-blue-500/30"
+                        ? "bg-zinc-850 text-zinc-400 border-white/5"
+                        : "bg-white/10 hover:bg-white/15 text-zinc-200 border-white/15"
                     }`}
                   >
                     {isResolved ? (
                       <>
-                        <CheckCircle className="w-3 h-3 text-blue-400" />
+                        <CheckCircle className="w-3 h-3 text-white" />
                         <span>Mitigated</span>
                       </>
                     ) : (

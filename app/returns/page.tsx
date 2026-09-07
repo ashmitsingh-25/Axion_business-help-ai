@@ -254,20 +254,20 @@ export default function ReturnsPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-zinc-900 border border-zinc-700 text-white text-xs px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 animate-fade-in">
-          <Info className="w-4 h-4 text-blue-400" />
+        <div className="fixed bottom-6 right-6 z-50 bg-zinc-900/90 border border-white/15 text-white text-xs px-4 py-3 rounded-xl shadow-2xl backdrop-blur-xl flex items-center gap-2 animate-fade-in">
+          <Info className="w-4 h-4 text-zinc-300" />
           <span>{toastMessage}</span>
         </div>
       )}
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-zinc-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-sans">
               Smart Returns & Exchange Copilot
             </h1>
-            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-bold">
+            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/5 text-zinc-300 border border-white/10 font-bold">
               Multi-Factor Risk Engine
             </span>
           </div>
@@ -281,15 +281,15 @@ export default function ReturnsPage() {
           <button
             type="button"
             onClick={loadShoeExchangePreset}
-            className="px-3.5 py-2 rounded-xl bg-blue-600/15 hover:bg-blue-600/25 text-blue-400 border border-blue-500/30 text-xs font-semibold flex items-center gap-1.5 transition-all"
+            className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-zinc-200 border border-white/20 text-xs font-semibold flex items-center gap-1.5 transition-all shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]"
           >
-            <Zap className="w-3.5 h-3.5 text-blue-400" />
+            <Zap className="w-3.5 h-3.5 text-zinc-200" />
             <span>Preset: Low Risk Shoe Sizing (ORD-88219)</span>
           </button>
           <button
             type="button"
             onClick={loadHighRiskPreset}
-            className="px-3.5 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-850 text-zinc-300 border border-zinc-800 text-xs font-semibold flex items-center gap-1.5 transition-all"
+            className="px-3.5 py-2 rounded-xl bg-zinc-900/80 hover:bg-white/5 text-zinc-300 border border-white/10 text-xs font-semibold flex items-center gap-1.5 transition-all"
           >
             <ShieldAlert className="w-3.5 h-3.5 text-zinc-400" />
             <span>Preset: High Risk Escalation</span>
@@ -297,7 +297,7 @@ export default function ReturnsPage() {
           <button
             type="button"
             onClick={loadDefectPreset}
-            className="px-3.5 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-850 text-zinc-300 border border-zinc-800 text-xs font-semibold flex items-center gap-1.5 transition-all"
+            className="px-3.5 py-2 rounded-xl bg-zinc-900/80 hover:bg-white/5 text-zinc-300 border border-white/10 text-xs font-semibold flex items-center gap-1.5 transition-all"
           >
             <Package className="w-3.5 h-3.5 text-zinc-400" />
             <span>Preset: Hardware Defect</span>
@@ -306,8 +306,8 @@ export default function ReturnsPage() {
       </div>
 
       {/* Interactive Workflow Stepper */}
-      <div className="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800">
-        <div className="text-[10px] font-mono uppercase text-zinc-500 tracking-wider mb-2 font-bold">
+      <div className="p-4 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl">
+        <div className="text-[10px] font-mono uppercase text-zinc-400 tracking-wider mb-2 font-bold">
           Autonomous Multi-Agent Pipeline
         </div>
         <WorkflowStepper steps={workflowSteps} />
@@ -317,25 +317,17 @@ export default function ReturnsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Column: Return Request Intake Form (5 cols) */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="p-6 rounded-2xl bg-zinc-900/80 border border-zinc-800 shadow-xl space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-zinc-800">
+          <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_20px_50px_rgba(0,0,0,0.6)] space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-white/10">
               <div className="flex items-center gap-2">
-                <RotateCcw className="w-4 h-4 text-blue-400" />
+                <RotateCcw className="w-4 h-4 text-zinc-200" />
                 <h2 className="text-sm font-bold text-white">Return Request Intake Form</h2>
               </div>
               
               {/* Live Form Risk Indicator Badge */}
-              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-zinc-950 border border-zinc-800 text-[10px] font-mono">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-zinc-950/80 border border-white/10 text-[10px] font-mono">
                 <span className="text-zinc-400">Est. Risk:</span>
-                <span
-                  className={`font-bold ${
-                    liveRiskLevel === "LOW"
-                      ? "text-blue-400"
-                      : liveRiskLevel === "MODERATE"
-                      ? "text-zinc-200"
-                      : "text-zinc-100"
-                  }`}
-                >
+                <span className="font-bold text-white">
                   {Math.round(liveRiskScore * 100)}% ({liveRiskLevel})
                 </span>
               </div>
@@ -352,14 +344,14 @@ export default function ReturnsPage() {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-zinc-400 font-medium mb-1">
-                    Order Number <span className="text-blue-400">*</span>
+                    Order Number <span className="text-white">*</span>
                   </label>
                   <input
                     type="text"
                     value={orderId}
                     onChange={(e) => setOrderId(e.target.value)}
                     placeholder="e.g. ORD-88219"
-                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2.5 text-white font-mono focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-transparent transition-all"
                     required
                   />
                 </div>
@@ -370,7 +362,7 @@ export default function ReturnsPage() {
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
                     placeholder="e.g. Aarav Sharma"
-                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-transparent transition-all"
                   />
                 </div>
               </div>
@@ -384,7 +376,7 @@ export default function ReturnsPage() {
                     value={itemName}
                     onChange={(e) => setItemName(e.target.value)}
                     placeholder="e.g. Axion Velocity Pro Shoes"
-                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-1 focus:ring-white/30"
                     required
                   />
                 </div>
@@ -393,7 +385,7 @@ export default function ReturnsPage() {
                   <select
                     value={currentSize}
                     onChange={(e) => setCurrentSize(e.target.value)}
-                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-2.5 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-2.5 py-2.5 text-white focus:outline-none focus:ring-1 focus:ring-white/30"
                   >
                     <option value="UK 8">UK 8</option>
                     <option value="UK 8.5">UK 8.5</option>
@@ -412,7 +404,7 @@ export default function ReturnsPage() {
                   <select
                     value={customerTier}
                     onChange={(e) => setCustomerTier(e.target.value)}
-                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-1 focus:ring-white/30"
                   >
                     <option value="VIP">VIP Tier (-15% Risk Offset)</option>
                     <option value="GOLD">Gold Tier (-5% Risk Offset)</option>
@@ -426,7 +418,7 @@ export default function ReturnsPage() {
                   <select
                     value={itemCondition}
                     onChange={(e) => setItemCondition(e.target.value)}
-                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-1 focus:ring-white/30"
                   >
                     <option value="UNWORN_WITH_TAGS">Unworn with tags (Verified)</option>
                     <option value="TRIED_ON_INDOORS">Tried on indoors</option>
@@ -443,7 +435,7 @@ export default function ReturnsPage() {
                   <select
                     value={returnFrequency}
                     onChange={(e) => setReturnFrequency(e.target.value)}
-                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-1 focus:ring-white/30"
                   >
                     <option value="FIRST_TIME">1st Return (0.0x Velocity)</option>
                     <option value="OCCASIONAL">Occasional Return (1 in 90d)</option>
@@ -456,7 +448,7 @@ export default function ReturnsPage() {
                   <select
                     value={requestedResolution}
                     onChange={(e) => setRequestedResolution(e.target.value)}
-                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-1 focus:ring-white/30"
                   >
                     <option value="EXCHANGE">Size / Color Exchange</option>
                     <option value="REPLACEMENT">Replacement (Defect)</option>
@@ -469,14 +461,14 @@ export default function ReturnsPage() {
               {/* Customer Reason / Feedback */}
               <div>
                 <label className="block text-zinc-400 font-medium mb-1">
-                  Customer Reason / Issue Description <span className="text-blue-400">*</span>
+                  Customer Reason / Issue Description <span className="text-white">*</span>
                 </label>
                 <textarea
                   rows={3}
                   value={customerReason}
                   onChange={(e) => setCustomerReason(e.target.value)}
                   placeholder="e.g. Too tight around the toe box, need a half size larger..."
-                  className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-600 leading-relaxed font-sans"
+                  className="w-full bg-zinc-950/80 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:ring-1 focus:ring-white/30 leading-relaxed font-sans"
                   required
                 />
               </div>
@@ -486,7 +478,7 @@ export default function ReturnsPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-lg shadow-blue-600/25 transition-all disabled:opacity-50 active:scale-95"
+                  className="w-full py-3 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 font-semibold text-xs flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all disabled:opacity-50 active:scale-95"
                 >
                   {isLoading ? (
                     <>
@@ -495,7 +487,7 @@ export default function ReturnsPage() {
                     </>
                   ) : (
                     <>
-                      <Sparkles className="w-3.5 h-3.5 text-blue-200" />
+                      <Sparkles className="w-3.5 h-3.5 text-zinc-950" />
                       <span>Run Risk Engine & Claude Evaluation</span>
                     </>
                   )}
@@ -505,7 +497,7 @@ export default function ReturnsPage() {
           </div>
 
           {/* Seeded Database Orders Quick Selector */}
-          <div className="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 text-xs">
+          <div className="p-4 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl text-xs">
             <div className="text-[10px] font-mono uppercase text-zinc-400 tracking-wider mb-2 font-bold">
               Database Orders (Click to Load)
             </div>
@@ -520,7 +512,7 @@ export default function ReturnsPage() {
                     setCustomerTier(ord.customerTier);
                     showToast(`Loaded ${ord.orderNumber}`);
                   }}
-                  className="p-3 rounded-xl bg-zinc-950/80 hover:bg-zinc-850 border border-zinc-800 cursor-pointer flex items-center justify-between transition-colors"
+                  className="p-3 rounded-xl bg-zinc-950/80 hover:bg-white/5 border border-white/5 cursor-pointer flex items-center justify-between transition-colors"
                 >
                   <div>
                     <div className="font-mono font-bold text-white">{ord.orderNumber}</div>
@@ -528,7 +520,7 @@ export default function ReturnsPage() {
                   </div>
                   <div className="text-right">
                     <div className="font-bold text-zinc-200">{formatCurrency(ord.totalAmount)}</div>
-                    <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                    <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-white/5 text-zinc-300 border border-white/10">
                       {ord.customerTier}
                     </span>
                   </div>
@@ -541,11 +533,11 @@ export default function ReturnsPage() {
         {/* Right Column: Detailed Multi-Factor Risk & Evaluation Engine Output (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
           {decisionResult ? (
-            <div className="p-6 rounded-2xl bg-zinc-900/80 border border-zinc-700/80 shadow-2xl space-y-6">
+            <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_20px_50px_rgba(0,0,0,0.6)] space-y-6">
               {/* Header */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-zinc-800">
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/10">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-xl bg-blue-600/10 text-blue-400 border border-blue-500/20">
+                  <div className="p-2.5 rounded-xl bg-white/5 text-zinc-200 border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
                   <div>
@@ -565,43 +557,43 @@ export default function ReturnsPage() {
                   <span
                     className={`text-[10px] font-mono px-3 py-1 rounded-full border uppercase font-bold ${
                       decisionResult.decision === "approve"
-                        ? "bg-blue-600/20 text-blue-300 border-blue-500/40"
-                        : "bg-zinc-800 text-zinc-300 border-zinc-700"
+                        ? "bg-white/10 text-white border-white/20"
+                        : "bg-white/5 text-zinc-300 border-white/10"
                     }`}
                   >
                     Decision: {decisionResult.decision}
                   </span>
-                  <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-zinc-950 text-white border border-zinc-700 uppercase font-bold">
+                  <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-zinc-950/80 text-white border border-white/10 uppercase font-bold">
                     Resolution: {decisionResult.resolution}
                   </span>
                 </div>
               </div>
 
               {/* 📊 Multi-Factor Risk Calculation & Score Gauge */}
-              <div className="p-4 rounded-xl bg-zinc-950 border border-zinc-800 space-y-3">
+              <div className="p-4 rounded-xl bg-zinc-950/80 border border-white/5 space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Sliders className="w-4 h-4 text-blue-400" />
+                    <Sliders className="w-4 h-4 text-zinc-300" />
                     <span className="text-xs font-bold text-white uppercase font-mono tracking-wider">
                       Calculated Risk & Fraud Assessment
                     </span>
                   </div>
-                  <span className="text-xs font-mono font-extrabold text-blue-400">
+                  <span className="text-xs font-mono font-extrabold text-white">
                     Score: {decisionResult.riskScore} / 1.0 ({decisionResult.riskLevel} RISK)
                   </span>
                 </div>
 
                 {/* Progress Meter Bar */}
-                <div className="w-full h-3 bg-zinc-900 rounded-full overflow-hidden p-0.5 border border-zinc-800">
+                <div className="w-full h-3 bg-zinc-900 rounded-full overflow-hidden p-0.5 border border-white/5">
                   <div
-                    className="h-full rounded-full transition-all duration-500 bg-blue-600"
+                    className="h-full rounded-full transition-all duration-500 bg-white shadow-[0_0_10px_rgba(255,255,255,0.3)]"
                     style={{ width: `${Math.min(100, Math.max(5, decisionResult.riskScore * 100))}%` }}
                   />
                 </div>
 
                 {/* Breakdown of Risk Drivers */}
                 {decisionResult.riskBreakdown && decisionResult.riskBreakdown.length > 0 && (
-                  <div className="pt-2 border-t border-zinc-850 space-y-1.5 text-xs">
+                  <div className="pt-2 border-t border-white/5 space-y-1.5 text-xs">
                     {decisionResult.riskBreakdown.map((item, i) => (
                       <div key={i} className="flex items-center justify-between text-[11px]">
                         <span className="text-zinc-400">{item.factor}:</span>
@@ -614,21 +606,21 @@ export default function ReturnsPage() {
 
               {/* Key Metrics: Confidence, Retained GMV, Customer Tier */}
               <div className="grid grid-cols-3 gap-3 text-xs">
-                <div className="p-3.5 rounded-xl bg-zinc-950 border border-zinc-800">
+                <div className="p-3.5 rounded-xl bg-zinc-950/80 border border-white/5">
                   <div className="text-[10px] text-zinc-400 uppercase font-mono">Agent Confidence</div>
-                  <div className="text-base font-extrabold text-blue-400 mt-1">
+                  <div className="text-base font-extrabold text-white mt-1">
                     {Math.round(decisionResult.confidence * 100)}%
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-zinc-950 border border-zinc-800">
+                <div className="p-3.5 rounded-xl bg-zinc-950/80 border border-white/5">
                   <div className="text-[10px] text-zinc-400 uppercase font-mono">Retained GMV</div>
                   <div className="text-base font-extrabold text-white mt-1">
                     {formatCurrency(decisionResult.retainedGmv || 6499)}
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-zinc-950 border border-zinc-800">
+                <div className="p-3.5 rounded-xl bg-zinc-950/80 border border-white/5">
                   <div className="text-[10px] text-zinc-400 uppercase font-mono">Customer Tier</div>
                   <div className="text-base font-extrabold text-white mt-1">
                     {decisionResult.customerTier}
@@ -638,10 +630,10 @@ export default function ReturnsPage() {
 
               {/* Recommended Action / Suggested Alternative */}
               {decisionResult.suggestedAlternative && (
-                <div className="p-4 rounded-xl bg-blue-950/30 border border-blue-500/30 space-y-1">
-                  <div className="text-[10px] uppercase font-mono text-blue-300 font-bold flex items-center justify-between">
+                <div className="p-4 rounded-xl bg-white/[0.04] border border-white/15 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] space-y-1">
+                  <div className="text-[10px] uppercase font-mono text-zinc-200 font-bold flex items-center justify-between">
                     <span>Automated Sizing Alternative Reserved</span>
-                    <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+                    <Sparkles className="w-3.5 h-3.5 text-zinc-200" />
                   </div>
                   <div className="text-sm font-bold text-white">
                     {decisionResult.suggestedAlternative}
@@ -655,10 +647,10 @@ export default function ReturnsPage() {
               {/* Agent Reasoning */}
               <div className="space-y-2">
                 <div className="text-xs font-bold text-white flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+                  <Sparkles className="w-3.5 h-3.5 text-zinc-300" />
                   <span>Claude 3.5 Agent Reasoning</span>
                 </div>
-                <p className="text-xs text-zinc-300 leading-relaxed p-4 rounded-xl bg-zinc-950 border border-zinc-800 font-sans">
+                <p className="text-xs text-zinc-300 leading-relaxed p-4 rounded-xl bg-zinc-950/80 border border-white/5 font-sans">
                   {decisionResult.reasoning}
                 </p>
               </div>
@@ -672,9 +664,9 @@ export default function ReturnsPage() {
                   {decisionResult.policyChecks.map((check, idx) => (
                     <div
                       key={idx}
-                      className="p-2.5 rounded-lg bg-zinc-950 border border-zinc-800 flex items-center gap-2 text-[11px] text-zinc-300"
+                      className="p-2.5 rounded-lg bg-zinc-950/80 border border-white/5 flex items-center gap-2 text-[11px] text-zinc-300"
                     >
-                      <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-zinc-100 flex-shrink-0" />
                       <span>{check}</span>
                     </div>
                   ))}
@@ -682,7 +674,7 @@ export default function ReturnsPage() {
               </div>
 
               {/* Bottom Action Button */}
-              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-zinc-800">
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10">
                 <span className="text-[11px] text-zinc-400 font-mono">
                   Autonomous ERP Swap Ready
                 </span>
@@ -694,13 +686,13 @@ export default function ReturnsPage() {
                   }}
                   className={`px-5 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${
                     isDispatched
-                      ? "bg-zinc-800 text-zinc-200 border border-zinc-700"
-                      : "bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/25 active:scale-95"
+                      ? "bg-white/10 text-zinc-200 border border-white/20"
+                      : "bg-white hover:bg-zinc-200 text-zinc-950 shadow-[0_0_20px_rgba(255,255,255,0.12)] active:scale-95"
                   }`}
                 >
                   {isDispatched ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-blue-400" />
+                      <Check className="w-3.5 h-3.5 text-white" />
                       <span>Exchange Dispatched to Logistics ERP</span>
                     </>
                   ) : (
@@ -713,7 +705,7 @@ export default function ReturnsPage() {
               </div>
             </div>
           ) : (
-            <div className="p-12 rounded-2xl bg-zinc-900/40 border border-dashed border-zinc-800 text-center space-y-3">
+            <div className="p-12 rounded-2xl bg-zinc-900/40 border border-dashed border-white/10 text-center space-y-3">
               <RotateCcw className="w-8 h-8 text-zinc-600 mx-auto" />
               <div className="text-sm font-bold text-zinc-400">No Return Request Evaluated Yet</div>
               <p className="text-xs text-zinc-500 max-w-sm mx-auto">

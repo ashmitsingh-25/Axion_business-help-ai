@@ -30,18 +30,18 @@ export function WorkflowStepper({
               {!isLast && (
                 <div
                   className={`absolute left-3.5 top-7 bottom-0 w-[2px] -mb-4 ${
-                    step.status === "complete" ? "bg-blue-600" : "bg-zinc-800"
+                    step.status === "complete" ? "bg-white/40" : "bg-white/5"
                   }`}
                 />
               )}
 
               <div className="relative z-10 flex-shrink-0 mt-0.5">
                 {step.status === "complete" && (
-                  <CheckCircle2 className="w-7 h-7 text-blue-500 bg-zinc-950 rounded-full" />
+                  <CheckCircle2 className="w-7 h-7 text-zinc-100 bg-zinc-900 border border-white/20 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.15)]" />
                 )}
                 {step.status === "active" && (
-                  <div className="w-7 h-7 rounded-full bg-blue-500/20 border-2 border-blue-500 flex items-center justify-center">
-                    <Loader2 className="w-4 h-4 text-blue-400 animate-spin" />
+                  <div className="w-7 h-7 rounded-full bg-white/10 border-2 border-white flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                    <Loader2 className="w-4 h-4 text-white animate-spin" />
                   </div>
                 )}
                 {step.status === "pending" && (
@@ -74,17 +74,17 @@ export function WorkflowStepper({
               <div className="flex flex-col items-center text-center px-2">
                 <div className="mb-2">
                   {step.status === "complete" && (
-                    <div className="w-7 h-7 rounded-full bg-blue-500/20 border border-blue-500 flex items-center justify-center">
-                      <CheckCircle2 className="w-4 h-4 text-blue-400" />
+                    <div className="w-7 h-7 rounded-full bg-white/10 border border-white/30 flex items-center justify-center shadow-[0_0_10px_rgba(255,255,255,0.15)]">
+                      <CheckCircle2 className="w-4 h-4 text-zinc-100" />
                     </div>
                   )}
                   {step.status === "active" && (
-                    <div className="w-7 h-7 rounded-full bg-blue-500/20 border-2 border-blue-500 flex items-center justify-center animate-pulse">
-                      <Loader2 className="w-4 h-4 text-blue-400 animate-spin" />
+                    <div className="w-7 h-7 rounded-full bg-white/10 border-2 border-white flex items-center justify-center animate-pulse shadow-[0_0_15px_rgba(255,255,255,0.25)]">
+                      <Loader2 className="w-4 h-4 text-white animate-spin" />
                     </div>
                   )}
                   {step.status === "pending" && (
-                    <div className="w-7 h-7 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[11px] text-zinc-500 font-mono font-bold">
+                    <div className="w-7 h-7 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-[11px] text-zinc-500 font-mono font-bold">
                       {index + 1}
                     </div>
                   )}
@@ -100,10 +100,10 @@ export function WorkflowStepper({
               </div>
 
               {!isLast && (
-                <div className="flex-1 h-[2px] bg-zinc-800 mx-2 relative -top-3">
+                <div className="flex-1 h-[2px] bg-white/5 mx-2 relative -top-3">
                   <div
                     className={`h-full transition-all duration-300 ${
-                      step.status === "complete" ? "bg-blue-600 w-full" : "w-0"
+                      step.status === "complete" ? "bg-white/40 w-full" : "w-0"
                     }`}
                   />
                 </div>

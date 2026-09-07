@@ -75,8 +75,8 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto space-y-6">
             {/* Top Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs text-zinc-300 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/80 border border-white/10 text-xs text-zinc-300 shadow-sm backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="font-semibold text-white">Autonomous Business Operations</span>
               <span className="text-zinc-600">•</span>
               <span className="text-zinc-400 font-mono">Claude 3.5 Agent Layer</span>
@@ -85,7 +85,7 @@ export default function LandingPage() {
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white font-sans leading-[1.1]">
               Axion — Intelligent Business Operations &{" "}
-              <span className="text-blue-500">
+              <span className="bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
                 Decision Platform
               </span>
             </h1>
@@ -99,7 +99,7 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Link
                 href="/dashboard"
-                className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-lg shadow-blue-600/25 transition-all active:scale-95 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 font-semibold text-sm shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all active:scale-95 flex items-center justify-center gap-2"
               >
                 <span>Try the Live Demo</span>
                 <ArrowRight className="w-4 h-4" />
@@ -107,9 +107,9 @@ export default function LandingPage() {
 
               <Link
                 href="/insights"
-                className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-750 text-white font-semibold text-sm transition-all flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-white font-semibold text-sm backdrop-blur-md transition-all flex items-center justify-center gap-2"
               >
-                <Sparkles className="w-4 h-4 text-blue-400" />
+                <Sparkles className="w-4 h-4 text-zinc-300" />
                 <span>Ask Business Copilot</span>
               </Link>
             </div>
@@ -117,9 +117,9 @@ export default function LandingPage() {
 
           {/* ── FLOW VISUAL: From Data → Intelligence → Action ─────────────── */}
           <div className="mt-16 sm:mt-24 max-w-5xl mx-auto">
-            <div className="p-6 sm:p-8 rounded-3xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-xl shadow-2xl relative">
+            <div className="p-6 sm:p-8 rounded-3xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_20px_50px_rgba(0,0,0,0.6)] relative">
               <div className="text-center mb-6">
-                <div className="text-xs font-mono font-bold tracking-widest text-blue-400 uppercase">
+                <div className="text-xs font-mono font-bold tracking-widest text-zinc-400 uppercase">
                   THE AXION ARCHITECTURE
                 </div>
                 <div className="text-xl sm:text-2xl font-extrabold text-white mt-1 font-sans">
@@ -129,13 +129,13 @@ export default function LandingPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
                 {/* 1. DATA */}
-                <div className="p-5 rounded-2xl bg-zinc-950 border border-zinc-800 flex flex-col justify-between hover:border-zinc-700 transition-colors">
+                <div className="p-5 rounded-2xl bg-zinc-950/80 border border-white/5 flex flex-col justify-between hover:border-white/15 transition-colors">
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <div className="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300">
+                      <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-zinc-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
                         <Database className="w-5 h-5" />
                       </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-900 text-zinc-400 border border-zinc-800 font-bold">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-zinc-400 border border-white/10 font-bold">
                         STAGE 01
                       </span>
                     </div>
@@ -144,19 +144,19 @@ export default function LandingPage() {
                       Continuous telemetry ingestion from ERPs, order catalogs, sales channels, logistics APIs, and corporate travel claims.
                     </p>
                   </div>
-                  <div className="mt-4 pt-3 border-t border-zinc-850 text-[11px] text-zinc-400 font-mono">
+                  <div className="mt-4 pt-3 border-t border-white/5 text-[11px] text-zinc-400 font-mono">
                     PostgreSQL • Prisma ORM • Real-Time Stream
                   </div>
                 </div>
 
                 {/* 2. INTELLIGENCE */}
-                <div className="p-5 rounded-2xl bg-blue-950/20 border border-blue-500/30 flex flex-col justify-between relative shadow-lg">
+                <div className="p-5 rounded-2xl bg-white/[0.04] border border-white/20 flex flex-col justify-between relative shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_10px_30px_-10px_rgba(0,0,0,0.5)]">
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <div className="p-2.5 rounded-xl bg-blue-600/15 border border-blue-500/25 text-blue-400">
+                      <div className="p-2.5 rounded-xl bg-white/10 border border-white/20 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)]">
                         <Cpu className="w-5 h-5" />
                       </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-300 border border-blue-500/20 font-bold">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-zinc-200 border border-white/20 font-bold">
                         STAGE 02
                       </span>
                     </div>
@@ -165,19 +165,19 @@ export default function LandingPage() {
                       Claude 3.5 reasoning, RAG corporate policy retrieval, and demand velocity algorithms analyze cross-department root causes.
                     </p>
                   </div>
-                  <div className="mt-4 pt-3 border-t border-blue-900/40 text-[11px] text-blue-300 font-mono">
+                  <div className="mt-4 pt-3 border-t border-white/10 text-[11px] text-zinc-300 font-mono">
                     Claude SDK • RAG Engine • Forecast Trends
                   </div>
                 </div>
 
                 {/* 3. ACTION */}
-                <div className="p-5 rounded-2xl bg-zinc-950 border border-zinc-800 flex flex-col justify-between hover:border-zinc-700 transition-colors">
+                <div className="p-5 rounded-2xl bg-zinc-950/80 border border-white/5 flex flex-col justify-between hover:border-white/15 transition-colors">
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <div className="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300">
+                      <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-zinc-300 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
                         <Zap className="w-5 h-5" />
                       </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-900 text-zinc-400 border border-zinc-800 font-bold">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-zinc-400 border border-white/10 font-bold">
                         STAGE 03
                       </span>
                     </div>
@@ -186,7 +186,7 @@ export default function LandingPage() {
                       Instant 1-click shoe exchanges, automated Supplier B purchase orders, expense cap flags, and dynamic price adjustments.
                     </p>
                   </div>
-                  <div className="mt-4 pt-3 border-t border-zinc-850 text-[11px] text-zinc-400 font-mono">
+                  <div className="mt-4 pt-3 border-t border-white/5 text-[11px] text-zinc-400 font-mono">
                     Serverless API Routes • Automated Workflows
                   </div>
                 </div>
@@ -197,11 +197,11 @@ export default function LandingPage() {
       </section>
 
       {/* ── CORE FOCUS AREAS STRIP ──────────────────────────────────── */}
-      <section className="border-y border-zinc-800/80 bg-zinc-950 py-8">
+      <section className="border-y border-white/10 bg-zinc-950/80 backdrop-blur-md py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div className="space-y-1">
-              <div className="text-xs font-mono text-blue-400 uppercase tracking-wider font-bold">
+              <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider font-bold">
                 Multi-Agent Workflows
               </div>
               <div className="text-sm font-bold text-white">Autonomous Cross-Dept Routing</div>
@@ -213,7 +213,7 @@ export default function LandingPage() {
               <div className="text-sm font-bold text-white">Policy Documents & Sizing Rules</div>
             </div>
             <div className="space-y-1">
-              <div className="text-xs font-mono text-blue-400 uppercase tracking-wider font-bold">
+              <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider font-bold">
                 Predictive Forecasting
               </div>
               <div className="text-sm font-bold text-white">Days-to-Stockout & Supplier Matrix</div>
@@ -232,8 +232,8 @@ export default function LandingPage() {
       <section className="py-20 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: The Problem */}
-          <div className="p-8 rounded-3xl bg-zinc-900/60 border border-zinc-800 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700 text-xs font-semibold">
+          <div className="p-8 rounded-3xl bg-zinc-900/60 border border-white/10 backdrop-blur-xl space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-zinc-300 border border-white/10 text-xs font-semibold">
               <XCircle className="w-3.5 h-3.5 text-zinc-400" />
               <span>The Operational Reality</span>
             </div>
@@ -266,9 +266,9 @@ export default function LandingPage() {
           </div>
 
           {/* Right: The Solution */}
-          <div className="p-8 rounded-3xl bg-zinc-900 border border-blue-500/30 space-y-6 shadow-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/15 text-blue-400 border border-blue-500/30 text-xs font-semibold">
-              <CheckCircle2 className="w-3.5 h-3.5" />
+          <div className="p-8 rounded-3xl bg-zinc-900/60 border border-white/15 backdrop-blur-2xl space-y-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_20px_50px_rgba(0,0,0,0.5)]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-zinc-200 border border-white/20 text-xs font-semibold">
+              <CheckCircle2 className="w-3.5 h-3.5 text-zinc-100" />
               <span>The Axion Solution</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-sans">
@@ -279,19 +279,19 @@ export default function LandingPage() {
             </p>
             <ul className="space-y-3 text-xs text-zinc-300">
               <li className="flex items-start gap-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 flex-shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white mt-1.5 flex-shrink-0" />
                 <span>
                   <strong>Unified Policy Engine:</strong> RAG-grounded corporate policies enforce consistent logic across all workflows without manual review.
                 </span>
               </li>
               <li className="flex items-start gap-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 flex-shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white mt-1.5 flex-shrink-0" />
                 <span>
                   <strong>Cross-Department Telemetry:</strong> An inventory delay automatically alerts returns agents and updates promises in real time.
                 </span>
               </li>
               <li className="flex items-start gap-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 flex-shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white mt-1.5 flex-shrink-0" />
                 <span>
                   <strong>Instant Business Copilot:</strong> Ask "Why did sales fall this month?" and receive structured 5-stage root cause investigations.
                 </span>
@@ -302,10 +302,10 @@ export default function LandingPage() {
       </section>
 
       {/* ── THREE CORE MODULE SHOWCASES ─────────────────────────────── */}
-      <section className="py-20 bg-zinc-950 border-t border-zinc-900">
+      <section className="py-20 bg-zinc-950 border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <div className="text-xs font-mono uppercase text-blue-400 tracking-wider font-bold">
+            <div className="text-xs font-mono uppercase text-zinc-400 tracking-wider font-bold">
               ENTERPRISE MODULES
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-sans">
@@ -386,7 +386,7 @@ export default function LandingPage() {
       {/* ── BUSINESS INTELLIGENCE LAYER ─────────────────────────────── */}
       <section className="py-20 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div className="text-xs font-mono uppercase text-blue-400 tracking-wider font-bold">
+          <div className="text-xs font-mono uppercase text-zinc-400 tracking-wider font-bold">
             EXECUTIVE INTELLIGENCE
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-sans">
@@ -399,43 +399,43 @@ export default function LandingPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* 1. Decision Copilot */}
-          <div className="p-6 rounded-2xl bg-zinc-900 border border-zinc-800 space-y-4 hover:border-zinc-700 transition-colors">
-            <div className="w-10 h-10 rounded-xl bg-blue-600/15 text-blue-400 border border-blue-500/20 flex items-center justify-center">
+          <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl space-y-4 hover:border-white/20 transition-colors shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+            <div className="w-10 h-10 rounded-xl bg-white/5 text-zinc-200 border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] flex items-center justify-center">
               <Sparkles className="w-5 h-5" />
             </div>
             <h3 className="text-lg font-bold text-white">Decision Copilot</h3>
             <p className="text-xs text-zinc-400 leading-relaxed">
               Multi-agent natural language copilot following structured 5-stage synthesis: Detect → Investigate → Assess → Recommend → Alert.
             </p>
-            <div className="p-3.5 rounded-xl bg-zinc-950 border border-zinc-800 text-[11px] font-mono text-zinc-300">
+            <div className="p-3.5 rounded-xl bg-zinc-950/80 border border-white/5 text-[11px] font-mono text-zinc-300">
               "Why did sales fall this month?" → Telemetry reveals SKU-409 stockout + footwear sizing friction.
             </div>
           </div>
 
           {/* 2. Risk Detector */}
-          <div className="p-6 rounded-2xl bg-zinc-900 border border-zinc-800 space-y-4 hover:border-zinc-700 transition-colors">
-            <div className="w-10 h-10 rounded-xl bg-zinc-800 text-zinc-200 border border-zinc-700 flex items-center justify-center">
+          <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl space-y-4 hover:border-white/20 transition-colors shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+            <div className="w-10 h-10 rounded-xl bg-white/5 text-zinc-200 border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] flex items-center justify-center">
               <Flame className="w-5 h-5 text-zinc-300" />
             </div>
             <h3 className="text-lg font-bold text-white">Live Risk Detector</h3>
             <p className="text-xs text-zinc-400 leading-relaxed">
               Continuous threat scanner scoring and ranking stockout risks, return velocity spikes, and expense overrun clusters.
             </p>
-            <div className="p-3.5 rounded-xl bg-zinc-950 border border-zinc-800 text-[11px] font-mono text-zinc-300">
+            <div className="p-3.5 rounded-xl bg-zinc-950/80 border border-white/5 text-[11px] font-mono text-zinc-300">
               "Critical: SKU-409 stockout in 9 days. High: 3 Mumbai hotel claims exceed ₹12k limit."
             </div>
           </div>
 
           {/* 3. Pricing Optimizer */}
-          <div className="p-6 rounded-2xl bg-zinc-900 border border-zinc-800 space-y-4 hover:border-zinc-700 transition-colors">
-            <div className="w-10 h-10 rounded-xl bg-blue-600/15 text-blue-400 border border-blue-500/20 flex items-center justify-center">
+          <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl space-y-4 hover:border-white/20 transition-colors shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+            <div className="w-10 h-10 rounded-xl bg-white/5 text-zinc-200 border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] flex items-center justify-center">
               <TrendingUp className="w-5 h-5" />
             </div>
             <h3 className="text-lg font-bold text-white">Pricing Optimizer</h3>
             <p className="text-xs text-zinc-400 leading-relaxed">
               Dynamic price calibration analyzing price elasticity curves and competitor benchmarks to project net margin gains.
             </p>
-            <div className="p-3.5 rounded-xl bg-zinc-950 border border-zinc-800 text-[11px] font-mono text-zinc-300">
+            <div className="p-3.5 rounded-xl bg-zinc-950/80 border border-white/5 text-[11px] font-mono text-zinc-300">
               "Current ₹12,999 → Recommended ₹13,999 (+₹1,82,000/mo margin with low elasticity)."
             </div>
           </div>
@@ -448,10 +448,10 @@ export default function LandingPage() {
       </section>
 
       {/* ── IMPACT COMPARISON TABLE ─────────────────────────────────── */}
-      <section className="py-20 bg-zinc-950 border-t border-zinc-900">
+      <section className="py-20 bg-zinc-950 border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-            <div className="text-xs font-mono uppercase text-blue-400 tracking-wider font-bold">
+            <div className="text-xs font-mono uppercase text-zinc-400 tracking-wider font-bold">
               ENTERPRISE VALUE
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-sans">
@@ -465,20 +465,20 @@ export default function LandingPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-[700px]">
               <thead>
-                <tr className="border-b border-zinc-800 text-[11px] font-mono uppercase text-zinc-400">
+                <tr className="border-b border-white/10 text-[11px] font-mono uppercase text-zinc-400">
                   <th className="py-4 px-4">Business Domain</th>
                   <th className="py-4 px-4">Traditional Siloed Approach</th>
                   <th className="py-4 px-4 text-white">Axion Intelligent Platform</th>
-                  <th className="py-4 px-4 text-right text-blue-400">Net Impact</th>
+                  <th className="py-4 px-4 text-right text-white">Net Impact</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-zinc-800/60 text-xs">
+              <tbody className="divide-y divide-white/5 text-xs">
                 {impactMetrics.map((metric, idx) => (
-                  <tr key={idx} className="hover:bg-zinc-900/40 transition-colors">
+                  <tr key={idx} className="hover:bg-white/[0.02] transition-colors">
                     <td className="py-4 px-4 font-bold text-white">{metric.domain}</td>
                     <td className="py-4 px-4 text-zinc-400">{metric.traditional}</td>
                     <td className="py-4 px-4 text-zinc-200 font-medium">{metric.axion}</td>
-                    <td className="py-4 px-4 text-right font-extrabold text-blue-400">
+                    <td className="py-4 px-4 text-right font-extrabold text-white">
                       {metric.gain}
                     </td>
                   </tr>
@@ -488,7 +488,7 @@ export default function LandingPage() {
           </div>
 
           {/* CTA Box */}
-          <div className="mt-16 p-8 sm:p-12 rounded-3xl bg-zinc-900 border border-zinc-800 text-center space-y-6 shadow-xl relative overflow-hidden">
+          <div className="mt-16 p-8 sm:p-12 rounded-3xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl text-center space-y-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_20px_50px_rgba(0,0,0,0.6)] relative overflow-hidden">
             <div className="relative z-10 space-y-3 max-w-2xl mx-auto">
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-sans">
                 Ready to Experience Axion in Action?
@@ -499,7 +499,7 @@ export default function LandingPage() {
               <div className="pt-2">
                 <Link
                   href="/dashboard"
-                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-lg shadow-blue-600/25 transition-all active:scale-95"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 font-bold text-sm shadow-[0_0_25px_rgba(255,255,255,0.18)] transition-all active:scale-95"
                 >
                   <span>Launch Live Demo Console</span>
                   <ArrowRight className="w-4 h-4" />

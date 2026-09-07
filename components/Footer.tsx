@@ -9,7 +9,7 @@ export function Footer() {
           {/* Col 1: Brand */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold">
+              <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center text-white font-bold shadow-[inset_0_1px_0_0_rgba(255,255,255,0.15)]">
                 <Layers className="w-4 h-4" />
               </div>
               <span className="text-lg font-bold text-white tracking-tight">Axion</span>
@@ -17,8 +17,8 @@ export function Footer() {
             <p className="text-xs leading-relaxed text-zinc-400 max-w-sm">
               The intelligent business operations and decision platform. Converting enterprise telemetry into deterministic, automated business decisions.
             </p>
-            <div className="text-xs text-blue-400 font-mono flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+            <div className="text-xs text-zinc-400 font-mono flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
               <span>Positioning: From Data → Intelligence → Action</span>
             </div>
           </div>
@@ -30,22 +30,22 @@ export function Footer() {
             </div>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/returns" className="hover:text-blue-400 transition-colors">
+                <Link href="/returns" className="hover:text-white transition-colors">
                   Smart Returns & Exchange
                 </Link>
               </li>
               <li>
-                <Link href="/inventory" className="hover:text-blue-400 transition-colors">
+                <Link href="/inventory" className="hover:text-white transition-colors">
                   Demand & Inventory Copilot
                 </Link>
               </li>
               <li>
-                <Link href="/expenses" className="hover:text-blue-400 transition-colors">
+                <Link href="/expenses" className="hover:text-white transition-colors">
                   AI Expense Policy Auditor
                 </Link>
               </li>
               <li>
-                <Link href="/insights" className="hover:text-blue-400 transition-colors">
+                <Link href="/insights" className="hover:text-white transition-colors">
                   Business Decision Copilot
                 </Link>
               </li>
@@ -59,7 +59,7 @@ export function Footer() {
             </div>
             <ul className="space-y-2 text-xs">
               <li className="flex items-center gap-1.5 text-zinc-400">
-                <Cpu className="w-3.5 h-3.5 text-blue-400" />
+                <Cpu className="w-3.5 h-3.5 text-zinc-300" />
                 <span>Anthropic Claude SDK</span>
               </li>
               <li className="flex items-center gap-1.5 text-zinc-400">
@@ -67,7 +67,7 @@ export function Footer() {
                 <span>Prisma ORM + PostgreSQL</span>
               </li>
               <li className="flex items-center gap-1.5 text-zinc-400">
-                <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
+                <ShieldCheck className="w-3.5 h-3.5 text-zinc-300" />
                 <span>Enterprise RAG Policy Engine</span>
               </li>
               <li className="flex items-center gap-1.5 text-zinc-400">
@@ -84,12 +84,12 @@ export function Footer() {
             </div>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/dashboard" className="hover:text-blue-400 transition-colors">
+                <Link href="/dashboard" className="hover:text-white transition-colors">
                   Operations Console
                 </Link>
               </li>
               <li>
-                <Link href="/insights" className="hover:text-blue-400 transition-colors">
+                <Link href="/insights" className="hover:text-white transition-colors">
                   Risk & Pricing Monitor
                 </Link>
               </li>
@@ -98,7 +98,7 @@ export function Footer() {
                   href="https://vercel.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-blue-400 transition-colors flex items-center gap-1"
+                  className="hover:text-white transition-colors flex items-center gap-1"
                 >
                   <span>Deploy to Vercel</span>
                   <ArrowUpRight className="w-3 h-3" />
