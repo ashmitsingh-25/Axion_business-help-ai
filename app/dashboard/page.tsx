@@ -9,6 +9,9 @@ import {
   TrendingUp,
   ArrowRight,
   Clock,
+  Shield,
+  DollarSign,
+  Activity,
 } from "lucide-react";
 import { StatCard } from "@/components/StatCard";
 import { RiskFeed } from "@/components/RiskFeed";
@@ -38,15 +41,25 @@ export default function DashboardPage() {
       badge: "₹18.4k vs ₹12k Flagged",
     },
     {
-      title: "Business Decision Copilot",
-      desc: "5-stage strategic inquiry: Detect → Investigate → Alert",
-      href: "/insights",
-      icon: Sparkles,
-      badge: "Live Telemetry",
+      title: "Cyber Risk Intelligence",
+      desc: "Financial exposure quantification, EAL & security investment optimizer",
+      href: "/cyber-risk",
+      icon: Shield,
+      badge: "₹2.1 Cr EAL Alert",
     },
   ];
 
   const recentDecisions = [
+    {
+      id: "DEC-9913",
+      type: "Cyber Risk",
+      subject: "Payment Gateway DB (CVE-2024-3094)",
+      outcome: "Emergency Hotfix & FIDO2 Hardware MFA Mandated",
+      status: "MITIGATED",
+      time: "3 mins ago",
+      agent: "Cyber Risk Engine",
+      retained: "₹42L Loss Avoided",
+    },
     {
       id: "DEC-9912",
       type: "Returns",
@@ -94,7 +107,7 @@ export default function DashboardPage() {
             </span>
           </div>
           <p className="text-xs text-zinc-400 mt-1">
-            Axion Autonomous Decision Layer • Positioning: From Data → Intelligence → Action
+            Axion Autonomous Decision Layer • Positioning: Data → Intelligence → Action → Optimized Investment
           </p>
         </div>
 
@@ -186,6 +199,76 @@ export default function DashboardPage() {
               </Link>
             );
           })}
+        </div>
+      </div>
+
+      {/* Cyber Risk Executive Intelligence Section */}
+      <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_-10px_rgba(0,0,0,0.5)]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
+              <Shield className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="text-base font-bold text-white tracking-tight">
+                  Cyber Risk & Financial Exposure Intelligence
+                </h3>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-bold">
+                  Live Model
+                </span>
+              </div>
+              <p className="text-[11px] text-zinc-400 mt-0.5">
+                Continuously quantified Expected Annual Loss (EAL), incident likelihood, and optimal security budget allocation
+              </p>
+            </div>
+          </div>
+
+          <Link
+            href="/cyber-risk"
+            className="px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all self-start sm:self-auto"
+          >
+            <span>Launch Cyber Console</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
+        <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="p-3 rounded-xl bg-zinc-950/80 border border-white/5 space-y-1">
+            <div className="text-[10px] font-mono text-zinc-400">Enterprise Cyber Risk</div>
+            <div className="text-base font-extrabold text-white font-mono">72 / 100</div>
+            <div className="text-[9px] text-amber-300">Elevated Posture</div>
+          </div>
+
+          <div className="p-3 rounded-xl bg-zinc-950/80 border border-white/5 space-y-1">
+            <div className="text-[10px] font-mono text-zinc-400">Financial Exposure</div>
+            <div className="text-base font-extrabold text-white font-mono">₹3.8 Cr</div>
+            <div className="text-[9px] text-zinc-500">1,250 Assets</div>
+          </div>
+
+          <div className="p-3 rounded-xl bg-zinc-950/80 border border-rose-500/20 space-y-1">
+            <div className="text-[10px] font-mono text-rose-400 font-bold">Expected Annual Loss</div>
+            <div className="text-base font-extrabold text-rose-300 font-mono">₹2.1 Cr</div>
+            <div className="text-[9px] text-rose-400">17% Likelihood</div>
+          </div>
+
+          <div className="p-3 rounded-xl bg-zinc-950/80 border border-white/5 space-y-1">
+            <div className="text-[10px] font-mono text-zinc-400">Critical Tier Assets</div>
+            <div className="text-base font-extrabold text-purple-300 font-mono">18 Assets</div>
+            <div className="text-[9px] text-zinc-500">7 High Risk</div>
+          </div>
+
+          <div className="p-3 rounded-xl bg-zinc-950/80 border border-white/5 space-y-1">
+            <div className="text-[10px] font-mono text-zinc-400">Control Effectiveness</div>
+            <div className="text-base font-extrabold text-emerald-400 font-mono">74%</div>
+            <div className="text-[9px] text-zinc-500">MFA 92% • EDR 87%</div>
+          </div>
+
+          <div className="p-3 rounded-xl bg-zinc-950/80 border border-cyan-500/20 space-y-1">
+            <div className="text-[10px] font-mono text-cyan-400 font-bold">Risk Reduction Target</div>
+            <div className="text-base font-extrabold text-cyan-300 font-mono">₹1.4 Cr</div>
+            <div className="text-[9px] text-cyan-400">At ₹18L Spend</div>
+          </div>
         </div>
       </div>
 

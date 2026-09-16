@@ -14,6 +14,7 @@ import {
   X,
   ArrowRight,
   Activity,
+  Shield,
 } from "lucide-react";
 
 export function Navbar() {
@@ -40,9 +41,10 @@ export function Navbar() {
   const navLinks: NavLink[] = [
     { name: "Overview", href: "/dashboard", icon: LayoutDashboard },
     { name: "Smart Returns", href: "/returns", icon: RotateCcw },
-    { name: "Inventory Copilot", href: "/inventory", icon: Boxes },
+    { name: "Inventory", href: "/inventory", icon: Boxes },
     { name: "Expense Auditor", href: "/expenses", icon: Receipt },
-    { name: "Business Copilot", href: "/insights", icon: Sparkles, highlight: true },
+    { name: "Cyber Risk", href: "/cyber-risk", icon: Shield, badge: "₹2.1Cr EAL" },
+    { name: "Decision Copilot", href: "/insights", icon: Sparkles, highlight: true },
   ];
 
   return (
@@ -70,7 +72,7 @@ export function Navbar() {
                 </span>
               </div>
               <span className="text-[10px] text-zinc-400 tracking-wider hidden sm:inline">
-                From Data → Intelligence → Action
+                Data → Intelligence → Action → Optimized Investment
               </span>
             </div>
           </Link>

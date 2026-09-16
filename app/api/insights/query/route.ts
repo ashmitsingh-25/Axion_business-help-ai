@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { queryCopilotWithClaude } from "@/lib/anthropic";
+import { queryCopilotWithClaude, queryCyberCopilotWithClaude } from "@/lib/anthropic";
 import { CopilotQueryRequest } from "@/lib/types";
 import { MOCK_RISKS, MOCK_PRICING_INSIGHTS } from "@/lib/mock-data";
 
@@ -34,10 +34,27 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const structuredResult = await queryCopilotWithClaude(
-      body.query,
-      body.conversationHistory || []
-    );
+    const qLower = body.query.toLowerCase();
+    const isCyberQuery =
+      qLower.includes("cyber") ||
+      qLower.includes("eal") ||
+      qLower.includes("rosi") ||
+      qLower.includes("cve") ||
+      qLower.includes("vulnerability") ||
+      qLower.includes("mfa") ||
+      qLower.includes("patch") ||
+      qLower.includes("ransomware") ||
+      qLower.includes("iso") ||
+      qLower.includes("nist") ||
+      qLower.includes("knapsack") ||
+      qLower.includes("security") ||
+      qLower.includes("exposure") ||
+      qLower.includes("loss") ||
+      qLower.includes("threat");
+
+    const structuredResult = isCyberQuery
+      ? await queryCyberCopilotWithClaude(body.query, body.conversationHistory || [])
+      : await queryCopilotWithClaude(body.query, body.conversationHistory || []);
 
     return NextResponse.json(structuredResult, { status: 200 });
   } catch (error: any) {

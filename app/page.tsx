@@ -18,12 +18,21 @@ import {
   Bot,
   Flame,
   Search,
+  Shield,
+  DollarSign,
+  Lock,
 } from "lucide-react";
 import { ModuleCard } from "@/components/ModuleCard";
 import { PricingCard } from "@/components/PricingCard";
 
 export default function LandingPage() {
   const impactMetrics = [
+    {
+      domain: "Cybersecurity & Financial Risk",
+      traditional: "Vague Low/Medium/High labels, siloed CVE queues & unquantified liabilities",
+      axion: "Real-time Expected Annual Loss (EAL), financial cyber exposure & 0/1 Knapsack spend optimization",
+      gain: "₹1.4 Cr Risk Reduction Opportunity",
+    },
     {
       domain: "Customer Experience",
       traditional: "Manual 48-hr email return reviews, high friction & customer churn",
@@ -45,7 +54,7 @@ export default function LandingPage() {
     {
       domain: "Cross-Dept Operations",
       traditional: "Disconnected ticket queues and delayed cross-team handoffs",
-      axion: "Shared multi-agent reasoning layer across inventory, sales & logistics",
+      axion: "Shared multi-agent reasoning layer across inventory, sales, logistics & cyber",
       gain: "10x Faster Operational Response",
     },
     {
@@ -55,10 +64,10 @@ export default function LandingPage() {
       gain: "Real-Time Telemetry Visibility",
     },
     {
-      domain: "Risk & Compliance",
-      traditional: "Reactive firefighting after catastrophic supply chain failures",
-      axion: "Autonomous cross-department live risk detector and early warnings",
-      gain: "14-Day Advance Threat Horizon",
+      domain: "Compliance & Governance",
+      traditional: "Manual annual audit spreadsheets with missing evidence logs",
+      axion: "Continuous automated control mapping to NIST, ISO 27001, CIS, RBI & SEBI",
+      gain: "100% Audit-Ready Evidence",
     },
     {
       domain: "Dynamic Pricing",
@@ -76,23 +85,23 @@ export default function LandingPage() {
           <div className="text-center max-w-4xl mx-auto space-y-6">
             {/* Top Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/80 border border-white/10 text-xs text-zinc-300 shadow-sm backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="font-semibold text-white">Autonomous Business Operations</span>
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+              <span className="font-semibold text-white">Autonomous Decision & Cyber Risk Platform</span>
               <span className="text-zinc-600">•</span>
-              <span className="text-zinc-400 font-mono">Claude 3.5 Agent Layer</span>
+              <span className="text-zinc-400 font-mono">Claude 3.5 Sonnet</span>
             </div>
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white font-sans leading-[1.1]">
-              Axion — Intelligent Business Operations &{" "}
+              Axion — Intelligent Operations, Cyber Risk &{" "}
               <span className="bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
-                Decision Platform
+                Investment Optimization
               </span>
             </h1>
 
             {/* Subheading */}
-            <p className="text-base sm:text-lg lg:text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed font-normal">
-              Businesses have data, but decisions are still manual. Axion replaces disconnected silos with a single autonomous decision layer.
+            <p className="text-base sm:text-lg lg:text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed font-normal">
+              From Data → Intelligence → Action → Optimized Investment. Axion unifies business operations, cybersecurity telemetry, and financial risk quantification into a single autonomous decision layer.
             </p>
 
             {/* CTA Buttons */}
@@ -101,21 +110,21 @@ export default function LandingPage() {
                 href="/dashboard"
                 className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 font-semibold text-sm shadow-[0_0_25px_rgba(255,255,255,0.15)] transition-all active:scale-95 flex items-center justify-center gap-2"
               >
-                <span>Try the Live Demo</span>
+                <span>Launch Live Console</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
 
               <Link
-                href="/insights"
+                href="/cyber-risk"
                 className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-white font-semibold text-sm backdrop-blur-md transition-all flex items-center justify-center gap-2"
               >
-                <Sparkles className="w-4 h-4 text-zinc-300" />
-                <span>Ask Business Copilot</span>
+                <Shield className="w-4 h-4 text-cyan-300" />
+                <span>Explore Cyber Risk</span>
               </Link>
             </div>
           </div>
 
-          {/* ── FLOW VISUAL: From Data → Intelligence → Action ─────────────── */}
+          {/* ── FLOW VISUAL: From Data → Intelligence → Action → Optimized Investment ── */}
           <div className="mt-16 sm:mt-24 max-w-5xl mx-auto">
             <div className="p-6 sm:p-8 rounded-3xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_20px_50px_rgba(0,0,0,0.6)] relative">
               <div className="text-center mb-6">
@@ -123,7 +132,7 @@ export default function LandingPage() {
                   THE AXION ARCHITECTURE
                 </div>
                 <div className="text-xl sm:text-2xl font-extrabold text-white mt-1 font-sans">
-                  From Data → Intelligence → Action
+                  From Data → Intelligence → Action → Optimized Investment
                 </div>
               </div>
 
@@ -139,9 +148,9 @@ export default function LandingPage() {
                         STAGE 01
                       </span>
                     </div>
-                    <h3 className="text-base font-bold text-white">01. Live Enterprise Data</h3>
+                    <h3 className="text-base font-bold text-white">01. Live Business & Cyber Telemetry</h3>
                     <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
-                      Continuous telemetry ingestion from ERPs, order catalogs, sales channels, logistics APIs, and corporate travel claims.
+                      Continuous telemetry ingestion from ERPs, order catalogs, sales channels, SIEM, EDR, IAM, CSPM, and Threat Intelligence.
                     </p>
                   </div>
                   <div className="mt-4 pt-3 border-t border-white/5 text-[11px] text-zinc-400 font-mono">
@@ -160,17 +169,17 @@ export default function LandingPage() {
                         STAGE 02
                       </span>
                     </div>
-                    <h3 className="text-base font-bold text-white">02. Multi-Agent Intelligence</h3>
+                    <h3 className="text-base font-bold text-white">02. Financial Quantification & AI</h3>
                     <p className="text-xs text-zinc-300 mt-2 leading-relaxed">
-                      Claude 3.5 reasoning, RAG corporate policy retrieval, and demand velocity algorithms analyze cross-department root causes.
+                      Claude 3.5 reasoning, Expected Annual Loss (EAL) calculation, Knapsack dynamic programming, and RAG policy retrieval.
                     </p>
                   </div>
                   <div className="mt-4 pt-3 border-t border-white/10 text-[11px] text-zinc-300 font-mono">
-                    Claude SDK • RAG Engine • Forecast Trends
+                    Claude SDK • EAL Engine • Knapsack Solver
                   </div>
                 </div>
 
-                {/* 3. ACTION */}
+                {/* 3. ACTION & OPTIMIZATION */}
                 <div className="p-5 rounded-2xl bg-zinc-950/80 border border-white/5 flex flex-col justify-between hover:border-white/15 transition-colors">
                   <div>
                     <div className="flex items-center justify-between mb-3">
@@ -181,9 +190,9 @@ export default function LandingPage() {
                         STAGE 03
                       </span>
                     </div>
-                    <h3 className="text-base font-bold text-white">03. Deterministic Action</h3>
+                    <h3 className="text-base font-bold text-white">03. Action & Optimized Spend</h3>
                     <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
-                      Instant 1-click shoe exchanges, automated Supplier B purchase orders, expense cap flags, and dynamic price adjustments.
+                      1-click size exchanges, automated purchase orders, hotfix patch deployments, and budget-optimized security portfolios.
                     </p>
                   </div>
                   <div className="mt-4 pt-3 border-t border-white/5 text-[11px] text-zinc-400 font-mono">
@@ -191,6 +200,49 @@ export default function LandingPage() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CYBER RISK → BUSINESS IMPACT HIGHLIGHT SECTION ─────────── */}
+      <section className="py-16 bg-zinc-950 border-y border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-10 space-y-2">
+            <div className="text-xs font-mono uppercase text-cyan-400 tracking-wider font-bold">
+              QUANTIFIED RISK INTELLIGENCE
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-sans">
+              Cyber Risk → Business Impact → Optimized Investment
+            </h2>
+            <p className="text-xs text-zinc-400">
+              Transform raw technical vulnerabilities into financial exposure, actionable remediation, and optimal budget allocation.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div className="p-5 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-xl space-y-1">
+              <div className="text-xs font-mono text-zinc-400 font-bold">Financial Exposure Analyzed</div>
+              <div className="text-2xl font-extrabold text-white font-mono">₹3.8 Cr</div>
+              <div className="text-[10px] text-zinc-500 font-mono">Simulated Demo Value</div>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-xl space-y-1">
+              <div className="text-xs font-mono text-zinc-400 font-bold">Assets Monitored</div>
+              <div className="text-2xl font-extrabold text-cyan-300 font-mono">1,250+</div>
+              <div className="text-[10px] text-zinc-500 font-mono">18 Critical Tier</div>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-xl space-y-1">
+              <div className="text-xs font-mono text-zinc-400 font-bold">Control Effectiveness</div>
+              <div className="text-2xl font-extrabold text-emerald-400 font-mono">74%</div>
+              <div className="text-[10px] text-zinc-500 font-mono">NIST & ISO Grounded</div>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-xl space-y-1">
+              <div className="text-xs font-mono text-zinc-400 font-bold">Risk Reduction Opportunity</div>
+              <div className="text-2xl font-extrabold text-purple-300 font-mono">₹1.4 Cr</div>
+              <div className="text-[10px] text-zinc-500 font-mono">ROSI-Optimized Portfolio</div>
             </div>
           </div>
         </div>
@@ -316,8 +368,29 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* 1. Returns Module */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* 1. Cyber Risk Module */}
+            <ModuleCard
+              title="Cyber Risk Intelligence"
+              subtitle="Financial Loss & Spend Optimizer"
+              badge="Cyber Copilot"
+              icon={Shield}
+              href="/cyber-risk"
+              workflow={[
+                { label: "01. Telemetry", detail: "SIEM & CVE Ingestion" },
+                { label: "02. Quantify", detail: "Expected Loss (₹2.1Cr)" },
+                { label: "03. Optimize", detail: "0/1 Knapsack Allocation" },
+              ]}
+              exampleInteraction={{
+                inputLabel: "Payment DB Risk Warning (CVE-2024-3094)",
+                inputText: "Payment Gateway DB Cluster has CVSS 10.0 exploit exposure on unsegmented subnet.",
+                outputLabel: "Quantified Financial Decision",
+                outputText: "Annual Loss Exposure: ₹42L. Mandated emergency patch + FIDO2 hardware MFA. Avoided loss: ₹42L (ROSI: 600%).",
+                tagText: "EAL ₹42L (OPTIMIZED)",
+              }}
+            />
+
+            {/* 2. Returns Module */}
             <ModuleCard
               title="Smart Returns & Exchange"
               subtitle="Revenue-Retaining Return Agent"
@@ -338,7 +411,7 @@ export default function LandingPage() {
               }}
             />
 
-            {/* 2. Inventory Module */}
+            {/* 3. Inventory Module */}
             <ModuleCard
               title="Demand & Inventory Copilot"
               subtitle="Stockout Prevention & Supplier Matrix"
@@ -359,7 +432,7 @@ export default function LandingPage() {
               }}
             />
 
-            {/* 3. Expenses Module */}
+            {/* 4. Expenses Module */}
             <ModuleCard
               title="AI Expense Auditor"
               subtitle="Automated Policy & Limit Compliance"

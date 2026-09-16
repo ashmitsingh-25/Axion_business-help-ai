@@ -6,6 +6,8 @@ import {
   MOCK_POLICIES,
   MOCK_RISKS,
   MOCK_PRICING_INSIGHTS,
+  MOCK_CYBER_ASSETS,
+  MOCK_SECURITY_CONTROLS,
 } from "../lib/mock-data";
 
 const prisma = new PrismaClient();
@@ -151,6 +153,54 @@ async function main() {
     });
   }
 
+  // 7. Seed Cyber Assets
+  for (const asset of MOCK_CYBER_ASSETS) {
+    await prisma.cyberAsset.upsert({
+      where: { id: asset.id },
+      update: {},
+      create: {
+        id: asset.id,
+        name: asset.name,
+        assetType: asset.assetType,
+        businessUnit: asset.businessUnit,
+        criticalityScore: asset.criticalityScore,
+        technicalRiskScore: asset.technicalRiskScore,
+        internetExposed: asset.internetExposed,
+        environment: asset.environment,
+        ipOrHost: asset.ipOrHost,
+        dataSensitivity: asset.dataSensitivity,
+        revenueDependency: asset.revenueDependency,
+        downtimeCostPerHour: asset.downtimeCostPerHour,
+        dataBreachPotential: asset.dataBreachPotential,
+        incidentProbability: asset.incidentProbability,
+        controlEffectiveness: asset.controlEffectiveness,
+        owner: asset.owner,
+        status: asset.status,
+      },
+    });
+  }
+
+  // 8. Seed Security Controls
+  for (const ctrl of MOCK_SECURITY_CONTROLS) {
+    await prisma.securityControl.upsert({
+      where: { code: ctrl.code },
+      update: {},
+      create: {
+        id: ctrl.id,
+        code: ctrl.code,
+        name: ctrl.name,
+        category: ctrl.category,
+        coveragePercent: ctrl.coveragePercent,
+        effectivenessPercent: ctrl.effectivenessPercent,
+        associatedRiskEal: ctrl.associatedRiskEal,
+        potentialRiskReduction: ctrl.potentialRiskReduction,
+        annualCost: ctrl.annualCost,
+        status: ctrl.status,
+        owner: ctrl.owner,
+      },
+    });
+  }
+
   console.log("✅ Axion Database Seeded Successfully!");
 }
 
@@ -162,3 +212,4 @@ main()
   .finally(async () => {
     await prisma.$disconnect();
   });
+

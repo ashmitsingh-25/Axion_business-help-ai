@@ -55,11 +55,20 @@ export function ChatPanel() {
     },
   ]);
 
-  const presetQueries = [
+  const [presetCategory, setPresetCategory] = useState<"business" | "cyber">("business");
+
+  const businessPresets = [
     "Why did sales fall this month?",
     "What is the stockout risk for SKU-409?",
     "Are there any expense policy violations this week?",
     "How can we optimize pricing for Apex ANC Headphones?",
+  ];
+
+  const cyberPresets = [
+    "What is our highest financial cyber risk today?",
+    "How much risk can we reduce with ₹20 lakh budget?",
+    "What happens if remediation is delayed by 30 days?",
+    "Show unkeyed admin accounts lacking hardware MFA",
   ];
 
   const handleSend = async (queryToSend?: string) => {
@@ -154,13 +163,34 @@ export function ChatPanel() {
         </div>
       </div>
 
-      {/* Preset Suggestions Bar */}
+      {/* Preset Suggestions Bar with Category Switcher */}
       <div className="px-4 py-2.5 bg-zinc-950/60 border-b border-white/5 flex items-center gap-2 overflow-x-auto text-xs">
-        <span className="text-[11px] text-zinc-400 font-medium flex items-center gap-1 flex-shrink-0">
-          <Zap className="w-3 h-3 text-zinc-300" />
-          <span>Quick Prompts:</span>
-        </span>
-        {presetQueries.map((preset, idx) => (
+        <div className="flex items-center gap-1 bg-zinc-900/90 p-0.5 rounded-lg border border-white/10 flex-shrink-0">
+          <button
+            onClick={() => setPresetCategory("business")}
+            className={`px-2.5 py-0.5 rounded-md text-[10px] font-semibold transition-all ${
+              presetCategory === "business"
+                ? "bg-white/15 text-white shadow-sm"
+                : "text-zinc-400 hover:text-zinc-200"
+            }`}
+          >
+            Business Ops
+          </button>
+          <button
+            onClick={() => setPresetCategory("cyber")}
+            className={`px-2.5 py-0.5 rounded-md text-[10px] font-semibold transition-all ${
+              presetCategory === "cyber"
+                ? "bg-white/15 text-white shadow-sm"
+                : "text-zinc-400 hover:text-zinc-200"
+            }`}
+          >
+            Cyber Risk
+          </button>
+        </div>
+
+        <span className="text-zinc-500">|</span>
+
+        {(presetCategory === "business" ? businessPresets : cyberPresets).map((preset, idx) => (
           <button
             key={idx}
             onClick={() => handleSend(preset)}

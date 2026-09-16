@@ -141,3 +141,163 @@ model PricingInsight {
   reasoning         String
   createdAt         DateTime @default(now())
 }
+
+// ─────────────────────────────────────────────────────────────
+// CYBER RISK INTELLIGENCE & SECURITY INVESTMENT MODELS
+// ─────────────────────────────────────────────────────────────
+
+model CyberAsset {
+  id                  String             @id @default(cuid())
+  name                String
+  assetType           String             // DATABASE, API_GATEWAY, AUTH_SERVER, CLOUD_STORAGE, ENDPOINT, ERP, MICROSERVICE
+  businessUnit        String             // Payments, E-commerce, Finance, HR, Cloud Infrastructure, Corporate IT
+  criticalityScore    Int                @default(5) // 1 to 10
+  technicalRiskScore  Int                @default(50) // 0 to 100
+  internetExposed     Boolean            @default(false)
+  environment         String             @default("PRODUCTION") // PRODUCTION, STAGING, INTERNAL
+  ipOrHost            String?
+  dataSensitivity     String             @default("CONFIDENTIAL") // RESTRICTED, CONFIDENTIAL, INTERNAL, PUBLIC
+  revenueDependency   String             @default("HIGH") // CRITICAL, HIGH, MEDIUM, LOW
+  downtimeCostPerHour Float              @default(500000) // in INR
+  dataBreachPotential Float              @default(1500000) // in INR
+  incidentProbability Float              @default(0.15) // 0.0 to 1.0
+  controlEffectiveness Float             @default(0.70) // 0.0 to 1.0
+  owner               String             @default("Security Ops")
+  status              String             @default("ACTIVE") // ACTIVE, UNDER_REMEDIATION, DECOMMISSIONED
+  vulnerabilities     Vulnerability[]
+  securityEvents      SecurityEvent[]
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+}
+
+model Vulnerability {
+  id               String      @id @default(cuid())
+  cveId            String
+  title            String
+  cvssScore        Float
+  severity         String      // CRITICAL, HIGH, MEDIUM, LOW
+  exploitAvailable Boolean     @default(false)
+  patchAvailable   Boolean     @default(true)
+  ageDays          Int         @default(14)
+  assetId          String
+  cyberAsset       CyberAsset  @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  remediationCost  Float       @default(200000)
+  riskContribution Float       @default(1500000)
+  status           String      @default("OPEN") // OPEN, IN_PROGRESS, PATCHED, MITIGATED
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+}
+
+model SecurityControl {
+  id                      String   @id @default(cuid())
+  code                    String   @unique // e.g. CTRL-MFA, CTRL-EDR, CTRL-SEG
+  name                    String
+  category                String   // IAM, ENDPOINT, NETWORK, DATA_PROTECTION, VULN_MGMT, BACKUP, SIEM
+  coveragePercent         Float    // 0 to 100
+  effectivenessPercent    Float    // 0 to 100
+  associatedRiskEal       Float    // Current EAL attributed
+  potentialRiskReduction  Float    // EAL reduction if improved to 100%
+  annualCost              Float    // Cost to maintain or upgrade
+  status                  String   @default("ACTIVE") // ACTIVE, PARTIAL, PLANNED, DEFICIENT
+  owner                   String   @default("SecOps")
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+}
+
+model ThreatIntelligence {
+  id            String   @id @default(cuid())
+  threatActor   String
+  campaignName  String
+  targetSector  String
+  cveReference  String?
+  severity      String   // CRITICAL, HIGH, MEDIUM
+  description   String
+  active        Boolean  @default(true)
+  detectedAt    DateTime @default(now())
+}
+
+model SecurityEvent {
+  id            String      @id @default(cuid())
+  source        String      // SIEM, EDR, IAM, CSPM, VULN_SCANNER
+  eventType     String      // AUTH_ANOMALY, EXPLOIT_ATTEMPT, PRIVILEGE_ESCALATION, MISCONFIGURATION
+  severity      String      // CRITICAL, HIGH, MEDIUM, LOW
+  assetAffected String
+  assetId       String?
+  cyberAsset    CyberAsset? @relation(fields: [assetId], references: [id], onDelete: SetNull)
+  details       String
+  riskDelta     Int         @default(0) // e.g. +8, -5
+  timestamp     DateTime    @default(now())
+}
+
+model RiskAssessment {
+  id                   String   @id @default(cuid())
+  enterpriseScore      Int      // 0 to 100 (e.g. 72)
+  totalFinancialExposure Float  // in INR (e.g. 38000000 = ₹3.8 Cr)
+  expectedAnnualLoss   Float    // in INR (e.g. 21000000 = ₹2.1 Cr)
+  potentialMaxLoss     Float    // in INR
+  controlEffectiveness Float    // percentage (e.g. 74)
+  criticalAssetCount   Int      // (e.g. 18)
+  highRiskAssetCount   Int      // (e.g. 7)
+  riskReductionOpportunity Float // in INR (e.g. 14000000 = ₹1.4 Cr)
+  calculatedAt         DateTime @default(now())
+}
+
+model RiskDriver {
+  id                    String   @id @default(cuid())
+  title                 String
+  category              String   // VULNERABILITY, IAM, NETWORK, CLOUD, DATA
+  financialContribution Float    // in INR (e.g. 4200000 = ₹42L)
+  assetName             String
+  cveId                 String?
+  controlDeficiency     String?
+  remediation           String
+  priority              Int      @default(1)
+}
+
+model SecurityInvestment {
+  id              String   @id @default(cuid())
+  title           String
+  controlCode     String
+  cost            Float    // in INR (e.g. 500000 = ₹5L)
+  riskReduction   Float    // in INR (e.g. 3500000 = ₹35L)
+  rosiPercent     Float    // e.g. 600%
+  optimalRank     Int      @default(1)
+  isRecommended   Boolean  @default(false)
+  category        String   // IAM, PATCHING, NETWORK, EDR, SIEM, CLOUD
+  description     String
+}
+
+model Framework {
+  id                String             @id @default(cuid())
+  code              String             @unique // ISO27001, NIST_CSF, CIS_CONTROLS, RBI_CSF, SEBI_CSCRF
+  name              String
+  version           String             @default("2.0")
+  totalControls     Int
+  compliantControls Int
+  controls          FrameworkControl[]
+}
+
+model FrameworkControl {
+  id            String    @id @default(cuid())
+  frameworkId   String
+  framework     Framework @relation(fields: [frameworkId], references: [id], onDelete: Cascade)
+  controlCode   String    // e.g. PR.AC-1, 1.1, A.9.4.2
+  title         String
+  requirement   String
+  axionControlCode String? // maps to SecurityControl.code
+  status        String    @default("COMPLIANT") // COMPLIANT, PARTIALLY_COMPLIANT, NON_COMPLIANT
+  evidenceNote  String?
+}
+
+model ComplianceEvidence {
+  id            String   @id @default(cuid())
+  controlCode   String   // e.g. CTRL-MFA
+  frameworkCode String   // e.g. NIST_CSF
+  evidenceType  String   // IAM_TELEMETRY, VULN_SCAN_LOG, AUDIT_REPORT, ENCRYPTION_CERT
+  description   String
+  telemetryRef  String?
+  lastVerified  DateTime @default(now())
+  verifiedBy    String   @default("Autonomous Compliance Agent")
+  status        String   @default("VERIFIED") // VERIFIED, PENDING_REVIEW, EXPIRED
+}
+

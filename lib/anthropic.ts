@@ -536,3 +536,199 @@ Return ONLY valid JSON with this exact structure:
     ],
   };
 }
+
+/**
+ * Cyber Risk Decision Copilot Multi-Agent Reasoner
+ * Formatted with strict 5-stage synthesis: Detect → Investigate → Assess → Recommend → Alert
+ */
+export async function queryCyberCopilotWithClaude(
+  query: string,
+  history: Array<{ role: "user" | "assistant"; content: string }> = []
+): Promise<CopilotStructuredResponse> {
+  const telemetryContext = `
+Live Axion Cyber Risk & Financial Exposure Telemetry:
+- Enterprise Cyber Risk Score: 72 / 100 (Elevated Risk)
+- Total Financial Cyber Exposure: ₹3.8 Cr ($455k USD equivalent)
+- Expected Annual Loss (EAL): ₹2.1 Cr (Probability of Incident: 17%, Potential Impact: ₹2.4 Cr on Payment DB)
+- Critical Assets Monitored: 18 critical tier assets across 1,250 monitored endpoints and cloud hosts
+- Top Risk Driver #1: Internet-facing Critical Vulnerability (CVE-2024-3094 on Payment Gateway DB, CVSS 10.0) contributing ₹42L in financial risk
+- Top Risk Driver #2: Privileged Infrastructure Accounts Lacking Hardware MFA (18 root admins) contributing ₹28L in financial risk
+- Top Risk Driver #3: Payment DB direct subnet ingress exposure contributing ₹24L in financial risk
+- Security Control Effectiveness: 74% overall (MFA: 92%, EDR: 87%, Encryption: 95%, Patching: 61%, Segmentation: 42%, Backup: 88%)
+- Optimal Investment Recommendation: ₹18L budget (FIDO2 MFA ₹5L + Patch Pipeline ₹8L + CSPM ₹5L) yields ₹71L in risk reduction (ROSI: ~394%)
+- Delayed Remediation Impact: 30-day delay escalates EAL by +₹25L to ₹2.35 Cr; 60-day delay escalates by +₹58L
+- Compliance: NIST CSF (82.4%), ISO 27001 (83.8%), CIS Controls (79.7%), RBI CSF (88.1%), SEBI CSCRF (84.5%)
+`;
+
+  if (anthropic && process.env.ANTHROPIC_API_KEY) {
+    try {
+      const prompt = `
+You are Axion's Chief Cyber Risk Intelligence & Financial Quantification Decision Copilot.
+Analyze this cybersecurity inquiry using the deterministic enterprise telemetry and financial models provided.
+
+IMPORTANT RULES:
+- Express risk in financial exposure, Expected Annual Loss (EAL), and ROSI percentages.
+- Do NOT invent arbitrary numbers; stay grounded in the provided telemetry.
+- Format your response strictly matching the 5-stage decision synthesis framework:
+  1. DETECT (Anomalies, CVEs, exposure changes, exact telemetry metrics)
+  2. INVESTIGATE (Root causes across vulnerabilities, IAM, network segmentation, cloud configs)
+  3. ASSESS (Financial cyber exposure, EAL, potential downtime & regulatory impact)
+  4. RECOMMEND (Prioritized remediation & security investments with cost/ROSI)
+  5. ALERT (Continuous monitors, SIEM alert thresholds, and incident guardrails)
+
+Enterprise Telemetry Context:
+${telemetryContext}
+
+User Query: "${query}"
+
+Return ONLY valid JSON matching this schema:
+{
+  "detect": "string summarizing detected cyber exposure and telemetry changes",
+  "investigate": "string detailing deep root causes across assets, CVEs, and controls",
+  "assess": "string quantifying financial impact, EAL, downtime, and regulatory exposure",
+  "recommend": "string providing prioritized security investments with costs, EAL reductions, and ROSI",
+  "alert": "string outlining continuous guardrails, SIEM alerts, and automated triggers",
+  "dataHighlights": [
+    { "metric": "string", "value": "string", "trend": "up"|"down"|"neutral", "department": "string" }
+  ]
+}
+`;
+
+      const response = await anthropic.messages.create({
+        model: "claude-3-5-sonnet-20241022",
+        max_tokens: 1500,
+        messages: [{ role: "user", content: prompt }],
+      });
+
+      const responseText =
+        response.content[0].type === "text" ? response.content[0].text : "";
+
+      const cleanJson = responseText.replace(/```json\n?|\n?```/g, "").trim();
+      const parsed = JSON.parse(cleanJson);
+
+      return {
+        detect: parsed.detect,
+        investigate: parsed.investigate,
+        assess: parsed.assess,
+        recommend: parsed.recommend,
+        alert: parsed.alert,
+        dataHighlights: parsed.dataHighlights || [
+          { metric: "Financial Exposure", value: "₹3.8 Cr", trend: "up", department: "Cyber Risk" },
+          { metric: "Expected Annual Loss", value: "₹2.1 Cr", trend: "up", department: "FinSec" },
+          { metric: "Control Effectiveness", value: "74%", trend: "neutral", department: "SecOps" },
+          { metric: "Optimal Spend Zone", value: "₹18L Budget", trend: "up", department: "Investment" },
+        ],
+      };
+    } catch (err) {
+      console.warn("Claude API call failed, using deterministic cyber risk heuristics:", err);
+    }
+  }
+
+  // Deterministic Heuristic Responses for Cyber Risk Queries
+  const qLower = query.toLowerCase();
+
+  if (qLower.includes("highest") || qLower.includes("top") || qLower.includes("critical")) {
+    return {
+      detect:
+        "Telemetric scanning detected our highest financial risk localized on the Payment Gateway DB Cluster (Asset ID: asset_01), where a critical CVSS 10.0 vulnerability (CVE-2024-3094) combined with direct subnet internet exposure generates ₹42L in attributed annual loss.",
+      investigate:
+        "Root cause analysis highlights two intersecting control deficiencies: (1) Patch Management coverage stands at 61% with a 14-day SLA overrun; (2) Network Microsegmentation is at 42%, leaving the primary PostgreSQL payment cluster reachable from staging ingress VPC peering.",
+      assess:
+        "Total asset exposure is ₹2.4 Cr with an incident probability of 17%, resulting in ₹40.8L Expected Annual Loss (EAL). An uncontained breach would incur an estimated ₹18L/hr in transactional downtime plus ₹25L in RBI regulatory penalties.",
+      recommend:
+        "1. Deploy emergency vendor hotfix patch for CVE-2024-3094 (Estimated cost: ₹2.5L, risk reduction: ₹42L, ROSI: 1,580%).\n2. Enforce strict VPC private endpoint microsegmentation (CTRL-SEG) to decouple database ingress from public routing.\n3. Verify automated hourly immutable backups in AWS S3 Glacier vault.",
+      alert:
+        "Configured real-time SIEM alert rule for unauthorized port 5432 ingress probes; enabled CSPM auto-quarantine for exposed database security groups.",
+      dataHighlights: [
+        { metric: "Top Risk Asset", value: "Payment DB Cluster", trend: "up", department: "Payments" },
+        { metric: "Top Driver EAL", value: "₹42L Loss Exposure", trend: "up", department: "FinSec" },
+        { metric: "Remediation Cost", value: "₹2.5L Hotfix", trend: "down", department: "Investment" },
+        { metric: "Estimated ROSI", value: "1,580%", trend: "up", department: "SecOps" },
+      ],
+    };
+  }
+
+  if (qLower.includes("mfa") || qLower.includes("iam") || qLower.includes("privileged")) {
+    return {
+      detect:
+        "IAM audit telemetry identified 18 infrastructure and cloud root administrators operating without mandatory hardware FIDO2 tokens, generating ₹28L in financial loss contribution.",
+      investigate:
+        "While standard employee MFA coverage is 92%, legacy developer staging accounts and bastion host access retain password-only fallbacks susceptible to credential stuffing and session token replay.",
+      assess:
+        "Compromise of an infrastructure root credential provides direct blast radius across all 1,250 monitored assets. Estimated Expected Annual Loss reduction from full hardware MFA enforcement is ₹35L.",
+      recommend:
+        "1. Procure and mandate YubiKey FIDO2 hardware keys for all 18 infrastructure administrators (Cost: ₹5,00,000 / ₹5L).\n2. Enforce conditional access policies blocking non-FIDO2 authentication to AWS/GCP management consoles.\n3. Expected Net Benefit: ₹30L (ROSI: 600%, Payback: 1.7 months).",
+      alert:
+        "Activated automated Slack/PagerDuty notification trigger on any privileged IAM role assumption without biometric or hardware token verification.",
+      dataHighlights: [
+        { metric: "Unkeyed Admins", value: "18 Accounts", trend: "down", department: "IAM" },
+        { metric: "Investment Cost", value: "₹5,00,000", trend: "down", department: "Budget" },
+        { metric: "Risk Reduction", value: "₹35,00,000", trend: "up", department: "FinSec" },
+        { metric: "Projected ROSI", value: "600%", trend: "up", department: "ROI" },
+      ],
+    };
+  }
+
+  if (qLower.includes("budget") || qLower.includes("invest") || qLower.includes("20 lakh") || qLower.includes("lakh")) {
+    return {
+      detect:
+        "Under an allocated budget ceiling of ₹20,00,000 (₹20L), the 0/1 Knapsack optimization algorithm evaluated 6 competing enterprise security initiatives against our ₹2.1 Cr baseline Expected Annual Loss.",
+      investigate:
+        "A simple greedy ROI sort would over-allocate to small isolated controls. Dynamic programming knapsack optimization selected the mathematically optimal combination: (1) Hardware MFA (₹5L) + (2) Automated Patch Pipeline (₹8L) + (3) Cloud CSPM Auto-Remediation (₹7L) = Total ₹20L.",
+      assess:
+        "The optimal portfolio achieves ₹96,00,000 (₹96L) in gross risk reduction, compressing enterprise EAL from ₹2.1 Cr down to ₹1.14 Cr (a 45.7% risk reduction) with 100% budget utilization.",
+      recommend:
+        "1. Authorize immediate release of ₹20L security capital expenditure for the 3-initiative bundle.\n2. Net financial benefit to enterprise: ₹76,00,000 (₹76L).\n3. Overall Portfolio ROSI: 380% with an average payback horizon of 2.5 months.",
+      alert:
+        "Configured quarterly ROSI milestone tracking and automated control effectiveness telemetry feeds.",
+      dataHighlights: [
+        { metric: "Budget Allocated", value: "₹20,00,000 (100%)", trend: "neutral", department: "Finance" },
+        { metric: "EAL Reduction", value: "₹96,00,000", trend: "up", department: "Risk" },
+        { metric: "New Projected EAL", value: "₹1.14 Cr (-45%)", trend: "down", department: "FinSec" },
+        { metric: "Portfolio ROSI", value: "380%", trend: "up", department: "Investment" },
+      ],
+    };
+  }
+
+  if (qLower.includes("delay") || qLower.includes("30 day") || qLower.includes("wait")) {
+    return {
+      detect:
+        "Delayed Remediation Simulator models that deferring critical vulnerability patching and MFA enforcement by 30 days increases Expected Annual Loss by +₹25,00,000 (+₹25L) from ₹2.1 Cr to ₹2.35 Cr.",
+      investigate:
+        "Threat intelligence tracking shows weaponized exploit payloads for CVE-2024-3094 actively circulating among ransomware cartels. Delaying remediation expands the exploitability window by +55% while increasing breach likelihood from 17% to 24.8%.",
+      assess:
+        "Financial cost of a 30-day delay: +₹25L in expected loss + potential ₹50L regulatory penalty under RBI/SEBI breach reporting guidelines if an incident occurs during the unpatched window.",
+      recommend:
+        "1. Reject remediation deferral requests for CVSS 9.0+ vulnerabilities.\n2. Authorize an accelerated 72-hour emergency maintenance window.\n3. Net loss avoided by immediate action: ₹25,00,000.",
+      alert:
+        "Deployed automated countdown SLA monitor escalating unresolved critical vulnerabilities directly to CISO at Day 7, Day 14, and Day 21.",
+      dataHighlights: [
+        { metric: "Baseline EAL", value: "₹2.10 Cr", trend: "neutral", department: "FinSec" },
+        { metric: "30-Day Delay EAL", value: "₹2.35 Cr", trend: "up", department: "Risk" },
+        { metric: "Additional Loss", value: "+₹25,00,000", trend: "up", department: "Penalty" },
+        { metric: "Breach Likelihood", value: "17% → 24.8%", trend: "up", department: "SecOps" },
+      ],
+    };
+  }
+
+  // Default Cyber Copilot Synthesis
+  return {
+    detect:
+      "Enterprise telemetry quantifies our total financial cyber exposure at ₹3.8 Cr, with an Expected Annual Loss (EAL) of ₹2.1 Cr across 1,250 monitored assets. Enterprise Risk Score is 72 / 100 with 74% control effectiveness.",
+    investigate:
+      "The top two financial loss drivers are: (1) CVE-2024-3094 on the Payment Gateway DB Cluster (₹42L risk contribution) due to 61% patching coverage; (2) 18 unkeyed root accounts lacking hardware MFA (₹28L risk contribution).",
+    assess:
+      "Payment infrastructure represents ₹2.4 Cr in potential maximum single-incident loss. The current 17% annual incident likelihood warrants immediate investment into root-cause remediation.",
+    recommend:
+      "1. Allocate ₹18L across the optimal security investment portfolio (MFA ₹5L + Patch Pipeline ₹8L + CSPM ₹5L).\n2. Achieve an estimated ₹71L in risk reduction, lowering EAL to ₹1.39 Cr.\n3. Estimated Return on Security Investment (ROSI) is 294%.",
+    alert:
+      "Live continuous telemetry monitors active for SIEM, EDR, IAM, and CSPM with automated anomaly escalation.",
+    dataHighlights: [
+      { metric: "Financial Exposure", value: "₹3.8 Cr", trend: "up", department: "Cyber Risk" },
+      { metric: "Expected Annual Loss", value: "₹2.1 Cr", trend: "up", department: "FinSec" },
+      { metric: "Control Effectiveness", value: "74%", trend: "neutral", department: "SecOps" },
+      { metric: "Risk Reduction Target", value: "₹1.4 Cr Opportunity", trend: "up", department: "Investment" },
+    ],
+  };
+}
+
