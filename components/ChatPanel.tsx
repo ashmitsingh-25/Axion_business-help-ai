@@ -34,7 +34,6 @@ interface MessageItem {
 export function ChatPanel() {
   const [inputQuery, setInputQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  // Initial messages start empty as requested
   const [messages, setMessages] = useState<MessageItem[]>([]);
 
   const [presetCategory, setPresetCategory] = useState<"business" | "cyber">("business");
@@ -162,7 +161,7 @@ export function ChatPanel() {
             onClick={() => setPresetCategory("business")}
             className={`px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all ${
               presetCategory === "business"
-                ? "bg-ocean-400 text-ocean-950 shadow-sm font-bold"
+                ? "bg-white text-ocean-950 shadow-sm font-bold"
                 : "text-ocean-200/60 hover:text-white"
             }`}
           >
@@ -172,7 +171,7 @@ export function ChatPanel() {
             onClick={() => setPresetCategory("cyber")}
             className={`px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all ${
               presetCategory === "cyber"
-                ? "bg-ocean-400 text-ocean-950 shadow-sm font-bold"
+                ? "bg-white text-ocean-950 shadow-sm font-bold"
                 : "text-ocean-200/60 hover:text-white"
             }`}
           >
@@ -200,9 +199,9 @@ export function ChatPanel() {
           <div className="h-full flex flex-col items-center justify-center text-center p-6 space-y-6 animate-in fade-in duration-500">
             {/* Glowing Center Badge */}
             <div className="relative">
-              <div className="absolute inset-0 rounded-3xl bg-ocean-400/20 blur-2xl animate-pulse" />
-              <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-ocean-500/30 to-ocean-800/60 border border-ocean-300/40 flex items-center justify-center shadow-[0_0_30px_rgba(32,201,166,0.3)]">
-                <Sparkles className="w-8 h-8 text-ocean-300 animate-pulse" />
+              <div className="absolute inset-0 rounded-3xl bg-white/15 blur-2xl animate-pulse" />
+              <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-white/20 to-ocean-800/60 border border-white/40 flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                <Sparkles className="w-8 h-8 text-white animate-pulse" />
               </div>
             </div>
 
@@ -223,7 +222,7 @@ export function ChatPanel() {
                   <button
                     key={i}
                     onClick={() => handleSend(p.label)}
-                    className="p-3.5 rounded-2xl bg-ocean-900/50 hover:bg-ocean-800/70 border border-ocean-300/15 hover:border-ocean-300/40 text-left transition-all duration-200 group flex items-start gap-3 shadow-ocean-card hover:shadow-[0_0_20px_rgba(32,201,166,0.15)]"
+                    className="p-3.5 rounded-2xl bg-ocean-900/50 hover:bg-ocean-800/70 border border-ocean-300/15 hover:border-white/30 text-left transition-all duration-200 group flex items-start gap-3 shadow-ocean-card hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
                   >
                     <div className="p-2 rounded-xl bg-ocean-500/10 border border-ocean-300/20 text-ocean-300 group-hover:scale-105 transition-transform flex-shrink-0">
                       <Icon className="w-4 h-4" />
@@ -236,7 +235,7 @@ export function ChatPanel() {
                         {p.label}
                       </div>
                     </div>
-                    <ArrowRight className="w-3.5 h-3.5 text-ocean-400/50 group-hover:text-ocean-300 group-hover:translate-x-0.5 transition-all flex-shrink-0 mt-1" />
+                    <ArrowRight className="w-3.5 h-3.5 text-ocean-400/50 group-hover:text-white group-hover:translate-x-0.5 transition-all flex-shrink-0 mt-1" />
                   </button>
                 );
               })}
@@ -362,13 +361,13 @@ export function ChatPanel() {
         {isLoading && (
           <div className="flex gap-3 items-start animate-in fade-in duration-200">
             <div className="w-8 h-8 rounded-xl bg-ocean-500/15 border border-ocean-300/20 flex items-center justify-center flex-shrink-0">
-              <Sparkles className="w-4 h-4 text-ocean-300 animate-pulse" />
+              <Sparkles className="w-4 h-4 text-white animate-pulse" />
             </div>
-            <div className="p-4 rounded-2xl bg-ocean-900/80 border border-ocean-300/20 flex items-center gap-3 shadow-[0_0_20px_rgba(32,201,166,0.2)]">
-              <div className="w-2 h-2 rounded-full bg-ocean-300 animate-bounce" />
-              <div className="w-2 h-2 rounded-full bg-ocean-400 animate-bounce [animation-delay:0.2s]" />
-              <div className="w-2 h-2 rounded-full bg-ocean-500 animate-bounce [animation-delay:0.4s]" />
-              <span className="text-xs text-ocean-200 font-mono">
+            <div className="p-4 rounded-2xl bg-ocean-900/80 border border-ocean-300/20 flex items-center gap-3 shadow-[0_0_20px_rgba(255,255,255,0.15)]">
+              <div className="w-2 h-2 rounded-full bg-white animate-bounce" />
+              <div className="w-2 h-2 rounded-full bg-ocean-200 animate-bounce [animation-delay:0.2s]" />
+              <div className="w-2 h-2 rounded-full bg-ocean-400 animate-bounce [animation-delay:0.4s]" />
+              <span className="text-xs text-white font-mono">
                 Synthesizing cross-department telemetry with Claude 3.5 Sonnet...
               </span>
             </div>
@@ -376,16 +375,16 @@ export function ChatPanel() {
         )}
       </div>
 
-      {/* ── HIGH-LIGHTED ASK COPILOT INPUT BAR ─────────────────────────── */}
+      {/* ── HIGH-LIGHTED ASK COPILOT INPUT BAR (White Button Theme) ───────────────── */}
       <div className="p-4 bg-ocean-950/95 border-t border-ocean-300/20 relative">
         <form
           onSubmit={(e) => {
             e.preventDefault();
             handleSend();
           }}
-          className="relative flex items-center gap-2 p-1.5 rounded-2xl bg-ocean-900/80 border-2 border-ocean-400/50 shadow-[0_0_30px_rgba(32,201,166,0.35),inset_0_1px_0_0_rgba(94,234,212,0.2)] focus-within:border-ocean-300 focus-within:shadow-[0_0_40px_rgba(32,201,166,0.5)] transition-all duration-300"
+          className="relative flex items-center gap-2 p-1.5 rounded-2xl bg-ocean-900/80 border-2 border-white/40 shadow-[0_0_30px_rgba(255,255,255,0.2),inset_0_1px_0_0_rgba(255,255,255,0.1)] focus-within:border-white focus-within:shadow-[0_0_40px_rgba(255,255,255,0.35)] transition-all duration-300"
         >
-          <div className="pl-3 text-ocean-300">
+          <div className="pl-3 text-white">
             <Sparkles className="w-4 h-4 animate-pulse" />
           </div>
 
@@ -402,17 +401,17 @@ export function ChatPanel() {
           <button
             type="submit"
             disabled={!inputQuery.trim() || isLoading}
-            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-ocean-400 via-ocean-300 to-ocean-400 hover:from-ocean-300 hover:to-ocean-200 text-ocean-950 text-xs font-extrabold flex items-center gap-2 shadow-[0_0_20px_rgba(32,201,166,0.5)] transition-all disabled:opacity-40 disabled:cursor-not-allowed active:scale-95 hover:scale-[1.02]"
+            className="px-5 py-2.5 rounded-xl bg-white hover:bg-neutral-100 text-ocean-950 text-xs font-black flex items-center gap-2 shadow-[0_0_25px_rgba(255,255,255,0.4)] transition-all disabled:opacity-40 disabled:cursor-not-allowed active:scale-95 hover:scale-[1.02]"
           >
-            <Sparkles className="w-3.5 h-3.5 fill-ocean-950" />
-            <span>Ask Copilot</span>
-            <Send className="w-3.5 h-3.5" />
+            <Sparkles className="w-3.5 h-3.5 fill-ocean-950 text-ocean-950" />
+            <span className="font-extrabold text-ocean-950">Ask Copilot</span>
+            <Send className="w-3.5 h-3.5 text-ocean-950" />
           </button>
         </form>
 
         <div className="flex items-center justify-between mt-2 px-2 text-[10px] text-ocean-300/60 font-mono">
           <span>Tip: Press Enter ↵ to send • Multi-agent Claude 3.5</span>
-          <span className="text-ocean-400 font-semibold">Autonomous Reasoning</span>
+          <span className="text-white font-semibold">Autonomous Reasoning</span>
         </div>
       </div>
     </div>

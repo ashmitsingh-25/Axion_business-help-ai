@@ -28,7 +28,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [cyberDropdownOpen, setCyberDropdownOpen] = useState(false);
-  const [drawerCyberOpen, setDrawerCyberOpen] = useState(true);
+  const [drawerCyberOpen, setDrawerCyberOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const drawerRef = useRef<HTMLDivElement | null>(null);
 
@@ -174,12 +174,11 @@ export function Navbar() {
                 Overview
               </Link>
 
-              {/* Cyber Risk Interactive Dropdown Menu */}
+              {/* Cyber Risk Interactive Dropdown Menu (Opens only on click) */}
               <div className="relative" ref={dropdownRef}>
                 <button
                   type="button"
                   onClick={() => setCyberDropdownOpen(!cyberDropdownOpen)}
-                  onMouseEnter={() => setCyberDropdownOpen(true)}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                     isCyberActive
                       ? "bg-ocean-500/20 text-white border border-ocean-300/30 shadow-[0_0_15px_rgba(32,201,166,0.15)]"
@@ -200,7 +199,6 @@ export function Navbar() {
                 {/* Dropdown Menu Content */}
                 {cyberDropdownOpen && (
                   <div
-                    onMouseLeave={() => setCyberDropdownOpen(false)}
                     className="absolute left-0 mt-2 w-80 rounded-2xl bg-ocean-950/95 border border-ocean-300/25 p-2 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(32,201,166,0.15)] animate-in fade-in slide-in-from-top-2 duration-200 z-50"
                   >
                     <div className="px-3 py-2 border-b border-ocean-300/10 flex items-center justify-between">
@@ -303,10 +301,10 @@ export function Navbar() {
             <div className="flex items-center gap-2.5">
               <Link
                 href="/insights"
-                className="hidden sm:flex items-center gap-2 text-xs text-ocean-200 bg-ocean-900/60 hover:bg-ocean-800/80 px-3 py-1.5 rounded-xl border border-ocean-300/15 backdrop-blur-md transition-all shadow-sm hover:border-ocean-300/30"
+                className="hidden sm:flex items-center gap-2 text-xs text-white bg-ocean-900/80 hover:bg-ocean-800 px-3 py-1.5 rounded-xl border border-white/20 backdrop-blur-md transition-all shadow-sm hover:border-white/40"
               >
-                <Sparkles className="w-3.5 h-3.5 text-ocean-300 animate-pulse" />
-                <span className="font-semibold text-[11px]">Ask Copilot</span>
+                <Sparkles className="w-3.5 h-3.5 text-white animate-pulse" />
+                <span className="font-bold text-[11px] text-white">Ask Copilot</span>
               </Link>
 
               <Link
@@ -388,42 +386,30 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* 2. Cyber Risk with Expandable Submenu */}
+          {/* 2. Cyber Risk with Expandable Submenu (Closed by default, no 'Dropdown Menu' badge text) */}
           <div className="rounded-xl border border-ocean-300/15 bg-ocean-900/20 overflow-hidden">
-            <div className="flex items-center justify-between p-3 bg-ocean-900/40">
-              <Link
-                href="/cyber-risk"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 flex-1"
-              >
+            <button
+              type="button"
+              onClick={() => setDrawerCyberOpen(!drawerCyberOpen)}
+              className="w-full flex items-center justify-between p-3 bg-ocean-900/40 hover:bg-ocean-900/60 transition-colors text-left"
+            >
+              <div className="flex items-center gap-3">
                 <div className="p-2 rounded-lg bg-ocean-500/20 border border-ocean-300/25 text-ocean-300">
                   <ShieldCheck className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-white flex items-center gap-1.5">
-                    <span>Cyber Risk</span>
-                    <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-ocean-500/15 text-ocean-300 border border-ocean-300/20 font-semibold">
-                      Dropdown Menu
-                    </span>
-                  </div>
+                  <div className="text-xs font-bold text-white">Cyber Risk</div>
                   <div className="text-[10px] text-ocean-200/60">Financial loss & mitigation</div>
                 </div>
-              </Link>
-              <button
-                type="button"
-                onClick={() => setDrawerCyberOpen(!drawerCyberOpen)}
-                className="p-1 rounded-lg hover:bg-ocean-800 text-ocean-300 transition-colors"
-                aria-label="Toggle Cyber Risk Dropdown"
-              >
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    drawerCyberOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-            </div>
+              </div>
+              <ChevronDown
+                className={`w-4 h-4 text-ocean-300 transition-transform duration-200 ${
+                  drawerCyberOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
 
-            {/* Sub-links */}
+            {/* Sub-links (Revealed only after clicking) */}
             {drawerCyberOpen && (
               <div className="p-1.5 bg-ocean-950/60 border-t border-ocean-300/10 space-y-1">
                 {cyberSubLinks.map((sub) => {

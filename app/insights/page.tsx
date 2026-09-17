@@ -1,7 +1,6 @@
-import { Sparkles, Bot, Zap } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { ChatPanel } from "@/components/ChatPanel";
 import { RiskFeed } from "@/components/RiskFeed";
-import { PricingCard } from "@/components/PricingCard";
 
 export default function InsightsPage() {
   return (
@@ -18,7 +17,7 @@ export default function InsightsPage() {
             </span>
           </div>
           <p className="text-xs text-ocean-200/60 mt-1">
-            Triangulates telemetry across inventory, returns, expenses, and market pricing into executive action
+            Triangulate telemetry across inventory, customer returns, travel expenses, and cyber risk into deterministic action.
           </p>
         </div>
 
@@ -30,17 +29,16 @@ export default function InsightsPage() {
         </div>
       </div>
 
-      {/* Main Grid: Copilot Chat (Left 7 cols) vs Live Risk Feed & Pricing Optimizer (Right 5 cols) */}
+      {/* Main Grid: Copilot Chat (Left 7 cols) vs Live Risk Feed (Right 5 cols) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column: Business Decision Copilot Chat Panel (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
           <ChatPanel />
         </div>
 
-        {/* Right Column: Live Risk Detector Feed + Pricing Optimizer (5 cols) */}
+        {/* Right Column: Live Risk Detector Feed (5 cols) */}
         <div className="lg:col-span-5 space-y-6">
           <RiskFeed />
-          <PricingCard />
         </div>
       </div>
     </div>

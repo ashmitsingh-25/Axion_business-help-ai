@@ -19,9 +19,7 @@ import {
   UserCheck,
   Terminal,
   Sliders,
-  TrendingUp,
 } from "lucide-react";
-import { PricingCard } from "@/components/PricingCard";
 
 export default function LandingPage() {
   const [heroCyberDropdown, setHeroCyberDropdown] = useState(false);
@@ -82,7 +80,8 @@ export default function LandingPage() {
     },
   ];
 
-  const coreModules = [
+  // Symmetrical primary 3 core capability cards
+  const primaryModules = [
     {
       title: "Cyber Risk Intelligence",
       subtitle: "Financial Quantification & EAL",
@@ -110,40 +109,32 @@ export default function LandingPage() {
       badge: "Predictive",
       metric: "0 Stockouts",
     },
+  ];
+
+  // Compact secondary 2 cards
+  const secondaryCompactModules = [
     {
       title: "Smart Exchange",
-      subtitle: "1-Click Sizing Resolution",
-      desc: "Convert refund requests to automated size exchanges with instant courier dispatch.",
+      desc: "Convert refund requests to automated size exchanges with instant courier pickup.",
       icon: RotateCcw,
       href: "/returns",
-      badge: "Revenue Retention",
-      metric: "85% GMV Retained",
+      badge: "85% GMV Retained",
     },
     {
       title: "AI Expense Auditor",
-      subtitle: "RAG Policy Compliance",
-      desc: "Autonomous receipt scanning and corporate tier-1 limit verification.",
+      desc: "Autonomous receipt scanning and RAG corporate policy limit compliance verification.",
       icon: Receipt,
       href: "/expenses",
-      badge: "Automated Audit",
-      metric: "100% Policy Match",
+      badge: "100% Policy Match",
     },
   ];
 
   return (
-    <div className="relative overflow-hidden space-y-20 pb-20">
-      {/* ── HERO SECTION ────────────────────────────────────────────── */}
-      <section className="relative pt-12 lg:pt-20">
+    <div className="relative overflow-hidden space-y-16 pb-20">
+      {/* ── HERO SECTION (Top badge option removed) ───────────────────── */}
+      <section className="relative pt-12 lg:pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto space-y-6">
-            {/* Top Minimal Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-ocean-900/80 border border-ocean-300/30 text-xs text-ocean-200 shadow-ocean-glow backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-ocean-400 animate-pulse" />
-              <span className="font-semibold text-white">Autonomous Decision & Cyber Risk Platform</span>
-              <span className="text-ocean-500">•</span>
-              <span className="text-ocean-300/80 font-mono">Claude 3.5 Sonnet</span>
-            </div>
-
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white font-sans leading-[1.1]">
               Axion — Intelligent Operations &{" "}
@@ -167,7 +158,7 @@ export default function LandingPage() {
                 <ArrowRight className="w-4 h-4" />
               </Link>
 
-              {/* Interactive Cyber Risk Dropdown Button */}
+              {/* Interactive Cyber Risk Dropdown Button (Click to reveal only) */}
               <div className="relative w-full sm:w-auto" ref={heroDropdownRef}>
                 <button
                   type="button"
@@ -183,7 +174,7 @@ export default function LandingPage() {
                   />
                 </button>
 
-                {/* Hero Dropdown Menu */}
+                {/* Hero Dropdown Menu (revealed only after clicking) */}
                 {heroCyberDropdown && (
                   <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-80 rounded-2xl bg-ocean-950/95 border border-ocean-300/30 p-2 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(32,201,166,0.2)] z-50 text-left animate-in fade-in slide-in-from-top-2 duration-150">
                     <div className="px-3 py-1.5 border-b border-ocean-300/10 flex items-center justify-between">
@@ -233,11 +224,12 @@ export default function LandingPage() {
                 )}
               </div>
 
+              {/* White Ask Copilot CTA Button */}
               <Link
                 href="/insights"
-                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-ocean-500/15 hover:bg-ocean-500/25 border border-ocean-300/30 text-ocean-100 font-semibold text-xs backdrop-blur-md transition-all flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-white hover:bg-neutral-100 text-ocean-950 font-black text-xs transition-all shadow-[0_0_20px_rgba(255,255,255,0.35)] flex items-center justify-center gap-2 active:scale-95"
               >
-                <Sparkles className="w-4 h-4 text-ocean-300 animate-pulse" />
+                <Sparkles className="w-4 h-4 fill-ocean-950 text-ocean-950" />
                 <span>Ask Copilot</span>
               </Link>
             </div>
@@ -348,28 +340,26 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── CORE MODULES GRID ───────────────────────────────────────── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-8 space-y-1.5">
+      {/* ── SYMMETRICAL MODULES & COMPACT BOXES SECTION ──────────────── */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+        <div className="text-center max-w-2xl mx-auto mb-6 space-y-1">
           <div className="text-[10px] font-mono uppercase text-ocean-300 tracking-wider font-bold">
             ENTERPRISE CAPABILITIES
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-sans">
             Autonomous Decision Modules
           </h2>
-          <p className="text-xs text-ocean-200/70">
-            Dedicated multi-agent engines designed to eliminate operational friction.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {coreModules.map((mod) => {
+        {/* 1. Symmetrical Top Row: 3 Core Primary Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {primaryModules.map((mod) => {
             const Icon = mod.icon;
             return (
               <Link
                 key={mod.title}
                 href={mod.href}
-                className="group p-5 rounded-2xl bg-ocean-950/60 border border-ocean-300/15 hover:border-ocean-300/40 backdrop-blur-xl transition-all duration-300 shadow-ocean-card hover:-translate-y-0.5 flex flex-col justify-between"
+                className="group p-5 rounded-2xl bg-ocean-950/60 border border-ocean-300/15 hover:border-ocean-300/40 backdrop-blur-xl transition-all duration-300 shadow-ocean-card hover:-translate-y-0.5 flex flex-col justify-between min-h-[210px]"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
@@ -396,18 +386,50 @@ export default function LandingPage() {
                     {mod.metric}
                   </span>
                   <div className="flex items-center gap-1 text-ocean-300 group-hover:translate-x-1 transition-transform font-bold text-[11px]">
-                    <span>Open Module</span>
+                    <span>Open</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </div>
                 </div>
               </Link>
             );
           })}
+        </div>
 
-          {/* Pricing Calibration Widget Preview */}
-          <div className="lg:col-span-1 md:col-span-2">
-            <PricingCard />
-          </div>
+        {/* 2. Compact Bottom Row: Smart Exchange & AI Expense Auditor (Small boxes) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {secondaryCompactModules.map((mod) => {
+            const Icon = mod.icon;
+            return (
+              <Link
+                key={mod.title}
+                href={mod.href}
+                className="group p-3.5 rounded-2xl bg-ocean-950/40 border border-ocean-300/15 hover:border-ocean-300/35 backdrop-blur-xl transition-all duration-200 shadow-ocean-card hover:-translate-y-0.5 flex items-center justify-between gap-3"
+              >
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="p-2 rounded-xl bg-ocean-500/10 border border-ocean-300/20 text-ocean-300 group-hover:scale-105 transition-transform flex-shrink-0">
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      <h4 className="text-xs font-bold text-white group-hover:text-ocean-300 transition-colors truncate">
+                        {mod.title}
+                      </h4>
+                      <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-ocean-500/15 text-ocean-300 border border-ocean-300/20 flex-shrink-0">
+                        {mod.badge}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-ocean-200/60 truncate mt-0.5">
+                      {mod.desc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-1.5 rounded-lg bg-ocean-900/60 border border-ocean-300/15 text-ocean-300 group-hover:translate-x-0.5 group-hover:text-white transition-all flex-shrink-0">
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
