@@ -15,6 +15,11 @@ import {
   TrendingDown,
   RefreshCw,
   Zap,
+  ArrowRight,
+  Shield,
+  Boxes,
+  Receipt,
+  RotateCcw,
 } from "lucide-react";
 import { CopilotStructuredResponse } from "@/lib/types";
 
@@ -29,46 +34,23 @@ interface MessageItem {
 export function ChatPanel() {
   const [inputQuery, setInputQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [messages, setMessages] = useState<MessageItem[]>([
-    {
-      id: "initial_assistant",
-      role: "assistant",
-      timestamp: "Just now",
-      structured: {
-        detect:
-          "Telemetry detected a 6.8% month-over-month revenue dip (₹1.42 Cr vs ₹1.52 Cr target), localized primarily across Consumer Audio and Footwear categories between August 18 and September 4.",
-        investigate:
-          "Cross-department triangulation reveals two compounding drivers: (1) SKU-409 (Apex ANC Headphones) velocity spiked to 20 units/day, exhausting stock in 9 days; (2) Velocity Pro Shoes suffered an 11.8% return rate spike on UK 9 due to narrower toe-box batch specifications.",
-        assess:
-          "SKU-409 stockout represents ₹2,60,000 in deferred daily gross revenue. Sizing friction eroded CSAT by 0.3 points, though the Smart Exchange Agent converted 85% of refunds to UK 9.5 exchanges, preserving ₹5,52,000 in retained GMV.",
-        recommend:
-          "1. Execute emergency reorder of 350 units for SKU-409 with Supplier B (Bangalore FastTech, 4-day lead time).\n2. Update product sizing copy: 'Order 0.5 size up for Velocity Pro'.\n3. Deploy instant store-credit bonus incentive.",
-        alert:
-          "Automated stockout trigger active at 12-day inventory threshold; footwear return velocity watch configured for >7% return spike.",
-        dataHighlights: [
-          { metric: "Monthly GMV", value: "₹1.42 Cr (-6.8%)", trend: "down", department: "Finance" },
-          { metric: "SKU-409 Stock", value: "9 Days Runway", trend: "down", department: "Inventory" },
-          { metric: "Shoe Return Rate", value: "11.8% (UK 9)", trend: "up", department: "Customer Ops" },
-          { metric: "Exchange Retention", value: "85% Preserved", trend: "up", department: "Returns" },
-        ],
-      },
-    },
-  ]);
+  // Initial messages start empty as requested
+  const [messages, setMessages] = useState<MessageItem[]>([]);
 
   const [presetCategory, setPresetCategory] = useState<"business" | "cyber">("business");
 
   const businessPresets = [
-    "Why did sales fall this month?",
-    "What is the stockout risk for SKU-409?",
-    "Are there any expense policy violations this week?",
-    "How can we optimize pricing for Apex ANC Headphones?",
+    { label: "Why did sales fall this month?", dept: "Revenue", icon: TrendingDown },
+    { label: "What is the stockout risk for SKU-409?", dept: "Inventory", icon: Boxes },
+    { label: "Are there any expense policy violations?", dept: "Finance", icon: Receipt },
+    { label: "How to reduce return rate on Velocity Pro shoes?", dept: "Returns", icon: RotateCcw },
   ];
 
   const cyberPresets = [
-    "What is our highest financial cyber risk today?",
-    "How much risk can we reduce with ₹20 lakh budget?",
-    "What happens if remediation is delayed by 30 days?",
-    "Show unkeyed admin accounts lacking hardware MFA",
+    { label: "What is our highest financial cyber risk today?", dept: "Cyber Risk", icon: ShieldAlert },
+    { label: "How much risk can we reduce with ₹20L budget?", dept: "Investments", icon: Shield },
+    { label: "What happens if remediation is delayed 30 days?", dept: "Simulation", icon: Zap },
+    { label: "Show high-criticality assets lacking MFA", dept: "IAM / Controls", icon: CheckCircle },
   ];
 
   const handleSend = async (queryToSend?: string) => {
@@ -135,19 +117,19 @@ export function ChatPanel() {
   };
 
   return (
-    <div className="flex flex-col h-[740px] rounded-2xl bg-ocean-900/40 border border-ocean-300/15 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(94,234,212,0.12)] overflow-hidden">
+    <div className="flex flex-col h-[740px] rounded-3xl bg-ocean-950/60 border border-ocean-300/20 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.5),inset_0_1px_0_0_rgba(94,234,212,0.15)] overflow-hidden">
       {/* Header */}
-      <div className="p-4 bg-ocean-950/80 border-b border-ocean-300/10 flex items-center justify-between">
+      <div className="p-4 bg-ocean-950/90 border-b border-ocean-300/10 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-ocean-500/15 border border-ocean-300/25 flex items-center justify-center shadow-[inset_0_1px_0_0_rgba(94,234,212,0.2)]">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-ocean-500/30 to-ocean-700/50 border border-ocean-300/30 flex items-center justify-center shadow-[0_0_15px_rgba(32,201,166,0.3)]">
             <Sparkles className="w-4 h-4 text-ocean-300" />
           </div>
           <div>
             <div className="flex items-center gap-2">
               <h3 className="text-sm font-bold text-white tracking-tight">
-                Axion Business Decision Copilot
+                Axion Decision Copilot
               </h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-ocean-500/15 text-ocean-200 border border-ocean-300/25">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-ocean-500/15 text-ocean-200 border border-ocean-300/25 font-semibold">
                 Claude 3.5 Sonnet
               </span>
             </div>
@@ -157,18 +139,28 @@ export function ChatPanel() {
           </div>
         </div>
 
-        <div className="hidden sm:flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-ocean-400 animate-pulse" />
-          <span className="text-xs text-ocean-300/80 font-mono">Telemetry Active</span>
+        <div className="flex items-center gap-2">
+          {messages.length > 0 && (
+            <button
+              onClick={() => setMessages([])}
+              className="text-[11px] font-mono text-ocean-300/70 hover:text-white px-2 py-1 rounded-lg hover:bg-ocean-900/60 transition-colors"
+            >
+              Clear Feed
+            </button>
+          )}
+          <div className="hidden sm:flex items-center gap-2 px-2.5 py-1 rounded-full bg-ocean-900/80 border border-ocean-300/15">
+            <span className="w-1.5 h-1.5 rounded-full bg-ocean-400 animate-pulse" />
+            <span className="text-[10px] text-ocean-300 font-mono">Live Telemetry</span>
+          </div>
         </div>
       </div>
 
-      {/* Preset Suggestions Bar with Category Switcher */}
-      <div className="px-4 py-2.5 bg-ocean-950/60 border-b border-ocean-300/10 flex items-center gap-2 overflow-x-auto text-xs">
-        <div className="flex items-center gap-1 bg-ocean-900/90 p-0.5 rounded-lg border border-ocean-300/15 flex-shrink-0">
+      {/* Preset Category Switcher & Quick Pills */}
+      <div className="px-4 py-2 bg-ocean-950/80 border-b border-ocean-300/10 flex items-center gap-2 overflow-x-auto text-xs">
+        <div className="flex items-center gap-1 bg-ocean-900/90 p-0.5 rounded-xl border border-ocean-300/15 flex-shrink-0">
           <button
             onClick={() => setPresetCategory("business")}
-            className={`px-2.5 py-0.5 rounded-md text-[10px] font-semibold transition-all ${
+            className={`px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all ${
               presetCategory === "business"
                 ? "bg-ocean-400 text-ocean-950 shadow-sm font-bold"
                 : "text-ocean-200/60 hover:text-white"
@@ -178,7 +170,7 @@ export function ChatPanel() {
           </button>
           <button
             onClick={() => setPresetCategory("cyber")}
-            className={`px-2.5 py-0.5 rounded-md text-[10px] font-semibold transition-all ${
+            className={`px-2.5 py-1 rounded-lg text-[10px] font-semibold transition-all ${
               presetCategory === "cyber"
                 ? "bg-ocean-400 text-ocean-950 shadow-sm font-bold"
                 : "text-ocean-200/60 hover:text-white"
@@ -188,177 +180,241 @@ export function ChatPanel() {
           </button>
         </div>
 
-        <span className="text-ocean-500/50">|</span>
+        <span className="text-ocean-500/40">|</span>
 
         {(presetCategory === "business" ? businessPresets : cyberPresets).map((preset, idx) => (
           <button
             key={idx}
-            onClick={() => handleSend(preset)}
+            onClick={() => handleSend(preset.label)}
             disabled={isLoading}
-            className="flex-shrink-0 px-3 py-1 rounded-full bg-ocean-900/80 hover:bg-ocean-800 hover:text-white border border-ocean-300/15 text-[11px] text-ocean-200/80 transition-all active:scale-95 disabled:opacity-50"
+            className="flex-shrink-0 px-3 py-1 rounded-full bg-ocean-900/70 hover:bg-ocean-800 hover:text-white border border-ocean-300/15 text-[11px] text-ocean-200/80 transition-all active:scale-95 disabled:opacity-50 flex items-center gap-1.5 group"
           >
-            {preset}
+            <span>{preset.label}</span>
           </button>
         ))}
       </div>
 
-      {/* Message Feed */}
+      {/* Message Feed / Clean Glowing Empty State */}
       <div className="flex-1 p-4 overflow-y-auto space-y-6">
-        {messages.map((msg) => (
-          <div
-            key={msg.id}
-            className={`flex gap-3 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-          >
-            {msg.role === "assistant" && (
-              <div className="w-8 h-8 rounded-xl bg-ocean-500/15 border border-ocean-300/20 flex items-center justify-center flex-shrink-0 mt-1 text-ocean-300 shadow-[inset_0_1px_0_0_rgba(94,234,212,0.15)]">
-                <Bot className="w-4 h-4 text-ocean-300" />
+        {messages.length === 0 ? (
+          <div className="h-full flex flex-col items-center justify-center text-center p-6 space-y-6 animate-in fade-in duration-500">
+            {/* Glowing Center Badge */}
+            <div className="relative">
+              <div className="absolute inset-0 rounded-3xl bg-ocean-400/20 blur-2xl animate-pulse" />
+              <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-ocean-500/30 to-ocean-800/60 border border-ocean-300/40 flex items-center justify-center shadow-[0_0_30px_rgba(32,201,166,0.3)]">
+                <Sparkles className="w-8 h-8 text-ocean-300 animate-pulse" />
               </div>
-            )}
+            </div>
 
+            <div className="max-w-md space-y-2">
+              <h4 className="text-base sm:text-lg font-extrabold text-white tracking-tight">
+                How can Decision Copilot assist you?
+              </h4>
+              <p className="text-xs text-ocean-200/70 leading-relaxed">
+                Ask any business or cyber risk question. Axion will query live telemetry and generate a structured 5-stage synthesis.
+              </p>
+            </div>
+
+            {/* Quick Action Prompt Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-xl text-left">
+              {(presetCategory === "business" ? businessPresets : cyberPresets).map((p, i) => {
+                const Icon = p.icon;
+                return (
+                  <button
+                    key={i}
+                    onClick={() => handleSend(p.label)}
+                    className="p-3.5 rounded-2xl bg-ocean-900/50 hover:bg-ocean-800/70 border border-ocean-300/15 hover:border-ocean-300/40 text-left transition-all duration-200 group flex items-start gap-3 shadow-ocean-card hover:shadow-[0_0_20px_rgba(32,201,166,0.15)]"
+                  >
+                    <div className="p-2 rounded-xl bg-ocean-500/10 border border-ocean-300/20 text-ocean-300 group-hover:scale-105 transition-transform flex-shrink-0">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-[10px] font-mono text-ocean-300/80 font-bold uppercase">
+                        {p.dept}
+                      </div>
+                      <div className="text-xs font-semibold text-ocean-100 group-hover:text-white line-clamp-2 mt-0.5">
+                        {p.label}
+                      </div>
+                    </div>
+                    <ArrowRight className="w-3.5 h-3.5 text-ocean-400/50 group-hover:text-ocean-300 group-hover:translate-x-0.5 transition-all flex-shrink-0 mt-1" />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          messages.map((msg) => (
             <div
-              className={`max-w-3xl rounded-2xl p-4 text-xs ${
-                msg.role === "user"
-                  ? "bg-ocean-500/25 text-white border border-ocean-300/30 shadow-md ml-12 backdrop-blur-md"
-                  : "bg-ocean-950/80 border border-ocean-300/15 text-ocean-100 shadow-xl backdrop-blur-md"
-              }`}
+              key={msg.id}
+              className={`flex gap-3 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
             >
-              {msg.content && <p className="leading-relaxed whitespace-pre-wrap">{msg.content}</p>}
+              {msg.role === "assistant" && (
+                <div className="w-8 h-8 rounded-xl bg-ocean-500/15 border border-ocean-300/20 flex items-center justify-center flex-shrink-0 mt-1 text-ocean-300 shadow-[inset_0_1px_0_0_rgba(94,234,212,0.15)]">
+                  <Bot className="w-4 h-4 text-ocean-300" />
+                </div>
+              )}
 
-              {msg.structured && (
-                <div className="space-y-4">
-                  {/* Telemetry Highlights Strip */}
-                  {msg.structured.dataHighlights && (
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pb-3 border-b border-ocean-300/10">
-                      {msg.structured.dataHighlights.map((item, i) => (
-                        <div key={i} className="p-2.5 rounded-lg bg-ocean-900/60 border border-ocean-300/10">
-                          <div className="text-[10px] text-ocean-200/60">{item.metric}</div>
-                          <div className="text-xs font-bold text-white mt-0.5 flex items-center justify-between">
-                            <span>{item.value}</span>
-                            {item.trend === "up" ? (
-                              <TrendingUp className="w-3 h-3 text-ocean-300" />
-                            ) : item.trend === "down" ? (
-                              <TrendingDown className="w-3 h-3 text-rose-400" />
-                            ) : null}
+              <div
+                className={`max-w-3xl rounded-2xl p-4 text-xs ${
+                  msg.role === "user"
+                    ? "bg-ocean-500/25 text-white border border-ocean-300/30 shadow-md ml-12 backdrop-blur-md"
+                    : "bg-ocean-950/85 border border-ocean-300/20 text-ocean-100 shadow-xl backdrop-blur-md"
+                }`}
+              >
+                {msg.content && (
+                  <p className="leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                )}
+
+                {msg.structured && (
+                  <div className="space-y-4">
+                    {/* Telemetry Highlights Strip */}
+                    {msg.structured.dataHighlights && (
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pb-3 border-b border-ocean-300/10">
+                        {msg.structured.dataHighlights.map((item, i) => (
+                          <div
+                            key={i}
+                            className="p-2.5 rounded-lg bg-ocean-900/60 border border-ocean-300/10"
+                          >
+                            <div className="text-[10px] text-ocean-200/60">{item.metric}</div>
+                            <div className="text-xs font-bold text-white mt-0.5 flex items-center justify-between">
+                              <span>{item.value}</span>
+                              {item.trend === "up" ? (
+                                <TrendingUp className="w-3 h-3 text-ocean-300" />
+                              ) : item.trend === "down" ? (
+                                <TrendingDown className="w-3 h-3 text-rose-400" />
+                              ) : null}
+                            </div>
                           </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* 5-Stage Agentic Reasoning Cards */}
+                    <div className="space-y-3">
+                      {/* 1. DETECT */}
+                      <div className="p-3.5 rounded-xl bg-ocean-900/60 border border-ocean-300/10">
+                        <div className="flex items-center gap-2 text-ocean-300 font-bold uppercase tracking-wider text-[10px] mb-1 font-mono">
+                          <Search className="w-3.5 h-3.5 text-ocean-300" />
+                          <span>1. Detect — Telemetry & Anomalies</span>
                         </div>
-                      ))}
-                    </div>
-                  )}
+                        <p className="text-ocean-100/90 text-[11px] leading-relaxed">
+                          {msg.structured.detect}
+                        </p>
+                      </div>
 
-                  {/* 5-Stage Agentic Reasoning Cards */}
-                  <div className="space-y-3">
-                    {/* 1. DETECT */}
-                    <div className="p-3.5 rounded-xl bg-ocean-900/60 border border-ocean-300/10">
-                      <div className="flex items-center gap-2 text-ocean-300 font-bold uppercase tracking-wider text-[10px] mb-1 font-mono">
-                        <Search className="w-3.5 h-3.5 text-ocean-300" />
-                        <span>1. Detect — Telemetry & Anomalies</span>
+                      {/* 2. INVESTIGATE */}
+                      <div className="p-3.5 rounded-xl bg-ocean-900/60 border border-ocean-300/10">
+                        <div className="flex items-center gap-2 text-ocean-300 font-bold uppercase tracking-wider text-[10px] mb-1 font-mono">
+                          <RefreshCw className="w-3.5 h-3.5 text-ocean-300" />
+                          <span>2. Investigate — Cross-Department Root Cause</span>
+                        </div>
+                        <p className="text-ocean-100/90 text-[11px] leading-relaxed">
+                          {msg.structured.investigate}
+                        </p>
                       </div>
-                      <p className="text-ocean-100/90 text-[11px] leading-relaxed">
-                        {msg.structured.detect}
-                      </p>
-                    </div>
 
-                    {/* 2. INVESTIGATE */}
-                    <div className="p-3.5 rounded-xl bg-ocean-900/60 border border-ocean-300/10">
-                      <div className="flex items-center gap-2 text-ocean-300 font-bold uppercase tracking-wider text-[10px] mb-1 font-mono">
-                        <RefreshCw className="w-3.5 h-3.5 text-ocean-300" />
-                        <span>2. Investigate — Cross-Department Root Cause</span>
+                      {/* 3. ASSESS */}
+                      <div className="p-3.5 rounded-xl bg-ocean-900/60 border border-ocean-300/10">
+                        <div className="flex items-center gap-2 text-ocean-300 font-bold uppercase tracking-wider text-[10px] mb-1 font-mono">
+                          <ShieldAlert className="w-3.5 h-3.5 text-ocean-300" />
+                          <span>3. Assess — Financial & Operational Impact</span>
+                        </div>
+                        <p className="text-ocean-100/90 text-[11px] leading-relaxed">
+                          {msg.structured.assess}
+                        </p>
                       </div>
-                      <p className="text-ocean-100/90 text-[11px] leading-relaxed">
-                        {msg.structured.investigate}
-                      </p>
-                    </div>
 
-                    {/* 3. ASSESS */}
-                    <div className="p-3.5 rounded-xl bg-ocean-900/60 border border-ocean-300/10">
-                      <div className="flex items-center gap-2 text-ocean-300 font-bold uppercase tracking-wider text-[10px] mb-1 font-mono">
-                        <ShieldAlert className="w-3.5 h-3.5 text-ocean-300" />
-                        <span>3. Assess — Financial & Operational Impact</span>
+                      {/* 4. RECOMMEND */}
+                      <div className="p-3.5 rounded-xl bg-ocean-500/15 border border-ocean-300/25 shadow-[inset_0_1px_0_0_rgba(94,234,212,0.15)]">
+                        <div className="flex items-center gap-2 text-ocean-200 font-bold uppercase tracking-wider text-[10px] mb-1 font-mono">
+                          <Lightbulb className="w-3.5 h-3.5 text-ocean-300" />
+                          <span>4. Recommend — Actionable Decisions</span>
+                        </div>
+                        <div className="text-white text-[11px] leading-relaxed whitespace-pre-wrap font-medium">
+                          {msg.structured.recommend}
+                        </div>
                       </div>
-                      <p className="text-ocean-100/90 text-[11px] leading-relaxed">
-                        {msg.structured.assess}
-                      </p>
-                    </div>
 
-                    {/* 4. RECOMMEND */}
-                    <div className="p-3.5 rounded-xl bg-ocean-500/15 border border-ocean-300/25 shadow-[inset_0_1px_0_0_rgba(94,234,212,0.15)]">
-                      <div className="flex items-center gap-2 text-ocean-200 font-bold uppercase tracking-wider text-[10px] mb-1 font-mono">
-                        <Lightbulb className="w-3.5 h-3.5 text-ocean-300" />
-                        <span>4. Recommend — Actionable Decisions</span>
+                      {/* 5. ALERT */}
+                      <div className="p-3.5 rounded-xl bg-ocean-900/60 border border-ocean-300/10">
+                        <div className="flex items-center gap-2 text-ocean-300 font-bold uppercase tracking-wider text-[10px] mb-1 font-mono">
+                          <BellRing className="w-3.5 h-3.5 text-ocean-300" />
+                          <span>5. Alert — Continuous Guardrails</span>
+                        </div>
+                        <p className="text-ocean-100/90 text-[11px] leading-relaxed">
+                          {msg.structured.alert}
+                        </p>
                       </div>
-                      <div className="text-white text-[11px] leading-relaxed whitespace-pre-wrap font-medium">
-                        {msg.structured.recommend}
-                      </div>
-                    </div>
-
-                    {/* 5. ALERT */}
-                    <div className="p-3.5 rounded-xl bg-ocean-900/60 border border-ocean-300/10">
-                      <div className="flex items-center gap-2 text-ocean-300 font-bold uppercase tracking-wider text-[10px] mb-1 font-mono">
-                        <BellRing className="w-3.5 h-3.5 text-ocean-300" />
-                        <span>5. Alert — Continuous Guardrails</span>
-                      </div>
-                      <p className="text-ocean-100/90 text-[11px] leading-relaxed">
-                        {msg.structured.alert}
-                      </p>
                     </div>
                   </div>
+                )}
+              </div>
+
+              {msg.role === "user" && (
+                <div className="w-8 h-8 rounded-xl bg-ocean-500/30 border border-ocean-300/30 flex items-center justify-center flex-shrink-0 mt-1 shadow-sm text-white">
+                  <User className="w-4 h-4" />
                 </div>
               )}
             </div>
-
-            {msg.role === "user" && (
-              <div className="w-8 h-8 rounded-xl bg-ocean-500/30 border border-ocean-300/30 flex items-center justify-center flex-shrink-0 mt-1 shadow-sm text-white">
-                <User className="w-4 h-4" />
-              </div>
-            )}
-          </div>
-        ))}
+          ))
+        )}
 
         {isLoading && (
-          <div className="flex gap-3 items-start">
+          <div className="flex gap-3 items-start animate-in fade-in duration-200">
             <div className="w-8 h-8 rounded-xl bg-ocean-500/15 border border-ocean-300/20 flex items-center justify-center flex-shrink-0">
               <Sparkles className="w-4 h-4 text-ocean-300 animate-pulse" />
             </div>
-            <div className="p-4 rounded-2xl bg-ocean-900/70 border border-ocean-300/15 flex items-center gap-3">
+            <div className="p-4 rounded-2xl bg-ocean-900/80 border border-ocean-300/20 flex items-center gap-3 shadow-[0_0_20px_rgba(32,201,166,0.2)]">
               <div className="w-2 h-2 rounded-full bg-ocean-300 animate-bounce" />
               <div className="w-2 h-2 rounded-full bg-ocean-400 animate-bounce [animation-delay:0.2s]" />
               <div className="w-2 h-2 rounded-full bg-ocean-500 animate-bounce [animation-delay:0.4s]" />
-              <span className="text-xs text-ocean-200/70 font-mono">
-                Synthesizing cross-department telemetry with Claude 3.5...
+              <span className="text-xs text-ocean-200 font-mono">
+                Synthesizing cross-department telemetry with Claude 3.5 Sonnet...
               </span>
             </div>
           </div>
         )}
       </div>
 
-      {/* Input Box */}
-      <div className="p-4 bg-ocean-950/80 border-t border-ocean-300/10">
+      {/* ── HIGH-LIGHTED ASK COPILOT INPUT BAR ─────────────────────────── */}
+      <div className="p-4 bg-ocean-950/95 border-t border-ocean-300/20 relative">
         <form
           onSubmit={(e) => {
             e.preventDefault();
             handleSend();
           }}
-          className="flex items-center gap-2"
+          className="relative flex items-center gap-2 p-1.5 rounded-2xl bg-ocean-900/80 border-2 border-ocean-400/50 shadow-[0_0_30px_rgba(32,201,166,0.35),inset_0_1px_0_0_rgba(94,234,212,0.2)] focus-within:border-ocean-300 focus-within:shadow-[0_0_40px_rgba(32,201,166,0.5)] transition-all duration-300"
         >
+          <div className="pl-3 text-ocean-300">
+            <Sparkles className="w-4 h-4 animate-pulse" />
+          </div>
+
           <input
             type="text"
             value={inputQuery}
             onChange={(e) => setInputQuery(e.target.value)}
-            placeholder="Ask Axion Copilot (e.g. 'Why did sales fall this month?' or 'Evaluate inventory risk on SKU-409')..."
-            className="flex-1 bg-ocean-900/70 border border-ocean-300/15 rounded-xl px-4 py-3 text-xs text-white placeholder-ocean-300/40 focus:outline-none focus:ring-1 focus:ring-ocean-300/40 font-sans"
+            placeholder="Ask Copilot (e.g. 'Why did sales fall this month?' or 'Quantify cyber risk on payment DB')..."
+            className="flex-1 bg-transparent px-2 py-2.5 text-xs sm:text-sm text-white placeholder-ocean-200/50 focus:outline-none font-sans"
             disabled={isLoading}
+            autoFocus
           />
+
           <button
             type="submit"
             disabled={!inputQuery.trim() || isLoading}
-            className="px-5 py-3 rounded-xl bg-gradient-to-r from-ocean-400 to-ocean-500 hover:from-ocean-300 hover:to-ocean-400 text-ocean-950 text-xs font-bold flex items-center gap-2 shadow-[0_0_20px_rgba(32,201,166,0.3)] transition-all disabled:opacity-50 active:scale-95"
+            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-ocean-400 via-ocean-300 to-ocean-400 hover:from-ocean-300 hover:to-ocean-200 text-ocean-950 text-xs font-extrabold flex items-center gap-2 shadow-[0_0_20px_rgba(32,201,166,0.5)] transition-all disabled:opacity-40 disabled:cursor-not-allowed active:scale-95 hover:scale-[1.02]"
           >
+            <Sparkles className="w-3.5 h-3.5 fill-ocean-950" />
             <span>Ask Copilot</span>
             <Send className="w-3.5 h-3.5" />
           </button>
         </form>
+
+        <div className="flex items-center justify-between mt-2 px-2 text-[10px] text-ocean-300/60 font-mono">
+          <span>Tip: Press Enter ↵ to send • Multi-agent Claude 3.5</span>
+          <span className="text-ocean-400 font-semibold">Autonomous Reasoning</span>
+        </div>
       </div>
     </div>
   );
 }
-
