@@ -60,51 +60,51 @@ Approved by Axion Autonomous Risk Intelligence Layer • Confidential Enterprise
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-      <div className="w-full max-w-2xl rounded-2xl bg-zinc-950 border border-white/20 p-6 shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-150">
+      <div className="w-full max-w-2xl rounded-2xl bg-ocean-950 border border-ocean-300/30 p-6 shadow-2xl space-y-5 animate-in fade-in zoom-in-95 duration-150">
         {/* Modal Header */}
-        <div className="flex items-center justify-between border-b border-white/10 pb-4">
+        <div className="flex items-center justify-between border-b border-ocean-300/15 pb-4">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-white/10 border border-white/20 text-white">
+            <div className="p-2.5 rounded-xl bg-ocean-500/20 border border-ocean-300/30 text-ocean-300">
               <FileText className="w-5 h-5" />
             </div>
             <div>
               <h3 className="text-sm font-bold text-white">
                 Executive Cyber Risk & Financial Brief
               </h3>
-              <p className="text-[11px] text-zinc-400">
+              <p className="text-[11px] text-ocean-200/60">
                 Board & C-Suite summary of quantified financial loss, top drivers, and optimal spend
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg bg-zinc-900 border border-white/10 text-zinc-400 hover:text-white"
+            className="p-1.5 rounded-lg bg-ocean-900 border border-ocean-300/20 text-ocean-300 hover:text-white"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Formatted Code Block */}
-        <div className="p-4 rounded-xl bg-zinc-900/90 border border-white/10 max-h-[420px] overflow-y-auto font-mono text-[11px] text-zinc-300 leading-relaxed whitespace-pre-wrap">
+        <div className="p-4 rounded-xl bg-ocean-900/80 border border-ocean-300/15 max-h-[420px] overflow-y-auto font-mono text-[11px] text-ocean-100 leading-relaxed whitespace-pre-wrap">
           {briefText}
         </div>
 
         {/* Modal Actions */}
         <div className="flex items-center justify-between pt-2">
-          <span className="text-[10px] font-mono text-zinc-500">
+          <span className="text-[10px] font-mono text-ocean-400/60">
             Format: Plaintext Executive Brief (Ready for CISO / Board Memo)
           </span>
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopy}
-              className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-xs font-semibold text-white flex items-center gap-2 transition-all"
+              className="px-4 py-2 rounded-xl bg-ocean-900/80 hover:bg-ocean-800 border border-ocean-300/20 text-xs font-semibold text-ocean-200 flex items-center gap-2 transition-all"
             >
-              {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+              {copied ? <Check className="w-3.5 h-3.5 text-ocean-300" /> : <Copy className="w-3.5 h-3.5" />}
               <span>{copied ? "Copied Brief!" : "Copy to Clipboard"}</span>
             </button>
             <button
               onClick={onClose}
-              className="px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 text-xs font-bold shadow-sm"
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-ocean-400 to-ocean-500 hover:from-ocean-300 hover:to-ocean-400 text-ocean-950 text-xs font-bold shadow-[0_0_20px_rgba(32,201,166,0.3)]"
             >
               Close
             </button>
@@ -114,3 +114,4 @@ Approved by Axion Autonomous Risk Intelligence Layer • Confidential Enterprise
     </div>
   );
 }
+

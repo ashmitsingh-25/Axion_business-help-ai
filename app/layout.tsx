@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { OceanBackground } from "@/components/OceanBackground";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,11 +43,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased">
+      <body className="bg-ocean-950 text-ocean-50 font-sans min-h-screen flex flex-col antialiased relative selection:bg-ocean-600 selection:text-white">
+        <OceanBackground />
         <Navbar />
-        <main className="flex-1 pt-20">{children}</main>
+        <main className="flex-1 pt-20 relative z-10">{children}</main>
         <Footer />
       </body>
     </html>
   );
 }
+

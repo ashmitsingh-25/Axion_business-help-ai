@@ -36,18 +36,18 @@ export default function CyberRiskPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* ── TOP COMMAND BAR ─────────────────────────────────────────── */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-white/10">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-ocean-800/40">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-sans">
               Cyber Risk Intelligence
             </h1>
-            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 flex items-center gap-1 font-semibold">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-ocean-500/10 text-ocean-300 border border-ocean-500/25 flex items-center gap-1 font-semibold">
+              <span className="w-1.5 h-1.5 rounded-full bg-ocean-400 animate-pulse shadow-[0_0_6px_rgba(32,201,166,0.6)]" />
               <span>Financial Quantification Engine</span>
             </span>
           </div>
-          <p className="text-xs text-zinc-400 mt-1">
+          <p className="text-xs text-ocean-200/60 mt-1">
             Continuously quantify technical cyber exposure in business and financial terms.
           </p>
         </div>
@@ -58,15 +58,15 @@ export default function CyberRiskPage() {
 
           <button
             onClick={() => setBriefOpen(true)}
-            className="px-3.5 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-white/10 text-xs font-semibold text-zinc-300 flex items-center gap-1.5 shadow-sm transition-all"
+            className="px-3.5 py-2 rounded-xl bg-ocean-900/60 hover:bg-ocean-800/70 border border-ocean-700/40 text-xs font-semibold text-ocean-100 flex items-center gap-1.5 shadow-ocean-card backdrop-blur-md transition-all hover:border-ocean-500/40"
           >
-            <FileText className="w-3.5 h-3.5" />
+            <FileText className="w-3.5 h-3.5 text-ocean-300" />
             <span>Executive Brief</span>
           </button>
 
           <Link
             href="/cyber-risk/investments"
-            className="px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 text-xs font-bold flex items-center gap-1.5 shadow-[0_0_20px_rgba(255,255,255,0.12)] active:scale-95 transition-all"
+            className="px-4 py-2 rounded-xl bg-gradient-to-r from-ocean-500 to-ocean-400 hover:from-ocean-400 hover:to-ocean-300 text-ocean-950 text-xs font-bold flex items-center gap-1.5 shadow-ocean-glow active:scale-95 transition-all"
           >
             <DollarSign className="w-3.5 h-3.5" />
             <span>Optimize Investments</span>
@@ -78,56 +78,56 @@ export default function CyberRiskPage() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <Link
           href="/cyber-risk/investments"
-          className="p-4 rounded-2xl bg-zinc-900/40 border border-white/5 hover:border-white/20 hover:bg-white/[0.02] transition-all flex items-center justify-between group"
+          className="p-4 rounded-2xl bg-ocean-950/40 border border-ocean-800/40 hover:border-ocean-500/40 hover:bg-ocean-900/30 backdrop-blur-xl transition-all duration-300 shadow-ocean-card flex items-center justify-between group hover:-translate-y-0.5"
         >
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
+            <div className="p-2 rounded-xl bg-ocean-500/10 border border-ocean-500/25 text-ocean-300 group-hover:scale-105 transition-transform">
               <DollarSign className="w-4 h-4" />
             </div>
             <div>
-              <div className="text-xs font-bold text-white group-hover:text-cyan-300 transition-colors">
+              <div className="text-xs font-bold text-white group-hover:text-ocean-300 transition-colors">
                 Security Investment Optimizer
               </div>
-              <div className="text-[11px] text-zinc-400">0/1 Knapsack Budget & ROSI Model</div>
+              <div className="text-[11px] text-ocean-200/50">0/1 Knapsack Budget & ROSI Model</div>
             </div>
           </div>
-          <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:translate-x-1 group-hover:text-white transition-all" />
+          <ArrowRight className="w-4 h-4 text-ocean-400/50 group-hover:translate-x-1 group-hover:text-ocean-300 transition-all" />
         </Link>
 
         <Link
           href="/cyber-risk/compliance"
-          className="p-4 rounded-2xl bg-zinc-900/40 border border-white/5 hover:border-white/20 hover:bg-white/[0.02] transition-all flex items-center justify-between group"
+          className="p-4 rounded-2xl bg-ocean-950/40 border border-ocean-800/40 hover:border-ocean-500/40 hover:bg-ocean-900/30 backdrop-blur-xl transition-all duration-300 shadow-ocean-card flex items-center justify-between group hover:-translate-y-0.5"
         >
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+            <div className="p-2 rounded-xl bg-ocean-500/10 border border-ocean-500/25 text-ocean-300 group-hover:scale-105 transition-transform">
               <Layers className="w-4 h-4" />
             </div>
             <div>
-              <div className="text-xs font-bold text-white group-hover:text-emerald-300 transition-colors">
+              <div className="text-xs font-bold text-white group-hover:text-ocean-300 transition-colors">
                 Compliance & Framework Center
               </div>
-              <div className="text-[11px] text-zinc-400">NIST, ISO 27001, CIS, RBI & SEBI</div>
+              <div className="text-[11px] text-ocean-200/50">NIST, ISO 27001, CIS, RBI & SEBI</div>
             </div>
           </div>
-          <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:translate-x-1 group-hover:text-white transition-all" />
+          <ArrowRight className="w-4 h-4 text-ocean-400/50 group-hover:translate-x-1 group-hover:text-ocean-300 transition-all" />
         </Link>
 
         <Link
           href="/insights"
-          className="p-4 rounded-2xl bg-zinc-900/40 border border-white/5 hover:border-white/20 hover:bg-white/[0.02] transition-all flex items-center justify-between group"
+          className="p-4 rounded-2xl bg-ocean-950/40 border border-ocean-800/40 hover:border-ocean-500/40 hover:bg-ocean-900/30 backdrop-blur-xl transition-all duration-300 shadow-ocean-card flex items-center justify-between group hover:-translate-y-0.5"
         >
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400">
+            <div className="p-2 rounded-xl bg-ocean-500/10 border border-ocean-500/25 text-ocean-300 group-hover:scale-105 transition-transform">
               <Sparkles className="w-4 h-4" />
             </div>
             <div>
-              <div className="text-xs font-bold text-white group-hover:text-purple-300 transition-colors">
+              <div className="text-xs font-bold text-white group-hover:text-ocean-300 transition-colors">
                 AI Cyber Risk Copilot
               </div>
-              <div className="text-[11px] text-zinc-400">5-Stage Natural Language Inquiries</div>
+              <div className="text-[11px] text-ocean-200/50">5-Stage Natural Language Inquiries</div>
             </div>
           </div>
-          <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:translate-x-1 group-hover:text-white transition-all" />
+          <ArrowRight className="w-4 h-4 text-ocean-400/50 group-hover:translate-x-1 group-hover:text-ocean-300 transition-all" />
         </Link>
       </div>
 

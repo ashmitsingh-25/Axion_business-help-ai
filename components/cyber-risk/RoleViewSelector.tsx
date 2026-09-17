@@ -32,7 +32,7 @@ export function RoleViewSelector({ currentRole, onRoleChange }: RoleViewSelector
   ];
 
   return (
-    <div className="flex items-center gap-2 bg-zinc-950/80 p-1.5 rounded-2xl border border-white/10 backdrop-blur-md">
+    <div className="flex items-center gap-1.5 bg-ocean-950/80 p-1.5 rounded-2xl border border-ocean-300/15 backdrop-blur-md">
       {roles.map((r) => {
         const Icon = r.icon;
         const isActive = currentRole === r.id;
@@ -42,11 +42,11 @@ export function RoleViewSelector({ currentRole, onRoleChange }: RoleViewSelector
             onClick={() => onRoleChange(r.id)}
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs transition-all ${
               isActive
-                ? "bg-white text-zinc-950 font-bold shadow-md"
-                : "text-zinc-400 hover:text-white hover:bg-white/5 font-medium"
+                ? "bg-ocean-400 text-ocean-950 font-bold shadow-md shadow-ocean-400/20"
+                : "text-ocean-200/70 hover:text-white hover:bg-ocean-800/60 font-medium"
             }`}
           >
-            <Icon className={`w-3.5 h-3.5 ${isActive ? "text-zinc-950" : "text-zinc-400"}`} />
+            <Icon className={`w-3.5 h-3.5 ${isActive ? "text-ocean-950" : "text-ocean-300"}`} />
             <span>{r.label}</span>
           </button>
         );
@@ -54,3 +54,4 @@ export function RoleViewSelector({ currentRole, onRoleChange }: RoleViewSelector
     </div>
   );
 }
+

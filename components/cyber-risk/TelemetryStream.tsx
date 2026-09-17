@@ -73,20 +73,20 @@ export function TelemetryStream() {
   };
 
   return (
-    <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_-10px_rgba(0,0,0,0.5)] flex flex-col h-[560px]">
+    <div className="p-6 rounded-2xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-2xl shadow-ocean-card flex flex-col h-[560px]">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-white/10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-ocean-300/15">
         <div>
           <div className="flex items-center gap-2">
-            <h3 className="text-sm font-bold text-white tracking-tight">
+            <h3 className="text-sm font-bold text-ocean-100 tracking-tight">
               Live Cybersecurity Telemetry Center
             </h3>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-semibold flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Simulated Real-Time Ingestion</span>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-ocean-500/15 text-ocean-300 border border-ocean-400/30 font-semibold flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-ocean-400 animate-pulse" />
+              <span>Real-Time Ingestion</span>
             </span>
           </div>
-          <p className="text-[11px] text-zinc-400 mt-0.5">
+          <p className="text-[11px] text-ocean-200/60 mt-0.5">
             Continuous cross-source correlation: SIEM, EDR, IAM, CSPM, Threat Intelligence & Vulnerability Scanners
           </p>
         </div>
@@ -97,10 +97,10 @@ export function TelemetryStream() {
             <button
               key={src}
               onClick={() => setActiveFilter(src)}
-              className={`px-2.5 py-1 rounded-lg text-[10px] font-mono transition-colors flex-shrink-0 ${
+              className={`px-2.5 py-1 rounded-lg text-[10px] font-mono transition-all flex-shrink-0 ${
                 activeFilter === src
-                  ? "bg-white text-zinc-950 font-bold"
-                  : "bg-zinc-950/80 text-zinc-400 hover:text-white border border-white/5"
+                  ? "bg-ocean-400 text-ocean-950 font-bold shadow-sm"
+                  : "bg-ocean-950/70 text-ocean-300/70 hover:text-ocean-100 border border-ocean-400/15"
               }`}
             >
               {src}
@@ -114,14 +114,14 @@ export function TelemetryStream() {
         {filteredEvents.map((evt) => (
           <div
             key={evt.id}
-            className="p-3.5 rounded-xl bg-zinc-950/60 border border-white/5 hover:border-white/15 transition-all text-xs space-y-1.5"
+            className="p-3.5 rounded-xl bg-ocean-950/60 border border-ocean-300/15 hover:border-ocean-400/30 transition-all text-xs space-y-1.5"
           >
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <span className={`text-[9px] font-mono font-bold px-2 py-0.5 rounded border ${getSeverityBadge(evt.severity)}`}>
                   {evt.source}
                 </span>
-                <span className="font-bold text-white truncate">{evt.assetAffected}</span>
+                <span className="font-bold text-ocean-100 truncate">{evt.assetAffected}</span>
               </div>
 
               <div className="flex items-center gap-2 flex-shrink-0 font-mono text-[10px]">
@@ -136,14 +136,14 @@ export function TelemetryStream() {
                     Risk {evt.riskDelta > 0 ? `+${evt.riskDelta}` : evt.riskDelta}
                   </span>
                 )}
-                <span className="text-zinc-500 flex items-center gap-1">
+                <span className="text-ocean-300/50 flex items-center gap-1">
                   <Clock className="w-3 h-3" />
                   <span>{evt.timeAgo}</span>
                 </span>
               </div>
             </div>
 
-            <p className="text-[11px] text-zinc-300 leading-relaxed pl-1">
+            <p className="text-[11px] text-ocean-200/80 leading-relaxed pl-1">
               {evt.details}
             </p>
           </div>
@@ -151,8 +151,8 @@ export function TelemetryStream() {
       </div>
 
       {/* Footer Info */}
-      <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[10px] text-zinc-500 font-mono">
-        <span>Connected Agents: SIEM • CrowdStrike EDR • Okta IAM • AWS CloudTrail</span>
+      <div className="pt-3 border-t border-ocean-300/10 flex items-center justify-between text-[10px] text-ocean-300/50 font-mono">
+        <span>Connected Feeds: SIEM • CrowdStrike EDR • Okta IAM • AWS CloudTrail</span>
         <span>Streaming Buffer: Active</span>
       </div>
     </div>

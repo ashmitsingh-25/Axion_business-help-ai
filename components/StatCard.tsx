@@ -20,32 +20,32 @@ export function StatCard({
   badge,
 }: StatCardProps) {
   return (
-    <div className="p-5 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-white/20 backdrop-blur-2xl transition-all duration-200 relative overflow-hidden group shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_-10px_rgba(0,0,0,0.5)]">
+    <div className="p-5 rounded-2xl bg-ocean-900/40 border border-ocean-300/15 hover:border-ocean-300/30 hover:bg-ocean-800/50 backdrop-blur-2xl transition-all duration-300 relative overflow-hidden group shadow-[0_20px_60px_rgba(0,0,0,0.35),inset_0_1px_0_0_rgba(94,234,212,0.12)] hover:-translate-y-1 hover:shadow-[0_25px_65px_rgba(0,0,0,0.45),0_0_25px_rgba(32,201,166,0.15)]">
       <div className="flex items-start justify-between">
         <div className="space-y-1">
-          <span className="text-xs text-zinc-400 font-medium tracking-wide">{title}</span>
-          <div className="text-2xl font-extrabold text-white tracking-tight font-sans">{value}</div>
+          <span className="text-xs text-ocean-200/70 font-medium tracking-wide">{title}</span>
+          <div className="text-2xl font-extrabold text-white tracking-tight font-sans mt-0.5">{value}</div>
         </div>
-        <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-zinc-200 group-hover:text-white transition-colors shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
+        <div className="p-2.5 rounded-xl bg-ocean-500/10 border border-ocean-300/20 text-ocean-300 group-hover:text-white group-hover:bg-ocean-500/20 transition-all shadow-[inset_0_1px_0_0_rgba(94,234,212,0.15)]">
           <Icon className="w-5 h-5" />
         </div>
       </div>
 
-      <div className="mt-4 flex items-center justify-between text-xs pt-3 border-t border-white/10">
+      <div className="mt-4 flex items-center justify-between text-xs pt-3 border-t border-ocean-300/10">
         {change && (
-          <div className="flex items-center gap-1 font-semibold text-zinc-200">
+          <div className="flex items-center gap-1 font-semibold text-ocean-100">
             {trend === "up" ? (
-              <TrendingUp className="w-3.5 h-3.5 text-zinc-200" />
+              <TrendingUp className="w-3.5 h-3.5 text-ocean-300" />
             ) : trend === "down" ? (
-              <TrendingDown className="w-3.5 h-3.5 text-zinc-400" />
+              <TrendingDown className="w-3.5 h-3.5 text-rose-400" />
             ) : null}
-            <span>{change}</span>
+            <span className={trend === "up" ? "text-ocean-200" : trend === "down" ? "text-rose-300" : "text-ocean-200"}>{change}</span>
           </div>
         )}
 
-        {description && <span className="text-zinc-400 text-[11px]">{description}</span>}
+        {description && <span className="text-ocean-200/60 text-[11px] truncate max-w-[160px]">{description}</span>}
         {badge && (
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 text-zinc-300 border border-white/10 font-bold">
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-ocean-500/15 text-ocean-200 border border-ocean-300/25 font-bold">
             {badge}
           </span>
         )}
@@ -53,3 +53,4 @@ export function StatCard({
     </div>
   );
 }
+

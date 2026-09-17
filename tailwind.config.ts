@@ -12,7 +12,21 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        // Premium Monochromatic & Platinum Greys
+        // Enterprise Ocean Green Palette
+        ocean: {
+          50: "#f0fdfa",
+          100: "#ccfbf1",
+          200: "#99f6e4",
+          300: "#5eead4",
+          400: "#20c9a6",
+          500: "#0e9f84",
+          600: "#087f6a",
+          700: "#065f50",
+          800: "#062f2a",
+          900: "#031f1b",
+          950: "#021411",
+        },
+        // Premium Monochromatic & Platinum Greys with Teal Undercurrents
         zinc: {
           50: "#fafafa",
           100: "#f4f4f5",
@@ -30,20 +44,32 @@ const config: Config = {
         },
       },
       boxShadow: {
-        glass: "0 20px 50px rgba(0, 0, 0, 0.6)",
-        "glass-subtle": "0 8px 32px 0 rgba(0, 0, 0, 0.37)",
-        "glass-glow": "0 0 30px rgba(255, 255, 255, 0.08)",
-        "white-glow": "0 0 25px rgba(255, 255, 255, 0.18)",
+        glass: "0 20px 60px rgba(0, 0, 0, 0.45)",
+        "glass-subtle": "0 8px 32px 0 rgba(0, 0, 0, 0.35)",
+        "glass-glow": "0 0 30px rgba(32, 201, 166, 0.15)",
+        "ocean-glow": "0 0 35px rgba(94, 234, 212, 0.22)",
+        "ocean-glow-lg": "0 0 50px rgba(32, 201, 166, 0.3)",
+        "ocean-card": "0 20px 60px rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(94, 234, 212, 0.15)",
       },
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0", transform: "translateY(4px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-4px)" },
+        },
+        pulseGlow: {
+          "0%, 100%": { opacity: "0.4" },
+          "50%": { opacity: "0.8" },
+        },
       },
       animation: {
         "fade-in": "fadeIn 0.25s ease-out forwards",
-      }
+        float: "float 6s ease-in-out infinite",
+        "pulse-glow": "pulseGlow 3s ease-in-out infinite",
+      },
     },
   },
   plugins: [],

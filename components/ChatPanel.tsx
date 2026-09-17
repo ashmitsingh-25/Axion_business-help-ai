@@ -135,43 +135,43 @@ export function ChatPanel() {
   };
 
   return (
-    <div className="flex flex-col h-[740px] rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden">
+    <div className="flex flex-col h-[740px] rounded-2xl bg-ocean-900/40 border border-ocean-300/15 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(94,234,212,0.12)] overflow-hidden">
       {/* Header */}
-      <div className="p-4 bg-zinc-950/80 border-b border-white/10 flex items-center justify-between">
+      <div className="p-4 bg-ocean-950/80 border-b border-ocean-300/10 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
-            <Sparkles className="w-4 h-4 text-zinc-200" />
+          <div className="w-9 h-9 rounded-xl bg-ocean-500/15 border border-ocean-300/25 flex items-center justify-center shadow-[inset_0_1px_0_0_rgba(94,234,212,0.2)]">
+            <Sparkles className="w-4 h-4 text-ocean-300" />
           </div>
           <div>
             <div className="flex items-center gap-2">
               <h3 className="text-sm font-bold text-white tracking-tight">
                 Axion Business Decision Copilot
               </h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 text-zinc-300 border border-white/10">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-ocean-500/15 text-ocean-200 border border-ocean-300/25">
                 Claude 3.5 Sonnet
               </span>
             </div>
-            <p className="text-[11px] text-zinc-400">
+            <p className="text-[11px] text-ocean-200/60">
               5-Stage Multi-Agent Synthesis: Detect → Investigate → Assess → Recommend → Alert
             </p>
           </div>
         </div>
 
         <div className="hidden sm:flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-xs text-zinc-400 font-mono">Telemetry Active</span>
+          <span className="w-2 h-2 rounded-full bg-ocean-400 animate-pulse" />
+          <span className="text-xs text-ocean-300/80 font-mono">Telemetry Active</span>
         </div>
       </div>
 
       {/* Preset Suggestions Bar with Category Switcher */}
-      <div className="px-4 py-2.5 bg-zinc-950/60 border-b border-white/5 flex items-center gap-2 overflow-x-auto text-xs">
-        <div className="flex items-center gap-1 bg-zinc-900/90 p-0.5 rounded-lg border border-white/10 flex-shrink-0">
+      <div className="px-4 py-2.5 bg-ocean-950/60 border-b border-ocean-300/10 flex items-center gap-2 overflow-x-auto text-xs">
+        <div className="flex items-center gap-1 bg-ocean-900/90 p-0.5 rounded-lg border border-ocean-300/15 flex-shrink-0">
           <button
             onClick={() => setPresetCategory("business")}
             className={`px-2.5 py-0.5 rounded-md text-[10px] font-semibold transition-all ${
               presetCategory === "business"
-                ? "bg-white/15 text-white shadow-sm"
-                : "text-zinc-400 hover:text-zinc-200"
+                ? "bg-ocean-400 text-ocean-950 shadow-sm font-bold"
+                : "text-ocean-200/60 hover:text-white"
             }`}
           >
             Business Ops
@@ -180,22 +180,22 @@ export function ChatPanel() {
             onClick={() => setPresetCategory("cyber")}
             className={`px-2.5 py-0.5 rounded-md text-[10px] font-semibold transition-all ${
               presetCategory === "cyber"
-                ? "bg-white/15 text-white shadow-sm"
-                : "text-zinc-400 hover:text-zinc-200"
+                ? "bg-ocean-400 text-ocean-950 shadow-sm font-bold"
+                : "text-ocean-200/60 hover:text-white"
             }`}
           >
             Cyber Risk
           </button>
         </div>
 
-        <span className="text-zinc-500">|</span>
+        <span className="text-ocean-500/50">|</span>
 
         {(presetCategory === "business" ? businessPresets : cyberPresets).map((preset, idx) => (
           <button
             key={idx}
             onClick={() => handleSend(preset)}
             disabled={isLoading}
-            className="flex-shrink-0 px-3 py-1 rounded-full bg-zinc-900/80 hover:bg-white/10 hover:text-white border border-white/5 text-[11px] text-zinc-300 transition-all active:scale-95 disabled:opacity-50"
+            className="flex-shrink-0 px-3 py-1 rounded-full bg-ocean-900/80 hover:bg-ocean-800 hover:text-white border border-ocean-300/15 text-[11px] text-ocean-200/80 transition-all active:scale-95 disabled:opacity-50"
           >
             {preset}
           </button>
@@ -210,16 +210,16 @@ export function ChatPanel() {
             className={`flex gap-3 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
           >
             {msg.role === "assistant" && (
-              <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 mt-1 text-zinc-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
-                <Bot className="w-4 h-4 text-zinc-200" />
+              <div className="w-8 h-8 rounded-xl bg-ocean-500/15 border border-ocean-300/20 flex items-center justify-center flex-shrink-0 mt-1 text-ocean-300 shadow-[inset_0_1px_0_0_rgba(94,234,212,0.15)]">
+                <Bot className="w-4 h-4 text-ocean-300" />
               </div>
             )}
 
             <div
               className={`max-w-3xl rounded-2xl p-4 text-xs ${
                 msg.role === "user"
-                  ? "bg-white/15 text-white border border-white/20 shadow-md ml-12 backdrop-blur-md"
-                  : "bg-zinc-950/80 border border-white/10 text-zinc-200 shadow-xl backdrop-blur-md"
+                  ? "bg-ocean-500/25 text-white border border-ocean-300/30 shadow-md ml-12 backdrop-blur-md"
+                  : "bg-ocean-950/80 border border-ocean-300/15 text-ocean-100 shadow-xl backdrop-blur-md"
               }`}
             >
               {msg.content && <p className="leading-relaxed whitespace-pre-wrap">{msg.content}</p>}
@@ -228,16 +228,16 @@ export function ChatPanel() {
                 <div className="space-y-4">
                   {/* Telemetry Highlights Strip */}
                   {msg.structured.dataHighlights && (
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pb-3 border-b border-white/5">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pb-3 border-b border-ocean-300/10">
                       {msg.structured.dataHighlights.map((item, i) => (
-                        <div key={i} className="p-2.5 rounded-lg bg-zinc-900/80 border border-white/5">
-                          <div className="text-[10px] text-zinc-400">{item.metric}</div>
+                        <div key={i} className="p-2.5 rounded-lg bg-ocean-900/60 border border-ocean-300/10">
+                          <div className="text-[10px] text-ocean-200/60">{item.metric}</div>
                           <div className="text-xs font-bold text-white mt-0.5 flex items-center justify-between">
                             <span>{item.value}</span>
                             {item.trend === "up" ? (
-                              <TrendingUp className="w-3 h-3 text-zinc-200" />
+                              <TrendingUp className="w-3 h-3 text-ocean-300" />
                             ) : item.trend === "down" ? (
-                              <TrendingDown className="w-3 h-3 text-zinc-400" />
+                              <TrendingDown className="w-3 h-3 text-rose-400" />
                             ) : null}
                           </div>
                         </div>
@@ -248,56 +248,56 @@ export function ChatPanel() {
                   {/* 5-Stage Agentic Reasoning Cards */}
                   <div className="space-y-3">
                     {/* 1. DETECT */}
-                    <div className="p-3.5 rounded-xl bg-zinc-900/80 border border-white/5">
-                      <div className="flex items-center gap-2 text-zinc-200 font-bold uppercase tracking-wider text-[10px] mb-1">
-                        <Search className="w-3.5 h-3.5 text-zinc-300" />
+                    <div className="p-3.5 rounded-xl bg-ocean-900/60 border border-ocean-300/10">
+                      <div className="flex items-center gap-2 text-ocean-300 font-bold uppercase tracking-wider text-[10px] mb-1 font-mono">
+                        <Search className="w-3.5 h-3.5 text-ocean-300" />
                         <span>1. Detect — Telemetry & Anomalies</span>
                       </div>
-                      <p className="text-zinc-300 text-[11px] leading-relaxed">
+                      <p className="text-ocean-100/90 text-[11px] leading-relaxed">
                         {msg.structured.detect}
                       </p>
                     </div>
 
                     {/* 2. INVESTIGATE */}
-                    <div className="p-3.5 rounded-xl bg-zinc-900/80 border border-white/5">
-                      <div className="flex items-center gap-2 text-zinc-200 font-bold uppercase tracking-wider text-[10px] mb-1">
-                        <RefreshCw className="w-3.5 h-3.5 text-zinc-300" />
+                    <div className="p-3.5 rounded-xl bg-ocean-900/60 border border-ocean-300/10">
+                      <div className="flex items-center gap-2 text-ocean-300 font-bold uppercase tracking-wider text-[10px] mb-1 font-mono">
+                        <RefreshCw className="w-3.5 h-3.5 text-ocean-300" />
                         <span>2. Investigate — Cross-Department Root Cause</span>
                       </div>
-                      <p className="text-zinc-300 text-[11px] leading-relaxed">
+                      <p className="text-ocean-100/90 text-[11px] leading-relaxed">
                         {msg.structured.investigate}
                       </p>
                     </div>
 
                     {/* 3. ASSESS */}
-                    <div className="p-3.5 rounded-xl bg-zinc-900/80 border border-white/5">
-                      <div className="flex items-center gap-2 text-zinc-200 font-bold uppercase tracking-wider text-[10px] mb-1">
-                        <ShieldAlert className="w-3.5 h-3.5 text-zinc-300" />
+                    <div className="p-3.5 rounded-xl bg-ocean-900/60 border border-ocean-300/10">
+                      <div className="flex items-center gap-2 text-ocean-300 font-bold uppercase tracking-wider text-[10px] mb-1 font-mono">
+                        <ShieldAlert className="w-3.5 h-3.5 text-ocean-300" />
                         <span>3. Assess — Financial & Operational Impact</span>
                       </div>
-                      <p className="text-zinc-300 text-[11px] leading-relaxed">
+                      <p className="text-ocean-100/90 text-[11px] leading-relaxed">
                         {msg.structured.assess}
                       </p>
                     </div>
 
                     {/* 4. RECOMMEND */}
-                    <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/15 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
-                      <div className="flex items-center gap-2 text-zinc-100 font-bold uppercase tracking-wider text-[10px] mb-1">
-                        <Lightbulb className="w-3.5 h-3.5 text-zinc-200" />
+                    <div className="p-3.5 rounded-xl bg-ocean-500/15 border border-ocean-300/25 shadow-[inset_0_1px_0_0_rgba(94,234,212,0.15)]">
+                      <div className="flex items-center gap-2 text-ocean-200 font-bold uppercase tracking-wider text-[10px] mb-1 font-mono">
+                        <Lightbulb className="w-3.5 h-3.5 text-ocean-300" />
                         <span>4. Recommend — Actionable Decisions</span>
                       </div>
-                      <div className="text-zinc-100 text-[11px] leading-relaxed whitespace-pre-wrap font-medium">
+                      <div className="text-white text-[11px] leading-relaxed whitespace-pre-wrap font-medium">
                         {msg.structured.recommend}
                       </div>
                     </div>
 
                     {/* 5. ALERT */}
-                    <div className="p-3.5 rounded-xl bg-zinc-900/80 border border-white/5">
-                      <div className="flex items-center gap-2 text-zinc-200 font-bold uppercase tracking-wider text-[10px] mb-1">
-                        <BellRing className="w-3.5 h-3.5 text-zinc-300" />
+                    <div className="p-3.5 rounded-xl bg-ocean-900/60 border border-ocean-300/10">
+                      <div className="flex items-center gap-2 text-ocean-300 font-bold uppercase tracking-wider text-[10px] mb-1 font-mono">
+                        <BellRing className="w-3.5 h-3.5 text-ocean-300" />
                         <span>5. Alert — Continuous Guardrails</span>
                       </div>
-                      <p className="text-zinc-300 text-[11px] leading-relaxed">
+                      <p className="text-ocean-100/90 text-[11px] leading-relaxed">
                         {msg.structured.alert}
                       </p>
                     </div>
@@ -307,7 +307,7 @@ export function ChatPanel() {
             </div>
 
             {msg.role === "user" && (
-              <div className="w-8 h-8 rounded-lg bg-white/15 border border-white/20 flex items-center justify-center flex-shrink-0 mt-1 shadow-sm text-white">
+              <div className="w-8 h-8 rounded-xl bg-ocean-500/30 border border-ocean-300/30 flex items-center justify-center flex-shrink-0 mt-1 shadow-sm text-white">
                 <User className="w-4 h-4" />
               </div>
             )}
@@ -316,14 +316,14 @@ export function ChatPanel() {
 
         {isLoading && (
           <div className="flex gap-3 items-start">
-            <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
-              <Sparkles className="w-4 h-4 text-zinc-200 animate-pulse" />
+            <div className="w-8 h-8 rounded-xl bg-ocean-500/15 border border-ocean-300/20 flex items-center justify-center flex-shrink-0">
+              <Sparkles className="w-4 h-4 text-ocean-300 animate-pulse" />
             </div>
-            <div className="p-4 rounded-2xl bg-zinc-900/80 border border-white/5 flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-white animate-bounce" />
-              <div className="w-2 h-2 rounded-full bg-zinc-300 animate-bounce [animation-delay:0.2s]" />
-              <div className="w-2 h-2 rounded-full bg-zinc-500 animate-bounce [animation-delay:0.4s]" />
-              <span className="text-xs text-zinc-400 font-mono">
+            <div className="p-4 rounded-2xl bg-ocean-900/70 border border-ocean-300/15 flex items-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-ocean-300 animate-bounce" />
+              <div className="w-2 h-2 rounded-full bg-ocean-400 animate-bounce [animation-delay:0.2s]" />
+              <div className="w-2 h-2 rounded-full bg-ocean-500 animate-bounce [animation-delay:0.4s]" />
+              <span className="text-xs text-ocean-200/70 font-mono">
                 Synthesizing cross-department telemetry with Claude 3.5...
               </span>
             </div>
@@ -332,7 +332,7 @@ export function ChatPanel() {
       </div>
 
       {/* Input Box */}
-      <div className="p-4 bg-zinc-950/80 border-t border-white/10">
+      <div className="p-4 bg-ocean-950/80 border-t border-ocean-300/10">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -345,13 +345,13 @@ export function ChatPanel() {
             value={inputQuery}
             onChange={(e) => setInputQuery(e.target.value)}
             placeholder="Ask Axion Copilot (e.g. 'Why did sales fall this month?' or 'Evaluate inventory risk on SKU-409')..."
-            className="flex-1 bg-zinc-900/80 border border-white/10 rounded-xl px-4 py-3 text-xs text-white placeholder-zinc-500 focus:outline-none focus:ring-1 focus:ring-white/30 font-sans"
+            className="flex-1 bg-ocean-900/70 border border-ocean-300/15 rounded-xl px-4 py-3 text-xs text-white placeholder-ocean-300/40 focus:outline-none focus:ring-1 focus:ring-ocean-300/40 font-sans"
             disabled={isLoading}
           />
           <button
             type="submit"
             disabled={!inputQuery.trim() || isLoading}
-            className="px-5 py-3 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 text-xs font-semibold flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.12)] transition-all disabled:opacity-50 active:scale-95"
+            className="px-5 py-3 rounded-xl bg-gradient-to-r from-ocean-400 to-ocean-500 hover:from-ocean-300 hover:to-ocean-400 text-ocean-950 text-xs font-bold flex items-center gap-2 shadow-[0_0_20px_rgba(32,201,166,0.3)] transition-all disabled:opacity-50 active:scale-95"
           >
             <span>Ask Copilot</span>
             <Send className="w-3.5 h-3.5" />
@@ -361,3 +361,4 @@ export function ChatPanel() {
     </div>
   );
 }
+

@@ -63,31 +63,31 @@ export default function InventoryPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Toast */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-zinc-900/90 border border-white/15 text-white text-xs px-4 py-3 rounded-xl shadow-2xl backdrop-blur-2xl flex items-center gap-2 animate-fade-in">
-          <Info className="w-4 h-4 text-zinc-300" />
+        <div className="fixed bottom-6 right-6 z-50 bg-ocean-900/90 border border-ocean-400/30 text-ocean-100 text-xs px-4 py-3 rounded-xl shadow-2xl backdrop-blur-2xl flex items-center gap-2 animate-fade-in">
+          <Info className="w-4 h-4 text-ocean-300" />
           <span>{toastMessage}</span>
         </div>
       )}
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-ocean-300/15">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-sans">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-ocean-100 tracking-tight font-sans">
               Inventory & Demand Copilot
             </h1>
-            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/10 text-zinc-200 border border-white/15 font-semibold backdrop-blur-md">
+            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-ocean-500/15 text-ocean-300 border border-ocean-400/30 font-semibold backdrop-blur-md">
               Predictive Reorder Engine
             </span>
           </div>
-          <p className="text-xs text-zinc-400 mt-1">
+          <p className="text-xs text-ocean-200/70 mt-1">
             Projects SKU stockout horizons and optimizes multi-supplier tradeoffs in real time
           </p>
         </div>
 
         {/* Quick SKU selector */}
-        <div className="flex items-center gap-2 bg-zinc-900/70 p-1.5 rounded-xl border border-white/10 backdrop-blur-xl">
-          <span className="text-xs text-zinc-400 font-mono px-2">Select SKU:</span>
+        <div className="flex items-center gap-2 bg-ocean-950/80 p-1.5 rounded-xl border border-ocean-300/20 backdrop-blur-xl">
+          <span className="text-xs text-ocean-300/70 font-mono px-2">Select SKU:</span>
           {MOCK_INVENTORY_SKUS.map((item) => (
             <button
               key={item.sku}
@@ -97,8 +97,8 @@ export default function InventoryPage() {
               }}
               className={`px-3 py-1 rounded-lg text-xs font-mono font-bold transition-all ${
                 selectedSkuCode === item.sku
-                  ? "bg-white text-zinc-950 shadow-sm"
-                  : "text-zinc-400 hover:text-white"
+                  ? "bg-ocean-400 text-ocean-950 shadow-sm"
+                  : "text-ocean-300/70 hover:text-ocean-100"
               }`}
             >
               {item.sku}
@@ -109,22 +109,22 @@ export default function InventoryPage() {
 
       {/* Stockout Alert Banner for SKU-409 */}
       {selectedSkuCode === "SKU-409" && (
-        <div className="p-4 sm:p-5 rounded-2xl bg-zinc-900/60 border border-white/15 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_-10px_rgba(0,0,0,0.5)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="p-4 sm:p-5 rounded-2xl bg-ocean-900/50 border border-rose-500/30 backdrop-blur-2xl shadow-ocean-card flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-start sm:items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-zinc-950/80 border border-white/10 text-zinc-200 flex-shrink-0">
+            <div className="p-2.5 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-300 flex-shrink-0">
               <ShieldAlert className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-white uppercase font-mono tracking-wider">
+                <span className="text-xs font-bold text-ocean-100 uppercase font-mono tracking-wider">
                   Critical Stockout Warning
                 </span>
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-zinc-200 border border-white/15 font-bold font-mono">
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold font-mono">
                   9 DAYS REMAINING
                 </span>
               </div>
-              <p className="text-xs text-zinc-300 mt-0.5">
-                <strong>Apex ANC Headphones</strong> runs out in 9 days. Supplier A (14-day lead time) will fail. Order <strong>350 units from Supplier B</strong> (4-day lead time) immediately.
+              <p className="text-xs text-ocean-200/80 mt-0.5">
+                <strong className="text-ocean-100">Apex ANC Headphones</strong> runs out in 9 days. Supplier A (14-day lead time) will fail. Order <strong className="text-ocean-100">350 units from Supplier B</strong> (4-day lead time) immediately.
               </p>
             </div>
           </div>
@@ -136,8 +136,8 @@ export default function InventoryPage() {
             }}
             className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex-shrink-0 ${
               orderPlaced
-                ? "bg-white/10 text-zinc-300 border border-white/15"
-                : "bg-white hover:bg-zinc-200 text-zinc-950 shadow-[0_0_20px_rgba(255,255,255,0.12)] active:scale-95"
+                ? "bg-ocean-500/20 text-ocean-200 border border-ocean-400/30"
+                : "bg-ocean-400 hover:bg-ocean-300 text-ocean-950 shadow-ocean-glow active:scale-95"
             }`}
           >
             {orderPlaced ? "PO Dispatched to Supplier B" : "Auto-Order 350 Units (Supplier B)"}
@@ -152,80 +152,80 @@ export default function InventoryPage() {
           <div className="lg:col-span-7 space-y-6">
             {/* Key Metrics Strip */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <div className="p-3.5 rounded-xl bg-zinc-900/60 border border-white/10 backdrop-blur-xl shadow-sm">
-                <div className="text-[10px] text-zinc-400 uppercase font-mono">Current Stock</div>
-                <div className="text-lg font-extrabold text-white mt-1">
+              <div className="p-3.5 rounded-xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-xl shadow-sm">
+                <div className="text-[10px] text-ocean-300/70 uppercase font-mono">Current Stock</div>
+                <div className="text-lg font-extrabold text-ocean-100 mt-1">
                   {forecast.currentStock} units
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-zinc-900/60 border border-white/10 backdrop-blur-xl shadow-sm">
-                <div className="text-[10px] text-zinc-400 uppercase font-mono">Daily Velocity</div>
-                <div className="text-lg font-extrabold text-white mt-1">
+              <div className="p-3.5 rounded-xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-xl shadow-sm">
+                <div className="text-[10px] text-ocean-300/70 uppercase font-mono">Daily Velocity</div>
+                <div className="text-lg font-extrabold text-ocean-100 mt-1">
                   {forecast.dailyVelocity} / day
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-zinc-900/60 border border-white/10 backdrop-blur-xl shadow-sm">
-                <div className="text-[10px] text-zinc-400 uppercase font-mono">Days to Stockout</div>
-                <div className="text-lg font-extrabold text-white mt-1">
+              <div className="p-3.5 rounded-xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-xl shadow-sm">
+                <div className="text-[10px] text-ocean-300/70 uppercase font-mono">Days to Stockout</div>
+                <div className="text-lg font-extrabold text-ocean-100 mt-1">
                   {forecast.daysToStockout} Days
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-zinc-900/60 border border-white/10 backdrop-blur-xl shadow-sm">
-                <div className="text-[10px] text-zinc-400 uppercase font-mono">Recommended Reorder</div>
-                <div className="text-lg font-extrabold text-zinc-200 mt-1">
+              <div className="p-3.5 rounded-xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-xl shadow-sm">
+                <div className="text-[10px] text-ocean-300/70 uppercase font-mono">Recommended Reorder</div>
+                <div className="text-lg font-extrabold text-ocean-300 mt-1">
                   {forecast.recommendedReorderQty} units
                 </div>
               </div>
             </div>
 
             {/* Supplier Comparison Matrix: Supplier A vs Supplier B */}
-            <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_-10px_rgba(0,0,0,0.5)] space-y-5">
-              <div className="flex items-center justify-between pb-3 border-b border-white/10">
+            <div className="p-6 rounded-2xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-2xl shadow-ocean-card space-y-5">
+              <div className="flex items-center justify-between pb-3 border-b border-ocean-300/15">
                 <div className="flex items-center gap-2">
-                  <Truck className="w-4 h-4 text-zinc-300" />
-                  <h2 className="text-sm font-bold text-white">
+                  <Truck className="w-4 h-4 text-ocean-300" />
+                  <h2 className="text-sm font-bold text-ocean-100">
                     Multi-Supplier Optimization Matrix
                   </h2>
                 </div>
-                <span className="text-[10px] font-mono text-zinc-400">
+                <span className="text-[10px] font-mono text-ocean-300/60">
                   Target: {forecast.recommendedReorderQty} Units
                 </span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Supplier A Card */}
-                <div className="p-4 rounded-xl border bg-zinc-950/70 border-white/5 flex flex-col justify-between">
+                <div className="p-4 rounded-xl border bg-ocean-950/70 border-ocean-300/15 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-bold text-white">
+                      <span className="text-xs font-bold text-ocean-100">
                         {forecast.supplierComparison.supplierA.name}
                       </span>
                     </div>
 
-                    <div className="space-y-1.5 text-xs text-zinc-300 mt-3">
+                    <div className="space-y-1.5 text-xs text-ocean-200/80 mt-3">
                       <div className="flex justify-between">
-                        <span className="text-zinc-500">Lead Time:</span>
-                        <span className="font-mono text-zinc-200 font-bold">
+                        <span className="text-ocean-300/60">Lead Time:</span>
+                        <span className="font-mono text-ocean-200 font-bold">
                           {forecast.supplierComparison.supplierA.leadTime}
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-zinc-500">Unit Cost:</span>
+                        <span className="text-ocean-300/60">Unit Cost:</span>
                         <span className="font-mono">
                           {formatCurrency(forecast.supplierComparison.supplierA.unitCost)}
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-zinc-500">Min Order Qty:</span>
+                        <span className="text-ocean-300/60">Min Order Qty:</span>
                         <span className="font-mono">
                           {forecast.supplierComparison.supplierA.moq} units
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-zinc-500">Est. Delivery:</span>
+                        <span className="text-ocean-300/60">Est. Delivery:</span>
                         <span className="font-mono">
                           {forecast.supplierComparison.supplierA.deliveryDate}
                         </span>
@@ -233,60 +233,60 @@ export default function InventoryPage() {
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-white/5 text-[11px] text-zinc-400 font-mono">
+                  <div className="mt-4 pt-3 border-t border-ocean-300/10 text-[11px] text-ocean-300/60 font-mono">
                     {forecast.daysToStockout <= 14 ? "⚠️ Exceeds 9-day stockout runway" : "Sufficient runway"}
                   </div>
                 </div>
 
                 {/* Supplier B Card (Recommended for fast lead time) */}
-                <div className="p-4 rounded-xl border bg-white/[0.04] border-white/20 flex flex-col justify-between shadow-lg backdrop-blur-md">
+                <div className="p-4 rounded-xl border bg-ocean-500/15 border-ocean-400/40 flex flex-col justify-between shadow-ocean-glow backdrop-blur-md">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-bold text-white">
+                      <span className="text-xs font-bold text-ocean-100">
                         {forecast.supplierComparison.supplierB.name}
                       </span>
-                      <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-white text-zinc-950 font-bold shadow-sm">
+                      <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-ocean-400 text-ocean-950 font-bold shadow-sm">
                         RECOMMENDED
                       </span>
                     </div>
 
-                    <div className="space-y-1.5 text-xs text-zinc-300 mt-3">
+                    <div className="space-y-1.5 text-xs text-ocean-200 mt-3">
                       <div className="flex justify-between">
-                        <span className="text-zinc-500">Lead Time:</span>
-                        <span className="font-mono text-zinc-100 font-bold">
+                        <span className="text-ocean-300/70">Lead Time:</span>
+                        <span className="font-mono text-ocean-100 font-bold">
                           {forecast.supplierComparison.supplierB.leadTime}
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-zinc-500">Unit Cost:</span>
+                        <span className="text-ocean-300/70">Unit Cost:</span>
                         <span className="font-mono">
                           {formatCurrency(forecast.supplierComparison.supplierB.unitCost)}
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-zinc-500">Min Order Qty:</span>
+                        <span className="text-ocean-300/70">Min Order Qty:</span>
                         <span className="font-mono">
                           {forecast.supplierComparison.supplierB.moq} units
                         </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-zinc-500">Est. Delivery:</span>
-                        <span className="font-mono text-zinc-200">
+                        <span className="text-ocean-300/70">Est. Delivery:</span>
+                        <span className="font-mono text-ocean-100">
                           {forecast.supplierComparison.supplierB.deliveryDate}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-white/10 text-[11px] text-zinc-300 font-mono">
+                  <div className="mt-4 pt-3 border-t border-ocean-400/20 text-[11px] text-ocean-200 font-mono">
                     ✓ Arrives 5 days prior to stockout
                   </div>
                 </div>
               </div>
 
               {/* Tradeoff Explanation */}
-              <div className="p-3.5 rounded-xl bg-zinc-950/70 border border-white/5 text-xs text-zinc-300 leading-relaxed font-sans">
-                <span className="font-bold text-zinc-200 uppercase font-mono text-[10px] block mb-1">
+              <div className="p-3.5 rounded-xl bg-ocean-950/70 border border-ocean-300/15 text-xs text-ocean-200 leading-relaxed font-sans">
+                <span className="font-bold text-ocean-100 uppercase font-mono text-[10px] block mb-1">
                   Automated Decision Tradeoff:
                 </span>
                 {forecast.supplierComparison.tradeoffSummary}
@@ -296,13 +296,13 @@ export default function InventoryPage() {
 
           {/* Right Column: 20-Day Projected Stockout Trajectory (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_-10px_rgba(0,0,0,0.5)] space-y-4">
-              <div className="flex items-center justify-between pb-3 border-b border-white/10">
+            <div className="p-6 rounded-2xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-2xl shadow-ocean-card space-y-4">
+              <div className="flex items-center justify-between pb-3 border-b border-ocean-300/15">
                 <div className="flex items-center gap-2">
-                  <TrendingDown className="w-4 h-4 text-zinc-300" />
-                  <h3 className="text-sm font-bold text-white">Stock Depletion Trajectory</h3>
+                  <TrendingDown className="w-4 h-4 text-ocean-300" />
+                  <h3 className="text-sm font-bold text-ocean-100">Stock Depletion Trajectory</h3>
                 </div>
-                <span className="text-[10px] font-mono text-zinc-400">Next 14 Days</span>
+                <span className="text-[10px] font-mono text-ocean-300/60">Next 14 Days</span>
               </div>
 
               {/* Mini Bar Chart Projection */}
@@ -311,14 +311,14 @@ export default function InventoryPage() {
                   const pct = Math.max(4, Math.round((pt.projectedStock / (selectedItem.currentStock || 1)) * 100));
                   return (
                     <div key={i} className="flex items-center gap-2 text-xs">
-                      <span className="w-16 text-[10px] text-zinc-400 font-mono">{pt.day}</span>
-                      <div className="flex-1 h-4 bg-zinc-950 rounded-md overflow-hidden p-0.5 border border-white/5">
+                      <span className="w-16 text-[10px] text-ocean-300/70 font-mono">{pt.day}</span>
+                      <div className="flex-1 h-4 bg-ocean-950 rounded-md overflow-hidden p-0.5 border border-ocean-300/15">
                         <div
-                          className="h-full rounded transition-all duration-300 bg-gradient-to-r from-zinc-500 to-white"
+                          className="h-full rounded transition-all duration-300 bg-gradient-to-r from-ocean-500 to-ocean-300"
                           style={{ width: `${Math.min(100, pct)}%` }}
                         />
                       </div>
-                      <span className="w-12 text-right font-mono text-[11px] font-bold text-zinc-200">
+                      <span className="w-12 text-right font-mono text-[11px] font-bold text-ocean-100">
                         {pt.projectedStock}u
                       </span>
                     </div>
@@ -327,10 +327,10 @@ export default function InventoryPage() {
               </div>
 
               {/* Action Trigger */}
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+              <div className="pt-4 border-t border-ocean-300/15 flex items-center justify-between">
                 <div>
-                  <div className="text-[10px] text-zinc-500 uppercase font-mono">Estimated Reorder Cost</div>
-                  <div className="text-xs font-extrabold text-white">
+                  <div className="text-[10px] text-ocean-300/60 uppercase font-mono">Estimated Reorder Cost</div>
+                  <div className="text-xs font-extrabold text-ocean-100">
                     {formatCurrency(
                       forecast.recommendedReorderQty * forecast.supplierComparison.supplierB.unitCost
                     )}
@@ -343,15 +343,15 @@ export default function InventoryPage() {
                     showToast(`Reorder of ${forecast.recommendedReorderQty} units placed!`);
                   }}
                   disabled={orderPlaced}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${
+                  className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
                     orderPlaced
-                      ? "bg-white/10 text-zinc-300 border border-white/15"
-                      : "bg-white hover:bg-zinc-200 text-zinc-950 shadow-[0_0_20px_rgba(255,255,255,0.12)] active:scale-95"
+                      ? "bg-ocean-500/20 text-ocean-200 border border-ocean-400/30"
+                      : "bg-ocean-400 hover:bg-ocean-300 text-ocean-950 shadow-ocean-glow active:scale-95"
                   }`}
                 >
                   {orderPlaced ? (
                     <>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-zinc-200" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-ocean-200" />
                       <span>PO Triggered</span>
                     </>
                   ) : (
@@ -368,17 +368,17 @@ export default function InventoryPage() {
       )}
 
       {/* Master SKU Inventory Table */}
-      <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_-10px_rgba(0,0,0,0.5)]">
-        <div className="flex items-center justify-between pb-4 border-b border-white/10">
+      <div className="p-6 rounded-2xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-2xl shadow-ocean-card">
+        <div className="flex items-center justify-between pb-4 border-b border-ocean-300/15">
           <div>
-            <h2 className="text-sm font-bold text-white tracking-tight">
+            <h2 className="text-sm font-bold text-ocean-100 tracking-tight">
               Enterprise SKU Master Catalog & Velocity Telemetry
             </h2>
-            <p className="text-[11px] text-zinc-400">
+            <p className="text-[11px] text-ocean-200/70">
               Live stock counts, daily sales rate, and automated days-to-stockout calculations
             </p>
           </div>
-          <span className="text-[10px] font-mono text-zinc-400">
+          <span className="text-[10px] font-mono text-ocean-300/70">
             {MOCK_INVENTORY_SKUS.length} Monitored SKUs
           </span>
         </div>
@@ -386,7 +386,7 @@ export default function InventoryPage() {
         <div className="mt-4 overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs min-w-[750px]">
             <thead>
-              <tr className="border-b border-white/10 text-[10px] font-mono uppercase text-zinc-400">
+              <tr className="border-b border-ocean-300/15 text-[10px] font-mono uppercase text-ocean-300/70">
                 <th className="py-3 px-3">SKU Code</th>
                 <th className="py-3 px-3">Product Name</th>
                 <th className="py-3 px-3">Category</th>
@@ -398,7 +398,7 @@ export default function InventoryPage() {
                 <th className="py-3 px-3 text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5 font-sans">
+            <tbody className="divide-y divide-ocean-300/10 font-sans">
               {MOCK_INVENTORY_SKUS.map((sku) => {
                 const isSelected = sku.sku === selectedSkuCode;
                 return (
@@ -409,26 +409,26 @@ export default function InventoryPage() {
                       showToast(`Selected ${sku.sku}`);
                     }}
                     className={`cursor-pointer transition-colors ${
-                      isSelected ? "bg-white/[0.06] font-medium" : "hover:bg-white/[0.02]"
+                      isSelected ? "bg-ocean-400/[0.08] font-medium" : "hover:bg-ocean-400/[0.03]"
                     }`}
                   >
-                    <td className="py-3 px-3 font-mono font-bold text-zinc-200">{sku.sku}</td>
-                    <td className="py-3 px-3 font-bold text-white">{sku.name}</td>
-                    <td className="py-3 px-3 text-zinc-400">{sku.category}</td>
-                    <td className="py-3 px-3 text-right font-mono font-semibold text-zinc-200">
+                    <td className="py-3 px-3 font-mono font-bold text-ocean-200">{sku.sku}</td>
+                    <td className="py-3 px-3 font-bold text-ocean-100">{sku.name}</td>
+                    <td className="py-3 px-3 text-ocean-300/70">{sku.category}</td>
+                    <td className="py-3 px-3 text-right font-mono font-semibold text-ocean-200">
                       {sku.currentStock}
                     </td>
-                    <td className="py-3 px-3 text-right font-mono text-zinc-300">
+                    <td className="py-3 px-3 text-right font-mono text-ocean-300/80">
                       {sku.dailySalesRate} / day
                     </td>
-                    <td className="py-3 px-3 text-right font-mono font-bold text-white">
+                    <td className="py-3 px-3 text-right font-mono font-bold text-ocean-100">
                       {sku.daysToStockout}d
                     </td>
-                    <td className="py-3 px-3 text-right font-mono text-zinc-300">
+                    <td className="py-3 px-3 text-right font-mono text-ocean-300/80">
                       {sku.reorderQuantity}u
                     </td>
                     <td className="py-3 px-3 text-center">
-                      <span className="text-[9px] font-mono px-2 py-0.5 rounded-full border bg-zinc-950/80 text-zinc-300 border-white/10">
+                      <span className="text-[9px] font-mono px-2 py-0.5 rounded-full border bg-ocean-950/80 text-ocean-300 border-ocean-400/20">
                         {sku.status}
                       </span>
                     </td>
@@ -439,7 +439,7 @@ export default function InventoryPage() {
                           setSelectedSkuCode(sku.sku);
                           showToast(`Selected ${sku.sku}`);
                         }}
-                        className="text-[10px] text-zinc-300 hover:text-white font-semibold underline"
+                        className="text-[10px] text-ocean-300 hover:text-ocean-100 font-semibold underline"
                       >
                         Forecast
                       </button>

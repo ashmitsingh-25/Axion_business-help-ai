@@ -159,24 +159,24 @@ export default function ExpensesPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Toast */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-zinc-900/90 border border-white/15 text-white text-xs px-4 py-3 rounded-xl shadow-2xl backdrop-blur-2xl flex items-center gap-2 animate-fade-in">
-          <Info className="w-4 h-4 text-zinc-300" />
+        <div className="fixed bottom-6 right-6 z-50 bg-ocean-900/90 border border-ocean-400/30 text-ocean-100 text-xs px-4 py-3 rounded-xl shadow-2xl backdrop-blur-2xl flex items-center gap-2 animate-fade-in">
+          <Info className="w-4 h-4 text-ocean-300" />
           <span>{toastMessage}</span>
         </div>
       )}
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-ocean-300/15">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-sans">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-ocean-100 tracking-tight font-sans">
               AI Expense Policy Auditor
             </h1>
-            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/10 text-zinc-200 border border-white/15 font-semibold backdrop-blur-md">
+            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-ocean-500/15 text-ocean-300 border border-ocean-400/30 font-semibold backdrop-blur-md">
               RAG Policy Grounded
             </span>
           </div>
-          <p className="text-xs text-zinc-400 mt-1">
+          <p className="text-xs text-ocean-200/70 mt-1">
             Automates 100% receipt compliance against corporate policies, spending limits, & anomalies
           </p>
         </div>
@@ -186,25 +186,25 @@ export default function ExpensesPage() {
           <button
             type="button"
             onClick={loadHotelPreset}
-            className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-zinc-200 border border-white/20 text-xs font-semibold flex items-center gap-1.5 transition-all backdrop-blur-md"
+            className="px-3.5 py-2 rounded-xl bg-ocean-400/20 hover:bg-ocean-400/30 text-ocean-100 border border-ocean-400/40 text-xs font-semibold flex items-center gap-1.5 transition-all backdrop-blur-md shadow-sm"
           >
-            <Zap className="w-3.5 h-3.5 text-zinc-300" />
+            <Zap className="w-3.5 h-3.5 text-ocean-300" />
             <span>Preset: Hotel Overrun (₹18.4k vs ₹12k)</span>
           </button>
           <button
             type="button"
             onClick={loadSaaSPreset}
-            className="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 border border-white/10 text-xs font-semibold flex items-center gap-1.5 transition-all backdrop-blur-md"
+            className="px-3.5 py-2 rounded-xl bg-ocean-950/70 hover:bg-ocean-900/80 text-ocean-300 border border-ocean-400/20 text-xs font-semibold flex items-center gap-1.5 transition-all backdrop-blur-md"
           >
-            <FileText className="w-3.5 h-3.5 text-zinc-400" />
+            <FileText className="w-3.5 h-3.5 text-ocean-400" />
             <span>Preset: SaaS Invoice</span>
           </button>
         </div>
       </div>
 
       {/* Workflow Stepper */}
-      <div className="p-4 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_-10px_rgba(0,0,0,0.5)]">
-        <div className="text-[10px] font-mono uppercase text-zinc-400 tracking-wider mb-2 font-bold">
+      <div className="p-4 rounded-2xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-2xl shadow-ocean-card">
+        <div className="text-[10px] font-mono uppercase text-ocean-300 tracking-wider mb-2 font-bold">
           AI Audit Execution Pipeline
         </div>
         <WorkflowStepper steps={workflowSteps} />
@@ -214,13 +214,13 @@ export default function ExpensesPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Column: Expense Intake (5 cols) */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_-10px_rgba(0,0,0,0.5)] space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-white/10">
+          <div className="p-6 rounded-2xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-2xl shadow-ocean-card space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-ocean-300/15">
               <div className="flex items-center gap-2">
-                <Receipt className="w-4 h-4 text-zinc-300" />
-                <h2 className="text-sm font-bold text-white">Expense Claim Submission</h2>
+                <Receipt className="w-4 h-4 text-ocean-300" />
+                <h2 className="text-sm font-bold text-ocean-100">Expense Claim Submission</h2>
               </div>
-              <span className="text-[10px] font-mono text-zinc-500">Live Intake</span>
+              <span className="text-[10px] font-mono text-ocean-300/60">Live Intake</span>
             </div>
 
             <form
@@ -233,22 +233,22 @@ export default function ExpensesPage() {
               {/* Employee & Department */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-zinc-400 font-medium mb-1">Employee Name</label>
+                  <label className="block text-ocean-200/80 font-medium mb-1">Employee Name</label>
                   <input
                     type="text"
                     value={employeeName}
                     onChange={(e) => setEmployeeName(e.target.value)}
-                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-white/30"
+                    className="w-full bg-ocean-950/80 border border-ocean-300/20 rounded-xl px-3 py-2 text-ocean-100 focus:outline-none focus:ring-1 focus:ring-ocean-400/50 focus:border-transparent"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-zinc-400 font-medium mb-1">Department</label>
+                  <label className="block text-ocean-200/80 font-medium mb-1">Department</label>
                   <input
                     type="text"
                     value={department}
                     onChange={(e) => setDepartment(e.target.value)}
-                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-white/30"
+                    className="w-full bg-ocean-950/80 border border-ocean-300/20 rounded-xl px-3 py-2 text-ocean-100 focus:outline-none focus:ring-1 focus:ring-ocean-400/50 focus:border-transparent"
                     required
                   />
                 </div>
@@ -257,27 +257,27 @@ export default function ExpensesPage() {
               {/* Vendor & Category */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-zinc-400 font-medium mb-1">Vendor / Merchant</label>
+                  <label className="block text-ocean-200/80 font-medium mb-1">Vendor / Merchant</label>
                   <input
                     type="text"
                     value={vendor}
                     onChange={(e) => setVendor(e.target.value)}
-                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-white/30"
+                    className="w-full bg-ocean-950/80 border border-ocean-300/20 rounded-xl px-3 py-2 text-ocean-100 focus:outline-none focus:ring-1 focus:ring-ocean-400/50 focus:border-transparent"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-zinc-400 font-medium mb-1">Expense Category</label>
+                  <label className="block text-ocean-200/80 font-medium mb-1">Expense Category</label>
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-white/30"
+                    className="w-full bg-ocean-950/80 border border-ocean-300/20 rounded-xl px-3 py-2 text-ocean-100 focus:outline-none focus:ring-1 focus:ring-ocean-400/50 focus:border-transparent"
                   >
-                    <option value="ACCOMMODATION">Accommodation / Hotel</option>
-                    <option value="MEALS">Meals & Per Diem</option>
-                    <option value="FLIGHT">Flight / Rail Transit</option>
-                    <option value="SOFTWARE">Software & Cloud Subscriptions</option>
-                    <option value="LOGISTICS">Logistics & Freight</option>
+                    <option value="ACCOMMODATION" className="bg-ocean-950 text-ocean-100">Accommodation / Hotel</option>
+                    <option value="MEALS" className="bg-ocean-950 text-ocean-100">Meals & Per Diem</option>
+                    <option value="FLIGHT" className="bg-ocean-950 text-ocean-100">Flight / Rail Transit</option>
+                    <option value="SOFTWARE" className="bg-ocean-950 text-ocean-100">Software & Cloud Subscriptions</option>
+                    <option value="LOGISTICS" className="bg-ocean-950 text-ocean-100">Logistics & Freight</option>
                   </select>
                 </div>
               </div>
@@ -285,22 +285,22 @@ export default function ExpensesPage() {
               {/* Amount & Date */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-zinc-400 font-medium mb-1">Claim Amount (INR)</label>
+                  <label className="block text-ocean-200/80 font-medium mb-1">Claim Amount (INR)</label>
                   <input
                     type="number"
                     value={amount}
                     onChange={(e) => setAmount(Number(e.target.value))}
-                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2 text-white font-mono font-bold focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-white/30"
+                    className="w-full bg-ocean-950/80 border border-ocean-300/20 rounded-xl px-3 py-2 text-ocean-100 font-mono font-bold focus:outline-none focus:ring-1 focus:ring-ocean-400/50 focus:border-transparent"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-zinc-400 font-medium mb-1">Expense Date</label>
+                  <label className="block text-ocean-200/80 font-medium mb-1">Expense Date</label>
                   <input
                     type="date"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-white/30"
+                    className="w-full bg-ocean-950/80 border border-ocean-300/20 rounded-xl px-3 py-2 text-ocean-100 focus:outline-none focus:ring-1 focus:ring-ocean-400/50 focus:border-transparent"
                     required
                   />
                 </div>
@@ -308,12 +308,12 @@ export default function ExpensesPage() {
 
               {/* Description */}
               <div>
-                <label className="block text-zinc-400 font-medium mb-1">Business Purpose</label>
+                <label className="block text-ocean-200/80 font-medium mb-1">Business Purpose</label>
                 <textarea
                   rows={3}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="w-full bg-zinc-950/80 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-white/30 font-sans"
+                  className="w-full bg-ocean-950/80 border border-ocean-300/20 rounded-xl p-3 text-ocean-100 focus:outline-none focus:ring-1 focus:ring-ocean-400/50 focus:border-transparent font-sans"
                   required
                 />
               </div>
@@ -322,7 +322,7 @@ export default function ExpensesPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 font-bold text-xs flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.12)] transition-all disabled:opacity-50 active:scale-95"
+                className="w-full py-3 rounded-xl bg-ocean-400 hover:bg-ocean-300 text-ocean-950 font-bold text-xs flex items-center justify-center gap-2 shadow-ocean-glow transition-all disabled:opacity-50 active:scale-95"
               >
                 {isLoading ? (
                   <>
@@ -331,7 +331,7 @@ export default function ExpensesPage() {
                   </>
                 ) : (
                   <>
-                    <Sparkles className="w-3.5 h-3.5 text-zinc-950" />
+                    <Sparkles className="w-3.5 h-3.5 text-ocean-950" />
                     <span>Audit Claim with Claude</span>
                   </>
                 )}
@@ -343,43 +343,43 @@ export default function ExpensesPage() {
         {/* Right Column: Audit Findings & Policy Violations (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
           {auditResult ? (
-            <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_-10px_rgba(0,0,0,0.5)] space-y-6">
+            <div className="p-6 rounded-2xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-2xl shadow-ocean-card space-y-6">
               {/* Header */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/10">
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-ocean-300/15">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-xl bg-zinc-950/80 border border-white/10 text-zinc-200">
+                  <div className="p-2.5 rounded-xl bg-ocean-500/15 border border-ocean-400/30 text-ocean-300">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-xs font-mono text-zinc-400">Claim Analysis for</span>
-                    <div className="text-sm font-bold text-white mt-0.5">{vendor}</div>
+                    <span className="text-xs font-mono text-ocean-300/70">Claim Analysis for</span>
+                    <div className="text-sm font-bold text-ocean-100 mt-0.5">{vendor}</div>
                   </div>
                 </div>
 
-                <span className="text-[10px] font-mono px-3 py-1 rounded-full border uppercase font-bold bg-zinc-950/80 text-zinc-200 border-white/10">
+                <span className="text-[10px] font-mono px-3 py-1 rounded-full border uppercase font-bold bg-ocean-950/80 text-ocean-200 border-ocean-400/20">
                   Status: {auditResult.status}
                 </span>
               </div>
 
               {/* Policy Limit vs Claimed Amount Box */}
               <div className="grid grid-cols-3 gap-3 text-xs">
-                <div className="p-3.5 rounded-xl bg-zinc-950/70 border border-white/5">
-                  <div className="text-[10px] text-zinc-400 uppercase font-mono">Claimed Amount</div>
-                  <div className="text-base font-extrabold text-white mt-1">
+                <div className="p-3.5 rounded-xl bg-ocean-950/70 border border-ocean-300/15">
+                  <div className="text-[10px] text-ocean-300/70 uppercase font-mono">Claimed Amount</div>
+                  <div className="text-base font-extrabold text-ocean-100 mt-1">
                     {formatCurrency(auditResult.claimedAmount)}
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-zinc-950/70 border border-white/5">
-                  <div className="text-[10px] text-zinc-400 uppercase font-mono">Policy Cap Limit</div>
-                  <div className="text-base font-extrabold text-zinc-300 mt-1">
+                <div className="p-3.5 rounded-xl bg-ocean-950/70 border border-ocean-300/15">
+                  <div className="text-[10px] text-ocean-300/70 uppercase font-mono">Policy Cap Limit</div>
+                  <div className="text-base font-extrabold text-ocean-300 mt-1">
                     {auditResult.policyLimit ? formatCurrency(auditResult.policyLimit) : "N/A"}
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-zinc-950/70 border border-white/5">
-                  <div className="text-[10px] text-zinc-400 uppercase font-mono">Variance Overrun</div>
-                  <div className="text-base font-extrabold mt-1 text-white">
+                <div className="p-3.5 rounded-xl bg-ocean-950/70 border border-ocean-300/15">
+                  <div className="text-[10px] text-ocean-300/70 uppercase font-mono">Variance Overrun</div>
+                  <div className="text-base font-extrabold mt-1 text-ocean-100">
                     {auditResult.varianceAmount > 0
                       ? `+${formatCurrency(auditResult.varianceAmount)}`
                       : "Compliant"}
@@ -390,22 +390,22 @@ export default function ExpensesPage() {
               {/* Violations Strip */}
               {auditResult.violations.length > 0 && (
                 <div className="space-y-3">
-                  <div className="text-xs font-mono text-zinc-300 uppercase tracking-wider font-bold">
+                  <div className="text-xs font-mono text-ocean-300 uppercase tracking-wider font-bold">
                     Detected Policy Violations ({auditResult.violations.length})
                   </div>
                   <div className="space-y-2">
                     {auditResult.violations.map((violation, i) => (
                       <div
                         key={i}
-                        className="p-3.5 rounded-xl bg-zinc-950/70 border border-white/5 space-y-1"
+                        className="p-3.5 rounded-xl bg-ocean-950/70 border border-ocean-300/15 space-y-1"
                       >
                         <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold text-white">{violation.rule}</span>
-                          <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-zinc-900 text-zinc-300 border border-white/10">
+                          <span className="text-xs font-bold text-ocean-100">{violation.rule}</span>
+                          <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-ocean-900 text-ocean-300 border border-ocean-400/20">
                             {violation.severity}
                           </span>
                         </div>
-                        <p className="text-[11px] text-zinc-400 leading-relaxed font-sans">
+                        <p className="text-[11px] text-ocean-200/70 leading-relaxed font-sans">
                           {violation.description}
                         </p>
                       </div>
@@ -416,33 +416,33 @@ export default function ExpensesPage() {
 
               {/* Agent Rationale */}
               <div className="space-y-2">
-                <div className="text-xs font-bold text-white flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-zinc-300" />
+                <div className="text-xs font-bold text-ocean-100 flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-ocean-300" />
                   <span>Auditor Agent Rationale</span>
                 </div>
-                <p className="text-xs text-zinc-300 leading-relaxed p-4 rounded-xl bg-zinc-950/70 border border-white/5 font-sans">
+                <p className="text-xs text-ocean-200/90 leading-relaxed p-4 rounded-xl bg-ocean-950/70 border border-ocean-300/15 font-sans">
                   {auditResult.reasoning}
                 </p>
               </div>
 
               {/* Policy Grounding Reference */}
-              <div className="p-3.5 rounded-xl bg-zinc-950/70 border border-white/5 text-xs flex items-center justify-between">
-                <div className="flex items-center gap-2 text-zinc-400">
-                  <FileText className="w-4 h-4 text-zinc-300" />
+              <div className="p-3.5 rounded-xl bg-ocean-950/70 border border-ocean-300/15 text-xs flex items-center justify-between">
+                <div className="flex items-center gap-2 text-ocean-300/80">
+                  <FileText className="w-4 h-4 text-ocean-300" />
                   <span className="font-mono text-[11px]">{auditResult.policyReference}</span>
                 </div>
-                <span className="text-[10px] text-zinc-400 font-mono">Verified Match</span>
+                <span className="text-[10px] text-ocean-300/60 font-mono">Verified Match</span>
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10">
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-ocean-300/15">
                 <button
                   type="button"
                   onClick={() => {
                     setActionDone(true);
                     showToast(`Approved policy limit of ₹${auditResult.policyLimit?.toLocaleString("en-IN")}`);
                   }}
-                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 text-xs font-bold shadow-[0_0_20px_rgba(255,255,255,0.12)] active:scale-95 transition-all"
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-ocean-400 hover:bg-ocean-300 text-ocean-950 text-xs font-bold shadow-ocean-glow active:scale-95 transition-all"
                 >
                   Approve Standard Cap ({auditResult.policyLimit ? formatCurrency(auditResult.policyLimit) : "Standard"})
                 </button>
@@ -452,17 +452,17 @@ export default function ExpensesPage() {
                     setActionDone(true);
                     showToast(`Forwarded ₹${auditResult.varianceAmount?.toLocaleString("en-IN")} excess to VP Finance`);
                   }}
-                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-zinc-200 text-xs font-semibold border border-white/20 active:scale-95 transition-all"
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-ocean-500/20 hover:bg-ocean-500/30 text-ocean-200 text-xs font-semibold border border-ocean-400/30 active:scale-95 transition-all"
                 >
                   Route Overrun to VP Finance
                 </button>
               </div>
             </div>
           ) : (
-            <div className="p-12 rounded-2xl bg-zinc-900/40 border border-dashed border-white/10 text-center space-y-3">
-              <Receipt className="w-8 h-8 text-zinc-600 mx-auto" />
-              <div className="text-sm font-bold text-zinc-400">No Expense Claim Audited Yet</div>
-              <p className="text-xs text-zinc-500 max-w-sm mx-auto">
+            <div className="p-12 rounded-2xl bg-ocean-900/30 border border-dashed border-ocean-400/20 text-center space-y-3">
+              <Receipt className="w-8 h-8 text-ocean-400 mx-auto" />
+              <div className="text-sm font-bold text-ocean-300">No Expense Claim Audited Yet</div>
+              <p className="text-xs text-ocean-300/60 max-w-sm mx-auto">
                 Submit an expense claim on the left or use a preset to audit compliance in real time.
               </p>
             </div>
@@ -471,17 +471,17 @@ export default function ExpensesPage() {
       </div>
 
       {/* Ledger of Seeded Expense Claims */}
-      <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_-10px_rgba(0,0,0,0.5)]">
-        <div className="flex items-center justify-between pb-4 border-b border-white/10">
+      <div className="p-6 rounded-2xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-2xl shadow-ocean-card">
+        <div className="flex items-center justify-between pb-4 border-b border-ocean-300/15">
           <div>
-            <h2 className="text-sm font-bold text-white tracking-tight">
+            <h2 className="text-sm font-bold text-ocean-100 tracking-tight">
               Enterprise Expense Audit Ledger
             </h2>
-            <p className="text-[11px] text-zinc-400">
+            <p className="text-[11px] text-ocean-200/70">
               Audit log of processed employee reimbursement claims and detected policy variances
             </p>
           </div>
-          <span className="text-[10px] font-mono text-zinc-400">
+          <span className="text-[10px] font-mono text-ocean-300/70">
             {MOCK_EXPENSES.length} Processed Claims
           </span>
         </div>
@@ -489,7 +489,7 @@ export default function ExpensesPage() {
         <div className="mt-4 overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs min-w-[750px]">
             <thead>
-              <tr className="border-b border-white/10 text-[10px] font-mono uppercase text-zinc-400">
+              <tr className="border-b border-ocean-300/15 text-[10px] font-mono uppercase text-ocean-300/70">
                 <th className="py-3 px-3">Claim ID</th>
                 <th className="py-3 px-3">Employee</th>
                 <th className="py-3 px-3">Department</th>
@@ -500,27 +500,27 @@ export default function ExpensesPage() {
                 <th className="py-3 px-3 text-right">Date</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody className="divide-y divide-ocean-300/10">
               {MOCK_EXPENSES.map((exp) => (
-                <tr key={exp.id} className="hover:bg-white/[0.02] transition-colors">
-                  <td className="py-3 px-3 font-mono font-bold text-zinc-200">
+                <tr key={exp.id} className="hover:bg-ocean-400/[0.04] transition-colors">
+                  <td className="py-3 px-3 font-mono font-bold text-ocean-200">
                     {exp.claimNumber}
                   </td>
-                  <td className="py-3 px-3 font-bold text-white">{exp.employeeName}</td>
-                  <td className="py-3 px-3 text-zinc-400">{exp.department}</td>
-                  <td className="py-3 px-3 text-zinc-300 font-medium">{exp.vendor}</td>
-                  <td className="py-3 px-3 text-right font-mono font-bold text-white">
+                  <td className="py-3 px-3 font-bold text-ocean-100">{exp.employeeName}</td>
+                  <td className="py-3 px-3 text-ocean-300/70">{exp.department}</td>
+                  <td className="py-3 px-3 text-ocean-200 font-medium">{exp.vendor}</td>
+                  <td className="py-3 px-3 text-right font-mono font-bold text-ocean-100">
                     {formatCurrency(exp.amount)}
                   </td>
-                  <td className="py-3 px-3 text-right font-mono text-zinc-400">
+                  <td className="py-3 px-3 text-right font-mono text-ocean-300/70">
                     {exp.policyLimit ? formatCurrency(exp.policyLimit) : "None"}
                   </td>
                   <td className="py-3 px-3 text-center">
-                    <span className="text-[9px] font-mono px-2 py-0.5 rounded-full border uppercase bg-zinc-950/80 text-zinc-300 border-white/10 font-bold">
+                    <span className="text-[9px] font-mono px-2 py-0.5 rounded-full border uppercase bg-ocean-950/80 text-ocean-300 border-ocean-400/20 font-bold">
                       {exp.status}
                     </span>
                   </td>
-                  <td className="py-3 px-3 text-right text-zinc-500 font-mono">
+                  <td className="py-3 px-3 text-right text-ocean-300/60 font-mono">
                     {formatDate(exp.date)}
                   </td>
                 </tr>

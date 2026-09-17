@@ -30,29 +30,29 @@ export function WorkflowStepper({
               {!isLast && (
                 <div
                   className={`absolute left-3.5 top-7 bottom-0 w-[2px] -mb-4 ${
-                    step.status === "complete" ? "bg-white/40" : "bg-white/5"
+                    step.status === "complete" ? "bg-ocean-400/60" : "bg-ocean-300/10"
                   }`}
                 />
               )}
 
               <div className="relative z-10 flex-shrink-0 mt-0.5">
                 {step.status === "complete" && (
-                  <CheckCircle2 className="w-7 h-7 text-zinc-100 bg-zinc-900 border border-white/20 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.15)]" />
+                  <CheckCircle2 className="w-7 h-7 text-ocean-300 bg-ocean-950 border border-ocean-300/30 rounded-full shadow-[0_0_12px_rgba(32,201,166,0.3)]" />
                 )}
                 {step.status === "active" && (
-                  <div className="w-7 h-7 rounded-full bg-white/10 border-2 border-white flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-                    <Loader2 className="w-4 h-4 text-white animate-spin" />
+                  <div className="w-7 h-7 rounded-full bg-ocean-500/20 border-2 border-ocean-300 flex items-center justify-center shadow-[0_0_15px_rgba(94,234,212,0.4)]">
+                    <Loader2 className="w-4 h-4 text-ocean-200 animate-spin" />
                   </div>
                 )}
                 {step.status === "pending" && (
-                  <Circle className="w-7 h-7 text-zinc-700 bg-zinc-950 rounded-full" />
+                  <Circle className="w-7 h-7 text-ocean-800 bg-ocean-950 rounded-full border border-ocean-300/10" />
                 )}
               </div>
 
               <div className="flex-1 pb-2">
                 <div className="text-xs font-semibold text-white tracking-wide">{step.title}</div>
                 {step.description && (
-                  <p className="text-[11px] text-zinc-400 mt-0.5 leading-relaxed">
+                  <p className="text-[11px] text-ocean-200/60 mt-0.5 leading-relaxed">
                     {step.description}
                   </p>
                 )}
@@ -74,36 +74,36 @@ export function WorkflowStepper({
               <div className="flex flex-col items-center text-center px-2">
                 <div className="mb-2">
                   {step.status === "complete" && (
-                    <div className="w-7 h-7 rounded-full bg-white/10 border border-white/30 flex items-center justify-center shadow-[0_0_10px_rgba(255,255,255,0.15)]">
-                      <CheckCircle2 className="w-4 h-4 text-zinc-100" />
+                    <div className="w-7 h-7 rounded-full bg-ocean-500/20 border border-ocean-300/40 flex items-center justify-center shadow-[0_0_12px_rgba(32,201,166,0.25)]">
+                      <CheckCircle2 className="w-4 h-4 text-ocean-300" />
                     </div>
                   )}
                   {step.status === "active" && (
-                    <div className="w-7 h-7 rounded-full bg-white/10 border-2 border-white flex items-center justify-center animate-pulse shadow-[0_0_15px_rgba(255,255,255,0.25)]">
-                      <Loader2 className="w-4 h-4 text-white animate-spin" />
+                    <div className="w-7 h-7 rounded-full bg-ocean-500/30 border-2 border-ocean-300 flex items-center justify-center animate-pulse shadow-[0_0_15px_rgba(94,234,212,0.4)]">
+                      <Loader2 className="w-4 h-4 text-ocean-100 animate-spin" />
                     </div>
                   )}
                   {step.status === "pending" && (
-                    <div className="w-7 h-7 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-[11px] text-zinc-500 font-mono font-bold">
-                      {index + 1}
+                    <div className="w-7 h-7 rounded-full bg-ocean-950 border border-ocean-300/15 flex items-center justify-center text-[11px] text-ocean-400/50 font-mono font-bold">
+                      0{index + 1}
                     </div>
                   )}
                 </div>
-                <div className="text-[11px] font-semibold text-zinc-200 whitespace-nowrap">
+                <div className="text-[11px] font-semibold text-ocean-100 whitespace-nowrap">
                   {step.title}
                 </div>
                 {step.description && (
-                  <span className="text-[9px] text-zinc-400 mt-0.5 line-clamp-1">
+                  <span className="text-[9px] text-ocean-200/60 mt-0.5 line-clamp-1 font-mono">
                     {step.description}
                   </span>
                 )}
               </div>
 
               {!isLast && (
-                <div className="flex-1 h-[2px] bg-white/5 mx-2 relative -top-3">
+                <div className="flex-1 h-[2px] bg-ocean-900/80 mx-2 relative -top-3">
                   <div
                     className={`h-full transition-all duration-300 ${
-                      step.status === "complete" ? "bg-white/40 w-full" : "w-0"
+                      step.status === "complete" ? "bg-ocean-400/60 w-full" : "w-0"
                     }`}
                   />
                 </div>
@@ -115,3 +115,4 @@ export function WorkflowStepper({
     </div>
   );
 }
+

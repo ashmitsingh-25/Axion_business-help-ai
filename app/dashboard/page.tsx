@@ -95,18 +95,18 @@ export default function DashboardPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Dashboard Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-ocean-300/15">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-sans">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-ocean-100 tracking-tight font-sans">
               Enterprise Operations Console
             </h1>
-            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/5 text-zinc-300 border border-white/10 flex items-center gap-1 font-semibold">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-ocean-500/15 text-ocean-300 border border-ocean-400/30 flex items-center gap-1 font-semibold">
+              <span className="w-1.5 h-1.5 rounded-full bg-ocean-400 animate-pulse" />
               <span>Real-Time Ingestion</span>
             </span>
           </div>
-          <p className="text-xs text-zinc-400 mt-1">
+          <p className="text-xs text-ocean-200/70 mt-1">
             Axion Autonomous Decision Layer • Positioning: Data → Intelligence → Action → Optimized Investment
           </p>
         </div>
@@ -114,9 +114,9 @@ export default function DashboardPage() {
         <div className="flex items-center gap-3">
           <Link
             href="/insights"
-            className="px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 text-xs font-semibold flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.12)] active:scale-95 transition-all"
+            className="px-4 py-2 rounded-xl bg-ocean-400 hover:bg-ocean-300 text-ocean-950 text-xs font-bold flex items-center gap-2 shadow-ocean-glow active:scale-95 transition-all"
           >
-            <Sparkles className="w-3.5 h-3.5 text-zinc-950" />
+            <Sparkles className="w-3.5 h-3.5 text-ocean-950" />
             <span>Launch Copilot</span>
           </Link>
         </div>
@@ -164,7 +164,7 @@ export default function DashboardPage() {
 
       {/* Quick Navigation Cards */}
       <div>
-        <div className="text-xs font-mono uppercase tracking-wider text-zinc-400 mb-3 font-bold">
+        <div className="text-xs font-mono uppercase tracking-wider text-ocean-300 mb-3 font-bold">
           Active Decision Modules
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -174,27 +174,27 @@ export default function DashboardPage() {
               <Link
                 key={i}
                 href={action.href}
-                className="group p-5 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-white/20 hover:bg-zinc-900/80 backdrop-blur-2xl transition-all duration-200 flex flex-col justify-between shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_-10px_rgba(0,0,0,0.5)]"
+                className="group p-5 rounded-2xl bg-ocean-900/50 border border-ocean-400/20 hover:border-ocean-400/40 hover:bg-ocean-900/70 backdrop-blur-2xl transition-all duration-200 flex flex-col justify-between shadow-ocean-card hover:-translate-y-1"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <div className="p-2 rounded-xl bg-white/5 border border-white/10 text-zinc-200 group-hover:text-white transition-colors shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
+                    <div className="p-2 rounded-xl bg-ocean-500/10 border border-ocean-400/20 text-ocean-300 group-hover:text-ocean-100 transition-colors">
                       <Icon className="w-4 h-4" />
                     </div>
-                    <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-white/5 text-zinc-300 border border-white/10 font-bold">
+                    <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-ocean-500/10 text-ocean-300 border border-ocean-400/20 font-bold">
                       {action.badge}
                     </span>
                   </div>
-                  <h2 className="text-sm font-bold text-white group-hover:text-zinc-200 transition-colors">
+                  <h2 className="text-sm font-bold text-ocean-100 group-hover:text-white transition-colors">
                     {action.title}
                   </h2>
-                  <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
+                  <p className="text-xs text-ocean-200/70 mt-1 leading-relaxed">
                     {action.desc}
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-zinc-400 font-medium">
+                <div className="mt-4 pt-3 border-t border-ocean-300/10 flex items-center justify-between text-xs text-ocean-300/80 font-medium">
                   <span>Enter Module</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 text-white transition-transform" />
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 text-ocean-300 transition-transform" />
                 </div>
               </Link>
             );
@@ -203,22 +203,22 @@ export default function DashboardPage() {
       </div>
 
       {/* Cyber Risk Executive Intelligence Section */}
-      <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_-10px_rgba(0,0,0,0.5)]">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+      <div className="p-6 rounded-2xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-2xl shadow-ocean-card">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-ocean-300/15">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
+            <div className="p-2.5 rounded-xl bg-ocean-500/15 border border-ocean-400/30 text-ocean-300">
               <Shield className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-base font-bold text-white tracking-tight">
+                <h3 className="text-base font-bold text-ocean-100 tracking-tight">
                   Cyber Risk & Financial Exposure Intelligence
                 </h3>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-bold">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-ocean-500/15 text-ocean-300 border border-ocean-400/30 font-bold">
                   Live Model
                 </span>
               </div>
-              <p className="text-[11px] text-zinc-400 mt-0.5">
+              <p className="text-[11px] text-ocean-200/60 mt-0.5">
                 Continuously quantified Expected Annual Loss (EAL), incident likelihood, and optimal security budget allocation
               </p>
             </div>
@@ -226,7 +226,7 @@ export default function DashboardPage() {
 
           <Link
             href="/cyber-risk"
-            className="px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all self-start sm:self-auto"
+            className="px-4 py-2 rounded-xl bg-ocean-400 hover:bg-ocean-300 text-ocean-950 text-xs font-bold flex items-center gap-1.5 shadow-ocean-glow transition-all self-start sm:self-auto"
           >
             <span>Launch Cyber Console</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -234,40 +234,40 @@ export default function DashboardPage() {
         </div>
 
         <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-          <div className="p-3 rounded-xl bg-zinc-950/80 border border-white/5 space-y-1">
-            <div className="text-[10px] font-mono text-zinc-400">Enterprise Cyber Risk</div>
-            <div className="text-base font-extrabold text-white font-mono">72 / 100</div>
+          <div className="p-3 rounded-xl bg-ocean-950/70 border border-ocean-300/15 space-y-1">
+            <div className="text-[10px] font-mono text-ocean-300/70">Enterprise Cyber Risk</div>
+            <div className="text-base font-extrabold text-ocean-100 font-mono">72 / 100</div>
             <div className="text-[9px] text-amber-300">Elevated Posture</div>
           </div>
 
-          <div className="p-3 rounded-xl bg-zinc-950/80 border border-white/5 space-y-1">
-            <div className="text-[10px] font-mono text-zinc-400">Financial Exposure</div>
-            <div className="text-base font-extrabold text-white font-mono">₹3.8 Cr</div>
-            <div className="text-[9px] text-zinc-500">1,250 Assets</div>
+          <div className="p-3 rounded-xl bg-ocean-950/70 border border-ocean-300/15 space-y-1">
+            <div className="text-[10px] font-mono text-ocean-300/70">Financial Exposure</div>
+            <div className="text-base font-extrabold text-ocean-100 font-mono">₹3.8 Cr</div>
+            <div className="text-[9px] text-ocean-300/50">1,250 Assets</div>
           </div>
 
-          <div className="p-3 rounded-xl bg-zinc-950/80 border border-rose-500/20 space-y-1">
+          <div className="p-3 rounded-xl bg-ocean-950/70 border border-rose-500/30 space-y-1">
             <div className="text-[10px] font-mono text-rose-400 font-bold">Expected Annual Loss</div>
             <div className="text-base font-extrabold text-rose-300 font-mono">₹2.1 Cr</div>
             <div className="text-[9px] text-rose-400">17% Likelihood</div>
           </div>
 
-          <div className="p-3 rounded-xl bg-zinc-950/80 border border-white/5 space-y-1">
-            <div className="text-[10px] font-mono text-zinc-400">Critical Tier Assets</div>
+          <div className="p-3 rounded-xl bg-ocean-950/70 border border-purple-500/30 space-y-1">
+            <div className="text-[10px] font-mono text-purple-300 font-bold">Critical Tier Assets</div>
             <div className="text-base font-extrabold text-purple-300 font-mono">18 Assets</div>
-            <div className="text-[9px] text-zinc-500">7 High Risk</div>
+            <div className="text-[9px] text-ocean-300/50">7 High Risk</div>
           </div>
 
-          <div className="p-3 rounded-xl bg-zinc-950/80 border border-white/5 space-y-1">
-            <div className="text-[10px] font-mono text-zinc-400">Control Effectiveness</div>
+          <div className="p-3 rounded-xl bg-ocean-950/70 border border-emerald-500/30 space-y-1">
+            <div className="text-[10px] font-mono text-emerald-400 font-bold">Control Effectiveness</div>
             <div className="text-base font-extrabold text-emerald-400 font-mono">74%</div>
-            <div className="text-[9px] text-zinc-500">MFA 92% • EDR 87%</div>
+            <div className="text-[9px] text-ocean-300/50">MFA 92% • EDR 87%</div>
           </div>
 
-          <div className="p-3 rounded-xl bg-zinc-950/80 border border-cyan-500/20 space-y-1">
-            <div className="text-[10px] font-mono text-cyan-400 font-bold">Risk Reduction Target</div>
-            <div className="text-base font-extrabold text-cyan-300 font-mono">₹1.4 Cr</div>
-            <div className="text-[9px] text-cyan-400">At ₹18L Spend</div>
+          <div className="p-3 rounded-xl bg-ocean-950/70 border border-ocean-400/30 space-y-1">
+            <div className="text-[10px] font-mono text-ocean-300 font-bold">Risk Reduction Target</div>
+            <div className="text-base font-extrabold text-ocean-200 font-mono">₹1.4 Cr</div>
+            <div className="text-[9px] text-ocean-300/70">At ₹18L Spend</div>
           </div>
         </div>
       </div>
@@ -283,48 +283,48 @@ export default function DashboardPage() {
       </div>
 
       {/* Recent Autonomous Decisions Audit Trail */}
-      <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
-        <div className="flex items-center justify-between pb-4 border-b border-white/10">
+      <div className="p-6 rounded-2xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-2xl shadow-ocean-card">
+        <div className="flex items-center justify-between pb-4 border-b border-ocean-300/15">
           <div>
-            <h3 className="text-sm font-bold text-white tracking-tight">
+            <h3 className="text-sm font-bold text-ocean-100 tracking-tight">
               Recent Autonomous Decision Logs
             </h3>
-            <p className="text-[11px] text-zinc-400">
+            <p className="text-[11px] text-ocean-200/60">
               Audit trail of deterministic multi-agent resolutions and policy actions
             </p>
           </div>
-          <span className="text-[10px] font-mono text-zinc-400 flex items-center gap-1">
-            <Clock className="w-3 h-3 text-zinc-500" />
+          <span className="text-[10px] font-mono text-ocean-300/60 flex items-center gap-1">
+            <Clock className="w-3 h-3 text-ocean-400" />
             <span>Updated live</span>
           </span>
         </div>
 
-        <div className="mt-4 divide-y divide-white/5">
+        <div className="mt-4 divide-y divide-ocean-300/10">
           {recentDecisions.map((dec) => (
             <div
               key={dec.id}
-              className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs hover:bg-white/[0.02] px-2 rounded-xl transition-colors"
+              className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs hover:bg-ocean-400/[0.04] px-2 rounded-xl transition-colors"
             >
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-[10px] text-zinc-300 font-bold">{dec.id}</span>
-                  <span className="text-zinc-600">•</span>
-                  <span className="font-bold text-white">{dec.subject}</span>
+                  <span className="font-mono text-[10px] text-ocean-300 font-bold">{dec.id}</span>
+                  <span className="text-ocean-500">•</span>
+                  <span className="font-bold text-ocean-100">{dec.subject}</span>
                 </div>
-                <div className="text-zinc-400 text-[11px]">
+                <div className="text-ocean-300/70 text-[11px]">
                   <span>Resolution: </span>
-                  <span className="text-zinc-200 font-medium">{dec.outcome}</span>
+                  <span className="text-ocean-200 font-medium">{dec.outcome}</span>
                 </div>
               </div>
 
               <div className="flex items-center gap-3 sm:text-right flex-shrink-0">
                 <div>
-                  <div className="font-mono text-[10px] text-zinc-200 font-semibold">
+                  <div className="font-mono text-[10px] text-ocean-200 font-semibold">
                     {dec.retained}
                   </div>
-                  <div className="text-[10px] text-zinc-500">{dec.agent}</div>
+                  <div className="text-[10px] text-ocean-300/50">{dec.agent}</div>
                 </div>
-                <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-full border bg-white/5 text-zinc-300 border-white/10">
+                <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-full border bg-ocean-500/10 text-ocean-300 border-ocean-400/20">
                   {dec.status}
                 </span>
               </div>

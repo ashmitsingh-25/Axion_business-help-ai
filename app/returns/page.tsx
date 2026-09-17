@@ -254,24 +254,24 @@ export default function ReturnsPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 bg-zinc-900/90 border border-white/15 text-white text-xs px-4 py-3 rounded-xl shadow-2xl backdrop-blur-xl flex items-center gap-2 animate-fade-in">
-          <Info className="w-4 h-4 text-zinc-300" />
+        <div className="fixed bottom-6 right-6 z-50 bg-ocean-900/90 border border-ocean-400/30 text-ocean-100 text-xs px-4 py-3 rounded-xl shadow-2xl backdrop-blur-xl flex items-center gap-2 animate-fade-in">
+          <Info className="w-4 h-4 text-ocean-300" />
           <span>{toastMessage}</span>
         </div>
       )}
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-ocean-300/15">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-sans">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-ocean-100 tracking-tight font-sans">
               Smart Returns & Exchange Copilot
             </h1>
-            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/5 text-zinc-300 border border-white/10 font-bold">
+            <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-ocean-500/15 text-ocean-300 border border-ocean-400/30 font-bold">
               Multi-Factor Risk Engine
             </span>
           </div>
-          <p className="text-xs text-zinc-400 mt-1">
+          <p className="text-xs text-ocean-200/70 mt-1">
             Calculates customer tier risk, tag integrity, sizing anomalies, and automated 1-click exchanges
           </p>
         </div>
@@ -281,33 +281,33 @@ export default function ReturnsPage() {
           <button
             type="button"
             onClick={loadShoeExchangePreset}
-            className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-zinc-200 border border-white/20 text-xs font-semibold flex items-center gap-1.5 transition-all shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]"
+            className="px-3.5 py-2 rounded-xl bg-ocean-400/20 hover:bg-ocean-400/30 text-ocean-100 border border-ocean-400/40 text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm"
           >
-            <Zap className="w-3.5 h-3.5 text-zinc-200" />
+            <Zap className="w-3.5 h-3.5 text-ocean-300" />
             <span>Preset: Low Risk Shoe Sizing (ORD-88219)</span>
           </button>
           <button
             type="button"
             onClick={loadHighRiskPreset}
-            className="px-3.5 py-2 rounded-xl bg-zinc-900/80 hover:bg-white/5 text-zinc-300 border border-white/10 text-xs font-semibold flex items-center gap-1.5 transition-all"
+            className="px-3.5 py-2 rounded-xl bg-ocean-950/70 hover:bg-ocean-900/80 text-ocean-300 border border-ocean-400/20 text-xs font-semibold flex items-center gap-1.5 transition-all"
           >
-            <ShieldAlert className="w-3.5 h-3.5 text-zinc-400" />
+            <ShieldAlert className="w-3.5 h-3.5 text-ocean-400" />
             <span>Preset: High Risk Escalation</span>
           </button>
           <button
             type="button"
             onClick={loadDefectPreset}
-            className="px-3.5 py-2 rounded-xl bg-zinc-900/80 hover:bg-white/5 text-zinc-300 border border-white/10 text-xs font-semibold flex items-center gap-1.5 transition-all"
+            className="px-3.5 py-2 rounded-xl bg-ocean-950/70 hover:bg-ocean-900/80 text-ocean-300 border border-ocean-400/20 text-xs font-semibold flex items-center gap-1.5 transition-all"
           >
-            <Package className="w-3.5 h-3.5 text-zinc-400" />
+            <Package className="w-3.5 h-3.5 text-ocean-400" />
             <span>Preset: Hardware Defect</span>
           </button>
         </div>
       </div>
 
       {/* Interactive Workflow Stepper */}
-      <div className="p-4 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl">
-        <div className="text-[10px] font-mono uppercase text-zinc-400 tracking-wider mb-2 font-bold">
+      <div className="p-4 rounded-2xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-2xl">
+        <div className="text-[10px] font-mono uppercase text-ocean-300 tracking-wider mb-2 font-bold">
           Autonomous Multi-Agent Pipeline
         </div>
         <WorkflowStepper steps={workflowSteps} />
@@ -317,17 +317,17 @@ export default function ReturnsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Column: Return Request Intake Form (5 cols) */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_20px_50px_rgba(0,0,0,0.6)] space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-white/10">
+          <div className="p-6 rounded-2xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-2xl shadow-ocean-card space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-ocean-300/15">
               <div className="flex items-center gap-2">
-                <RotateCcw className="w-4 h-4 text-zinc-200" />
-                <h2 className="text-sm font-bold text-white">Return Request Intake Form</h2>
+                <RotateCcw className="w-4 h-4 text-ocean-300" />
+                <h2 className="text-sm font-bold text-ocean-100">Return Request Intake Form</h2>
               </div>
               
               {/* Live Form Risk Indicator Badge */}
-              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-zinc-950/80 border border-white/10 text-[10px] font-mono">
-                <span className="text-zinc-400">Est. Risk:</span>
-                <span className="font-bold text-white">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-ocean-950/80 border border-ocean-400/20 text-[10px] font-mono">
+                <span className="text-ocean-300/70">Est. Risk:</span>
+                <span className="font-bold text-ocean-100">
                   {Math.round(liveRiskScore * 100)}% ({liveRiskLevel})
                 </span>
               </div>
@@ -343,26 +343,26 @@ export default function ReturnsPage() {
               {/* Order ID & Customer Name */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-zinc-400 font-medium mb-1">
-                    Order Number <span className="text-white">*</span>
+                  <label className="block text-ocean-200/80 font-medium mb-1">
+                    Order Number <span className="text-ocean-300">*</span>
                   </label>
                   <input
                     type="text"
                     value={orderId}
                     onChange={(e) => setOrderId(e.target.value)}
                     placeholder="e.g. ORD-88219"
-                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2.5 text-white font-mono focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-transparent transition-all"
+                    className="w-full bg-ocean-950/80 border border-ocean-300/20 rounded-xl px-3 py-2.5 text-ocean-100 font-mono focus:outline-none focus:ring-1 focus:ring-ocean-400/50 transition-all"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-zinc-400 font-medium mb-1">Customer Name</label>
+                  <label className="block text-ocean-200/80 font-medium mb-1">Customer Name</label>
                   <input
                     type="text"
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
                     placeholder="e.g. Aarav Sharma"
-                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-1 focus:ring-white/30 focus:border-transparent transition-all"
+                    className="w-full bg-ocean-950/80 border border-ocean-300/20 rounded-xl px-3 py-2.5 text-ocean-100 focus:outline-none focus:ring-1 focus:ring-ocean-400/50 transition-all"
                   />
                 </div>
               </div>
@@ -370,29 +370,29 @@ export default function ReturnsPage() {
               {/* Product Title & Current Size */}
               <div className="grid grid-cols-3 gap-3">
                 <div className="col-span-2">
-                  <label className="block text-zinc-400 font-medium mb-1">Product Name</label>
+                  <label className="block text-ocean-200/80 font-medium mb-1">Product Name</label>
                   <input
                     type="text"
                     value={itemName}
                     onChange={(e) => setItemName(e.target.value)}
                     placeholder="e.g. Axion Velocity Pro Shoes"
-                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-1 focus:ring-white/30"
+                    className="w-full bg-ocean-950/80 border border-ocean-300/20 rounded-xl px-3 py-2.5 text-ocean-100 focus:outline-none focus:ring-1 focus:ring-ocean-400/50"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-zinc-400 font-medium mb-1">Current Size</label>
+                  <label className="block text-ocean-200/80 font-medium mb-1">Current Size</label>
                   <select
                     value={currentSize}
                     onChange={(e) => setCurrentSize(e.target.value)}
-                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-2.5 py-2.5 text-white focus:outline-none focus:ring-1 focus:ring-white/30"
+                    className="w-full bg-ocean-950/80 border border-ocean-300/20 rounded-xl px-2.5 py-2.5 text-ocean-100 focus:outline-none focus:ring-1 focus:ring-ocean-400/50"
                   >
-                    <option value="UK 8">UK 8</option>
-                    <option value="UK 8.5">UK 8.5</option>
-                    <option value="UK 9">UK 9</option>
-                    <option value="UK 9.5">UK 9.5</option>
-                    <option value="UK 10">UK 10</option>
-                    <option value="Standard">Standard / OS</option>
+                    <option value="UK 8" className="bg-ocean-950 text-ocean-100">UK 8</option>
+                    <option value="UK 8.5" className="bg-ocean-950 text-ocean-100">UK 8.5</option>
+                    <option value="UK 9" className="bg-ocean-950 text-ocean-100">UK 9</option>
+                    <option value="UK 9.5" className="bg-ocean-950 text-ocean-100">UK 9.5</option>
+                    <option value="UK 10" className="bg-ocean-950 text-ocean-100">UK 10</option>
+                    <option value="Standard" className="bg-ocean-950 text-ocean-100">Standard / OS</option>
                   </select>
                 </div>
               </div>
@@ -400,30 +400,30 @@ export default function ReturnsPage() {
               {/* Customer Tier & Item Condition */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-zinc-400 font-medium mb-1">Customer Tier</label>
+                  <label className="block text-ocean-200/80 font-medium mb-1">Customer Tier</label>
                   <select
                     value={customerTier}
                     onChange={(e) => setCustomerTier(e.target.value)}
-                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-1 focus:ring-white/30"
+                    className="w-full bg-ocean-950/80 border border-ocean-300/20 rounded-xl px-3 py-2.5 text-ocean-100 focus:outline-none focus:ring-1 focus:ring-ocean-400/50"
                   >
-                    <option value="VIP">VIP Tier (-15% Risk Offset)</option>
-                    <option value="GOLD">Gold Tier (-5% Risk Offset)</option>
-                    <option value="STANDARD">Standard Customer</option>
-                    <option value="HIGH_RISK">High Risk (+58% Risk Flag)</option>
+                    <option value="VIP" className="bg-ocean-950 text-ocean-100">VIP Tier (-15% Risk Offset)</option>
+                    <option value="GOLD" className="bg-ocean-950 text-ocean-100">Gold Tier (-5% Risk Offset)</option>
+                    <option value="STANDARD" className="bg-ocean-950 text-ocean-100">Standard Customer</option>
+                    <option value="HIGH_RISK" className="bg-ocean-950 text-ocean-100">High Risk (+58% Risk Flag)</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-zinc-400 font-medium mb-1">Item Condition</label>
+                  <label className="block text-ocean-200/80 font-medium mb-1">Item Condition</label>
                   <select
                     value={itemCondition}
                     onChange={(e) => setItemCondition(e.target.value)}
-                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-1 focus:ring-white/30"
+                    className="w-full bg-ocean-950/80 border border-ocean-300/20 rounded-xl px-3 py-2.5 text-ocean-100 focus:outline-none focus:ring-1 focus:ring-ocean-400/50"
                   >
-                    <option value="UNWORN_WITH_TAGS">Unworn with tags (Verified)</option>
-                    <option value="TRIED_ON_INDOORS">Tried on indoors</option>
-                    <option value="SLIGHTLY_USED">Slightly used (+22% Risk)</option>
-                    <option value="DEFECTIVE_DAMAGED">Damaged / Tag missing (+35% Risk)</option>
+                    <option value="UNWORN_WITH_TAGS" className="bg-ocean-950 text-ocean-100">Unworn with tags (Verified)</option>
+                    <option value="TRIED_ON_INDOORS" className="bg-ocean-950 text-ocean-100">Tried on indoors</option>
+                    <option value="SLIGHTLY_USED" className="bg-ocean-950 text-ocean-100">Slightly used (+22% Risk)</option>
+                    <option value="DEFECTIVE_DAMAGED" className="bg-ocean-950 text-ocean-100">Damaged / Tag missing (+35% Risk)</option>
                   </select>
                 </div>
               </div>
@@ -431,44 +431,44 @@ export default function ReturnsPage() {
               {/* Historical Frequency & Desired Resolution */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-zinc-400 font-medium mb-1">Return Frequency</label>
+                  <label className="block text-ocean-200/80 font-medium mb-1">Return Frequency</label>
                   <select
                     value={returnFrequency}
                     onChange={(e) => setReturnFrequency(e.target.value)}
-                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-1 focus:ring-white/30"
+                    className="w-full bg-ocean-950/80 border border-ocean-300/20 rounded-xl px-3 py-2.5 text-ocean-100 focus:outline-none focus:ring-1 focus:ring-ocean-400/50"
                   >
-                    <option value="FIRST_TIME">1st Return (0.0x Velocity)</option>
-                    <option value="OCCASIONAL">Occasional Return (1 in 90d)</option>
-                    <option value="FREQUENT_RETURNS">Frequent Returns (3+ in 60d)</option>
+                    <option value="FIRST_TIME" className="bg-ocean-950 text-ocean-100">1st Return (0.0x Velocity)</option>
+                    <option value="OCCASIONAL" className="bg-ocean-950 text-ocean-100">Occasional Return (1 in 90d)</option>
+                    <option value="FREQUENT_RETURNS" className="bg-ocean-950 text-ocean-100">Frequent Returns (3+ in 60d)</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-zinc-400 font-medium mb-1">Requested Resolution</label>
+                  <label className="block text-ocean-200/80 font-medium mb-1">Requested Resolution</label>
                   <select
                     value={requestedResolution}
                     onChange={(e) => setRequestedResolution(e.target.value)}
-                    className="w-full bg-zinc-950/80 border border-white/10 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:ring-1 focus:ring-white/30"
+                    className="w-full bg-ocean-950/80 border border-ocean-300/20 rounded-xl px-3 py-2.5 text-ocean-100 focus:outline-none focus:ring-1 focus:ring-ocean-400/50"
                   >
-                    <option value="EXCHANGE">Size / Color Exchange</option>
-                    <option value="REPLACEMENT">Replacement (Defect)</option>
-                    <option value="STORE_CREDIT">Store Credit + 5% Bonus</option>
-                    <option value="REFUND">Cash Refund</option>
+                    <option value="EXCHANGE" className="bg-ocean-950 text-ocean-100">Size / Color Exchange</option>
+                    <option value="REPLACEMENT" className="bg-ocean-950 text-ocean-100">Replacement (Defect)</option>
+                    <option value="STORE_CREDIT" className="bg-ocean-950 text-ocean-100">Store Credit + 5% Bonus</option>
+                    <option value="REFUND" className="bg-ocean-950 text-ocean-100">Cash Refund</option>
                   </select>
                 </div>
               </div>
 
               {/* Customer Reason / Feedback */}
               <div>
-                <label className="block text-zinc-400 font-medium mb-1">
-                  Customer Reason / Issue Description <span className="text-white">*</span>
+                <label className="block text-ocean-200/80 font-medium mb-1">
+                  Customer Reason / Issue Description <span className="text-ocean-300">*</span>
                 </label>
                 <textarea
                   rows={3}
                   value={customerReason}
                   onChange={(e) => setCustomerReason(e.target.value)}
                   placeholder="e.g. Too tight around the toe box, need a half size larger..."
-                  className="w-full bg-zinc-950/80 border border-white/10 rounded-xl p-3 text-white focus:outline-none focus:ring-1 focus:ring-white/30 leading-relaxed font-sans"
+                  className="w-full bg-ocean-950/80 border border-ocean-300/20 rounded-xl p-3 text-ocean-100 focus:outline-none focus:ring-1 focus:ring-ocean-400/50 leading-relaxed font-sans"
                   required
                 />
               </div>
@@ -478,7 +478,7 @@ export default function ReturnsPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full py-3 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 font-semibold text-xs flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all disabled:opacity-50 active:scale-95"
+                  className="w-full py-3 rounded-xl bg-ocean-400 hover:bg-ocean-300 text-ocean-950 font-bold text-xs flex items-center justify-center gap-2 shadow-ocean-glow transition-all disabled:opacity-50 active:scale-95"
                 >
                   {isLoading ? (
                     <>
@@ -487,7 +487,7 @@ export default function ReturnsPage() {
                     </>
                   ) : (
                     <>
-                      <Sparkles className="w-3.5 h-3.5 text-zinc-950" />
+                      <Sparkles className="w-3.5 h-3.5 text-ocean-950" />
                       <span>Run Risk Engine & Claude Evaluation</span>
                     </>
                   )}
@@ -497,8 +497,8 @@ export default function ReturnsPage() {
           </div>
 
           {/* Seeded Database Orders Quick Selector */}
-          <div className="p-4 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl text-xs">
-            <div className="text-[10px] font-mono uppercase text-zinc-400 tracking-wider mb-2 font-bold">
+          <div className="p-4 rounded-2xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-2xl text-xs">
+            <div className="text-[10px] font-mono uppercase text-ocean-300 tracking-wider mb-2 font-bold">
               Database Orders (Click to Load)
             </div>
             <div className="space-y-2">
@@ -512,15 +512,15 @@ export default function ReturnsPage() {
                     setCustomerTier(ord.customerTier);
                     showToast(`Loaded ${ord.orderNumber}`);
                   }}
-                  className="p-3 rounded-xl bg-zinc-950/80 hover:bg-white/5 border border-white/5 cursor-pointer flex items-center justify-between transition-colors"
+                  className="p-3 rounded-xl bg-ocean-950/70 hover:bg-ocean-800/60 border border-ocean-300/10 cursor-pointer flex items-center justify-between transition-colors"
                 >
                   <div>
-                    <div className="font-mono font-bold text-white">{ord.orderNumber}</div>
-                    <div className="text-[11px] text-zinc-400">{ord.items[0].title}</div>
+                    <div className="font-mono font-bold text-ocean-100">{ord.orderNumber}</div>
+                    <div className="text-[11px] text-ocean-200/70">{ord.items[0].title}</div>
                   </div>
                   <div className="text-right">
-                    <div className="font-bold text-zinc-200">{formatCurrency(ord.totalAmount)}</div>
-                    <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-white/5 text-zinc-300 border border-white/10">
+                    <div className="font-bold text-ocean-200">{formatCurrency(ord.totalAmount)}</div>
+                    <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-ocean-500/10 text-ocean-300 border border-ocean-400/20">
                       {ord.customerTier}
                     </span>
                   </div>
@@ -533,21 +533,21 @@ export default function ReturnsPage() {
         {/* Right Column: Detailed Multi-Factor Risk & Evaluation Engine Output (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
           {decisionResult ? (
-            <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_20px_50px_rgba(0,0,0,0.6)] space-y-6">
+            <div className="p-6 rounded-2xl bg-ocean-900/50 border border-ocean-400/20 backdrop-blur-2xl shadow-ocean-card space-y-6">
               {/* Header */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/10">
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-ocean-300/15">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-xl bg-white/5 text-zinc-200 border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
+                  <div className="p-2.5 rounded-xl bg-ocean-500/15 text-ocean-300 border border-ocean-400/30 shadow-sm">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-mono text-zinc-400">Order:</span>
-                      <span className="text-xs font-bold text-white font-mono">
+                      <span className="text-xs font-mono text-ocean-300/70">Order:</span>
+                      <span className="text-xs font-bold text-ocean-100 font-mono">
                         {decisionResult.orderNumber}
                       </span>
                     </div>
-                    <div className="text-sm font-bold text-white mt-0.5 font-sans">
+                    <div className="text-sm font-bold text-ocean-100 mt-0.5 font-sans">
                       {decisionResult.itemTitle}
                     </div>
                   </div>
@@ -557,47 +557,47 @@ export default function ReturnsPage() {
                   <span
                     className={`text-[10px] font-mono px-3 py-1 rounded-full border uppercase font-bold ${
                       decisionResult.decision === "approve"
-                        ? "bg-white/10 text-white border-white/20"
-                        : "bg-white/5 text-zinc-300 border-white/10"
+                        ? "bg-ocean-400/20 text-ocean-200 border-ocean-400/30"
+                        : "bg-ocean-500/10 text-ocean-300 border-ocean-400/20"
                     }`}
                   >
                     Decision: {decisionResult.decision}
                   </span>
-                  <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-zinc-950/80 text-white border border-white/10 uppercase font-bold">
+                  <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-ocean-950/80 text-ocean-100 border border-ocean-400/20 uppercase font-bold">
                     Resolution: {decisionResult.resolution}
                   </span>
                 </div>
               </div>
 
               {/* 📊 Multi-Factor Risk Calculation & Score Gauge */}
-              <div className="p-4 rounded-xl bg-zinc-950/80 border border-white/5 space-y-3">
+              <div className="p-4 rounded-xl bg-ocean-950/70 border border-ocean-300/15 space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Sliders className="w-4 h-4 text-zinc-300" />
-                    <span className="text-xs font-bold text-white uppercase font-mono tracking-wider">
+                    <Sliders className="w-4 h-4 text-ocean-300" />
+                    <span className="text-xs font-bold text-ocean-100 uppercase font-mono tracking-wider">
                       Calculated Risk & Fraud Assessment
                     </span>
                   </div>
-                  <span className="text-xs font-mono font-extrabold text-white">
+                  <span className="text-xs font-mono font-extrabold text-ocean-100">
                     Score: {decisionResult.riskScore} / 1.0 ({decisionResult.riskLevel} RISK)
                   </span>
                 </div>
 
                 {/* Progress Meter Bar */}
-                <div className="w-full h-3 bg-zinc-900 rounded-full overflow-hidden p-0.5 border border-white/5">
+                <div className="w-full h-3 bg-ocean-950 rounded-full overflow-hidden p-0.5 border border-ocean-300/15">
                   <div
-                    className="h-full rounded-full transition-all duration-500 bg-white shadow-[0_0_10px_rgba(255,255,255,0.3)]"
+                    className="h-full rounded-full transition-all duration-500 bg-ocean-400 shadow-ocean-glow"
                     style={{ width: `${Math.min(100, Math.max(5, decisionResult.riskScore * 100))}%` }}
                   />
                 </div>
 
                 {/* Breakdown of Risk Drivers */}
                 {decisionResult.riskBreakdown && decisionResult.riskBreakdown.length > 0 && (
-                  <div className="pt-2 border-t border-white/5 space-y-1.5 text-xs">
+                  <div className="pt-2 border-t border-ocean-300/10 space-y-1.5 text-xs">
                     {decisionResult.riskBreakdown.map((item, i) => (
                       <div key={i} className="flex items-center justify-between text-[11px]">
-                        <span className="text-zinc-400">{item.factor}:</span>
-                        <span className="font-mono text-zinc-200">{item.impact}</span>
+                        <span className="text-ocean-200/70">{item.factor}:</span>
+                        <span className="font-mono text-ocean-200">{item.impact}</span>
                       </div>
                     ))}
                   </div>
@@ -606,23 +606,23 @@ export default function ReturnsPage() {
 
               {/* Key Metrics: Confidence, Retained GMV, Customer Tier */}
               <div className="grid grid-cols-3 gap-3 text-xs">
-                <div className="p-3.5 rounded-xl bg-zinc-950/80 border border-white/5">
-                  <div className="text-[10px] text-zinc-400 uppercase font-mono">Agent Confidence</div>
-                  <div className="text-base font-extrabold text-white mt-1">
+                <div className="p-3.5 rounded-xl bg-ocean-950/70 border border-ocean-300/15">
+                  <div className="text-[10px] text-ocean-300/70 uppercase font-mono">Agent Confidence</div>
+                  <div className="text-base font-extrabold text-ocean-100 mt-1">
                     {Math.round(decisionResult.confidence * 100)}%
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-zinc-950/80 border border-white/5">
-                  <div className="text-[10px] text-zinc-400 uppercase font-mono">Retained GMV</div>
-                  <div className="text-base font-extrabold text-white mt-1">
+                <div className="p-3.5 rounded-xl bg-ocean-950/70 border border-ocean-300/15">
+                  <div className="text-[10px] text-ocean-300/70 uppercase font-mono">Retained GMV</div>
+                  <div className="text-base font-extrabold text-ocean-300 mt-1">
                     {formatCurrency(decisionResult.retainedGmv || 6499)}
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-zinc-950/80 border border-white/5">
-                  <div className="text-[10px] text-zinc-400 uppercase font-mono">Customer Tier</div>
-                  <div className="text-base font-extrabold text-white mt-1">
+                <div className="p-3.5 rounded-xl bg-ocean-950/70 border border-ocean-300/15">
+                  <div className="text-[10px] text-ocean-300/70 uppercase font-mono">Customer Tier</div>
+                  <div className="text-base font-extrabold text-ocean-100 mt-1">
                     {decisionResult.customerTier}
                   </div>
                 </div>
@@ -630,15 +630,15 @@ export default function ReturnsPage() {
 
               {/* Recommended Action / Suggested Alternative */}
               {decisionResult.suggestedAlternative && (
-                <div className="p-4 rounded-xl bg-white/[0.04] border border-white/15 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] space-y-1">
-                  <div className="text-[10px] uppercase font-mono text-zinc-200 font-bold flex items-center justify-between">
+                <div className="p-4 rounded-xl bg-ocean-500/15 border border-ocean-400/30 shadow-ocean-glow space-y-1">
+                  <div className="text-[10px] uppercase font-mono text-ocean-200 font-bold flex items-center justify-between">
                     <span>Automated Sizing Alternative Reserved</span>
-                    <Sparkles className="w-3.5 h-3.5 text-zinc-200" />
+                    <Sparkles className="w-3.5 h-3.5 text-ocean-300" />
                   </div>
-                  <div className="text-sm font-bold text-white">
+                  <div className="text-sm font-bold text-ocean-100">
                     {decisionResult.suggestedAlternative}
                   </div>
-                  <div className="text-xs text-zinc-300 mt-1 font-sans">
+                  <div className="text-xs text-ocean-200/80 mt-1 font-sans">
                     {decisionResult.timelineEstimate}
                   </div>
                 </div>
@@ -646,27 +646,27 @@ export default function ReturnsPage() {
 
               {/* Agent Reasoning */}
               <div className="space-y-2">
-                <div className="text-xs font-bold text-white flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-zinc-300" />
+                <div className="text-xs font-bold text-ocean-100 flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-ocean-300" />
                   <span>Claude 3.5 Agent Reasoning</span>
                 </div>
-                <p className="text-xs text-zinc-300 leading-relaxed p-4 rounded-xl bg-zinc-950/80 border border-white/5 font-sans">
+                <p className="text-xs text-ocean-200/90 leading-relaxed p-4 rounded-xl bg-ocean-950/70 border border-ocean-300/15 font-sans">
                   {decisionResult.reasoning}
                 </p>
               </div>
 
               {/* Policy Checks Matrix */}
               <div className="space-y-2">
-                <div className="text-[11px] font-mono text-zinc-400 uppercase font-bold">
+                <div className="text-[11px] font-mono text-ocean-300 uppercase font-bold">
                   Verified Policy Rules (RAG Grounded)
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {decisionResult.policyChecks.map((check, idx) => (
                     <div
                       key={idx}
-                      className="p-2.5 rounded-lg bg-zinc-950/80 border border-white/5 flex items-center gap-2 text-[11px] text-zinc-300"
+                      className="p-2.5 rounded-lg bg-ocean-950/70 border border-ocean-300/15 flex items-center gap-2 text-[11px] text-ocean-200"
                     >
-                      <CheckCircle2 className="w-3.5 h-3.5 text-zinc-100 flex-shrink-0" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-ocean-300 flex-shrink-0" />
                       <span>{check}</span>
                     </div>
                   ))}
@@ -674,8 +674,8 @@ export default function ReturnsPage() {
               </div>
 
               {/* Bottom Action Button */}
-              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10">
-                <span className="text-[11px] text-zinc-400 font-mono">
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-ocean-300/15">
+                <span className="text-[11px] text-ocean-300/60 font-mono">
                   Autonomous ERP Swap Ready
                 </span>
                 <button
@@ -684,15 +684,15 @@ export default function ReturnsPage() {
                     setIsDispatched(true);
                     showToast(`Exchange for ${decisionResult.orderNumber} dispatched to Logistics ERP!`);
                   }}
-                  className={`px-5 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${
+                  className={`px-5 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
                     isDispatched
-                      ? "bg-white/10 text-zinc-200 border border-white/20"
-                      : "bg-white hover:bg-zinc-200 text-zinc-950 shadow-[0_0_20px_rgba(255,255,255,0.12)] active:scale-95"
+                      ? "bg-ocean-500/20 text-ocean-200 border border-ocean-400/40"
+                      : "bg-ocean-400 hover:bg-ocean-300 text-ocean-950 shadow-ocean-glow active:scale-95"
                   }`}
                 >
                   {isDispatched ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-white" />
+                      <Check className="w-3.5 h-3.5 text-ocean-200" />
                       <span>Exchange Dispatched to Logistics ERP</span>
                     </>
                   ) : (
@@ -705,10 +705,10 @@ export default function ReturnsPage() {
               </div>
             </div>
           ) : (
-            <div className="p-12 rounded-2xl bg-zinc-900/40 border border-dashed border-white/10 text-center space-y-3">
-              <RotateCcw className="w-8 h-8 text-zinc-600 mx-auto" />
-              <div className="text-sm font-bold text-zinc-400">No Return Request Evaluated Yet</div>
-              <p className="text-xs text-zinc-500 max-w-sm mx-auto">
+            <div className="p-12 rounded-2xl bg-ocean-900/30 border border-dashed border-ocean-400/20 text-center space-y-3">
+              <RotateCcw className="w-8 h-8 text-ocean-400 mx-auto" />
+              <div className="text-sm font-bold text-ocean-300">No Return Request Evaluated Yet</div>
+              <p className="text-xs text-ocean-300/60 max-w-sm mx-auto">
                 Submit an order return on the left or click a preset to see the multi-factor risk engine and Claude reasoning agent in action.
               </p>
             </div>
