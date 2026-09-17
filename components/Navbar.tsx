@@ -25,6 +25,7 @@ import {
 
 export function Navbar() {
   const pathname = usePathname();
+  const isLanding = pathname === "/";
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [cyberDropdownOpen, setCyberDropdownOpen] = useState(false);
@@ -135,7 +136,7 @@ export function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Left: Mobile Drawer Trigger + Brand */}
+            {/* Left: Mobile Drawer Trigger + AXION Brand (No 'Autonomous' text) */}
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setIsOpen(true)}
@@ -150,162 +151,161 @@ export function Navbar() {
                 <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-ocean-500/25 to-ocean-700/40 border border-ocean-300/30 flex items-center justify-center shadow-[0_0_15px_rgba(32,201,166,0.2)] group-hover:border-ocean-300/50 transition-all">
                   <Layers className="w-4 h-4 text-ocean-300 group-hover:text-white transition-colors" />
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-base font-black tracking-tight text-white font-sans">
-                    AXION
-                  </span>
-                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-ocean-500/15 text-ocean-200 border border-ocean-300/20 uppercase font-bold hidden sm:inline-block">
-                    Autonomous
-                  </span>
-                </div>
+                <span className="text-base font-black tracking-tight text-white font-sans">
+                  AXION
+                </span>
               </Link>
             </div>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-1">
-              <Link
-                href="/dashboard"
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-                  pathname === "/dashboard"
-                    ? "bg-ocean-500/20 text-white border border-ocean-300/30 shadow-[0_0_15px_rgba(32,201,166,0.15)]"
-                    : "text-ocean-200/80 hover:text-white hover:bg-ocean-900/60"
-                }`}
-              >
-                Overview
-              </Link>
-
-              {/* Cyber Risk Interactive Dropdown Menu (Opens only on click) */}
-              <div className="relative" ref={dropdownRef}>
-                <button
-                  type="button"
-                  onClick={() => setCyberDropdownOpen(!cyberDropdownOpen)}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-                    isCyberActive
+            {/* Desktop Navigation Links (Hidden on landing page, visible on internal pages) */}
+            {!isLanding && (
+              <nav className="hidden lg:flex items-center gap-1">
+                <Link
+                  href="/dashboard"
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                    pathname === "/dashboard"
                       ? "bg-ocean-500/20 text-white border border-ocean-300/30 shadow-[0_0_15px_rgba(32,201,166,0.15)]"
                       : "text-ocean-200/80 hover:text-white hover:bg-ocean-900/60"
                   }`}
-                  aria-expanded={cyberDropdownOpen}
-                  aria-haspopup="true"
                 >
-                  <ShieldCheck className="w-3.5 h-3.5 text-ocean-300" />
-                  <span>Cyber Risk</span>
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 text-ocean-300/80 ${
-                      cyberDropdownOpen ? "rotate-180" : ""
+                  Overview
+                </Link>
+
+                {/* Cyber Risk Interactive Dropdown Menu */}
+                <div className="relative" ref={dropdownRef}>
+                  <button
+                    type="button"
+                    onClick={() => setCyberDropdownOpen(!cyberDropdownOpen)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                      isCyberActive
+                        ? "bg-ocean-500/20 text-white border border-ocean-300/30 shadow-[0_0_15px_rgba(32,201,166,0.15)]"
+                        : "text-ocean-200/80 hover:text-white hover:bg-ocean-900/60"
                     }`}
-                  />
-                </button>
-
-                {/* Dropdown Menu Content */}
-                {cyberDropdownOpen && (
-                  <div
-                    className="absolute left-0 mt-2 w-80 rounded-2xl bg-ocean-950/95 border border-ocean-300/25 p-2 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(32,201,166,0.15)] animate-in fade-in slide-in-from-top-2 duration-200 z-50"
+                    aria-expanded={cyberDropdownOpen}
+                    aria-haspopup="true"
                   >
-                    <div className="px-3 py-2 border-b border-ocean-300/10 flex items-center justify-between">
-                      <div className="flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-ocean-400 animate-pulse" />
-                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-ocean-300">
-                          Cyber Risk Intelligence
-                        </span>
+                    <ShieldCheck className="w-3.5 h-3.5 text-ocean-300" />
+                    <span>Cyber Risk</span>
+                    <ChevronDown
+                      className={`w-3.5 h-3.5 transition-transform duration-200 text-ocean-300/80 ${
+                        cyberDropdownOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {/* Dropdown Menu Content */}
+                  {cyberDropdownOpen && (
+                    <div
+                      className="absolute left-0 mt-2 w-80 rounded-2xl bg-ocean-950/95 border border-ocean-300/25 p-2 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(32,201,166,0.15)] animate-in fade-in slide-in-from-top-2 duration-200 z-50"
+                    >
+                      <div className="px-3 py-2 border-b border-ocean-300/10 flex items-center justify-between">
+                        <div className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-ocean-400 animate-pulse" />
+                          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-ocean-300">
+                            Cyber Risk Intelligence
+                          </span>
+                        </div>
+                        <Link
+                          href="/cyber-risk"
+                          onClick={() => setCyberDropdownOpen(false)}
+                          className="text-[10px] text-ocean-400 hover:text-ocean-200 underline font-mono"
+                        >
+                          All Views →
+                        </Link>
                       </div>
-                      <Link
-                        href="/cyber-risk"
-                        onClick={() => setCyberDropdownOpen(false)}
-                        className="text-[10px] text-ocean-400 hover:text-ocean-200 underline font-mono"
-                      >
-                        All Views →
-                      </Link>
-                    </div>
 
-                    <div className="py-1 space-y-0.5">
-                      {cyberSubLinks.map((item) => {
-                        const Icon = item.icon;
-                        return (
-                          <Link
-                            key={item.name}
-                            href={item.href}
-                            onClick={() => setCyberDropdownOpen(false)}
-                            className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-ocean-900/90 border border-transparent hover:border-ocean-300/20 transition-all"
-                          >
-                            <div className="p-2 rounded-lg bg-ocean-900/80 border border-ocean-300/15 text-ocean-300 group-hover:text-white group-hover:border-ocean-300/30 flex-shrink-0 transition-colors">
-                              <Icon className="w-3.5 h-3.5" />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-center justify-between gap-1">
-                                <span className="text-xs font-bold text-ocean-100 group-hover:text-white">
-                                  {item.name}
-                                </span>
-                                <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-ocean-500/15 text-ocean-300 border border-ocean-300/20">
-                                  {item.badge}
-                                </span>
+                      <div className="py-1 space-y-0.5">
+                        {cyberSubLinks.map((item) => {
+                          const Icon = item.icon;
+                          return (
+                            <Link
+                              key={item.name}
+                              href={item.href}
+                              onClick={() => setCyberDropdownOpen(false)}
+                              className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-ocean-900/90 border border-transparent hover:border-ocean-300/20 transition-all"
+                            >
+                              <div className="p-2 rounded-lg bg-ocean-900/80 border border-ocean-300/15 text-ocean-300 group-hover:text-white group-hover:border-ocean-300/30 flex-shrink-0 transition-colors">
+                                <Icon className="w-3.5 h-3.5" />
                               </div>
-                              <p className="text-[10px] text-ocean-200/60 group-hover:text-ocean-200/80 line-clamp-1 mt-0.5">
-                                {item.subtitle}
-                              </p>
-                            </div>
-                          </Link>
-                        );
-                      })}
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center justify-between gap-1">
+                                  <span className="text-xs font-bold text-ocean-100 group-hover:text-white">
+                                    {item.name}
+                                  </span>
+                                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-ocean-500/15 text-ocean-300 border border-ocean-300/20">
+                                    {item.badge}
+                                  </span>
+                                </div>
+                                <p className="text-[10px] text-ocean-200/60 group-hover:text-ocean-200/80 line-clamp-1 mt-0.5">
+                                  {item.subtitle}
+                                </p>
+                              </div>
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
+                  )}
+                </div>
 
-              <Link
-                href="/insights"
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-                  pathname === "/insights"
-                    ? "bg-ocean-500/20 text-white border border-ocean-300/30 shadow-[0_0_15px_rgba(32,201,166,0.15)]"
-                    : "text-ocean-200/80 hover:text-white hover:bg-ocean-900/60"
-                }`}
-              >
-                <Sparkles className="w-3.5 h-3.5 text-ocean-300" />
-                <span>Decision Copilot</span>
-              </Link>
+                <Link
+                  href="/insights"
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                    pathname === "/insights"
+                      ? "bg-ocean-500/20 text-white border border-ocean-300/30 shadow-[0_0_15px_rgba(32,201,166,0.15)]"
+                      : "text-ocean-200/80 hover:text-white hover:bg-ocean-900/60"
+                  }`}
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-ocean-300" />
+                  <span>Decision Copilot</span>
+                </Link>
 
-              <Link
-                href="/inventory"
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-                  pathname === "/inventory"
-                    ? "bg-ocean-500/20 text-white border border-ocean-300/30 shadow-[0_0_15px_rgba(32,201,166,0.15)]"
-                    : "text-ocean-200/80 hover:text-white hover:bg-ocean-900/60"
-                }`}
-              >
-                Inventory
-              </Link>
+                <Link
+                  href="/inventory"
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                    pathname === "/inventory"
+                      ? "bg-ocean-500/20 text-white border border-ocean-300/30 shadow-[0_0_15px_rgba(32,201,166,0.15)]"
+                      : "text-ocean-200/80 hover:text-white hover:bg-ocean-900/60"
+                  }`}
+                >
+                  Inventory
+                </Link>
 
-              <Link
-                href="/returns"
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-                  pathname === "/returns"
-                    ? "bg-ocean-500/20 text-white border border-ocean-300/30 shadow-[0_0_15px_rgba(32,201,166,0.15)]"
-                    : "text-ocean-200/80 hover:text-white hover:bg-ocean-900/60"
-                }`}
-              >
-                Smart Exchange
-              </Link>
+                <Link
+                  href="/returns"
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                    pathname === "/returns"
+                      ? "bg-ocean-500/20 text-white border border-ocean-300/30 shadow-[0_0_15px_rgba(32,201,166,0.15)]"
+                      : "text-ocean-200/80 hover:text-white hover:bg-ocean-900/60"
+                  }`}
+                >
+                  Smart Exchange
+                </Link>
 
-              <Link
-                href="/expenses"
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-                  pathname === "/expenses"
-                    ? "bg-ocean-500/20 text-white border border-ocean-300/30 shadow-[0_0_15px_rgba(32,201,166,0.15)]"
-                    : "text-ocean-200/80 hover:text-white hover:bg-ocean-900/60"
-                }`}
-              >
-                Expense Auditor
-              </Link>
-            </nav>
+                <Link
+                  href="/expenses"
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                    pathname === "/expenses"
+                      ? "bg-ocean-500/20 text-white border border-ocean-300/30 shadow-[0_0_15px_rgba(32,201,166,0.15)]"
+                      : "text-ocean-200/80 hover:text-white hover:bg-ocean-900/60"
+                  }`}
+                >
+                  Expense Auditor
+                </Link>
+              </nav>
+            )}
 
             {/* Right: Actions */}
             <div className="flex items-center gap-2.5">
-              <Link
-                href="/insights"
-                className="hidden sm:flex items-center gap-2 text-xs text-white bg-ocean-900/80 hover:bg-ocean-800 px-3 py-1.5 rounded-xl border border-white/20 backdrop-blur-md transition-all shadow-sm hover:border-white/40"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-white animate-pulse" />
-                <span className="font-bold text-[11px] text-white">Ask Copilot</span>
-              </Link>
+              {!isLanding && (
+                <Link
+                  href="/insights"
+                  className="hidden sm:flex items-center gap-2 text-xs text-white bg-ocean-900/80 hover:bg-ocean-800 px-3 py-1.5 rounded-xl border border-white/20 backdrop-blur-md transition-all shadow-sm hover:border-white/40"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-white animate-pulse" />
+                  <span className="font-bold text-[11px] text-white">Ask Copilot</span>
+                </Link>
+              )}
 
               <Link
                 href="/dashboard"
@@ -351,7 +351,7 @@ export function Navbar() {
                 AXION
               </span>
               <p className="text-[10px] text-ocean-300/70 font-mono">
-                Autonomous Decision Platform
+                Enterprise Decision Platform
               </p>
             </div>
           </Link>
@@ -386,7 +386,7 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* 2. Cyber Risk with Expandable Submenu (Closed by default, no 'Dropdown Menu' badge text) */}
+          {/* 2. Cyber Risk with Expandable Submenu */}
           <div className="rounded-xl border border-ocean-300/15 bg-ocean-900/20 overflow-hidden">
             <button
               type="button"
